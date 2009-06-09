@@ -2,6 +2,7 @@ package controle;
 
 //testado por arnett
 //testado por jessica
+//testado por jessica win
 public interface Sistema {
 	
 	public boolean login() throws Exception;
