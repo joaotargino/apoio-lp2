@@ -54,6 +54,44 @@ public class ModeradorTest {
 		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com",null);
 	}
 	
+	
+	
+	
+	
+	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptyNome() {
+		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptyLogin() {
+		new Aluno("Joao","", "senha", "20821333", "joaotargino@gmail.com","2009.1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptySenha() {
+		new Aluno("Joao","20821333", "", "20821333", "joaotargino@gmail.com","2009.1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptyMatricula() {
+		new Aluno("Joao","20821333", "senha", "", "joaotargino@gmail.com", "2009.1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptyEmail() {
+		new Aluno("Joao","20821333", "senha", "20821333", "","2009.1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAlunoWithEmptyTurma() {
+		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","");
+	}
+	
+	
+	
 	@Test
 	public void testEqualsWithSameMatricula(){
 		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
