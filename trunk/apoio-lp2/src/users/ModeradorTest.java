@@ -17,13 +17,16 @@ public class ModeradorTest {
 	private Aluno aluno1;
 	private Aluno aluno2;
 	private Aluno aluno3;
+	private Moderador monitor;
 
 	@Before
 	public void setUp() throws Exception {
 		aluno = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 		aluna = new Aluno("Jessica","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
+		monitor = new Moderador("Monitor", "20720000", "12345", "20720000", "monitor@lp2.ufcg.edu.br");
 	}
 	
+	//testes cadastra aluno
 	@Test(expected=IllegalArgumentException.class)
 	public void testAlunoWithNullNome() {
 		new Aluno(null,"20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
@@ -54,12 +57,7 @@ public class ModeradorTest {
 		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com",null);
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	@Test(expected=IllegalArgumentException.class)
 	public void testAlunoWithEmptyNome() {
 		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
@@ -90,8 +88,6 @@ public class ModeradorTest {
 		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","");
 	}
 	
-	
-	
 	@Test
 	public void testEqualsWithSameMatricula(){
 		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
@@ -106,10 +102,54 @@ public class ModeradorTest {
 		assertFalse(aluno1.equals(aluno2));
 	}
 	
-	@Test
+	
+	//testes submeter nota
+	@Test(expected=IllegalArgumentException.class)
 	public void testExercicioWithNullNota(){
-		
-		
-		
+		lab = new Exercicio("lab1" , null); 
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithNullNome(){
+		lab = new Exercicio(null, 10);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithEmptyNome() {
+		new Exercicio("", 10);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithInvalidNome() {
+		new Exercicio(2, 7.6);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithInvalidNota() {
+		new Exercicio("lab2", "a");
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithInvalidNota() {
+		new Exercicio("lab2", &);
+	}
+	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioWithInvalidNota() {
+		new Exercicio("lab2", -1);
+	} // isso existe????
+	
+	@Test
+	public void testExercicioWithInvalidNota() {
+		exercicio = new Exercicio("lab2", -1);
+		assertFalse(monitor.setNotaAluno(exercicio, aluno));
+		exercicio2 = new Exercicio("lab3" , 10);
+		assertTrue(monitor.setNotaAluno(exercicio2, aluno));
+		exercicio3 = new Exercicio("lab11" , 11);
+		assertFalse(monitor.setNotaAluno(exercicio3,aluno));
+	}
+	
+	//o construtor de exercicio eh assim, ne? 
+	
+	
+	
 }

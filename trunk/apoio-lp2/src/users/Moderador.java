@@ -19,5 +19,7 @@ public class Moderador extends Usuario{
 		}
 		else return false;
 	}
+	
+	
 
 }
