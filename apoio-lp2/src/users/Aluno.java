@@ -15,9 +15,9 @@ public class Aluno extends Usuario{
 	private List<Exercicios> labsAluno;
 	private String turma;
 	
-	public Aluno(String nome, String login, String senha, String matricula, String email, Turma turma) {
+	public Aluno(String nome, String login, String senha, String matricula, String email,String turma) {
 		super(nome, login, senha, matricula, email);
-		this.turma = turma.getNome();
+		this.turma = turma;
 		
 		// TODO Auto-generated constructor stub
 	}
