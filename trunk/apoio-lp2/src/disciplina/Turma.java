@@ -15,11 +15,11 @@ public class Turma {
 		Turma turma = new Turma("2008.2"); 
 		//System.out.println(turma.getAnoTurma());
 		//System.out.println(turma.getPeriodoTurma());
-		Aluno aluno = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com",turma);
+		Aluno aluno = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 		//System.out.print(aluno.getTurma());
 		List<Aluno> alunosTurma = new ArrayList<Aluno>();
 		alunosTurma.add(aluno);
-		Aluno aluna = new Aluno("Jes","20821205", "senha", "20821205", "jessicadesousacg@gmail.com",turma);
+		Aluno aluna = new Aluno("Jes","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
 		alunosTurma.add(aluna);
 		
 		for (Aluno estudante : alunosTurma) {
