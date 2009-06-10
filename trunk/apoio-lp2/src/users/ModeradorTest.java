@@ -20,8 +20,8 @@ public class ModeradorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
-		aluno2 = new Aluno("Jes","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
+		aluno = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
+		aluna = new Aluno("Jessica","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -104,5 +104,12 @@ public class ModeradorTest {
 		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 		aluno2 = new Aluno("Jes","20821205", "senha", "20821205", "joaotargino@gmail.com","2009.1");
 		assertFalse(aluno1.equals(aluno2));
+	}
+	
+	@Test
+	public void testExercicioWithNullNota(){
+		
+		
+		
 	}
 }

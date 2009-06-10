@@ -11,8 +11,9 @@ public class Exercicios {
 	private Map<String, Double> labs;
 	
 
-	public Exercicios(String nome) {
-		this.nome = nome; //del
+	public Exercicios(String nome, double nota) {
+		this.nome = nome;
+		this.nota = nota;
 		
 		labs = new HashMap<String,Double>();
 
