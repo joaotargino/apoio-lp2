@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-//criando um file normal
+//criando um junit test case
 
 public class ModeradorTest {
 
