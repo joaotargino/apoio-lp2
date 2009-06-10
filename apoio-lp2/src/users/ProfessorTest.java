@@ -15,9 +15,9 @@ public class ProfessorTest {
 		Professor prof;
 
 		@Before
-		public void criaPAs() {
+		public void criaProfessora() {
 			prof = new Professor("Raquel", "raquel", "12345", 
-					"20000000", "raquelvl at gmail.com");
+					"20000000", "raquelvl@gmail.com");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
@@ -65,7 +65,7 @@ public class ProfessorTest {
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithEmptyMatricula(){
 			new Professor("", "raquel", "12345", 
-					" ", "raquelvl at gmail.com");
+					" ", "raquelvl@gmail.com");
 		}
 		
 
