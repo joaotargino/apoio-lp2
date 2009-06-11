@@ -28,75 +28,75 @@ public class ModeradorTest {
 	
 	//testes cadastra aluno
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullNome() {
+	public void testAlunoComNullNome() {
 		new Aluno(null,"20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullLogin() {
+	public void testAlunoComNullLogin() {
 		new Aluno("Joao",null, "senha", "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullSenha() {
+	public void testAlunoComNullSenha() {
 		new Aluno("Joao","20821333", null, "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullMatricula() {
+	public void testAlunoComNullMatricula() {
 		new Aluno("Joao","20821333", "senha", null, "joaotargino@gmail.com", "2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullEmail() {
+	public void testAlunoComNullEmail() {
 		new Aluno("Joao","20821333", "senha", "20821333", null,"2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithNullTurma() {
+	public void testAlunoComNullTurma() {
 		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com",null);
 	}
 	
 
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptyNome() {
+	public void testAlunoComNomeVazio() {
 		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptyLogin() {
+	public void testAlunoComLoginVazio() {
 		new Aluno("Joao","", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptySenha() {
+	public void testAlunoComSenhaVazia() {
 		new Aluno("Joao","20821333", "", "20821333", "joaotargino@gmail.com","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptyMatricula() {
+	public void testAlunoComMatriculaVazia() {
 		new Aluno("Joao","20821333", "senha", "", "joaotargino@gmail.com", "2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptyEmail() {
+	public void testAlunoComEmailVazio() {
 		new Aluno("Joao","20821333", "senha", "20821333", "","2009.1");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testAlunoWithEmptyTurma() {
+	public void testAlunoComTurmaVazia() {
 		new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","");
 	}
 	
 	@Test
-	public void testEqualsWithSameMatricula(){
+	public void testEqualsComMesmaMatricula(){
 		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 		aluno2 = new Aluno("Jes","20821333", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
 		assertFalse(aluno1.equals(aluno2));
 	}
 	
 	@Test
-	public void testEqualsWithSameEmail(){
+	public void testEqualsComMesmoEmail(){
 		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
 		aluno2 = new Aluno("Jes","20821205", "senha", "20821205", "joaotargino@gmail.com","2009.1");
 		assertFalse(aluno1.equals(aluno2));
@@ -105,41 +105,46 @@ public class ModeradorTest {
 	
 	//testes submeter nota
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithNullNota(){
+	public void testExercicioComNullNota(){
 		lab = new Exercicio("lab1" , null); 
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithNullNome(){
+	public void testExercicioComNullNome(){
 		lab = new Exercicio(null, 10);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithEmptyNome() {
+	public void testExercicioComNomeVazio() {
 		new Exercicio("", 10);
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithInvalidNome() {
+	public void testExercicioComNomeInvalido() {
 		new Exercicio(2, 7.6);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithInvalidNota() {
+	public void testExercicioComNotaInvalida() {
 		new Exercicio("lab2", "a");
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithInvalidNota() {
+	public void testExercicioComNotaInvalida() {
 		new Exercicio("lab2", &);
 	}
 	
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testExercicioWithInvalidNota() {
+	public void testExercicioComNotaInvalida() {
 		new Exercicio("lab2", -1);
-	} // isso existe???? tipo, fzr o teste de nota negativa desse jeito =x
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testExercicioComNotaInvalida() {
+		new Exercicio("lab2", 11);
+	}
 	
 	@Test
-	public void testExercicioWithInvalidNota() {
+	public void testExercicioComNotaInvalida() {
 		exercicio = new Exercicio("lab2", -1);
 		assertFalse(monitor.setNotaAluno(exercicio, aluno));
 		exercicio2 = new Exercicio("lab3" , 10);
