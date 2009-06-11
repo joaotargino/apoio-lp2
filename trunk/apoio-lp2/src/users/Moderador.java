@@ -1,25 +1,24 @@
-package users;
-
+import Aluno;
 import Usuario;
-import users.Aluno;
-import disciplina.Turma;
 
 public class Moderador extends Usuario{
-	
-	private Turma turma;
-	private Aluno aluno;
 
-	public Moderador(String nome, String login, String senha, String matricula, String email) {
-		super(nome, login, senha, matricula, email);
-		// TODO Auto-generated constructor stub
+	private Aluno aluno;
+	private String turma;
+
+	public Moderador(String nome, String login, String senha, String email) throws Exception {
+		super(nome, login, senha, email);
 	}
 	
-	public boolean cadastraAluno(){
-		if(turma.addAluno(aluno)){
-			return true;
-		}
-		else return false;
+	public void abrirTurma(String turma) {
+		this.turma = turma;
+	}
+	public void cadastraAluno(String nome, String login, String senha, String email) throws Exception{
+		Aluno aluno = new Aluno(nome, login, senha, email);
+		BD.addAluno(Aluno, turma);
+		
 	}
 	
+	public void verTutelados()
 
 }
