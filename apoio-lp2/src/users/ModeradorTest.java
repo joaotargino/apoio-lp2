@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 //algo lah :D
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -153,8 +154,11 @@ public class ModeradorTest {
 		assertFalse(monitor.setNotaAluno(exercicio3,aluno));
 	}
 	
-	//o construtor de exercicio eh assim, ne? 
-	
+	@Test
+	public void testAbrirTurma(){
+		moderador.abrirTurma("2009.1");
+		Assert.assertEquals("Turma inválida ou inexistente", "2009.1" , moderador.getTurma());
+	}
 	
 	
 }
