@@ -136,7 +136,7 @@ public class ModeradorTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testExercicioWithInvalidNota() {
 		new Exercicio("lab2", -1);
-	} // isso existe????
+	} // isso existe???? tipo, fzr o teste de nota negativa desse jeito =x
 	
 	@Test
 	public void testExercicioWithInvalidNota() {
