@@ -1,5 +1,6 @@
 package users;
 
+import Usuario;
 import users.Aluno;
 import disciplina.Turma;
 
@@ -19,7 +20,6 @@ public class Moderador extends Usuario{
 		}
 		else return false;
 	}
-	
 	
 
 }

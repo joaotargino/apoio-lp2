@@ -1,17 +1,10 @@
-package users;
-
-/**
- * Classe Usuario do projeto apoio-lp2
- * @author Erickson
- * @version 1.0 10 de junho de 2009 - 10:22h
- */
 public abstract class Usuario {
 	private String login, nome, senha, email;
 
 	/**
 	 * Construtor padrao.
 	 */
-	public Usuario(String login, String senha, String nome, String email) throws Exception{
+	public Usuario(String nome, String login, String senha, String email) throws Exception{
 		if (login == null || login.length() < 8 ||senha == null || senha.length() < 4 ||
 				nome == null || !verificaEmail(email)) {
 			throw new Exception("Nao passou pelo construtor.");
@@ -83,19 +76,21 @@ public abstract class Usuario {
 			return true;
 		} return false;
 	}
-
-	//Metodo da Classe Sistema
-	/**
-	 * Envia a senha por email.
-	 * @param login
-	 * @return true caso a senha seja enviada e false caso contrario.
-	 */
-	public static boolean mandaSenhaPorEmail(String login) {
-		if (login.equals("20821200")) {
-			System.out.println("Enviando por e-mail!");
+	
+	//Exibe os exercicios do aluno, em forma de links
+	public abstract void verExercicios();
+	
+	public boolean baixarExercicio(String Login, Exercicio exercicio) {
+		if (BD.getExercicios.contains(exercicio)) {
+			String caminho = BD.getExercicio(exercicio)[n];
+			//Com o caminho do exercicio em maos, deve-se abrir uam janelinha de opcao de
+			//salvar ou aabrir o exercicio
 			return true;
 		} return false;
-		
+	}
+	
+	public void verPlanilhaDeNotas(){
+		Interface.exibirPlanilhaDeNotas();
 	}
 	
 	/**
