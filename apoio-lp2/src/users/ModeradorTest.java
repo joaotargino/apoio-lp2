@@ -156,8 +156,8 @@ public class ModeradorTest {
 	
 	@Test
 	public void testAbrirTurma(){
-		moderador.abrirTurma("2009.1");
-		Assert.assertEquals("Turma inválida ou inexistente", "2009.1" , moderador.getTurma());
+		monitor.abrirTurma("2009.1");
+		Assert.assertEquals("Turma inválida ou inexistente", "2009.1" , monitor.getTurma());
 	}
 	
 	
