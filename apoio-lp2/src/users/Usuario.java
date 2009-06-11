@@ -1,3 +1,5 @@
+package users;
+
 /**
  * Classe Usuario do projeto apoio-lp2
  * @author Erickson
