@@ -1,66 +1,42 @@
-//modificou jessica
-package users;
-
-import java.util.Iterator;
-import java.util.List;
-
-import disciplina.Exercicios;
-import disciplina.Turma;
-
-
+import Aluno;
+import Exercicio;
+import Usuario;
 
 public class Aluno extends Usuario{
 
 	static final String NOVA_LINHA = System.getProperty("line.separator");
-	private List<Exercicios> labsAluno;
-	private String turma;
 	
-	public Aluno(String nome, String login, String senha, String matricula, String email,String turma) {
-		super(nome, login, senha, matricula, email);
-		this.turma = turma;
-		
-		// TODO Auto-generated constructor stub
+	public Aluno(String nome, String login, String senha, String email) throws Exception {
+		super(nome, login, senha, email);
 	}
 	
-	public boolean submeterCodigo(){
-		return true;
+	public boolean submeterExercicio(Exercicio exercicio){
+		//TODO Colocar data limite de entrega...
+		if (BD.getExercicios.contains(exercicio)) {
+			BD.addExercicio(exercicio);
+			return true;
+		} return false;
+			
 	}
 	
-	public void verCodigos(){
-		Iterator iteraNotas = labsAluno.iterator();
-		while (iteraNotas.hasNext()){
-			System.out.print(iteraNotas.next()); //pensar a respeito!
-		}
-	}
+	@Override
+	public void verExercicios(){
+		Interface.exibirExercicios(getLogin());
+	}	
 	
-	public void verNotas(){
-		Iterator iteraNotas = labsAluno.iterator();
-		while (iteraNotas.hasNext()){
-			System.out.print(iteraNotas.next()); //.getNota q vai ser criado
-		}
-	}
-	
+	@Override
 	public String toString(){
-		try {
 			return "NOME: " +this.getNome() + NOVA_LINHA +
 			"LOGIN: " + this.getLogin() + NOVA_LINHA +
 			"EMAIL: " + this.getEmail();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Aluno) {
+			Aluno aluno = (Aluno) obj;
+			if (aluno.getLogin().equals(getLogin()))
+				return true;
 		}
-		return "";
+		return false;
 	}
-
-	public String getTurma(){
-		return this.turma;
-	}
-
-	public void listaExercicios(){
-		//labsAlunos;
-	}
-
 }
-
-
-//criar uma conexao aluno~lab
