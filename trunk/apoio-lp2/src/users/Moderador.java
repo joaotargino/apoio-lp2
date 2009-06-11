@@ -4,7 +4,7 @@ import Usuario;
 public class Moderador extends Usuario{
 
 	private Aluno aluno;
-	private String turma;
+	private String turma = "";
 
 	public Moderador(String nome, String login, String senha, String email) throws Exception {
 		super(nome, login, senha, email);
@@ -19,6 +19,9 @@ public class Moderador extends Usuario{
 		
 	}
 	
+	public String getTurma(){
+		return this.turma;
+	}
 	public void verTutelados()
 
 }
