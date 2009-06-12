@@ -154,6 +154,7 @@ public class ModeradorTest {
 		assertFalse(monitor.setNotaAluno(exercicio3,aluno));
 	}
 	
+	//testa abrir turma 
 	@Test
 	public void testAbrirTurma(){
 		monitor.abrirTurma("2009.1");
