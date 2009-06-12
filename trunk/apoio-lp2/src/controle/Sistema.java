@@ -1,7 +1,12 @@
 package controle;
 
+import graphic.*;
+
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+
+import disciplina.Exercicio;
 
 import users.*;
 
@@ -35,6 +40,17 @@ public class Sistema{
 		} return false;
 			
 			
+	}
+
+	public static boolean subemeterExercicio(String login, Exercicio exercicio) {
+		//TODO Colocar data limite de entrega...
+		if (BD.getExercicios().contains(exercicio)) {
+			String[] sub = Interface.subemeterExercicio();
+			//transformar a data em Gregorian Calendar (sub[1])
+			Submissao submissao = new Submissao(sub[0], new GregorianCalendar(), sub[2]);
+			BD.addSubmissao(submissao);
+			return true;
+		} return false;
 	}
 
 }

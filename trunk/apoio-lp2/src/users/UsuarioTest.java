@@ -2,6 +2,7 @@ package users;
 
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,23 +25,51 @@ public class UsuarioTest {
 	}
 	
 	@Test(expected=Exception.class)
-	public void ConstrutorTest() throws Exception {
-		Usuario pessoa = new Usr("coisaosi", null, "coisi", "20543512", "a@g.c");
+	public void loginNuloTest() throws Exception {
+		new Usr("coisaosi", null, "coisi", "20543512", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
-	public void Construtor2Test() throws Exception {
-		Usuario pessoa = new Usr("coisaosi", "055", "coisi", "055", "a@g.c");
+	public void loginMenosCaracteresQOPermitidoTest() throws Exception {
+		new Usr("coisaosi", "055", "coisi", "055", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
-	public void Construtor3Test() throws Exception {
-		Usuario pessoa = new Usr("coisaosi", "20821200", "123", "20821200", "a@g.c");
+	public void senhaMenosCaracteresQOPermitidoTest() throws Exception {
+		new Usr("coisaosi", "20821200", "123", "20821200", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
-	public void Construtor4Test() throws Exception {
-		Usuario pessoa = new Usr("coisaosi", "20821200", "123456", "20821200", "a@gc");
+	public void senhaNulaTest() throws Exception {
+		new Usr("coisaosi", "20821200", null, "20821200", "a@g.c");
+	}
+	
+	@Test(expected=Exception.class)
+	public void emailTest() throws Exception {
+		new Usr("coisaosi", "20821200", "123456", "20821200", "a@gc");
+	}
+	
+	@Test(expected=Exception.class)
+	public void nomeNuloTest() throws Exception {
+		new Usr(null, "20821200", "123456", "20821200", "a@g.c");
+	}
+	
+	@Test(expected=Exception.class)
+	public void alunoComNomeVazioTest() throws Exception {
+		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com");
+	}
+	
+	@Test(expected=Exception.class)
+	public void aunoComLoginVazioTest() throws Exception {
+		new Aluno("Joao","", "senha", "20821333", "joaotargino@gmail.com");
+	}
+	
+	public void InstanciaAlunoSemErroTest(){
+		try {
+			new Usr("Erickson", "20821200", "123456", "20821200", "a@g.c");
+		} catch (Exception e) {
+			Assert.fail();
+		}
 	}
 	
 	@Test
