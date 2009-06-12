@@ -1,6 +1,7 @@
 package users;
 import graphic.*;
 import controle.*;
+import disciplina.*;
 
 public abstract class Usuario {
 	private String login, nome, senha, email;
@@ -8,11 +9,11 @@ public abstract class Usuario {
 	/**
 	 * Construtor padrao.
 	 */
-	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception{
-		if (login == null || login.length() < 8 ||senha == null || senha.length() < 4 ||
-				nome == null || !verificaEmail(email)) {
-			throw new Exception("Nao passou pelo construtor.");
-		}
+	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception {
+		if (login == null || senha == null || nome == null) 
+			throw new IllegalArgumentException("Argumentos nulos!");
+		if (login.length() < 8 || senha.length() < 4 || !verificaEmail(email))
+			throw new Exception("Argumentos invalidos!");
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
@@ -110,7 +111,7 @@ public abstract class Usuario {
 		if (email.contains("@") && email != null) {
 			if (email.split("@")[0].length() > 0) {
 				String dominio = email.split("@")[1];
-			 	if (email.contains("."))
+			 	if (dominio.contains("."))
 			 		return true;
 			} return false;
 		} return false;
