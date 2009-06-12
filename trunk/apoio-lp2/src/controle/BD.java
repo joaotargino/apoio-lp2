@@ -3,8 +3,9 @@ package controle;
 import java.util.List;
 import java.util.Map;
 
+import disciplina.Exercicio;
+
 import users.Aluno;
-import users.Exercicio;
 import users.Usuario;
 
 public class BD {
