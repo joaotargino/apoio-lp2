@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-//algo lah :D
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,13 +16,12 @@ public class ModeradorTest {
 	
 	private Aluno aluno1;
 	private Aluno aluno2;
-	private Aluno aluno3;
 	private Moderador monitor;
 
 	@Before
 	public void setUp() throws Exception {
-		aluno = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
-		aluna = new Aluno("Jessica","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
+		aluno1 = new Aluno("Joao","20821333", "senha", "20821333", "joaotargino@gmail.com","2009.1");
+		aluno2 = new Aluno("Jessica","20821205", "senha", "20821205", "jessicadesousacg@gmail.com","2009.1");
 		monitor = new Moderador("Monitor", "20720000", "12345", "20720000", "monitor@lp2.ufcg.edu.br");
 	}
 	
