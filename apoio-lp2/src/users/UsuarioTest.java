@@ -10,8 +10,8 @@ import org.junit.Test;
 public class UsuarioTest {
 	
 	public class Usr extends Usuario{
-		public Usr(String login, String senha, String nome, String email) throws Exception {
-			super(login, senha, nome, email);
+		public Usr(String login, String senha, String nome, String matricula, String email) throws Exception {
+			super(login, senha, nome, matricula, email);
 		}
 	}
 	private Usuario erickson;
@@ -19,28 +19,28 @@ public class UsuarioTest {
 
 	@Before
 	public void setUp() throws Exception {
-		erickson = new Usr("20821200", "123456", "Erickson", "ericksonfilipe@gmail.com");
-		arnett = new Usr("20821209", "123456", "Arnett", "shrivelfigs@gmail.com");
+		erickson = new Usr("20821200", "123456", "Erickson", "20821200", "ericksonfilipe@gmail.com");
+		arnett = new Usr("20821209", "123456", "Arnett", "20821209", "shrivelfigs@gmail.com");
 	}
 	
 	@Test(expected=Exception.class)
 	public void ConstrutorTest() throws Exception {
-		Usuario pessoa = new Usr(null, "coisi", "coisaosi", "a@g.c");
+		Usuario pessoa = new Usr(null, "coisi", "coisaosi", "20543512", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
 	public void Construtor2Test() throws Exception {
-		Usuario pessoa = new Usr("055", "coisi", "coisaosi", "a@g.c");
+		Usuario pessoa = new Usr("055", "coisi", "coisaosi", "055", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
 	public void Construtor3Test() throws Exception {
-		Usuario pessoa = new Usr("20821200", "123", "coisaosi", "a@g.c");
+		Usuario pessoa = new Usr("20821200", "123", "coisaosi", "20821200", "a@g.c");
 	}
 	
 	@Test(expected=Exception.class)
 	public void Construtor4Test() throws Exception {
-		Usuario pessoa = new Usr("20821200", "123456", "coisaosi", "a@gc");
+		Usuario pessoa = new Usr("20821200", "123456", "coisaosi", "20821200", "a@gc");
 	}
 	
 	@Test
@@ -63,13 +63,6 @@ public class UsuarioTest {
 		assertEquals("ericksonfilipe@gmail.com", erickson.getEmail());
 		assertTrue(arnett.setEmail("arnettor@lcc.ufcg.edu.br"));
 		assertEquals("arnettor@lcc.ufcg.edu.br", arnett.getEmail());
-	}
-	
-	//Teste de Metodo da Classe Sistema
-	@Test
-	public void mandaSenhaPorEmailTest() {
-		assertTrue(Usuario.mandaSenhaPorEmail("20821200"));
-		assertFalse(Usuario.mandaSenhaPorEmail("20821"));
 	}
 
 }

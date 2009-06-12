@@ -1,10 +1,11 @@
 package users;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
+import java.util.GregorianCalendar;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,16 +15,22 @@ public class AlunoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		aluno = new Aluno("arnett", "20821282", "12345", "arnett@email.com");
+		aluno = new Aluno("arnett", "20821282", "12345", "20821282", "arnett@email.com");
 	}
 
 	@Test
-	public void submeterExercicioTest() {
-		Exercicio exercicio = new Exercicio();
+	public void submeterExercicioTest() throws Exception {
+		GregorianCalendar dataMaior = new GregorianCalendar(2009, 10, 10);
+		GregorianCalendar dataMenor = new GregorianCalendar();
+		Exercicio exercicio = new Exercicio(dataMenor, dataMaior, "nome", "enunciado", 100);
 		assertTrue(aluno.submeterExercicio(exercicio));
+		//Mesmo exercicio sendo submetido duas vezes
 		assertFalse(aluno.submeterExercicio(exercicio));
-		assertFalse(aluno.submeterExercicio(null));
+		try {
+			assertFalse(aluno.submeterExercicio(null));
+			Assert.fail();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
-
-	public void 
 }
