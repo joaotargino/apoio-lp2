@@ -11,7 +11,7 @@ public class Exercicios {
 	private Map<String, Double> labs;
 	
 
-	public Exercicios(String nome){//, double nota) {
+	public Exercicios(String nome, double nota) {
 		this.nome = nome;
 		//this.nota = nota; essa parte fica aqui, ne? (foi o q jes disse no exemplo)
 		
