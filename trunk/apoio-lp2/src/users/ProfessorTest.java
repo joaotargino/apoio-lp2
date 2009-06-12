@@ -81,6 +81,7 @@ public class ProfessorTest {
 			assertFalse(prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com"));
 		}
 		
+		@Test
 		public void testProfessorAlocaAluno(){
 			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com");
 			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com");
@@ -95,6 +96,7 @@ public class ProfessorTest {
 			assertFalse(prof.alocaAluno("20000000", "20821200"));
 		}
 		
+		@Test
 		public void testProfessorDeletaMonitor(){
 			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com");
 			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com");
@@ -105,6 +107,7 @@ public class ProfessorTest {
 			assertFalse(prof.getMonitores().contains("20001000"));
 		}
 		
+		@Test
 		public void testProfessorDeletaAluno(){
 			prof.cadastraAluno("Jessica", "20821205", "12345", "20821205", "jessica@gmail.com");
 			prof.cadastraAluno("Joao", "20821333", "12345", "20821333", "joao@gmail.com");
