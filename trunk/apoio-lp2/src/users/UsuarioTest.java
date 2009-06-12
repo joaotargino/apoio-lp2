@@ -56,12 +56,12 @@ public class UsuarioTest {
 	
 	@Test(expected=Exception.class)
 	public void alunoComNomeVazioTest() throws Exception {
-		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com");
+		new Aluno("","20821333", "senha", "20821333", "joaotargino@gmail.com", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void aunoComLoginVazioTest() throws Exception {
-		new Aluno("Joao","", "senha", "20821333", "joaotargino@gmail.com");
+		new Aluno("Joao","", "senha", "20821333", "joaotargino@gmail.com", "2009.1");
 	}
 	
 	public void InstanciaAlunoSemErroTest(){
