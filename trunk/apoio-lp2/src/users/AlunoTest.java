@@ -17,7 +17,7 @@ public class AlunoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		aluno = new Aluno("arnett", "20821282", "12345", "20821282", "arnett@email.com");
+		aluno = new Aluno("arnett", "20821282", "12345", "20821282", "arnett@email.com", "2009.1");
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class AlunoTest {
 		Exercicio exercicio = new Exercicio(dataMenor, dataMaior, "nome", "enunciado", 100);
 		assertTrue(aluno.submeterExercicio(exercicio));
 		//Mesmo exercicio sendo submetido duas vezes
-		assertFalse(aluno.submeterExercicio(exercicio));
+		assertTrue(aluno.submeterExercicio(exercicio));
 		try {
 			assertFalse(aluno.submeterExercicio(null));
 			Assert.fail();
