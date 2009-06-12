@@ -15,7 +15,7 @@ public class Moderador extends Usuario{
 	}
 	public void cadastraAluno(String nome, String login, String senha, String email) throws Exception{
 		Aluno aluno = new Aluno(nome, login, senha, email);
-		BD.addAluno(Aluno, turma);
+		BD.addAluno(aluno, turma);
 		
 	}
 	
