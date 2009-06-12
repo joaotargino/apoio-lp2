@@ -2,9 +2,7 @@ package users;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,75 +15,75 @@ public class ProfessorTest {
 		@Before
 		public void setUp() throws Exception {
 			prof = new Professor("Raquel", "raquel", "12345", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithNullName() throws Exception{
 			new Professor(null, "raquel", "12345", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithNullLogin() throws Exception{
 			new Professor("Raquel", null, "12345", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithNullPassword() throws Exception{
 			new Professor("Raquel", "raquel", null, 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithNullMatricula() throws Exception{
 			new Professor("Raquel", "raquel", "12345", 
-					null, "raquelvl@gmail.com");
+					null, "raquelvl@gmail.com","2009.1");
 		}
 
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithEmptyName() throws Exception{
 			new Professor("", "raquel", "12345", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithInvalidLogin() throws Exception{
 			new Professor("Raquel", " ", "12345", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithEmptyPassword() throws Exception{
 			new Professor("Raquel", "raquel", "", 
-					"20000000", "raquelvl@gmail.com");
+					"20000000", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithInvalidMatricula() throws Exception{
 			new Professor("", "raquel", "12345", 
-					" ", "raquelvl@gmail.com");
+					" ", "raquelvl@gmail.com","2009.1");
 		}
 		
 		@Test(expected=IllegalArgumentException.class)
 		public void testProfessorWithInvalidEmail() throws Exception{
-			new Professor("Raquel", "raquel", "12345", "20000000", "raquelatgmail.com");
+			new Professor("Raquel", "raquel", "12345", "20000000", "raquelatgmail.com","2009.1");
 		}
 
 		@Test
-		public void testProfessorCadastraMonitor(){
-			assertTrue(prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com"));
-			assertFalse(prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com"));
-			assertFalse(prof.cadastraMonitor("David", "20001000", "12345", "20001000", "david@gmail.com"));
-			assertFalse(prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com"));
+		public void testProfessorCadastraMonitor() throws Exception{
+			assertTrue(prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com","2009.1"));
+			assertFalse(prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com","2009.1"));
+			assertFalse(prof.cadastraMonitor("David", "20001000", "12345", "20001000", "david@gmail.com","2009.1"));
+			assertFalse(prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com","2009.1"));
 		}
 		
 		@Test
-		public void testProfessorAlocaAluno(){
-			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com");
-			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com");
-			prof.cadastraAluno("Jessica", "20821205", "12345", "20821205", "jessica@gmail.com");
+		public void testProfessorAlocaAluno() throws Exception{
+			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com","2009.1");
+			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com","2009.1");
+			prof.cadastraAluno("Jessica", "20821205", "12345", "20821205", "jessica@gmail.com","2009.1");
 			assertTrue(prof.alocaAluno("20001000", "20821205"));
 			assertTrue(prof.getTutelados("20001000").contains("20821205"));
 			assertTrue(prof.alocaAluno("20002000", "20821205"));
@@ -98,8 +96,8 @@ public class ProfessorTest {
 		
 		@Test
 		public void testProfessorDeletaMonitor(){
-			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com");
-			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com");
+			prof.cadastraMonitor("Filipe", "20001000", "12345", "20001000", "filipe@gmail.com","2009.1");
+			prof.cadastraMonitor("David", "20002000", "12345", "20002000", "david@gmail.com","2009.1");
 			assertTrue(prof.getMonitores().contains("20001000"));
 			assertTrue(prof.getMonitores().contains("20002000"));
 			prof.deletaMonitor("20001000");
@@ -108,9 +106,9 @@ public class ProfessorTest {
 		}
 		
 		@Test
-		public void testProfessorDeletaAluno(){
-			prof.cadastraAluno("Jessica", "20821205", "12345", "20821205", "jessica@gmail.com");
-			prof.cadastraAluno("Joao", "20821333", "12345", "20821333", "joao@gmail.com");
+		public void testProfessorDeletaAluno() throws Exception{
+			prof.cadastraAluno("Jessica", "20821205", "12345", "20821205", "jessica@gmail.com","2009.1");
+			prof.cadastraAluno("Joao", "20821333", "12345", "20821333", "joao@gmail.com","2009.1");
 			assertTrue(prof.getAlunos().contains("20821205"));
 			assertTrue(prof.getAlunos().contains("20821333"));
 			prof.deletaMonitor("20821205");
