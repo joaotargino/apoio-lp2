@@ -15,7 +15,7 @@ public class BD {
 		return null;
 	}
 
-	public static void addSubmissao(Exercicio exercicio) {
+	public static void addSubmissao(Submissao submissao) {
 		// TODO Auto-generated method stub
 		
 	}

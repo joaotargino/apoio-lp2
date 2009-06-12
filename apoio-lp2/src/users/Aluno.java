@@ -1,6 +1,7 @@
 package users;
 
-import controle.BD;
+import controle.*;
+import disciplina.*;
 
 
 public class Aluno extends Usuario{
@@ -11,12 +12,8 @@ public class Aluno extends Usuario{
 		super(nome, login, senha, matricula, email);
 	}
 	
-	public boolean submeterExercicio(Exercicio exercicio){
-		//TODO Colocar data limite de entrega...
-		if (BD.getExercicios().contains(exercicio)) {
-			BD.addSubmissao(exercicio);
-			return true;
-		} return false;
+	public boolean submeterExercicio(Exercicio exercicio) {
+		return Sistema.subemeterExercicio(getLogin(), exercicio);
 			
 	}
 	

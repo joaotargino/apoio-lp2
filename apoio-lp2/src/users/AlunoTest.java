@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import disciplina.Exercicio;
+
 public class AlunoTest {
 
 	Aluno aluno;

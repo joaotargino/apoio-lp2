@@ -12,7 +12,7 @@ public abstract class Usuario {
 	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception {
 		if (login == null || senha == null || nome == null) 
 			throw new IllegalArgumentException("Argumentos nulos!");
-		if (login.length() < 8 || senha.length() < 4 || !verificaEmail(email))
+		if (login.length() < 8 || senha.length() < 4 || !verificaEmail(email) || nome.isEmpty())
 			throw new Exception("Argumentos invalidos!");
 		this.login = login;
 		this.senha = senha;
@@ -84,7 +84,7 @@ public abstract class Usuario {
 	
 	//Exibe os exercicios do aluno, em forma de links
 	public void verExercicios() {
-		Interface.exibirExercicios(getLogin());
+		Interface.exibirExercicios(Usuario.this);
 	}
 	
 	public boolean baixarExercicio(String Login, Exercicio exercicio) {
@@ -100,6 +100,15 @@ public abstract class Usuario {
 	
 	public void verPlanilhaDeNotas(){
 		Interface.exibirPlanilhaDeNotas();
+	}
+	
+	public void verCorrecoes() {
+		Interface.exibirCorrecoes(Usuario.this);
+		
+	}
+	
+	public void verCorrecao(Exercicio exercicio, String login) {
+		Interface.exibirCorrecao(login, exercicio);
 	}
 
 	/**
