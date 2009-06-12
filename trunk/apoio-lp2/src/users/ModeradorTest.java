@@ -103,6 +103,14 @@ public class ModeradorTest {
 		assertFalse(aluno1.equals(aluno2));
 	}
 	
+	@Test
+	public void testModeradorCadastraAluno(){
+		assertTrue(monitor.cadastraAluno("Joao", "20001000", "12345", "20001000", "jp@gmail.com"));
+		assertFalse(monitor.cadastraAluno("Joao", "20001000", "12345", "20001000", "jp@gmail.com"));
+		assertFalse(monitor.cadastraAluno("Jessica", "20001000", "12345", "20001000", "jes@gmail.com"));
+		assertTrue(monitor.cadastraAluno("Jessica", "20002000", "12345", "20002000", "jes@gmail.com"));
+	}
+	
 	
 	//testes submeter nota
 	@Test(expected=IllegalArgumentException.class)
