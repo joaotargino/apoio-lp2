@@ -91,7 +91,51 @@ public class InterfaceTest {
 
 	private static void menuProfessor() {
 		
-		// TODO Auto-generated method stub
+		final String NOVA_LINHA = System.getProperty("line.separator");
+		final int ADD_ALUNO = 1;
+		final int ADD_MONITOR = 2;
+		final int CRIA_TURMA = 3;
+		final int DEL_ALUNO = 4;
+		final int DEL_MONITOR = 5;
+		final int VER_TURMAS = 6;
+		final int SAIR = 7;
+		
+		final String PROMPT = NOVA_LINHA + ADD_ALUNO
+		+ " - ADD ALUNO" + NOVA_LINHA + ADD_MONITOR
+		+ " - ADD MONITOR" + NOVA_LINHA
+		+ CRIA_TURMA + " - CRIA TURMA"
+		+ NOVA_LINHA + DEL_ALUNO + " - DEL ALUNO"
+		+ NOVA_LINHA + DEL_MONITOR + " - DEL MONITOR"
+		+ NOVA_LINHA + VER_TURMAS
+		+ " - VER TURMAS" + NOVA_LINHA
+		
+		+ NOVA_LINHA + SAIR + " - Sair do programa" + NOVA_LINHA
+		+ NOVA_LINHA + "Digite a opção desejada: ";
+		
+		System.out.print(PROMPT);
+		int opcao = sc.nextInt();
+		sc.nextLine();
+		
+		switch (opcao) {
+		case ADD_ALUNO:
+			Sistema.addAluno();
+			break;
+		case ADD_MONITOR:
+			break;
+		case CRIA_TURMA:
+			break;
+		case DEL_ALUNO:
+			break;
+		case DEL_MONITOR:
+			break;
+		case VER_TURMAS:
+			break;
+		case SAIR:
+			break;
+		default: 
+			System.out.println("NUMERO INVALIDO");
+		} 
+		
 		
 	}
 
@@ -106,7 +150,7 @@ public class InterfaceTest {
 		//final int BAIXAR_PLANILHA = 3;
 		final int SUBMETER_EXERCICIO = 3;
 		final int EDITAR_DADOS = 4;
-		System.out.println("Ol�, " + dadosUsuario.get(1) + ", email: "+ dadosUsuario.get(2));
+		System.out.println("Ol�, " + dadosUsuario.get(1) + ", email: "+ dadosUsuario.get(2));
 		System.out.println("MENU ALUNO");
 		System.out.println("1 - VER PLANILHA DE NOTAS");
 		System.out.println("2 - VER EXERCICIOS");
