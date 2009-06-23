@@ -2,7 +2,7 @@ package users;
 
 import controle.*;
 import disciplina.*;
-import disciplina.Exercicio;
+
 
 
 public class Aluno extends Usuario{
