@@ -10,8 +10,8 @@ public class Exercicio {
 	private String enunciado;
 	private int id;
 
-	public Exercicio(GregorianCalendar data, GregorianCalendar dataEntrega,
-			String nome, String enunciado, int id) throws Exception {
+	public Exercicio(int id, String nome,  String enunciado, GregorianCalendar data,
+			GregorianCalendar dataEntrega ) throws Exception {
 		if (nome == null || enunciado == null || data == null || dataEntrega == null) {
 			throw new IllegalArgumentException();
 		}

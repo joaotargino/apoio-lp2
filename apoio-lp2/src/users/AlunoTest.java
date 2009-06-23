@@ -24,7 +24,7 @@ public class AlunoTest {
 	public void submeterExercicioTest() throws Exception {
 		GregorianCalendar dataMaior = new GregorianCalendar(2009, 10, 10);
 		GregorianCalendar dataMenor = new GregorianCalendar();
-		Exercicio exercicio = new Exercicio(dataMenor, dataMaior, "nome", "enunciado", 100);
+		Exercicio exercicio = new Exercicio(100, "nome", "enunciado", dataMenor, dataMaior);
 		assertTrue(aluno.submeterExercicio(exercicio));
 		//Mesmo exercicio sendo submetido duas vezes
 		assertTrue(aluno.submeterExercicio(exercicio));
