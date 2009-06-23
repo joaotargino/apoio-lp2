@@ -1,17 +1,35 @@
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import disciplina.Exercicio;
 
 import users.Aluno;
 import users.Usuario;
 
+
+/**
+ * Infelizmente teremos que usar arquivo por enquanto
+ * @author erickson
+ *
+ */
 public class BD {
 
-	public static List<Exercicio> getExercicios() {
-		// TODO Auto-generated method stub
+	public static List<Exercicio> getExercicios() throws IOException {
+		BufferedReader reader = new BufferedReader( new FileReader("exerciciosBD.txt") );
+		String tupla = null;
+		List<Exercicio> exercicios = new ArrayList<Exercicio>();
+		while ((tupla = reader.readLine()) != null) {
+			// TODO criar metodo privado que retorna um exercicio
+			exercicios.add(new Exercicio(tupla.split("|")))
+		}
 		return null;
 	}
 
