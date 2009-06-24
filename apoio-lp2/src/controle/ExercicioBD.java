@@ -10,10 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import users.Aluno;
-import users.Usuario;
 import disciplina.Exercicio;
 
 
@@ -23,22 +20,28 @@ import disciplina.Exercicio;
  *
  */
 public class ExercicioBD {
-	private static final String separador = ":.:"; 
+	private static final String SEPARADOR = ":.:"; 
 	private static final String FIM_DE_LINHA = System.getProperty("line.separator");
+	private static final String CAMINHO = "./src/controle/exerciciosBD.txt";
 
 	public static List<Exercicio> getExercicios() throws IOException {
-		BufferedReader reader = new BufferedReader( new FileReader("./src/controle/exerciciosBD.txt") );
-		String tupla = null;
-		List<Exercicio> exercicios = new ArrayList<Exercicio>();
-		while ((tupla = reader.readLine()) != null) {
-			try {
-				exercicios.add(criaExercicio(tupla));
-			} catch (Exception e) {
-				continue;
-			}
+		try {
+			List<Exercicio> exercicios = (List) Serializar.recuperarObjeto(new File(CAMINHO));
+			return exercicios;
+		} catch (Exception e1) {
+			return new ArrayList<Exercicio>();
 		}
-		reader.close();
-		return exercicios;
+//		BufferedReader reader = new BufferedReader( new FileReader(CAMINHO) );
+//		String tupla = null;
+//		List<Exercicio> exercicios = new ArrayList<Exercicio>();
+//		while ((tupla = reader.readLine()) != null) {
+//			try {
+//				exercicios.add(criaExercicio(tupla));
+//			} catch (Exception e) {
+//				continue;
+//			}
+//		}
+//		reader.close();
 	}
 	
 	public static Exercicio getExercicio(int id) throws IOException {
@@ -53,17 +56,22 @@ public class ExercicioBD {
 	}
 	
 	public static boolean cadastraExercicio(Exercicio exercicio) throws IOException {
-		FileWriter fw = new FileWriter("./src/controle/exerciciosBD.txt", true);
-		String dadosExercicio = exercicio.getId() + separador + exercicio.getNome() +
-		separador + exercicio.getEnunciado() + separador + exercicio.getData() +
-		separador + exercicio.getDataEntrega();
-		fw.write(FIM_DE_LINHA + dadosExercicio);
-		fw.close();
-		return false;
+		List<Exercicio> exercicios = getExercicios();
+		System.out.println(exercicios);
+		exercicios.add(exercicio);
+		Serializar.salvarObjeto(new File(CAMINHO), exercicios);
+		return true;
+//		FileWriter fw = new FileWriter("./src/controle/exerciciosBD.txt", true);
+//		String dadosExercicio = exercicio.getId() + SEPARADOR + exercicio.getNome() +
+//		SEPARADOR + exercicio.getEnunciado() + SEPARADOR + exercicio.getData() +
+//		SEPARADOR + exercicio.getDataEntrega();
+//		fw.write(FIM_DE_LINHA + dadosExercicio);
+//		fw.close();
+//		return false;
 	}
 	
 	private static Exercicio criaExercicio(String dados) throws Exception {
-		String[] tupla = dados.split(separador);
+		String[] tupla = dados.split(SEPARADOR);
 		int id = Integer.parseInt(tupla[0]);
 		String nome = tupla[1];
 		String enunciado = tupla[2];
@@ -98,8 +106,17 @@ public class ExercicioBD {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println(ExercicioBD.getExercicios());
-			ExercicioBD.cadastraExercicio(new Exercicio(3,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar()));
+			ExercicioBD.cadastraExercicio(new Exercicio(1,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar()));
+			Iterator<Exercicio> ex = ExercicioBD.getExercicios().iterator();
+			while(ex.hasNext()) {
+				System.out.println(ex.next().getNome());
+			}
+			
+			ExercicioBD.cadastraExercicio(new Exercicio(2,"outro", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar()));
+			ex = ExercicioBD.getExercicios().iterator();
+			while(ex.hasNext()) {
+				System.out.println(ex.next().getNome());
+			}
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 			
