@@ -1,43 +1,44 @@
 package disciplina;
 
-import java.util.GregorianCalendar;
+import java.io.Serializable;
+import java.util.Calendar;
 
-public class Exercicio {
+public class Exercicio implements Serializable{
 
-	private GregorianCalendar data;
-	private GregorianCalendar dataEntrega;
+	private Calendar data;
+	private Calendar dataEntrega;
 	private String nome;
 	private String enunciado;
 	private int id;
 
-	public Exercicio(int id, String nome,  String enunciado, GregorianCalendar data,
-			GregorianCalendar dataEntrega ) throws Exception {
-		if (nome == null || enunciado == null || data == null || dataEntrega == null) {
+	public Exercicio(int id, String nome,  String enunciado, Calendar data2,
+			Calendar dataEntrega2 ) throws Exception {
+		if (nome == null || enunciado == null || data2 == null || dataEntrega2 == null) {
 			throw new IllegalArgumentException();
 		}
-		if (dataEntrega.compareTo(data) < 0) {
+		if (dataEntrega2.compareTo(data2) < 0) {
 			throw new Exception();
 		}
-		this.data = data;
-		this.dataEntrega = dataEntrega;
+		this.data = data2;
+		this.dataEntrega = dataEntrega2;
 		this.nome = nome;
 		this.enunciado = enunciado;
 		this.id = id;
 	}
 
-	public GregorianCalendar getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(GregorianCalendar data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
-	public GregorianCalendar getDataEntrega() {
+	public Calendar getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(GregorianCalendar dataEntrega) {
+	public void setDataEntrega(Calendar dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
