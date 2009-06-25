@@ -1,4 +1,4 @@
-package interfaceTeste;
+package interfaceUsuario;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +11,9 @@ import java.util.Scanner;
 import controle.Sistema;
 import controle.SistemaI;
 
-public class UserInterface {
+public class Menu {
 	
 	static Scanner sc = new Scanner(System.in);
-	final static int USERNAME = 1;
-	final static int USER_EMAIL = 2;
 	
 	//nao sao daqui
 	static String logado;
@@ -90,10 +88,6 @@ public class UserInterface {
 	public static String logado() {
 		return logado;
 	}
-	
-	private static void menuTurmas(){
-		
-	}
 
 	private static void menuProfessor() {
 		
@@ -102,64 +96,19 @@ public class UserInterface {
 	}
 
 	private static void menuModerador(List<String> dadosUsuario) {
-		
-		final int SAIR = 0;
-		final int EDITAR_DADOS = 1;
-		final int VER_TURMAS = 2;
-		final int VER_PLANILHA = 3;
-		//final int BAIXAR_PLANILHA = 4;
-		final int SUBMETER_EXERCICIO = 5;
-		
-		System.out.println("Olá, " + dadosUsuario.get(USERNAME) + ", email: "+ dadosUsuario.get(USER_EMAIL));
-		System.out.println("MENU MODERADOR");
-		System.out.println("1 - EDITAR DADOS");
-		System.out.println("2 - VER TURMAS");
-		System.out.println("3 - VER/ATUALIZAR PLANILHA DE NOTAS");
-		//System.out.println("4 - BAIXAR EXERCICIO");
-		System.out.println("5 - SUBMETER EXERCICIO");
-		System.out.println();
-		System.out.println("0 - SAIR");
-		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
-		int opcao = Entrada.recebeInteiro();
-		sc.nextLine();
-		
-		switch (opcao) {
-		case SAIR:
-			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-			sc.nextLine();
-			break;
-		case EDITAR_DADOS:
-			editarDados(false, dadosUsuario);
-			break;
-		case VER_TURMAS:
-			break;
-		case VER_EXERCICIO:
-			break;
-//		case BAIXAR_PLANILHA:
-//			break;
-		case SUBMETER_EXERCICIO:
-			break;
-		
-		default: 
-			System.out.println("NUMERO INVALIDO");
-		} 
+		// TODO Auto-generated method stub
 		
 	}
-		
-		
-	
 
 	private static void menuAluno(List<String> dadosUsuario) {
-		
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
 		final int VER_PLANILHA = 2;
 		final int VER_EXERCICIO = 3;
-		//final int BAIXAR_EXERCICIO = 4;
+		//final int BAIXAR_PLANILHA = 4;
 		final int SUBMETER_EXERCICIO = 5;
 		
-		System.out.println("Olá, " + dadosUsuario.get(USERNAME) + ", email: "+ dadosUsuario.get(USER_EMAIL));
+		System.out.println("Olá, " + dadosUsuario.get(1) + ", email: "+ dadosUsuario.get(2));
 		System.out.println("MENU ALUNO");
 		System.out.println("1 - EDITAR DADOS");
 		System.out.println("2 - VER PLANILHA DE NOTAS");
@@ -169,53 +118,42 @@ public class UserInterface {
 		System.out.println();
 		System.out.println("0 - SAIR");
 		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
+		System.out.println("ESCOLHA O NÚMERO DA OPÇÃO");
 		int opcao = Entrada.recebeInteiro();
-
+		sc.nextLine();
 		
 		switch (opcao) {
-		case SAIR:
-			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-			sc.nextLine();
-			break;
-		case EDITAR_DADOS:
-			editarDados(false, dadosUsuario);
-			break;
 		case VER_PLANILHA:
 			break;
 		case VER_EXERCICIO:
 			break;
-//		case BAIXAR_EXERCICIO:
-//			break;
 		case SUBMETER_EXERCICIO:
 			break;
-		
+		case EDITAR_DADOS:
+			editarDados(false, dadosUsuario);
+			break;
 		default: 
 			System.out.println("NUMERO INVALIDO");
 		} 
 		
 	}
 
-//	private static void editarDados(boolean administrador, List<String> aluno) {
-	private static void editarDados(boolean administrador, List<String> usuario) {
+	private static void editarDados(boolean administrador, List<String> aluno) {
 		List<String> dados = new ArrayList<String>();
 		if (administrador) {
-			// ??!?
+			//
 		} else {
-//			System.out.println("EDITAR DADOS DE ALUNO "+ aluno.get(USERNAME));//get(1) -- USAR POLIMORFISMO (usuario.get ?)
-			System.out.println("EDITAR DADOS DE "+ usuario.get(USERNAME));
+			System.out.println("EDITAR DADOS DE ALUNO "+ aluno.get(1));
 			System.out.println("NOME: ");
-			dados.add(sc.nextLine());
-			System.out.println("EMAIL: ");
-			dados.add(sc.nextLine());
-			System.out.println("SENHA ATUAL: ");
 			dados.add(sc.nextLine());
 			System.out.println("NOVA SENHA: ");
 			dados.add(sc.nextLine());
 			System.out.println("CONFIRMA NOVA SENHA: ");
 			dados.add(sc.nextLine());
-			
-			
+			System.out.println("SENHA ATUAL: ");
+			dados.add(sc.nextLine());
+			System.out.println("EMAIL: ");
+			dados.add(sc.nextLine());
 		}
 		Sistema.editaDadosUsuario(dados);
 	}
