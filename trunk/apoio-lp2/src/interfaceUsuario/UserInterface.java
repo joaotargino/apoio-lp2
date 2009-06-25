@@ -91,8 +91,8 @@ public class UserInterface {
 		return logado;
 	}
 	
-	private static void menuTurmas(){
-		
+	private static void listaTurmas(){
+		//lista as turmas cadastradas. 
 	}
 
 	private static void menuProfessor() {
@@ -133,6 +133,9 @@ public class UserInterface {
 			editarDados(false, dadosUsuario);
 			break;
 		case VER_TURMAS:
+			//lista as turmas e o usuario escolhe que turma quer, tipo 2009.1
+			//ao entrar na turma, aparece a lista de alunos dessa turma, 
+			//o usuario escolhe pela matricula, tipo 20821205
 			break;
 		case VER_EXERCICIO:
 			break;
