@@ -1,4 +1,4 @@
-package interfaceTeste;
+package interfaceUsuario;
 
 import java.util.Scanner;
 
