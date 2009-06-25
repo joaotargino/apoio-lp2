@@ -10,6 +10,8 @@ public class Exercicio implements Serializable{
 	private String nome;
 	private String enunciado;
 	private int id;
+	
+	private Exercicio() {}
 
 	public Exercicio(int id, String nome,  String enunciado, Calendar data2,
 			Calendar dataEntrega2 ) throws Exception {
@@ -66,4 +68,18 @@ public class Exercicio implements Serializable{
 		this.id = id;
 	}
 	
+	@Override
+	public boolean equals(Object arg0) {
+		if (arg0 instanceof Exercicio) {
+			Exercicio exercicio = (Exercicio) arg0;
+			if (exercicio.getId() == getId() || exercicio.getNome().equals(getNome()))
+				return true;
+		}
+		return false;
+	}
+	
+	@Override
+		public String toString() {
+			return "Id: " + getId() + " | Nome: "  + getNome();
+		}	
 }

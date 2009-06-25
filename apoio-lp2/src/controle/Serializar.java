@@ -24,7 +24,7 @@ public class Serializar {
 
  
 		try {
-			fileOut = new FileOutputStream(file);
+			fileOut = new FileOutputStream(file, false);
 			objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(objeto);
  

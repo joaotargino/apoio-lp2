@@ -1,14 +1,20 @@
 package users;
-import graphic.*;
-import controle.*;
-import disciplina.*;
+import graphic.Interface;
 
-public abstract class Usuario {
-	private String login, nome, senha, email;
+import java.io.Serializable;
+
+import controle.ExercicioBD;
+import controle.Sistema;
+import disciplina.Exercicio;
+
+public abstract class Usuario implements Serializable{
+	private String login, nome, senha, email, matricula;
 
 	/**
 	 * Construtor padrao.
 	 */
+	private Usuario() {}
+	
 	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception {
 		if (login == null || senha == null || nome == null) 
 			throw new IllegalArgumentException("Argumentos nulos!");
@@ -18,6 +24,7 @@ public abstract class Usuario {
 		this.senha = senha;
 		this.nome = nome;
 		this.email = email;
+		this.matricula = matricula;
 	}
 
 	/**
@@ -61,6 +68,21 @@ public abstract class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String getMatricula() {
+		return matricula;
+	}
+	
+	/**
+	 * 
+	 * @param matricula
+	 */
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 	
 	/**
 	 * Informa o email.
@@ -88,8 +110,8 @@ public abstract class Usuario {
 	}
 	
 	public boolean baixarExercicio(String Login, Exercicio exercicio) {
-		if (BD.getExercicios().contains(exercicio)) {
-			String caminho = BD.getSubmissao(exercicio)[0];
+		if (ExercicioBD.getExercicios().contains(exercicio)) {
+			String caminho = SubmissaoBD.getSubmissao(exercicio)[0];
 			//TODO averiguar se a posicao do caminho eh realmente a primeira
 			Sistema.mandaBaixar(caminho);
 			//Com o caminho do exercicio em maos, deve-se abrir uam janelinha de opcao de
@@ -124,5 +146,15 @@ public abstract class Usuario {
 			 		return true;
 			} return false;
 		} return false;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Usuario) {
+			Usuario usr = (Usuario) obj;
+			if (usr.getLogin().equals(getLogin()))
+				return true;
+		}
+		return false;
 	}
 }
