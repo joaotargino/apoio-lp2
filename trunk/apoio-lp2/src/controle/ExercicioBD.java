@@ -1,11 +1,9 @@
 package controle;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.FileWriter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -22,9 +20,9 @@ import disciplina.Exercicio;
 public class ExercicioBD {
 	private static final String SEPARADOR = ":.:"; 
 	private static final String FIM_DE_LINHA = System.getProperty("line.separator");
-	private static final String CAMINHO = "./src/controle/exerciciosBD.txt";
+	private static final String CAMINHO = "./src/dados/exerciciosBD.txt";
 
-	public static List<Exercicio> getExercicios() throws IOException {
+	public static List<Exercicio> getExercicios() {
 		try {
 			List<Exercicio> exercicios = (List) Serializar.recuperarObjeto(new File(CAMINHO));
 			return exercicios;
@@ -44,7 +42,7 @@ public class ExercicioBD {
 //		reader.close();
 	}
 	
-	public static Exercicio getExercicio(int id) throws IOException {
+	public static Exercicio getExercicio(int id) {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exs = exercicios.iterator();
 		while (exs.hasNext()) {
@@ -57,7 +55,12 @@ public class ExercicioBD {
 	
 	public static boolean cadastraExercicio(Exercicio exercicio) throws IOException {
 		List<Exercicio> exercicios = getExercicios();
-		System.out.println(exercicios);
+		Iterator<Exercicio> exIt = exercicios.iterator();
+		while(exIt.hasNext()) {
+			Exercicio exAtual = exIt.next();
+			if (exAtual.equals(exercicio))
+				return false;
+		}
 		exercicios.add(exercicio);
 		Serializar.salvarObjeto(new File(CAMINHO), exercicios);
 		return true;
@@ -70,20 +73,65 @@ public class ExercicioBD {
 //		return false;
 	}
 	
-	private static Exercicio criaExercicio(String dados) throws Exception {
-		String[] tupla = dados.split(SEPARADOR);
-		int id = Integer.parseInt(tupla[0]);
-		String nome = tupla[1];
-		String enunciado = tupla[2];
-		Calendar data = criaCalendario(tupla[3]);
-		Calendar dataEntrega = criaCalendario(tupla[4]);
-		return new Exercicio(id, nome, enunciado, data, dataEntrega);
+	public static boolean removeExercicio(int id) {
+		List<Exercicio> exercicios = getExercicios();
+		Iterator<Exercicio> exIt = exercicios.iterator();
+		while(exIt.hasNext()) {
+			Exercicio exAtual = exIt.next();
+			if (exAtual.getId() == id) {
+				exercicios.remove(exAtual);
+				try {
+					Serializar.salvarObjeto(new File(CAMINHO), exercicios);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	private static Calendar criaCalendario(String cal) {
-		String[] date = cal.split("/");
-		return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+	public static boolean atualizaExercicio(int id, Exercicio exercicio) {
+		List<Exercicio> exercicios = getExercicios();
+		Iterator<Exercicio> exIt = exercicios.iterator();
+		while(exIt.hasNext()) {
+			Exercicio exAtual = exIt.next();
+			if (exAtual.getId() == id) {
+				int indice = exercicios.indexOf(exAtual);
+				exercicios.remove(exAtual);
+				exercicio.setId(id);
+				exercicios.add(indice, exercicio);
+				try {
+					Serializar.salvarObjeto(new File(CAMINHO), exercicios);
+					return true;
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return false;
 	}
+	
+//	private static Exercicio criaExercicio(String dados) throws Exception {
+//		String[] tupla = dados.split(SEPARADOR);
+//		int id = Integer.parseInt(tupla[0]);
+//		String nome = tupla[1];
+//		String enunciado = tupla[2];
+//		Calendar data = criaCalendario(tupla[3]);
+//		Calendar dataEntrega = criaCalendario(tupla[4]);
+//		return new Exercicio(id, nome, enunciado, data, dataEntrega);
+//	}
+//	
+//	private static Calendar criaCalendario(String cal) {
+//		String[] date = cal.split("/");
+//		return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+//	}
 
 //	public static String[] getSubmissao(Exercicio exercicio) {
 //		// TODO Auto-generated method stub
@@ -106,17 +154,24 @@ public class ExercicioBD {
 	
 	public static void main(String[] args) {
 		try {
-			ExercicioBD.cadastraExercicio(new Exercicio(1,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar()));
-			Iterator<Exercicio> ex = ExercicioBD.getExercicios().iterator();
-			while(ex.hasNext()) {
-				System.out.println(ex.next().getNome());
-			}
+			Exercicio ex1 = new Exercicio(1,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar());
+			Exercicio ex2 = new Exercicio(2,"name2", "enunciadoteste2", new GregorianCalendar(), new GregorianCalendar());
+			Exercicio ex3 = new Exercicio(3,"name3", "enunciadoteste3", new GregorianCalendar(), new GregorianCalendar());
+			Exercicio ex4 = new Exercicio(4,"name", "enunciadoteste4", new GregorianCalendar(), new GregorianCalendar());
 			
-			ExercicioBD.cadastraExercicio(new Exercicio(2,"outro", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar()));
-			ex = ExercicioBD.getExercicios().iterator();
-			while(ex.hasNext()) {
-				System.out.println(ex.next().getNome());
-			}
+			System.out.println("Cadastrando!");
+			ExercicioBD.cadastraExercicio(ex1);
+			System.out.println(ExercicioBD.getExercicios().toString());
+			System.out.println("Cadastrando!");
+			ExercicioBD.cadastraExercicio(ex2);
+			System.out.println(ExercicioBD.getExercicios().toString());
+		
+			System.out.println("Removendo!");
+			ExercicioBD.removeExercicio(2);
+			System.out.println(ExercicioBD.getExercicios().toString());
+			System.out.println("Atualizando!");
+			System.out.println("Atualizou? " + ExercicioBD.atualizaExercicio(1, ex3));
+			System.out.println(ExercicioBD.getExercicios().toString());
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 			

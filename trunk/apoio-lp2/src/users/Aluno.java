@@ -5,7 +5,7 @@ import disciplina.*;
 
 
 
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
 
 	static final String NOVA_LINHA = System.getProperty("line.separator");
 	
@@ -24,13 +24,5 @@ public class Aluno extends Usuario{
 			"LOGIN: " + this.getLogin() + NOVA_LINHA +
 			"EMAIL: " + this.getEmail();
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Aluno) {
-			Aluno aluno = (Aluno) obj;
-			if (aluno.getLogin().equals(getLogin()))
-				return true;
-		}
-		return false;
-	}
+
 }

@@ -53,5 +53,10 @@ public class Moderador extends Usuario{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		return "Matricula: " + getMatricula() + " | Nome: " + getNome();
+	}
 
 }
