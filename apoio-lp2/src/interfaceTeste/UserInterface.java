@@ -171,7 +171,7 @@ public class UserInterface {
 		System.out.println();
 		System.out.println("ESCOLHA O NUMERO DA OPCAO");
 		int opcao = Entrada.recebeInteiro();
-		sc.nextLine();
+
 		
 		switch (opcao) {
 		case SAIR:
