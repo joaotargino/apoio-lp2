@@ -101,21 +101,25 @@ public class Menu {
 	}
 
 	private static void menuAluno(List<String> dadosUsuario) {
-		final int VER_PLANILHA = 1;
-		final int VER_EXERCICIO = 2;
-		//final int BAIXAR_PLANILHA = 3;
-		final int SUBMETER_EXERCICIO = 3;
-		final int EDITAR_DADOS = 4;
-		System.out.println("Ol�, " + dadosUsuario.get(1) + ", email: "+ dadosUsuario.get(2));
+		final int SAIR = 0;
+		final int EDITAR_DADOS = 1;
+		final int VER_PLANILHA = 2;
+		final int VER_EXERCICIO = 3;
+		//final int BAIXAR_PLANILHA = 4;
+		final int SUBMETER_EXERCICIO = 5;
+		
+		System.out.println("Olá, " + dadosUsuario.get(1) + ", email: "+ dadosUsuario.get(2));
 		System.out.println("MENU ALUNO");
-		System.out.println("1 - VER PLANILHA DE NOTAS");
-		System.out.println("2 - VER EXERCICIOS");
-		//System.out.println("3 - BAIXAR EXERCICIO");
-		System.out.println("3 - SUBMETER EXERCICIO");
-		System.out.println("4 - EDITAR DADOS");
+		System.out.println("1 - EDITAR DADOS");
+		System.out.println("2 - VER PLANILHA DE NOTAS");
+		System.out.println("3 - VER EXERCICIOS");
+		//System.out.println("4 - BAIXAR EXERCICIO");
+		System.out.println("5 - SUBMETER EXERCICIO");
 		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
-		int opcao = sc.nextInt();
+		System.out.println("0 - SAIR");
+		System.out.println();
+		System.out.println("ESCOLHA O NÚMERO DA OPÇÃO");
+		int opcao = Entrada.recebeInteiro();
 		sc.nextLine();
 		
 		switch (opcao) {
