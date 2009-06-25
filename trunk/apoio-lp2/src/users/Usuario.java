@@ -3,18 +3,21 @@ import graphic.Interface;
 
 import java.io.Serializable;
 
-import controle.ExercicioBD;
+import controle.BD;
 import controle.Sistema;
 import disciplina.Exercicio;
 
+/*
+ * O atributo id deve ser incrementado, provavelmente, pela classe
+ * Sistema, ao adcionar o usuario no BD.
+ */
 public abstract class Usuario implements Serializable{
 	private String login, nome, senha, email, matricula;
+	private int id;
 
 	/**
 	 * Construtor padrao.
-	 */
-	private Usuario() {}
-	
+	 */	
 	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception {
 		if (login == null || senha == null || nome == null) 
 			throw new IllegalArgumentException("Argumentos nulos!");
@@ -93,6 +96,20 @@ public abstract class Usuario implements Serializable{
 	}
 	
 	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	/**
 	 * Modifica o email.
 	 * @param email
 	 * @return true se o e-mail for valido e false caso contrario.
@@ -110,10 +127,10 @@ public abstract class Usuario implements Serializable{
 	}
 	
 	public boolean baixarExercicio(String Login, Exercicio exercicio) {
-		if (ExercicioBD.getExercicios().contains(exercicio)) {
-			String caminho = SubmissaoBD.getSubmissao(exercicio)[0];
+		if (BD.getExercicios().contains(exercicio)) {
+			//String caminho = BD.getSubmissao(exercicio.getId());
 			//TODO averiguar se a posicao do caminho eh realmente a primeira
-			Sistema.mandaBaixar(caminho);
+			//Sistema.mandaBaixar(caminho);
 			//Com o caminho do exercicio em maos, deve-se abrir uam janelinha de opcao de
 			//salvar ou abrir o exercicio
 			return true;
