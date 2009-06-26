@@ -1,8 +1,10 @@
 package interfaceUsuario;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +12,8 @@ import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
+import controle.Util;
+import disciplina.Exercicio;
 
 //TODO implementar trocar senha =x
 
@@ -78,8 +82,11 @@ public class UserInterface {
 		final int EDITAR_DADOS = 1;
 		final int VER_ALUNOS = 2;
 		final int CRIAR_EXERCICIO = 3;
-		final int CRIAR_ALUNO = 4;
-		final int CRIAR_MONITOR = 5;
+		final int REMOVER_EXERCICIO = 4;
+		final int ATUALIZAR_EXERCICIO = 5;
+		final int VER_EXERCICIOS = 6;
+		final int CRIAR_ALUNO = 7;
+		final int CRIAR_MONITOR = 8;
 		int opcao = -1;
 
 		do {
@@ -91,8 +98,11 @@ public class UserInterface {
 			System.out.println("1 - EDITAR DADOS");
 			System.out.println("2 - VER ALUNOS");
 			System.out.println("3 - CRIAR EXERCICIO");
-			System.out.println("4 - CRIAR ALUNO");
-			System.out.println("5 - CRIAR MONITOR");
+			System.out.println("4 - REMOVER EXERCICIO");
+			System.out.println("5 - ATUALIZAR EXERCICIO");
+			System.out.println("6 - VER EXERCICIOS");
+			System.out.println(" - CRIAR ALUNO");
+			System.out.println(" - CRIAR MONITOR");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -114,12 +124,45 @@ public class UserInterface {
 				// do exercicio
 				break;
 			case CRIAR_ALUNO:
-				criarUsuario(UsuariosEnum.ALUNO);
+				try {
+					criarUsuario(UsuariosEnum.ALUNO);
+				} catch (IOException e) {
+					System.out.println("Dados Inválidos!");
+				}
 				break;
 			case CRIAR_MONITOR:
-				criarUsuario(UsuariosEnum.MONITOR);
+				try {
+					criarUsuario(UsuariosEnum.MONITOR);
+				} catch (IOException e) {
+					System.out.println("Dados Inválidos!");
+				}
 				break;
 			case CRIAR_EXERCICIO:
+				try {
+					criarExercicio();
+				} catch (Exception e) {
+					System.out.println("Dados Inválidos!");
+				}
+				break;
+				
+			case REMOVER_EXERCICIO:
+				if(removerExercicio())
+					System.out.println("Exercicio removido com sucesso!");
+				else System.out.println("id invalido!");
+				break;
+				
+			case ATUALIZAR_EXERCICIO:
+				try {
+					if(atualizarExercicio())
+						System.out.println("Exercicio atualizado com sucesso!");
+					else System.out.println("Não foi possível atualizar o exercicio!");
+				} catch (Exception e) {
+					System.out.println("Dados Inválidos!");
+				}
+				break;
+				
+			case VER_EXERCICIOS:
+				verExercicios();
 				break;
 
 			default:
@@ -128,6 +171,39 @@ public class UserInterface {
 
 		} while (opcao != SAIR);
 
+	}
+
+	private static void verExercicios() {
+		List<Exercicio> exercicios = Sistema.verExercicios();
+		Iterator<Exercicio> it = exercicios.iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next()+ "\n");
+		}
+		
+	}
+
+	private static boolean atualizarExercicio() throws Exception {
+		int id = Integer.parseInt(recebeDados("ID DO EXERCICIO: "));
+		String nome = recebeDados("NOME: ");
+		String enunciado = recebeDados("ENUNCIADO: ");
+		String dataDeEntrega = recebeDados("DATA DE ENTREGA: ");
+		return Sistema.atualizarExercicio(id, nome, enunciado, dataDeEntrega);
+		
+	}
+
+	private static boolean removerExercicio() {
+		int id = Integer.parseInt(recebeDados("ID DO EXERCICIO: "));
+		return Sistema.removerExercicio(id);
+	}
+
+	private static void criarExercicio() throws Exception {
+		List<String> dadosExercicio = new ArrayList<String>();
+
+		dadosExercicio.add(recebeDados("NOME: "));
+		dadosExercicio.add(recebeDados("ENUNCIADO: "));
+		dadosExercicio.add(recebeDados("DATA DE ENTREGA: "));
+		
+		Sistema.addExercicio(dadosExercicio);
 	}
 
 	private static void menuModerador(List<String> dadosUsuario) {
@@ -169,7 +245,11 @@ public class UserInterface {
 				// do exercicio
 				break;
 			case CRIAR_ALUNO:
-				criarUsuario(UsuariosEnum.ALUNO);
+				try {
+					criarUsuario(UsuariosEnum.ALUNO);
+				} catch (IOException e) {
+					System.out.println();
+				}
 				break;
 			case CRIAR_EXERCICIO:
 				break;
@@ -223,11 +303,11 @@ public class UserInterface {
 			case VER_EXERCICIO:
 				break;
 			case BAIXAR_EXERCICIO:
-				Sistema.mandaBaixar(caminho); // implementa, po!
+				//TODO Sistema.mandaBaixar(caminho); // implementa, po!
 				break;
 			case SUBMETER_EXERCICIO:
-				Sistema.subemeterExercicio(dadosUsuario
-						.get(DadosUsuarioEnum.LOGIN.ordinal()), "o caminho", "id ex");
+				//TODO Sistema.subemeterExercicio(dadosUsuario
+				//		.get(DadosUsuarioEnum.LOGIN.ordinal()), "o caminho", "id ex");
 				break;
 
 			default:
@@ -271,7 +351,7 @@ public class UserInterface {
 		return dado;
 	}
 
-	public static void criarUsuario(UsuariosEnum tipo) {
+	public static void criarUsuario(UsuariosEnum tipo) throws IOException {
 		List<String> dadosUsuario = new ArrayList<String>();
 
 		dadosUsuario.add(recebeDados("LOGIN: "));
@@ -280,7 +360,7 @@ public class UserInterface {
 		dadosUsuario.add(recebeDados("NOME: "));
 		dadosUsuario.add(recebeDados("EMAIL: "));
 		dadosUsuario.add(recebeDados("TURMA: "));
-		
+
 		Sistema.addUsuario(dadosUsuario, tipo);
 	}
 	
