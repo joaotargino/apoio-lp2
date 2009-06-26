@@ -72,7 +72,7 @@ public class UserInterface {
 	// } ??????????
 
 	private static void listaTurmas() {
-		// lista as turmas cadastradas.
+		// err
 	}
 
 	private static void menuProfessor(List<String> dadosUsuario) {
@@ -83,47 +83,53 @@ public class UserInterface {
 		final int CRIAR_EXERCICIO = 3;
 		final int CRIAR_ALUNO = 4;
 		final int CRIAR_MONITOR = 5;
+		int opcao = -1;
 
-		System.out.println("Olá, "
-				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
-				+ ", email: "
-				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
-		System.out.println("MENU PROFESSOR");
-		System.out.println("1 - EDITAR DADOS");
-		System.out.println("2 - VER ALUNOS");
-		System.out.println("3 - CRIAR EXERCICIO");
-		System.out.println("4 - CRIAR ALUNO");
-		System.out.println("5 - CRIAR MONITOR");
-		System.out.println();
-		System.out.println("0 - SAIR");
-		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
-		int opcao = Entrada.recebeInteiro();
-		sc.nextLine();
+		do {
+			System.out.println("Olá, "
+					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+					+ ", email: "
+					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
+			System.out.println("MENU PROFESSOR");
+			System.out.println("1 - EDITAR DADOS");
+			System.out.println("2 - VER ALUNOS");
+			System.out.println("3 - CRIAR EXERCICIO");
+			System.out.println("4 - CRIAR ALUNO");
+			System.out.println("5 - CRIAR MONITOR");
+			System.out.println();
+			System.out.println("0 - SAIR");
+			System.out.println();
+			System.out.println("ESCOLHA O NUMERO DA OPCAO");
+			opcao = Entrada.recebeInteiro();
+			switch (opcao) {
 
-		switch (opcao) {
-		case SAIR:
-			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-			sc.nextLine();
-			break;
-		case EDITAR_DADOS:
-			editarDados(dadosUsuario);
-			break;
-		case VER_ALUNOS:
-			// o usuario escolhe pela matricula, tipo 20821205
-			// ao ver o aluno, baixa o exercicio, seta a nota e poe o comentario
-			// do exercicio
-			break;
-		case CRIAR_ALUNO:
-			break;
-		case CRIAR_MONITOR:
-			break;
-		case CRIAR_EXERCICIO:
-			break;
+			case SAIR:
+				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
+				sc.nextLine();
+				break;
+			case EDITAR_DADOS:
+				editarDados(dadosUsuario);
+				break;
+			case VER_ALUNOS:
+				// o usuario escolhe pela matricula, tipo 20821205
+				// ao ver o aluno, baixa o exercicio, seta a nota e poe o
+				// comentario
+				// do exercicio
+				break;
+			case CRIAR_ALUNO:
+				criarUsuario(UsuariosEnum.ALUNO);
+				break;
+			case CRIAR_MONITOR:
+				criarUsuario(UsuariosEnum.MONITOR);
+				break;
+			case CRIAR_EXERCICIO:
+				break;
 
-		default:
-			System.out.println("NUMERO INVALIDO");
-		}
+			default:
+				System.out.println("NUMERO INVALIDO");
+			}
+
+		} while (opcao != SAIR);
 
 	}
 
@@ -134,44 +140,47 @@ public class UserInterface {
 		final int VER_ALUNOS = 2;
 		final int CRIAR_EXERCICIO = 3;
 		final int CRIAR_ALUNO = 4;
+		int opcao = -1;
 
-		System.out.println("Olá, "
-				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
-				+ ", email: "
-				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
-		System.out.println("MENU MODERADOR");
-		System.out.println("1 - EDITAR DADOS");
-		System.out.println("2 - VER ALUNOS");
-		System.out.println("3 - CRIAR EXERCICIO");
-		System.out.println("4 - CRIAR ALUNO");
-		System.out.println();
-		System.out.println("0 - SAIR");
-		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
-		int opcao = Entrada.recebeInteiro();
-		sc.nextLine();
+		do {
+			System.out.println("Olá, "
+					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+					+ ", email: "
+					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
+			System.out.println("MENU MODERADOR");
+			System.out.println("1 - EDITAR DADOS");
+			System.out.println("2 - VER ALUNOS");
+			System.out.println("3 - CRIAR EXERCICIO");
+			System.out.println("4 - CRIAR ALUNO");
+			System.out.println();
+			System.out.println("0 - SAIR");
+			System.out.println();
+			System.out.println("ESCOLHA O NUMERO DA OPCAO");
+			opcao = Entrada.recebeInteiro();
+			switch (opcao) {
+			case SAIR:
+				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
+				sc.nextLine();
+				break;
+			case EDITAR_DADOS:
+				editarDados(dadosUsuario);
+				break;
+			case VER_ALUNOS:
+				// o usuario escolhe pela matricula, tipo 20821205
+				// ao ver o aluno, baixa o exercicio, seta a nota e poe o
+				// comentario
+				// do exercicio
+				break;
+			case CRIAR_ALUNO:
+				criarUsuario(UsuariosEnum.ALUNO);
+				break;
+			case CRIAR_EXERCICIO:
+				break;
 
-		switch (opcao) {
-		case SAIR:
-			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-			sc.nextLine();
-			break;
-		case EDITAR_DADOS:
-			editarDados(dadosUsuario);
-			break;
-		case VER_ALUNOS:
-			// o usuario escolhe pela matricula, tipo 20821205
-			// ao ver o aluno, baixa o exercicio, seta a nota e poe o comentario
-			// do exercicio
-			break;
-		case CRIAR_ALUNO:
-			break;
-		case CRIAR_EXERCICIO:
-			break;
-
-		default:
-			System.out.println("NUMERO INVALIDO");
-		}
+			default:
+				System.out.println("NUMERO INVALIDO");
+			}
+		} while (opcao != SAIR);
 
 	}
 
@@ -184,43 +193,48 @@ public class UserInterface {
 		final int VER_EXERCICIO = 3;
 		final int BAIXAR_EXERCICIO = 4;
 		final int SUBMETER_EXERCICIO = 5;
+		int opcao = -1;
 
-		System.out.println("Olá, "
-				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
-				+ ", email: "
-				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
-		System.out.println("MENU ALUNO");
-		System.out.println("1 - EDITAR DADOS");
-		System.out.println("2 - VER PLANILHA DE NOTAS");
-		System.out.println("3 - VER EXERCICIOS");
-		System.out.println("4 - BAIXAR EXERCICIO");
-		System.out.println("5 - SUBMETER EXERCICIO");
-		System.out.println();
-		System.out.println("0 - SAIR");
-		System.out.println();
-		System.out.println("ESCOLHA O NUMERO DA OPCAO");
-		int opcao = Entrada.recebeInteiro();
+		do {
 
-		switch (opcao) {
-		case SAIR:
-			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-			sc.nextLine();
-			break;
-		case EDITAR_DADOS:
-			editarDados(dadosUsuario);
-			break;
-		case VER_PLANILHA:
-			break;
-		case VER_EXERCICIO:
-			break;
-		case BAIXAR_EXERCICIO:
-			break;
-		case SUBMETER_EXERCICIO:
-			break;
+			System.out.println("Olá, "
+					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+					+ ", email: "
+					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
+			System.out.println("MENU ALUNO");
+			System.out.println("1 - EDITAR DADOS");
+			System.out.println("2 - VER PLANILHA DE NOTAS");
+			System.out.println("3 - VER EXERCICIOS");
+			System.out.println("4 - BAIXAR EXERCICIO");
+			System.out.println("5 - SUBMETER EXERCICIO");
+			System.out.println();
+			System.out.println("0 - SAIR");
+			System.out.println();
+			System.out.println("ESCOLHA O NUMERO DA OPCAO");
+			opcao = Entrada.recebeInteiro();
 
-		default:
-			System.out.println("NUMERO INVALIDO");
-		}
+			switch (opcao) {
+			case SAIR:
+				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
+				sc.nextLine();
+				break;
+			case EDITAR_DADOS:
+				editarDados(dadosUsuario);
+				break;
+			case VER_PLANILHA:
+				break;
+			case VER_EXERCICIO:
+				break;
+			case BAIXAR_EXERCICIO:
+				break;
+			case SUBMETER_EXERCICIO:
+				Sistema.subemeterExercicio(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()), exercicio)
+				break;
+
+			default:
+				System.out.println("NUMERO INVALIDO");
+			}
+		} while (opcao != SAIR);
 
 	}
 
@@ -239,6 +253,16 @@ public class UserInterface {
 		Sistema.editaDadosUsuario(usuario, tipoUsuario);
 	}
 
+	public static String recebeDados(String msg) {
+		System.out.println(msg);
+		String dado = sc.nextLine().trim();
+		while (dado.isEmpty()) {
+			System.out.println(msg);
+			dado = sc.nextLine().trim();
+		}
+		return dado;
+	}
+
 	public static String recebeDados(String msg, String dadoAntigo) {
 		System.out.println(msg);
 		String dado = sc.nextLine().trim();
@@ -246,5 +270,23 @@ public class UserInterface {
 			dado = dadoAntigo;
 		}
 		return dado;
+	}
+
+	public static void criarUsuario(UsuariosEnum tipo) {
+		List<String> dadosUsuario = new ArrayList<String>();
+
+		dadosUsuario.add(recebeDados("LOGIN: "));
+
+		dadosUsuario.add(recebeDados("SENHA: "));
+
+		dadosUsuario.add(recebeDados("MATRICULA: "));
+
+		dadosUsuario.add(recebeDados("NOME: "));
+
+		dadosUsuario.add(recebeDados("EMAIL: "));
+
+		dadosUsuario.add(recebeDados("TURMA: "));
+
+		Sistema.addUsuario(dadosUsuario, tipo);
 	}
 }
