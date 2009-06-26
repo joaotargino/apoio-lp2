@@ -8,19 +8,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import controle.BD;
 import controle.Sistema;
 import controle.SistemaI;
 
 public class UserInterface {
 	
 	static Scanner sc = new Scanner(System.in);
+	final static int SENHA = 0;
 	final static int USERNAME = 1;
 	final static int USER_EMAIL = 2;
 	
 	//nao sao daqui
 	static String logado;
-	static Map<String, List<String>> alunos = new HashMap<String, List<String>>();
-	static Map<String, List<String>> monitores = new HashMap<String, List<String>>();
+
 	
 	public static void main(String[] args) {
 		paginaInicial();
@@ -44,7 +45,7 @@ public class UserInterface {
 				menuAluno(dadosUsuario);
 			} else if (tipoUsuario == "monitor") {
 				menuModerador(dadosUsuario);
-			} else menuProfessor();
+			} else menuProfessor(dadosUsuario);
 		} else {
 			System.out.println("DADOS INCORRETOS!");
 			paginaInicial();
@@ -52,26 +53,20 @@ public class UserInterface {
 	}
 
 	private static List<String> dadosUsuario(String login) {
-		return alunos.get(login);
+		for (Usuario usuario : usuarios) {
+			if (usuario.getLogin() == login) {
+				return usuario.getDadosUsuario();
+			}
+		}
+		return null;
 	}
 
 	//Soh pra testar. Nao vai ficar em interface
-	public static void inicializa() {
-		alunos.put("20821205", Arrays.asList("12345", "jessica", "jessica@gmail.com"));;
-		alunos.put("20821202", Arrays.asList("12345", "joao", "joaotargino@gmail.com"));
-		alunos.put("20821203", Arrays.asList("12345", "erickson", "ericksonfilipe@gmail.com"));
-		alunos.put("20821204", Arrays.asList("12345", "arnett", "shrivelfigs@gmail.com"));
-		alunos.put("20821200", Arrays.asList("12345", "aluno", "aluno@gmail.com"));
-		
-		monitores.put("20821000", Arrays.asList("12345", "carla", "carla@gmail.com"));
-		monitores.put("20821000", Arrays.asList("12345", "ricardo", "ricardo@gmail.com"));
-		monitores.put("20821000", Arrays.asList("12345", "filipe", "filipe@gmail.com"));
-	}
+
 	
 	public static boolean auxConfereLoginSenha(String login, String senha) {
-		inicializa();
-		if (alunos.containsKey(login) && alunos.get(login).get(0).equals(senha) ||
-				monitores.containsKey(login) && monitores.get(login).get(0).equals(senha)) {
+		if (alunos.containsKey(login) && alunos.get(login).get(SENHA).equals(senha) ||
+				monitores.containsKey(login) && monitores.get(login).get(SENHA).equals(senha)) {
 				logado = login;
 				return true;
 		}
@@ -95,28 +90,22 @@ public class UserInterface {
 		//lista as turmas cadastradas. 
 	}
 
-	private static void menuProfessor() {
-		
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void menuModerador(List<String> dadosUsuario) {
+	private static void menuProfessor(List<String> dadosUsuario) {
 		
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
-		final int VER_TURMAS = 2;
-		final int VER_PLANILHA = 3;
-		//final int BAIXAR_PLANILHA = 4;
-		final int SUBMETER_EXERCICIO = 5;
+		final int VER_ALUNOS = 2;
+		final int CRIAR_EXERCICIO = 3;
+		final int CRIAR_ALUNO = 4;
+		final int CRIAR_MONITOR = 5;
 		
 		System.out.println("Olá, " + dadosUsuario.get(USERNAME) + ", email: "+ dadosUsuario.get(USER_EMAIL));
-		System.out.println("MENU MODERADOR");
+		System.out.println("MENU PROFESSOR");
 		System.out.println("1 - EDITAR DADOS");
-		System.out.println("2 - VER TURMAS");
-		System.out.println("3 - VER/ATUALIZAR PLANILHA DE NOTAS");
-		//System.out.println("4 - BAIXAR EXERCICIO");
-		System.out.println("5 - SUBMETER EXERCICIO");
+		System.out.println("2 - VER ALUNOS");
+		System.out.println("3 - CRIAR EXERCICIO");
+		System.out.println("4 - CRIAR ALUNO");
+		System.out.println("5 - CRIAR MONITOR");
 		System.out.println();
 		System.out.println("0 - SAIR");
 		System.out.println();
@@ -132,16 +121,60 @@ public class UserInterface {
 		case EDITAR_DADOS:
 			editarDados(false, dadosUsuario);
 			break;
-		case VER_TURMAS:
-			//lista as turmas e o usuario escolhe que turma quer, tipo 2009.1
-			//ao entrar na turma, aparece a lista de alunos dessa turma, 
+		case VER_ALUNOS: 
 			//o usuario escolhe pela matricula, tipo 20821205
+			//ao ver o aluno, baixa o exercicio, seta a nota e poe o comentario do exercicio
 			break;
-		case VER_EXERCICIO:
+		case CRIAR_ALUNO:
 			break;
-//		case BAIXAR_PLANILHA:
-//			break;
-		case SUBMETER_EXERCICIO:
+		case CRIAR_MONITOR:
+			break;
+		case CRIAR_EXERCICIO:
+			break;
+		
+		default: 
+			System.out.println("NUMERO INVALIDO");
+		} 
+		
+	}
+	
+
+	private static void menuModerador(List<String> dadosUsuario) {
+		
+		final int SAIR = 0;
+		final int EDITAR_DADOS = 1;
+		final int VER_ALUNOS = 2;
+		final int CRIAR_EXERCICIO = 3;
+		final int CRIAR_ALUNO = 4;
+		
+		System.out.println("Olá, " + dadosUsuario.get(USERNAME) + ", email: "+ dadosUsuario.get(USER_EMAIL));
+		System.out.println("MENU MODERADOR");
+		System.out.println("1 - EDITAR DADOS");
+		System.out.println("2 - VER ALUNOS");
+		System.out.println("3 - CRIAR EXERCICIO");
+		System.out.println("4 - CRIAR ALUNO");		
+		System.out.println();
+		System.out.println("0 - SAIR");
+		System.out.println();
+		System.out.println("ESCOLHA O NUMERO DA OPCAO");
+		int opcao = Entrada.recebeInteiro();
+		sc.nextLine();
+		
+		switch (opcao) {
+		case SAIR:
+			System.out.print("PRESSIONE ENTER PARA ENCERRAR");
+			sc.nextLine();
+			break;
+		case EDITAR_DADOS:
+			editarDados(false, dadosUsuario);
+			break;
+		case VER_ALUNOS: 
+			//o usuario escolhe pela matricula, tipo 20821205
+			//ao ver o aluno, baixa o exercicio, seta a nota e poe o comentario do exercicio
+			break;
+		case CRIAR_ALUNO:
+			break;
+		case CRIAR_EXERCICIO:
 			break;
 		
 		default: 
@@ -159,7 +192,7 @@ public class UserInterface {
 		final int EDITAR_DADOS = 1;
 		final int VER_PLANILHA = 2;
 		final int VER_EXERCICIO = 3;
-		//final int BAIXAR_EXERCICIO = 4;
+		final int BAIXAR_EXERCICIO = 4;
 		final int SUBMETER_EXERCICIO = 5;
 		
 		System.out.println("Olá, " + dadosUsuario.get(USERNAME) + ", email: "+ dadosUsuario.get(USER_EMAIL));
@@ -167,7 +200,7 @@ public class UserInterface {
 		System.out.println("1 - EDITAR DADOS");
 		System.out.println("2 - VER PLANILHA DE NOTAS");
 		System.out.println("3 - VER EXERCICIOS");
-		//System.out.println("4 - BAIXAR EXERCICIO");
+		System.out.println("4 - BAIXAR EXERCICIO");
 		System.out.println("5 - SUBMETER EXERCICIO");
 		System.out.println();
 		System.out.println("0 - SAIR");
@@ -188,8 +221,8 @@ public class UserInterface {
 			break;
 		case VER_EXERCICIO:
 			break;
-//		case BAIXAR_EXERCICIO:
-//			break;
+		case BAIXAR_EXERCICIO:
+			break;
 		case SUBMETER_EXERCICIO:
 			break;
 		
@@ -217,8 +250,6 @@ public class UserInterface {
 			dados.add(sc.nextLine());
 			System.out.println("CONFIRMA NOVA SENHA: ");
 			dados.add(sc.nextLine());
-			
-			
 		}
 		Sistema.editaDadosUsuario(dados);
 	}
