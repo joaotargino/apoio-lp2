@@ -12,6 +12,7 @@ public class Aluno extends Usuario {
 		super(nome, login, senha, matricula, email, turma);
 	}
 	
+	@Override
 	public UsuariosEnum getEnum() {
 		return UsuariosEnum.ALUNO;
 	}
