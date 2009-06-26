@@ -1,9 +1,7 @@
 package controle;
 
-import graphic.*;
-
 import java.io.IOException;
-import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,14 +9,27 @@ import disciplina.Exercicio;
 
 import users.*;
 
-// nao deu certo implementar SistemaI por causa do static =x
 public class Sistema{
 	
 	static List<Usuario> usuarios;
 
 	public static void editaDadosUsuario(List<String> dados) {
-		// TODO Auto-generated method stub
 		
+		
+		
+	}
+	
+	public static List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
+	public static List<String> dadosUsuario(String login) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getLogin().equals(login)) {
+				return usuario.getDadosUsuario();
+			}
+		}
+		return null;
 	}
 
 	public static boolean login() throws Exception {
@@ -42,7 +53,29 @@ public class Sistema{
 			return true;
 		} return false;
 			
-			
+	}
+	
+	public static UsuariosEnum confereLoginSenha(String login, String senha) {
+		System.out.println(login+ " " + senha);
+		Iterator<Usuario> it = BD.getUsuarios().iterator();
+		while (it.hasNext()) {
+			Usuario usr = it.next();
+			//System.out.println(urlogin+ " " + senha);
+			if (usr.getLogin().equals(login) && usr.getSenha().equals(senha)) {
+				System.out.println("entrou no if");
+				return tipoUsuario(usr);
+			}
+		}
+		return null;
+	}
+	
+	public static UsuariosEnum tipoUsuario(Usuario usr){
+		if (usr instanceof Professor) {
+			return UsuariosEnum.PROFESSOR;
+		} else if (usr instanceof Moderador) {
+			return UsuariosEnum.MONITOR;
+		}
+		return UsuariosEnum.ALUNO;
 	}
 	
 	public static void inicializa() {
