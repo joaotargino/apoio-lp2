@@ -11,8 +11,8 @@ import org.junit.Test;
 public class UsuarioTest {
 	
 	public class Usr extends Usuario{
-		public Usr(String nome, String login, String senha, String matricula, String email) throws Exception {
-			super(nome, login, senha, matricula, email);
+		public Usr(String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
+			super(nome, login, senha, matricula, email, turma);
 		}
 	}
 	private Usuario erickson;
@@ -20,38 +20,40 @@ public class UsuarioTest {
 
 	@Before
 	public void setUp() throws Exception {
-		erickson = new Usr("Erickson", "20821200", "123456", "20821200", "ericksonfilipe@gmail.com");
-		arnett = new Usr("Arnett", "20821209", "123456", "20821209", "shrivelfigs@gmail.com");
+		erickson = new Usr("Erickson", "20821200", "123456", "20821200", "ericksonfilipe@gmail.com" , "2009.1");
+		arnett = new Usr("Arnett", "20821209", "123456", "20821209", "shrivelfigs@gmail.com" , "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void loginNuloTest() throws Exception {
-		new Usr("coisaosi", null, "coisi", "20543512", "a@g.c");
+		new Usr("coisaosi", null, "coisi", "20543512", "a@g.c", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void loginMenosCaracteresQOPermitidoTest() throws Exception {
-		new Usr("coisaosi", "055", "coisi", "055", "a@g.c");
+		new Usr("coisaosi", "055", "coisi", "055", "a@g.c", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void senhaMenosCaracteresQOPermitidoTest() throws Exception {
-		new Usr("coisaosi", "20821200", "123", "20821200", "a@g.c");
+		new Usr("coisaosi", "20821200", "123", "20821200", "a@g.c", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void senhaNulaTest() throws Exception {
-		new Usr("coisaosi", "20821200", null, "20821200", "a@g.c");
+		new Usr("coisaosi", "20821200", null, "20821200", "a@g.c", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
 	public void emailTest() throws Exception {
-		new Usr("coisaosi", "20821200", "123456", "20821200", "a@gc");
+		new Usr("coisaosi", "20821200", "123456", "20821200", "a@gc", "2009.1");
 	}
+	
+	
 	
 	@Test(expected=Exception.class)
 	public void nomeNuloTest() throws Exception {
-		new Usr(null, "20821200", "123456", "20821200", "a@g.c");
+		new Usr(null, "20821200", "123456", "20821200", "a@g.c", "2009.1");
 	}
 	
 	@Test(expected=Exception.class)
@@ -66,7 +68,7 @@ public class UsuarioTest {
 	
 	public void InstanciaAlunoSemErroTest(){
 		try {
-			new Usr("Erickson", "20821200", "123456", "20821200", "a@g.c");
+			new Usr("Erickson", "20821200", "123456", "20821200", "a@g.c", "2009.1");
 		} catch (Exception e) {
 			Assert.fail();
 		}
@@ -89,6 +91,8 @@ public class UsuarioTest {
 		assertFalse(erickson.setEmail("ericksongmail.com"));
 		assertFalse(arnett.setEmail("@gmail.com"));
 		assertFalse(arnett.setEmail("shrivefigs@gmailcom"));
+		assertTrue(arnett.setEmail("arnett@ufcg.edu.br"));
+		//assertFalse(arnett.setEmail("arnett@ufcg.")); //devia tratar isso
 		assertEquals("ericksonfilipe@gmail.com", erickson.getEmail());
 		assertTrue(arnett.setEmail("arnettor@lcc.ufcg.edu.br"));
 		assertEquals("arnettor@lcc.ufcg.edu.br", arnett.getEmail());

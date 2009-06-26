@@ -18,15 +18,32 @@ import disciplina.Exercicio;
 public abstract class Usuario implements Serializable{
 	private String login, nome, senha, email, matricula, turma;
 	private int id;
+	final int MENOR_LOGIN = 5;
+	final int MENOR_SENHA = 5;
+	final int MAIOR_SENHA = 18;
 
 	/**
 	 * Construtor padrao.
 	 */	
 	public Usuario(String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
 		if (login == null || senha == null || nome == null) 
-			throw new IllegalArgumentException("Argumentos nulos!");
-		if (login.length() < 8 || senha.length() < 4 || !verificaEmail(email) || nome.isEmpty())
-			throw new Exception("Argumentos invalidos!");
+			throw new IllegalArgumentException("LOGIN, NOME OU SENHA INVÁLIDOS!");
+		if (login.length() < MENOR_LOGIN){
+			throw new Exception("LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
+		}
+		if  (senha.length() < MENOR_SENHA ){
+			throw new Exception("SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+		}
+		if  (senha.length() > MAIOR_SENHA ){
+			throw new Exception("SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+		}
+		if  (!verificaEmail(email)){
+			throw new Exception("EMAIL INVÁLIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
+		}
+		
+		if (nome.isEmpty()){
+			throw new Exception("INFORME UM NOME VÁLIDO");
+		}
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
