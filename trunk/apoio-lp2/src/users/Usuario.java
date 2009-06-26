@@ -10,6 +10,7 @@ import java.util.List;
 
 import controle.BD;
 import controle.Sistema;
+import controle.UsuariosEnum;
 import disciplina.Exercicio;
 
 /*
@@ -200,16 +201,20 @@ public abstract class Usuario implements Serializable {
 			Usuario usr = (Usuario) obj;
 			if (usr.getLogin().equals(getLogin())
 					|| usr.getMatricula().equals(getMatricula())
-					|| usr.getEmail().equals(getEmail())
-					|| usr.getTurma().equals(getTurma()))
-				;
-			return true;
+					|| usr.getEmail().equals(getEmail())) {
+				
+				return true;
+			}
 		}
 		return false;
 	}
 
 	public String toString() {
-		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "  + NOVA_LINHA;
+		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + NOVA_LINHA;
+	}
+	
+	public UsuariosEnum getEnum() {
+		return UsuariosEnum.INEXISTENTE;
 	}
 
 	public List<String> getDadosUsuario() {

@@ -119,8 +119,9 @@ public class BD {
 		Iterator<Usuario> it = users.iterator();
 		while(it.hasNext()) {
 			Usuario user = it.next();
-			if (user.equals(u))
+			if (user.equals(u)) {
 				return false;
+			}
 		}
 		users.add(u);
 		Serializar.salvarObjeto(USUARIOSBD, users);
