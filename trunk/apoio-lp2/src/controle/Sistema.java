@@ -14,6 +14,13 @@ public class Sistema {
 	static List<Usuario> usuarios;
 
 	public static void editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
+		Usuario usr = criaUsuario(dados, tipo);
+
+		BD.atualizaUsuario(usr);
+
+	}
+
+	private static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = null;
 		if (tipo == UsuariosEnum.ALUNO) {
 			System.out.println(dados.get(4));
@@ -54,9 +61,7 @@ public class Sistema {
 				e.printStackTrace();
 			}
 		}
-
-		BD.atualizaUsuario(usr);
-
+		return usr;
 	}
 
 	public static List<Usuario> getUsuarios() {
@@ -140,6 +145,18 @@ public class Sistema {
 			return true;
 		}
 		return false;
+	}
+
+	public static void addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) {
+		Usuario usr = criaUsuario(dadosUsuario, tipo);
+
+		try {
+			BD.cadastraUsuario(usr);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
