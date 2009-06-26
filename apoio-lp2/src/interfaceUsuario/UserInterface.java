@@ -1,19 +1,14 @@
 package interfaceUsuario;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-
-import users.Usuario;
 
 import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
-import controle.SistemaI;
 import controle.UsuariosEnum;
 
 //TODO implementar trocar senha =x
@@ -278,17 +273,41 @@ public class UserInterface {
 		List<String> dadosUsuario = new ArrayList<String>();
 
 		dadosUsuario.add(recebeDados("LOGIN: "));
-
 		dadosUsuario.add(recebeDados("SENHA: "));
-
 		dadosUsuario.add(recebeDados("MATRICULA: "));
-
 		dadosUsuario.add(recebeDados("NOME: "));
-
 		dadosUsuario.add(recebeDados("EMAIL: "));
-
 		dadosUsuario.add(recebeDados("TURMA: "));
-
+		
 		Sistema.addUsuario(dadosUsuario, tipo);
+	}
+	
+	public static void enviarSenhaPorEmail() {
+		String login = recebeDados("LOGIN: ");
+		String email = recebeDados("EMAIL: ");
+		Sistema.enviaSenhaPorEmail(login, email);
+	}
+	
+	public static void enviarSubmissao() {
+		String login = recebeDados("LOGIN: ");
+		String caminho = recebeDados("CAMINHO: ");
+		int idExercicio = Integer.parseInt(recebeDados("ID EXERCICIO: "));
+		Sistema.enviarSubmissao(login, caminho, idExercicio);
+	}
+	
+	private static Calendar criaCalendario(String cal) {
+		String[] date = cal.split("/");
+		return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+	}
+	
+	public static void cadastrarExercicio(UsuariosEnum user) {
+		if (user == UsuariosEnum.PROFESSOR || user == UsuariosEnum.MONITOR) {
+			int id = Integer.parseInt(recebeDados("ID EXERCICIO: "));
+			String nome = recebeDados("NOME: ");
+			String enunciado = recebeDados("ENUNCIADO: ");
+			Calendar data = new GregorianCalendar();
+			Calendar dataDeEntrega = criaCalendario(recebeDados("DATA DE ENTREGA: "));
+			Sistema.cadastrarExercicio(id, nome, enunciado, data, dataDeEntrega);
+		}
 	}
 }

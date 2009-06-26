@@ -13,16 +13,16 @@ public class Exercicio implements Serializable{
 	
 	private Exercicio() {}
 
-	public Exercicio(int id, String nome,  String enunciado, Calendar data2,
-			Calendar dataEntrega2 ) throws Exception {
-		if (nome == null || enunciado == null || data2 == null || dataEntrega2 == null) {
+	public Exercicio(int id, String nome,  String enunciado, Calendar data,
+			Calendar dataEntrega ) throws Exception {
+		if (nome == null || enunciado == null || data == null || dataEntrega == null) {
 			throw new IllegalArgumentException();
 		}
-		if (dataEntrega2.compareTo(data2) < 0) {
+		if (dataEntrega.compareTo(data) < 0) {
 			throw new Exception();
 		}
-		this.data = data2;
-		this.dataEntrega = dataEntrega2;
+		this.data = data;
+		this.dataEntrega = dataEntrega;
 		this.nome = nome;
 		this.enunciado = enunciado;
 		this.id = id;
