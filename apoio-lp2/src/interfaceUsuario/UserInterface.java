@@ -226,9 +226,11 @@ public class UserInterface {
 			case VER_EXERCICIO:
 				break;
 			case BAIXAR_EXERCICIO:
+				Sistema.mandaBaixar(caminho); // implementa, po!
 				break;
 			case SUBMETER_EXERCICIO:
-				Sistema.subemeterExercicio(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()), exercicio)
+				Sistema.subemeterExercicio(dadosUsuario
+						.get(DadosUsuarioEnum.LOGIN.ordinal()), exercicio);
 				break;
 
 			default:
