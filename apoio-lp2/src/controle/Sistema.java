@@ -2,6 +2,7 @@ package controle;
 
 import graphic.*;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,8 @@ import users.*;
 
 // nao deu certo implementar SistemaI por causa do static =x
 public class Sistema{
+	
+	static List<Usuario> usuarios;
 
 	public static void editaDadosUsuario(List<String> dados) {
 		// TODO Auto-generated method stub
@@ -41,6 +44,10 @@ public class Sistema{
 			
 			
 	}
+	
+	public static void inicializa() {
+		usuarios = BD.getUsuarios();
+	}
 
 	public static boolean subemeterExercicio(String login, Exercicio exercicio) {
 		//TODO Colocar data limite de entrega...
@@ -48,7 +55,12 @@ public class Sistema{
 			String[] sub = Interface.subemeterExercicio();
 			//transformar a data em Gregorian Calendar (sub[1])
 			Submissao submissao = new Submissao(sub[0], new GregorianCalendar(), sub[2]);
-			BD.addSubmissao(submissao);
+			try {
+				BD.cadastraSubmissao(submissao);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
 		} return false;
 	}

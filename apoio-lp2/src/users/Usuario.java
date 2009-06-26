@@ -2,6 +2,10 @@ package users;
 import graphic.Interface;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import controle.BD;
 import controle.Sistema;
@@ -12,7 +16,7 @@ import disciplina.Exercicio;
  * Sistema, ao adcionar o usuario no BD.
  */
 public abstract class Usuario implements Serializable{
-	private String login, nome, senha, email, matricula;
+	private String login, nome, senha, email, matricula, turma;
 	private int id;
 
 	/**
@@ -121,34 +125,21 @@ public abstract class Usuario implements Serializable{
 		} return false;
 	}
 	
-	//Exibe os exercicios do aluno, em forma de links
-	public void verExercicios() {
-		Interface.exibirExercicios(Usuario.this);
+	/**
+	 * @return the turma
+	 */
+	public String getTurma() {
+		return turma;
 	}
-	
-	public boolean baixarExercicio(String Login, Exercicio exercicio) {
-		if (BD.getExercicios().contains(exercicio)) {
-			//String caminho = BD.getSubmissao(exercicio.getId());
-			//TODO averiguar se a posicao do caminho eh realmente a primeira
-			//Sistema.mandaBaixar(caminho);
-			//Com o caminho do exercicio em maos, deve-se abrir uam janelinha de opcao de
-			//salvar ou abrir o exercicio
-			return true;
-		} return false;
+
+	/**
+	 * @param turma the turma to set
+	 */
+	public void setTurma(String turma) {
+		this.turma = turma;
 	}
-	
-	public void verPlanilhaDeNotas(){
-		Interface.exibirPlanilhaDeNotas();
-	}
-	
-	public void verCorrecoes() {
-		Interface.exibirCorrecoes(Usuario.this);
-		
-	}
-	
-	public void verCorrecao(Exercicio exercicio, String login) {
-		Interface.exibirCorrecao(login, exercicio);
-	}
+
+
 
 	/**
 	 * Verifica se a estrutura do e-mail eh valida.
@@ -169,9 +160,21 @@ public abstract class Usuario implements Serializable{
 	public boolean equals(Object obj) {
 		if (obj instanceof Usuario) {
 			Usuario usr = (Usuario) obj;
-			if (usr.getLogin().equals(getLogin()))
+			if (usr.getLogin().equals(getLogin()) || usr.getId() ==  getId());
 				return true;
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return "Login: " + getLogin() + " | Nome: " + getNome();
+	}
+	
+	public List<String> getDadosUsuario() {
+		List<String> dados = new ArrayList<String>();
+		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(), getNome(), getEmail());
+		return dados;
+	}
+	
+	
 }
