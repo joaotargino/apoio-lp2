@@ -22,7 +22,7 @@ public abstract class Usuario implements Serializable{
 	/**
 	 * Construtor padrao.
 	 */	
-	public Usuario(String nome, String login, String senha, String matricula, String email) throws Exception {
+	public Usuario(String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
 		if (login == null || senha == null || nome == null) 
 			throw new IllegalArgumentException("Argumentos nulos!");
 		if (login.length() < 8 || senha.length() < 4 || !verificaEmail(email) || nome.isEmpty())
@@ -32,6 +32,7 @@ public abstract class Usuario implements Serializable{
 		this.nome = nome;
 		this.email = email;
 		this.matricula = matricula;
+		this.turma = turma;
 	}
 
 	/**
@@ -146,15 +147,15 @@ public abstract class Usuario implements Serializable{
 	 * @param email
 	 * @return true caso o e-mail seja valido e false caso contrario.
 	 */
-//	private boolean verificaEmail(String email) {
-//		if (email.contains("@") && email != null) {
-//			if (email.split("@")[0].length() > 0) {
-//				String dominio = email.split("@")[1];
-//			 	if (dominio.contains("."))
-//			 		return true;
-//			} return false;
-//		} return false;
-//	}
+	private boolean verificaEmail(String email) {
+		if (email.contains("@") && email != null) {
+			if (email.split("@")[0].length() > 0) {
+				String dominio = email.split("@")[1];
+			 	if (dominio.contains("."))
+			 		return true;
+			} return false;
+		} return false;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -172,7 +173,7 @@ public abstract class Usuario implements Serializable{
 	
 	public List<String> getDadosUsuario() {
 		List<String> dados = new ArrayList<String>();
-		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(), getNome(), getEmail());
+		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(), getNome(), getEmail(), getTurma());
 		return dados;
 	}
 	

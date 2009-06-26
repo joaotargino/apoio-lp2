@@ -11,6 +11,7 @@ import java.util.Scanner;
 import users.Usuario;
 
 import controle.BD;
+import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.SistemaI;
 import controle.UsuariosEnum;
@@ -20,17 +21,13 @@ import controle.UsuariosEnum;
 public class UserInterface {
 
 	static Scanner sc = new Scanner(System.in);
-	final static int LOGIN = 0;
-	final static int SENHA = 1;
-	final static int MATRICULA = 2;
-	final static int NOME = 3;
-	final static int EMAIL = 4;
 
 	static String logado;
+	static UsuariosEnum tipoUsuario;
 
 	public static void main(String[] args) {
 		System.out.println(BD.getUsuarios().toString());
-		System.out.println(BD.getUsuarios().get(0).getDadosUsuario());
+		System.out.println(BD.getUsuarios().get(0).getMatricula());// .getDadosUsuario());
 		Sistema.inicializa();
 		paginaInicial();
 	}
@@ -41,22 +38,17 @@ public class UserInterface {
 		String login = sc.nextLine();
 		System.out.print("SENHA: ");
 		String senha = sc.nextLine();
-		UsuariosEnum tipoUsuario = Sistema.confereLoginSenha(login, senha);
+		tipoUsuario = Sistema.confereLoginSenha(login, senha);
 		if (tipoUsuario != null) {
-			System.out.println("chegou " + tipoUsuario.name());
 			if (tipoUsuario == UsuariosEnum.ALUNO) {
-				System.out.println("aluno =D " + login);
-				System.out.println(Sistema.getUsuarios());
-				System.out.println(Sistema.dadosUsuario(login));
-
 				menuAluno(Sistema.dadosUsuario(login));
 			} else if (tipoUsuario == UsuariosEnum.MONITOR) {
 				menuModerador(Sistema.dadosUsuario(login));
 			} else {
 				menuProfessor(Sistema.dadosUsuario(login)); // considerando que
-															// o professor tah
-															// add no msm arq
-															// dos outros users
+				// o professor tah
+				// add no msm arq
+				// dos outros users
 			}
 		} else {
 			System.out.println("DADOS INCORRETOS");
@@ -75,9 +67,9 @@ public class UserInterface {
 	// return false;
 	// }
 
-	public static String logado() {
-		return logado;
-	}
+	// public static String logado() {
+	// return logado;
+	// } ??????????
 
 	private static void listaTurmas() {
 		// lista as turmas cadastradas.
@@ -92,8 +84,10 @@ public class UserInterface {
 		final int CRIAR_ALUNO = 4;
 		final int CRIAR_MONITOR = 5;
 
-		System.out.println("Olá, " + dadosUsuario.get(NOME) + ", email: "
-				+ dadosUsuario.get(EMAIL));
+		System.out.println("Olá, "
+				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+				+ ", email: "
+				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 		System.out.println("MENU PROFESSOR");
 		System.out.println("1 - EDITAR DADOS");
 		System.out.println("2 - VER ALUNOS");
@@ -113,7 +107,7 @@ public class UserInterface {
 			sc.nextLine();
 			break;
 		case EDITAR_DADOS:
-			editarDados(false, dadosUsuario);
+			editarDados(dadosUsuario);
 			break;
 		case VER_ALUNOS:
 			// o usuario escolhe pela matricula, tipo 20821205
@@ -141,8 +135,10 @@ public class UserInterface {
 		final int CRIAR_EXERCICIO = 3;
 		final int CRIAR_ALUNO = 4;
 
-		System.out.println("Olá, " + dadosUsuario.get(NOME) + ", email: "
-				+ dadosUsuario.get(EMAIL));
+		System.out.println("Olá, "
+				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+				+ ", email: "
+				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 		System.out.println("MENU MODERADOR");
 		System.out.println("1 - EDITAR DADOS");
 		System.out.println("2 - VER ALUNOS");
@@ -161,7 +157,7 @@ public class UserInterface {
 			sc.nextLine();
 			break;
 		case EDITAR_DADOS:
-			editarDados(false, dadosUsuario);
+			editarDados(dadosUsuario);
 			break;
 		case VER_ALUNOS:
 			// o usuario escolhe pela matricula, tipo 20821205
@@ -189,8 +185,10 @@ public class UserInterface {
 		final int BAIXAR_EXERCICIO = 4;
 		final int SUBMETER_EXERCICIO = 5;
 
-		System.out.println("Olá, " + dadosUsuario.get(NOME) + ", email: "
-				+ dadosUsuario.get(EMAIL));
+		System.out.println("Olá, "
+				+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
+				+ ", email: "
+				+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 		System.out.println("MENU ALUNO");
 		System.out.println("1 - EDITAR DADOS");
 		System.out.println("2 - VER PLANILHA DE NOTAS");
@@ -227,14 +225,18 @@ public class UserInterface {
 	}
 
 	private static void editarDados(List<String> usuario) {
-		List<String> dados = new ArrayList<String>();
+		// List<String> dados = new ArrayList<String>();
+		System.out.println("EDITAR DADOS DE "
+				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
+				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
+		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
+				"MATRICULA: ", usuario
+						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
+		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
+				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
 
-		System.out.println("EDITAR DADOS DE " + usuario.get(NOME));
-		dados.add(recebeDados("NOME: ", usuario.get(NOME)));
-		dados.add(recebeDados("MATRICULA: ", usuario.get(MATRICULA)));
-		dados.add(recebeDados("EMAIL: ", usuario.get(EMAIL)));
-		
-		Sistema.editaDadosUsuario(dados);
+		Sistema.editaDadosUsuario(usuario, tipoUsuario);
 	}
 
 	public static String recebeDados(String msg, String dadoAntigo) {
