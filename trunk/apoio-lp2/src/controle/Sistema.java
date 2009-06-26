@@ -61,7 +61,7 @@ public class Sistema {
 			} catch (Exception e) {
 				System.err.println(e);
 			}
-			
+
 		}
 		return usr;
 	}
@@ -167,15 +167,36 @@ public class Sistema {
 		return false;
 	}
 
-	public static void addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) {
+	public static void addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) throws IOException {
 		Usuario usr = criaUsuario(dadosUsuario, tipo);
-
-		try {
-			BD.cadastraUsuario(usr);
-		} catch (IOException e) {
-			System.err.println(e);; //jp modificou isso.
-		}
+		BD.cadastraUsuario(usr);
 		
+	}
+
+
+	public static void addExercicio(List<String> dadosExercicio) throws Exception {
+		Calendar dataAtual = new GregorianCalendar();
+		Exercicio exercicio = new Exercicio( Util.geraId("exercicio"), 
+				dadosExercicio.get(0), dadosExercicio.get(1), dataAtual, Util.criaCalendario(dadosExercicio.get(2)));
+		BD.cadastraExercicio(exercicio);
+	}
+
+	public static boolean removerExercicio(int id) {
+		return BD.removeExercicio(id);
+		
+	}
+
+	public static boolean atualizarExercicio(int id, String nome,
+			String enunciado, String dataDeEntrega) throws Exception {
+		Calendar dataAtual = new GregorianCalendar();
+		Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
+		Exercicio exercicio = new Exercicio(id, nome, enunciado, dataAtual, dataEntrega);
+		return BD.cadastraExercicio(exercicio);
+		
+	}
+
+	public static List<Exercicio> verExercicios() {
+		return BD.getExercicios();
 	}
 
 }
