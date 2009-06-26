@@ -14,17 +14,24 @@ import users.*;
 
 
 /**
- * Infelizmente teremos que usar arquivo por enquanto
- * @author erickson
- *
+ * Classe responsavel pela manipulação com o banco de dados
+ * @author Arnett, Erickson, Jessica e Joao
+ * @version 1.0 25 de junho de 2009
  */
 public class BD {
 	
-	//mudar para usuariosBD.txt
+	//arquivo com o BD dos usuarios
 	private static final File USUARIOSBD = new File("./src/dados/usuariosBD.txt");
+	//arquivo com o BD das submissoes
 	private static final File SUBMISSOESBD = new File("./src/dados/submissoesBD.txt");
+	//arquivo com o BD dos exercicios
 	private static final File EXERCICIOSBD = new File("./src/dados/exerciciosBD.txt");
 
+	/**
+	 * Retorna uma lista de usuarios cadastrados no banco de dados
+	 * @return List<Usuario>
+	 * 						lista de usuarios cadastrados no BD
+	 */
 	public static List<Usuario> getUsuarios() {
 		try {
 			List<Usuario> users = (List) Serializar.recuperarObjeto(USUARIOSBD);
@@ -34,6 +41,11 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Retorna uma lista de alunos cadastrados no banco de dados
+	 * @return List<Usuario>
+	 * 						lista de alunos cadastrados no BD
+	 */
 	public static List<Usuario> getAlunos() {
 		List<Usuario> users = getUsuarios();
 		List<Usuario> alunos = new ArrayList<Usuario>();
@@ -46,6 +58,11 @@ public class BD {
 		return alunos;
 	}
 	
+	/**
+	 * Retorna uma lista de moderadores cadastrados no banco de dados
+	 * @return List<Usuario>
+	 * 						lista de moderadores cadastrados no BD
+	 */
 	public static List<Usuario> getModeradores() {
 		List<Usuario> users = getUsuarios();
 		List<Usuario> moderadores = new ArrayList<Usuario>();
@@ -58,6 +75,11 @@ public class BD {
 		return moderadores;
 	}
 	
+	/**
+	 * Retorna um usuario cadastrado no banco de dados, cujo login eh passado como parametro
+	 * @param login
+	 * @return Um usuario cujo login eh passado como parametro, e null caso o usuario nao seja encontrado
+	 */
 	public static Usuario getUsuario(String login) {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -69,6 +91,11 @@ public class BD {
 		return null;
 	}
 	
+	/**
+	 * Retorna um usuario cadastrado no banco de dados, cujo id eh passado como parametro
+	 * @param id
+	 * @return Um usuario cujo id eh passado como parametro, e null caso o usuario nao seja encontrado
+	 */
 	public static Usuario getUsuario(int id) {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -80,9 +107,9 @@ public class BD {
 		return null;
 	}
 	/**
-	 * Cadastra qualquer tipo de usuario
+	 * Cadastra qualquer tipo de usuario no banco de dados.
 	 * @param u
-	 * @return
+	 * @return true se o cadastro for efetuado com sucesso, false caso contrario.
 	 * @throws IOException
 	 */
 	public static boolean cadastraUsuario(Usuario u) throws IOException {
@@ -98,6 +125,11 @@ public class BD {
 		return true;
 	}
 	
+	/**
+	 * Remove o usuário, cujo login eh igual ao passado como parametro, se possivel.
+	 * @param login
+	 * @return true, se for possivel remover o usuario, e false caso contrario.
+	 */
 	public static boolean removeUsuario(String login) {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -108,10 +140,8 @@ public class BD {
 				try {
 					Serializar.salvarObjeto(USUARIOSBD, users);
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return true;
@@ -120,6 +150,11 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * Remove o usuário, cujo id eh igual ao passado como parametro, se possivel.
+	 * @param id
+	 * @return true, se for possivel remover o usuario, e false caso contrario.
+	 */
 	public static boolean removeUsuario(int id) {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -130,10 +165,8 @@ public class BD {
 				try {
 					Serializar.salvarObjeto(USUARIOSBD, users);
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return true;
@@ -142,6 +175,11 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * Atualiza um usuario cadastrado no banco de dados
+	 * @param u
+	 * @return true, se for possivel atualizar o usuario, e false caso contrario.
+	 */
 	public static boolean atualizaUsuario(Usuario u) {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -164,6 +202,11 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * Retorna uma lista de exercicios cadastrados no banco de dados
+	 * @return List<EXxercicio>
+	 * 						lista de exercicios cadastrados no BD
+	 */
 	public static List<Exercicio> getExercicios() {
 		try {
 			List<Exercicio> exercicios = (List) Serializar.recuperarObjeto(EXERCICIOSBD);
@@ -173,6 +216,11 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Retorna o exercicio, cujo id eh passado como parametro
+	 * @return Exercicio
+	 * 						exercicio, cujo id eh passado como parâmetro. ou null, caso contrario.
+	 */
 	public static Exercicio getExercicio(int id) {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exs = exercicios.iterator();
@@ -184,6 +232,11 @@ public class BD {
 		return null;
 	}
 	
+	/**
+	 * Retorna o exercicio, no BD, cujo nome eh passado como parâmetro
+	 * @param nome
+	 * @return
+	 */
 	public static Exercicio getExercicio(String nome) {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exs = exercicios.iterator();
@@ -195,6 +248,12 @@ public class BD {
 		return null;
 	}
 	
+	/**
+	 * cadastra um exercicio no banco de dados.
+	 * @param exercicio
+	 * @return true se foi possivel cadastrar um exercicio
+	 * @throws IOException
+	 */
 	public static boolean cadastraExercicio(Exercicio exercicio) throws IOException {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exIt = exercicios.iterator();
@@ -208,6 +267,11 @@ public class BD {
 		return true;
 	}
 	
+	/**
+	 * remove um exercicio do banco de dados;
+	 * @param id
+	 * @return true se foi possivel remover, e false caso contrario
+	 */
 	public static boolean removeExercicio(int id) {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exIt = exercicios.iterator();
@@ -218,10 +282,8 @@ public class BD {
 				try {
 					Serializar.salvarObjeto(EXERCICIOSBD, exercicios);
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return true;
@@ -230,6 +292,12 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * atualiza os dados de um exercicio
+	 * @param id
+	 * @param exercicio
+	 * @return true se o exercicio foi atualizado e false caso contrario.
+	 */
 	public static boolean atualizaExercicio(int id, Exercicio exercicio) {
 		List<Exercicio> exercicios = getExercicios();
 		Iterator<Exercicio> exIt = exercicios.iterator();
@@ -253,6 +321,10 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * retorna todas as submissos cadastradas no banco de dados.
+	 * @return List<Submissao> das submissoes cadastradas no bd
+	 */
 	public static List<Submissao> getSubmissoes() {
 		try {
 			List<Submissao> submissoes = (List) Serializar.recuperarObjeto(SUBMISSOESBD);
@@ -262,6 +334,11 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * retorna uma submissao, cujo id eh igual ao passado como parametro, do banco de dados.
+	 * @param id
+	 * @return Submissao
+	 */
 	public static Submissao getSubmissao(int id) {
 		List<Submissao> submissoes = getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -273,6 +350,12 @@ public class BD {
 		return null;
 	}
 	
+	/**
+	 * Cadastra uma submissao
+	 * @param Submissao
+	 * @return true se a submissao for cadastrada com sucesso
+	 * @throws IOException
+	 */
 	public static boolean cadastraSubmissao(Submissao Submissao) throws IOException {
 		List<Submissao> submissoes = getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -286,6 +369,12 @@ public class BD {
 		return true;
 	}
 	
+	/**
+	 * remove uma submissao, cujo id eh igual ao passado como parametro,
+	 * se possivel, do banco de dados
+	 * @param id
+	 * @return true se foi possivel remover
+	 */
 	public static boolean removeSubmissao(int id) {
 		List<Submissao> submissoes = getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -296,10 +385,8 @@ public class BD {
 				try {
 					Serializar.salvarObjeto(SUBMISSOESBD, submissoes);
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return true;
@@ -308,6 +395,11 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * atualiza uma submissao no banco de dados
+	 * @param sub
+	 * @return true se foi possivel atualizar
+	 */
 	public static boolean atualizaSubmissao(Submissao sub) {
 		List<Submissao> submissoes = getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -373,7 +465,6 @@ public class BD {
 			System.out.print(e.getMessage());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -400,7 +491,6 @@ public class BD {
 			System.out.print(e.getMessage());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
