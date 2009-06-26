@@ -17,6 +17,8 @@ import disciplina.Exercicio;
  * Sistema, ao adcionar o usuario no BD.
  */
 public abstract class Usuario implements Serializable {
+	static final String NOVA_LINHA = System.getProperty("line.separator");
+	
 	private String login, nome, senha, email, matricula, turma;
 	private int id;
 	final int MENOR_LOGIN = 5;
@@ -207,7 +209,7 @@ public abstract class Usuario implements Serializable {
 	}
 
 	public String toString() {
-		return "Login: " + getLogin() + " | Nome: " + getNome();
+		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "  + NOVA_LINHA;
 	}
 
 	public List<String> getDadosUsuario() {
@@ -215,6 +217,11 @@ public abstract class Usuario implements Serializable {
 		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(),
 				getNome(), getEmail(), getTurma());
 		return dados;
+	}
+	
+	public List<String> listarUsuarios(){
+		List<String> listaUsuarios = new ArrayList<String>();
+		
 	}
 
 }
