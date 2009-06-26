@@ -34,7 +34,7 @@ public class UserInterface {
 		System.out.print("SENHA: ");
 		String senha = sc.nextLine();
 		tipoUsuario = Sistema.confereLoginSenha(login, senha);
-		if (tipoUsuario != null) {
+		if (tipoUsuario != UsuariosEnum.INEXISTENTE) {
 			if (tipoUsuario == UsuariosEnum.ALUNO) {
 				menuAluno(Sistema.dadosUsuario(login));
 			} else if (tipoUsuario == UsuariosEnum.MONITOR) {
@@ -71,6 +71,8 @@ public class UserInterface {
 	}
 
 	private static void menuProfessor(List<String> dadosUsuario) {
+		//TODO remover usuario ?
+		//TODO ver o erro la.
 
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
@@ -225,7 +227,7 @@ public class UserInterface {
 				break;
 			case SUBMETER_EXERCICIO:
 				Sistema.subemeterExercicio(dadosUsuario
-						.get(DadosUsuarioEnum.LOGIN.ordinal()), exercicio);
+						.get(DadosUsuarioEnum.LOGIN.ordinal()), "o caminho", "id ex");
 				break;
 
 			default:

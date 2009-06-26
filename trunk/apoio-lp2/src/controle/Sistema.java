@@ -26,7 +26,7 @@ public class Sistema {
 	private static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = null;
 		if (tipo == UsuariosEnum.ALUNO) {
-			System.out.println(dados.get(4));
+			
 			try {
 				usr = new Aluno(dados.get(DadosUsuarioEnum.NOME.ordinal()), 
 						dados.get(DadosUsuarioEnum.LOGIN.ordinal()), 
@@ -35,9 +35,8 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()), 
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				System.out.println("catch");
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println(e);
 			}
 		} else if (tipo == UsuariosEnum.PROFESSOR) {
 			try {
@@ -49,7 +48,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println(e);
 			}
 		} else {
 			try {
@@ -60,9 +59,9 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println(e);
 			}
+			
 		}
 		return usr;
 	}
@@ -108,17 +107,16 @@ public class Sistema {
 	}
 
 	public static UsuariosEnum confereLoginSenha(String login, String senha) {
-		System.out.println(login + " " + senha);
+
 		Iterator<Usuario> it = BD.getUsuarios().iterator();
 		while (it.hasNext()) {
 			Usuario usr = it.next();
 			// System.out.println(urlogin+ " " + senha);
-			if (usr.getLogin().equals(login) && usr.getSenha().equals(senha)) {
-				System.out.println("entrou no if");
+			if (usr.getLogin().equals(login) && usr.getSenha().equals(senha)) {				
 				return tipoUsuario(usr);
 			}
 		}
-		return null;
+		return UsuariosEnum.INEXISTENTE;
 	}
 
 	public static UsuariosEnum tipoUsuario(Usuario usr) {
@@ -175,8 +173,7 @@ public class Sistema {
 		try {
 			BD.cadastraUsuario(usr);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e);; //jp modificou isso.
 		}
 		
 	}
