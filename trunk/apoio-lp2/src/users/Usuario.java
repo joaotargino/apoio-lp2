@@ -1,4 +1,5 @@
 package users;
+
 import graphic.Interface;
 
 import java.io.Serializable;
@@ -15,7 +16,7 @@ import disciplina.Exercicio;
  * O atributo id deve ser incrementado, provavelmente, pela classe
  * Sistema, ao adcionar o usuario no BD.
  */
-public abstract class Usuario implements Serializable{
+public abstract class Usuario implements Serializable {
 	private String login, nome, senha, email, matricula, turma;
 	private int id;
 	final int MENOR_LOGIN = 5;
@@ -24,24 +25,30 @@ public abstract class Usuario implements Serializable{
 
 	/**
 	 * Construtor padrao.
-	 */	
-	public Usuario(String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
-		if (login == null || senha == null || nome == null) 
-			throw new IllegalArgumentException("LOGIN, NOME OU SENHA INVÁLIDOS!");
-		if (login.length() < MENOR_LOGIN){
-			throw new Exception("LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
+	 */
+	public Usuario(String nome, String login, String senha, String matricula,
+			String email, String turma) throws Exception {
+		if (login == null || senha == null || nome == null)
+			throw new IllegalArgumentException(
+					"LOGIN, NOME OU SENHA INVÁLIDOS!");
+		if (login.length() < MENOR_LOGIN) {
+			throw new Exception(
+					"LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
 		}
-		if  (senha.length() < MENOR_SENHA ){
-			throw new Exception("SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+		if (senha.length() < MENOR_SENHA) {
+			throw new Exception(
+					"SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
 		}
-		if  (senha.length() > MAIOR_SENHA ){
-			throw new Exception("SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+		if (senha.length() > MAIOR_SENHA) {
+			throw new Exception(
+					"SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
 		}
-		if  (!verificaEmail(email)){
-			throw new Exception("EMAIL INVÁLIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
+		if (!verificaEmail(email)) {
+			throw new Exception(
+					"EMAIL INVÁLIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
 		}
-		
-		if (nome.isEmpty()){
+
+		if (nome.isEmpty()) {
 			throw new Exception("INFORME UM NOME VÁLIDO");
 		}
 		this.login = login;
@@ -54,21 +61,23 @@ public abstract class Usuario implements Serializable{
 
 	/**
 	 * Informa o login do usuario.
+	 * 
 	 * @return login
 	 */
 	public String getLogin() {
 		return login;
 	}
-	
+
 	/**
 	 * @return the senha
 	 */
 	public String getSenha() {
 		return senha;
 	}
-	
+
 	/**
 	 * Modifica a senha do usuario.
+	 * 
 	 * @param atual
 	 * @param novaSenha
 	 * @return true se a senha foi alterada e false caso contrario.
@@ -77,7 +86,8 @@ public abstract class Usuario implements Serializable{
 		if (atual.equals(senha)) {
 			senha = novaSenha;
 			return true;
-		} return false;
+		}
+		return false;
 	}
 
 	/**
@@ -88,11 +98,13 @@ public abstract class Usuario implements Serializable{
 	}
 
 	/**
-	 * @param nome the nome to set
+	 * @param nome
+	 *            the nome to set
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	/**
 	 * 
 	 * @return
@@ -100,7 +112,7 @@ public abstract class Usuario implements Serializable{
 	public String getMatricula() {
 		return matricula;
 	}
-	
+
 	/**
 	 * 
 	 * @param matricula
@@ -108,15 +120,16 @@ public abstract class Usuario implements Serializable{
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
 	/**
 	 * Informa o email.
+	 * 
 	 * @return email
 	 */
 	public String getEmail() {
 		return email;
 	}
-	
+
 	/**
 	 * @return the id
 	 */
@@ -125,14 +138,16 @@ public abstract class Usuario implements Serializable{
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Modifica o email.
+	 * 
 	 * @param email
 	 * @return true se o e-mail for valido e false caso contrario.
 	 */
@@ -140,9 +155,10 @@ public abstract class Usuario implements Serializable{
 		if (verificaEmail(email)) {
 			this.email = email;
 			return true;
-		} return false;
+		}
+		return false;
 	}
-	
+
 	/**
 	 * @return the turma
 	 */
@@ -151,16 +167,16 @@ public abstract class Usuario implements Serializable{
 	}
 
 	/**
-	 * @param turma the turma to set
+	 * @param turma
+	 *            the turma to set
 	 */
 	public void setTurma(String turma) {
 		this.turma = turma;
 	}
 
-
-
 	/**
 	 * Verifica se a estrutura do e-mail eh valida.
+	 * 
 	 * @param email
 	 * @return true caso o e-mail seja valido e false caso contrario.
 	 */
@@ -168,31 +184,37 @@ public abstract class Usuario implements Serializable{
 		if (email.contains("@") && email != null) {
 			if (email.split("@")[0].length() > 0) {
 				String dominio = email.split("@")[1];
-			 	if (dominio.contains("."))
-			 		return true;
-			} return false;
-		} return false;
+				if (dominio.contains("."))
+					return true;
+			}
+			return false;
+		}
+		return false;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Usuario) {
 			Usuario usr = (Usuario) obj;
-			if (usr.getLogin().equals(getLogin()))// || usr.getId() ==  getId());
-				return true;
+			if (usr.getLogin().equals(getLogin())
+					|| usr.getMatricula().equals(getMatricula())
+					|| usr.getEmail().equals(getEmail())
+					|| usr.getTurma().equals(getTurma()))
+				;
+			return true;
 		}
 		return false;
 	}
-	
+
 	public String toString() {
 		return "Login: " + getLogin() + " | Nome: " + getNome();
 	}
-	
+
 	public List<String> getDadosUsuario() {
 		List<String> dados = new ArrayList<String>();
-		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(), getNome(), getEmail(), getTurma());
+		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(),
+				getNome(), getEmail(), getTurma());
 		return dados;
 	}
-	
-	
+
 }
