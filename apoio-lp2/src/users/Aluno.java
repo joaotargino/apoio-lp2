@@ -18,11 +18,4 @@ public class Aluno extends Usuario {
 			
 	}
 	
-	@Override
-	public String toString(){
-			return "NOME: " +this.getNome() + NOVA_LINHA +
-			"LOGIN: " + this.getLogin() + NOVA_LINHA +
-			"EMAIL: " + this.getEmail();
-	}
-
 }

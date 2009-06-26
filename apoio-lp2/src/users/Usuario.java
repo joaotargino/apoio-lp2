@@ -146,21 +146,21 @@ public abstract class Usuario implements Serializable{
 	 * @param email
 	 * @return true caso o e-mail seja valido e false caso contrario.
 	 */
-	private boolean verificaEmail(String email) {
-		if (email.contains("@") && email != null) {
-			if (email.split("@")[0].length() > 0) {
-				String dominio = email.split("@")[1];
-			 	if (dominio.contains("."))
-			 		return true;
-			} return false;
-		} return false;
-	}
+//	private boolean verificaEmail(String email) {
+//		if (email.contains("@") && email != null) {
+//			if (email.split("@")[0].length() > 0) {
+//				String dominio = email.split("@")[1];
+//			 	if (dominio.contains("."))
+//			 		return true;
+//			} return false;
+//		} return false;
+//	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Usuario) {
 			Usuario usr = (Usuario) obj;
-			if (usr.getLogin().equals(getLogin()) || usr.getId() ==  getId());
+			if (usr.getLogin().equals(getLogin()))// || usr.getId() ==  getId());
 				return true;
 		}
 		return false;

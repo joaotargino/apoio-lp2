@@ -62,9 +62,9 @@ public class BD {
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
 		while (it.hasNext()) {
-			Usuario u = it.next();
-			if (u.getLogin().equals(login))
-				return u;
+			Usuario usr = it.next();
+			if (usr.getLogin().equals(login))
+				return usr;
 		}
 		return null;
 	}
@@ -349,22 +349,26 @@ public class BD {
 	public static void main(String[] args) {
 		try {
 			Aluno al1 = new Aluno("AlunoTest", "20821282", "12345", "20821282", "alunotest@email.com", "2009.1");
-			Aluno al2 = new Aluno("Erickson", "20821200", "12345", "20821200", "erickson@email.com", "2009.1");
+			Aluno al2 = new Aluno("Erickson2", "20821200", "12345", "20821200", "erickson@email.com", "2009.1");
+			Professor prof = new Professor("Raquel" , "raquelvl" , "12345" , "20911234", "raquel@dsc.ufcg.edu.br" , "2009.1");
 			
-			System.out.println("Cadastrando!");
+			System.out.println("Cadastrando AL1!");
 			BD.cadastraUsuario(al1);
 			System.out.println(BD.getAlunos().toString());
 			System.out.println("Cadastrando!");
 			BD.cadastraUsuario(al2);
 			System.out.println(BD.getAlunos().toString());
+			System.out.println("Cadastrando PROF!");
+			System.out.println(BD.cadastraUsuario(prof));
+			System.out.println(BD.getUsuarios().toString());
 		
-			System.out.println("Removendo!");
-			BD.removeUsuario("20821282");
-			System.out.println(BD.getAlunos().toString());
+			//System.out.println("Removendo!");
+			//BD.removeUsuario("20821282");
+			//System.out.println(BD.getAlunos().toString());
 			System.out.println("Atualizando!");
 			al2.setEmail("ericksonfilipe@gmail.com");
 			System.out.println("Atualizou? " + BD.atualizaUsuario(al2));
-			System.out.println(BD.getAlunos().toString());
+			System.out.println(BD.getUsuarios().toString());
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 			
