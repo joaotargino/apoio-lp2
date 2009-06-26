@@ -113,6 +113,8 @@ public class BD {
 	 * @throws IOException
 	 */
 	public static boolean cadastraUsuario(Usuario u) throws IOException {
+		if (u == null)
+			return false;
 		List<Usuario> users = getUsuarios();
 		Iterator<Usuario> it = users.iterator();
 		while(it.hasNext()) {
@@ -440,9 +442,9 @@ public class BD {
 	
 	public static void main(String[] args) {
 		try {
-			Aluno al1 = new Aluno("AlunoTest", "20821282", "12345", "20821282", "alunotest@email.com", "2009.1");
-			Aluno al2 = new Aluno("Erickson2", "20821200", "12345", "20821200", "erickson@email.com", "2009.1");
-			Professor prof = new Professor("Raquel" , "raquelvl" , "12345" , "20911234", "raquel@dsc.ufcg.edu.br" , "2009.1");
+			Aluno al1 = new Aluno("AlunoTest", "20821282", "123456", "20821282", "alunotest@email.com", "2009.1");
+			Aluno al2 = new Aluno("Erickson2", "20821200", "123456", "20821200", "erickson@email.com", "2009.1");
+			Professor prof = new Professor("Raquel" , "raquelvl" , "123456" , "20911234", "raquel@dsc.ufcg.edu.br" , "2009.1");
 			
 			System.out.println("Cadastrando AL1!");
 			BD.cadastraUsuario(al1);
