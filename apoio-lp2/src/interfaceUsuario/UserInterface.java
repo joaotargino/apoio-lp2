@@ -328,25 +328,25 @@ public class UserInterface {
 	}
 
 	private static boolean atualizarExercicio() throws Exception {
-		int id = Integer.parseInt(recebeDados("ID DO EXERCICIO: "));
-		String nome = recebeDados("NOME: ");
-		String enunciado = recebeDados("ENUNCIADO: ");
-		String dataDeEntrega = recebeDados("DATA DE ENTREGA: ");
+		int id = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
+		String nome = IO.recebeDados("NOME: ");
+		String enunciado = IO.recebeDados("ENUNCIADO: ");
+		String dataDeEntrega = IO.recebeDados("DATA DE ENTREGA: ");
 		return Sistema.atualizarExercicio(id, nome, enunciado, dataDeEntrega);
 
 	}
 
 	private static boolean removerExercicio() {
-		int id = Integer.parseInt(recebeDados("ID DO EXERCICIO: "));
+		int id = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
 		return Sistema.removerExercicio(id);
 	}
 
 	private static void criarExercicio() throws Exception {
 		List<String> dadosExercicio = new ArrayList<String>();
 
-		dadosExercicio.add(recebeDados("NOME: "));
-		dadosExercicio.add(recebeDados("ENUNCIADO: "));
-		dadosExercicio.add(recebeDados("DATA DE ENTREGA: "));
+		dadosExercicio.add(IO.recebeDados("NOME: "));
+		dadosExercicio.add(IO.recebeDados("ENUNCIADO: "));
+		dadosExercicio.add(IO.recebeDados("DATA DE ENTREGA: "));
 
 		Sistema.addExercicio(dadosExercicio);
 	}
@@ -355,59 +355,40 @@ public class UserInterface {
 		System.out.println(Sistema.listarUsuarios());
 	}
 
-	public static String recebeDados(String msg) {
-		System.out.print(msg);
-		String dado = sc.nextLine().trim();
-		while (dado.isEmpty()) {
-			System.out.print(msg);
-			dado = sc.nextLine().trim();
-		}
-		return dado;
-	}
-
-	public static String recebeDados(String msg, String dadoAntigo) {
-		System.out.print(msg);
-		String dado = sc.nextLine().trim();
-		if (dado.isEmpty()) {
-			dado = dadoAntigo;
-		}
-		return dado;
-	}
-
 	public static void criarUsuario(UsuariosEnum tipo) throws IOException {
 		List<String> dadosUsuario = new ArrayList<String>();
 
-		dadosUsuario.add(recebeDados("LOGIN: "));
-		dadosUsuario.add(recebeDados("SENHA: "));
-		dadosUsuario.add(recebeDados("MATRICULA: "));
-		dadosUsuario.add(recebeDados("NOME: "));
-		dadosUsuario.add(recebeDados("EMAIL: "));
-		dadosUsuario.add(recebeDados("TURMA: "));
+		dadosUsuario.add(IO.recebeDados("LOGIN: "));
+		dadosUsuario.add(IO.recebeDados("SENHA: "));
+		dadosUsuario.add(IO.recebeDados("MATRICULA: "));
+		dadosUsuario.add(IO.recebeDados("NOME: "));
+		dadosUsuario.add(IO.recebeDados("EMAIL: "));
+		dadosUsuario.add(IO.recebeDados("TURMA: "));
 
 		Sistema.addUsuario(dadosUsuario, tipo);
 	}
 
 	public static void enviarSenhaPorEmail() {
-		String login = recebeDados("LOGIN: ");
-		String email = recebeDados("EMAIL: ");
+		String login = IO.recebeDados("LOGIN: ");
+		String email = IO.recebeDados("EMAIL: ");
 		Sistema.enviaSenhaPorEmail(login, email);
 	}
 
 	public static void enviarSubmissao() {
-		String login = recebeDados("LOGIN: ");
-		String caminho = recebeDados("CAMINHO: ");
-		int idExercicio = Integer.parseInt(recebeDados("ID EXERCICIO: "));
+		String login = IO.recebeDados("LOGIN: ");
+		String caminho = IO.recebeDados("CAMINHO: ");
+		int idExercicio = Integer.parseInt(IO.recebeDados("ID EXERCICIO: "));
 		Sistema.enviarSubmissao(login, caminho, idExercicio);
 	}
 
 	public static void cadastrarExercicio(UsuariosEnum user) {
 		if (user == UsuariosEnum.PROFESSOR || user == UsuariosEnum.MONITOR) {
-			int id = Integer.parseInt(recebeDados("ID EXERCICIO: "));
-			String nome = recebeDados("NOME: ");
-			String enunciado = recebeDados("ENUNCIADO: ");
+			int id = Integer.parseInt(IO.recebeDados("ID EXERCICIO: "));
+			String nome = IO.recebeDados("NOME: ");
+			String enunciado = IO.recebeDados("ENUNCIADO: ");
 			Calendar data = new GregorianCalendar();
 			Calendar dataDeEntrega = Util
-					.criaCalendario(recebeDados("DATA DE ENTREGA: "));
+					.criaCalendario(IO.recebeDados("DATA DE ENTREGA: "));
 			Sistema
 					.cadastrarExercicio(id, nome, enunciado, data,
 							dataDeEntrega);
@@ -418,12 +399,12 @@ public class UserInterface {
 
 		System.out.println("EDITAR DADOS DE "
 				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
+		usuario.set(DadosUsuarioEnum.NOME.ordinal(), IO.recebeDados("NOME: ",
 				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
-		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
+		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), IO.recebeDados(
 				"MATRICULA: ", usuario
 						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
-		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
+		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), IO.recebeDados("EMAIL: ",
 				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
 
 		Sistema.editaDadosUsuario(usuario, tipoUsuario);
@@ -433,10 +414,10 @@ public class UserInterface {
 
 		System.out.println("TROCAR SENHA DE "
 				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		String senhaAntiga = recebeDados("SENHA ATUAL: ");
+		String senhaAntiga = IO.recebeDados("SENHA ATUAL: ");
 
-		String novaSenha = recebeDados("NOVA SENHA: ");
-		String confirmaNovaSenha = recebeDados("CONFIRME A SENHA: ");
+		String novaSenha = IO.recebeDados("NOVA SENHA: ");
+		String confirmaNovaSenha = IO.recebeDados("CONFIRME A SENHA: ");
 		if (Sistema.mudaSenha(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()),
 				senhaAntiga, novaSenha, confirmaNovaSenha)) {
 			System.out.println("SENHA ALTERADA COM SUCESSO");
@@ -448,11 +429,11 @@ public class UserInterface {
 	private static void atribuirNotaEComentario() {
 		//verificar existencia do usuario, existencia do lab(nome ou id?). setar a nota (ou atualizar) e 
 		// setar o comentario. caso passe nota e/ou comentario em branco, nao altera.
-		String loginAluno = recebeDados("LOGIN DO ALUNO: ");
-		String lab = recebeDados("EXERCICIO: ");
+		String loginAluno = IO.recebeDados("LOGIN DO ALUNO: ");
+		String lab = IO.recebeDados("EXERCICIO: ");
 		System.out.println("NOTA: ");
 		double notaAluno = IO.recebeDouble();
-		String comentarioLab = recebeDados("COMENTARIO: ");
+		String comentarioLab = IO.recebeDados("COMENTARIO: ");
 		
 		if(Sistema.NotaEComentario(loginAluno, lab, notaAluno, comentarioLab)){
 			System.out.println("OPERACAO REALIZADA COM SUCESSO");
