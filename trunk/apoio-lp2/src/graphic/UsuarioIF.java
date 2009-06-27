@@ -137,6 +137,6 @@ public abstract class UsuarioIF {
 	
 	public abstract void verSubmissoes();
 	
-	public abstract void verCorrecao(int idExercicio);
+	public abstract void verCorrecao();
 
 }
