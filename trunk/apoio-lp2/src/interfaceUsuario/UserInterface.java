@@ -31,6 +31,7 @@ public class UserInterface {
 	}
 
 	private static void paginaInicial() {
+
 		System.out.println("BEM VINDO AO SISTEMA");
 		System.out.print("LOGIN: ");
 		String login = sc.nextLine();
@@ -75,13 +76,14 @@ public class UserInterface {
 
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
-		final int VER_USUARIOS = 2;
-		final int CRIAR_EXERCICIO = 3;
-		final int REMOVER_EXERCICIO = 4;
-		final int ATUALIZAR_EXERCICIO = 5;
-		final int VER_EXERCICIOS = 6;
-		final int CRIAR_ALUNO = 7;
-		final int CRIAR_MONITOR = 8;
+		final int TROCAR_SENHA = 2;
+		final int VER_USUARIOS = 3;
+		final int CRIAR_EXERCICIO = 4;
+		final int REMOVER_EXERCICIO = 5;
+		final int ATUALIZAR_EXERCICIO = 6;
+		final int VER_EXERCICIOS = 7;
+		final int CRIAR_ALUNO = 8;
+		final int CRIAR_MONITOR = 9;
 		int opcao = -1;
 
 		do {
@@ -91,13 +93,14 @@ public class UserInterface {
 					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 			System.out.println(IO.NOVA_LINHA + "MENU PROFESSOR");
 			System.out.println("1 - EDITAR DADOS");
-			System.out.println("2 - VER USUARIOS");
-			System.out.println("3 - CRIAR EXERCICIO");
-			System.out.println("4 - REMOVER EXERCICIO");
-			System.out.println("5 - ATUALIZAR EXERCICIO");
-			System.out.println("6 - VER EXERCICIOS");
-			System.out.println("7 - CRIAR ALUNO");
-			System.out.println("8 - CRIAR MONITOR");
+			System.out.println("2 - TROCAR SENHA");
+			System.out.println("3 - VER USUARIOS");
+			System.out.println("4 - CRIAR EXERCICIO");
+			System.out.println("5 - REMOVER EXERCICIO");
+			System.out.println("6 - ATUALIZAR EXERCICIO");
+			System.out.println("7 - VER EXERCICIOS");
+			System.out.println("8 - CRIAR ALUNO");
+			System.out.println("9 - CRIAR MONITOR");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -111,6 +114,9 @@ public class UserInterface {
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
+				break;
+			case TROCAR_SENHA:
+				mudarSenha(dadosUsuario);
 				break;
 			case VER_USUARIOS:
 				verUsuarios();
@@ -437,8 +443,12 @@ public class UserInterface {
 		// login, senha antiga, nova senha , confirma senha
 		System.out.println("TROCAR SENHA DE "
 				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		usuario.set(DadosUsuarioEnum.SENHA.ordinal(), recebeDados("SENHA: ",
-				usuario.get(DadosUsuarioEnum.SENHA.ordinal())));
+		String senhaAntiga = recebeDados("SENHA ATUAL: ");
+		String novaSenha = recebeDados("NOVA SENHA: ");
+		String confirmaNovaSenha = recebeDados("CONFIRME A SENHA: ");
+		
+		Sistema.mudaSenha(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()), senhaAntiga, novaSenha, confirmaNovaSenha);
+		
 
 	}
 }
