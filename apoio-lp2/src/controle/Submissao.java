@@ -15,17 +15,32 @@ public class Submissao implements Serializable{
 	private GregorianCalendar dataDeEntrega;
 	private String caminho, login, comentario;
 	private Double nota;
-	private int id;
+	private int id, idExercicio;
 
 	private Submissao() {}
 	
-	public Submissao( String login, GregorianCalendar dataDeEntrega, String caminho ) {
+	public Submissao( int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho ) {
+		this.idExercicio = idExercicio;
 		this.login = login;
 		this.dataDeEntrega = dataDeEntrega;
 		this.caminho = caminho;
 		
 	}
 	
+	/**
+	 * @return the idExercicio
+	 */
+	public int getIdExercicio() {
+		return idExercicio;
+	}
+
+	/**
+	 * @param idExercicio the idExercicio to set
+	 */
+	public void setIdExercicio(int idExercicio) {
+		this.idExercicio = idExercicio;
+	}
+
 	/**
 	 * @return the dataDeEntrega
 	 */
