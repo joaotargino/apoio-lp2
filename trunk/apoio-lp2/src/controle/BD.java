@@ -207,7 +207,7 @@ public class BD {
 	
 	/**
 	 * Retorna uma lista de exercicios cadastrados no banco de dados
-	 * @return List<EXxercicio>
+	 * @return List<Exercicio>
 	 * 						lista de exercicios cadastrados no BD
 	 */
 	public static List<Exercicio> getExercicios() {
@@ -259,9 +259,9 @@ public class BD {
 	 */
 	public static boolean cadastraExercicio(Exercicio exercicio) throws IOException {
 		List<Exercicio> exercicios = getExercicios();
-		Iterator<Exercicio> exIt = exercicios.iterator();
-		while(exIt.hasNext()) {
-			Exercicio exAtual = exIt.next();
+		Iterator<Exercicio> it = exercicios.iterator();
+		while(it.hasNext()) {
+			Exercicio exAtual = it.next();
 			if (exAtual.equals(exercicio))
 				return false;
 		}
