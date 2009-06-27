@@ -41,11 +41,11 @@ public abstract class Usuario implements Serializable {
 		}
 		if (senha.length() < MENOR_SENHA) {
 			throw new Exception(
-					"SENHA INVALIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+					"SENHA INVALIDA. INFORME UMA SENHA ENTRE SEIS E DEZOITO CARACTERES.");
 		}
 		if (senha.length() > MAIOR_SENHA) {
 			throw new Exception(
-					"SENHA INVALIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+					"SENHA INVALIDA. INFORME UMA SENHA ENTRE SEIS E DEZOITO CARACTERES.");
 		}
 		if (!verificaEmail(email)) {
 			throw new Exception(
@@ -85,8 +85,17 @@ public abstract class Usuario implements Serializable {
 	 * @param atual
 	 * @param novaSenha
 	 * @return true se a senha foi alterada e false caso contrario.
+	 * @throws Exception 
 	 */
-	public void setSenha(String novaSenha) {
+	public void setSenha(String novaSenha) throws Exception {
+		if (novaSenha.length() < MENOR_SENHA) {
+			throw new Exception(
+					"SENHA INVALIDA. INFORME UMA SENHA ENTRE SEIS E DEZOITO CARACTERES.");
+		}
+		if (novaSenha.length() > MAIOR_SENHA) {
+			throw new Exception(
+					"SENHA INVALIDA. INFORME UMA SENHA ENTRE SEIS E DEZOITO CARACTERES.");
+		}
 		senha = novaSenha;
 	}
 
