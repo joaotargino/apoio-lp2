@@ -17,6 +17,14 @@ import controle.UsuariosEnum;
 import controle.Util;
 import disciplina.Exercicio;
 
+/**
+ * Interface com o usuario em modo texto
+ * @author Joao Paulo
+ * @author Jessica Priscila
+ * @author Erickson Filipe
+ * @author Arnett Rufino
+ * @version 0.5  -  Junho / 2009
+ */
 public class UserInterface {
 
 	static Scanner sc = new Scanner(System.in);
@@ -29,6 +37,9 @@ public class UserInterface {
 		paginaInicial();
 	}
 
+	/**
+	 * Apresentacao do sistema, onde o usuario faz login para acessar o sistema.
+	 */
 	private static void paginaInicial() {
 		System.out.println("BEM VINDO AO SISTEMA");
 		System.out.print("LOGIN: ");
@@ -42,10 +53,7 @@ public class UserInterface {
 			} else if (tipoUsuario == UsuariosEnum.MONITOR) {
 				menuModerador(Sistema.dadosUsuario(login));
 			} else {
-				menuProfessor(Sistema.dadosUsuario(login)); // considerando que
-				// o professor tah
-				// add no msm arq
-				// dos outros users
+				menuProfessor(Sistema.dadosUsuario(login));
 			}
 		} else {
 			System.out.println("DADOS INCORRETOS");
@@ -53,6 +61,10 @@ public class UserInterface {
 		}
 	}
 
+	/**
+	 * exibe o menu do professor, com as opcoes disponiveis para este usuario
+	 * @param dadosUsuario - lista com os dados do usuario
+	 */
 	private static void menuProfessor(List<String> dadosUsuario) {
 
 		final int SAIR = 0;
@@ -184,6 +196,10 @@ public class UserInterface {
 
 	}
 
+	/**
+	 * exibe o menu do moderador, com as opcoes disponiveis para este usuario
+	 * @param dadosUsuario - lista com os dados do usuario
+	 */
 	private static void menuModerador(List<String> dadosUsuario) {
 
 		final int SAIR = 0;
@@ -293,6 +309,10 @@ public class UserInterface {
 
 	}
 
+	/**
+	 * exibe o menu do aluno, com as opcoes disponiveis para este usuario
+	 * @param dadosUsuario - lista com os dados do usuario
+	 */
 	private static void menuAluno(List<String> dadosUsuario) {
 
 		final int SAIR = 0;
@@ -366,6 +386,9 @@ public class UserInterface {
 
 	}
 
+	/**
+	 * exibe os exercicios cadastrados pelo professor ou monitor
+	 */
 	private static void verExercicios() {
 		List<Exercicio> exercicios = Sistema.verExercicios();
 		Iterator<Exercicio> it = exercicios.iterator();
@@ -374,6 +397,11 @@ public class UserInterface {
 		}
 	}
 
+	/**
+	 * atualiza o exercicio desejado
+	 * @return true caso consiga atualizar o exercicio, false caso contrario
+	 * @throws Exception
+	 */
 	private static boolean atualizarExercicio() throws Exception {
 		int id = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
 		String nome = IO.recebeDados("NOME: ");
@@ -383,11 +411,19 @@ public class UserInterface {
 
 	}
 
+	/**
+	 * remove o exercicio desejado
+	 * @return true caso consiga remover o exercicio
+	 */
 	private static boolean removerExercicio() {
 		int id = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
 		return Sistema.removerExercicio(id);
 	}
 
+	/**
+	 * Cria um exercicio com nome, enunciado(descricao) e data de entrega
+	 * @throws Exception
+	 */
 	private static void criarExercicio() throws Exception {
 		List<String> dadosExercicio = new ArrayList<String>();
 
@@ -398,6 +434,10 @@ public class UserInterface {
 		Sistema.addExercicio(dadosExercicio);
 	}
 	
+	/**
+	 * acessa a correcao do exercicio submetido, para ver notas e comentarios
+	 * @param dadosUsuario - lista de dados do usuario
+	 */
 	public static void verCorrecao(List<String> dadosUsuario) {
 		int idExercicio = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
 		String correcao = Sistema.getCorrecao(idExercicio, dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
@@ -405,6 +445,10 @@ public class UserInterface {
 		
 	}
 
+	/**
+	 * acessa os exercicios submetidos pelo aluno
+	 * @param dadosUsuario - lista de dados do usuario
+	 */
 	public static void verSubmissoes(List<String> dadosUsuario) {
 		List<Submissao> submissoes = Sistema.getsubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -417,10 +461,18 @@ public class UserInterface {
 		
 	}
 
+	/**
+	 * imprime os usuarios cadastrados
+	 */
 	public static void verUsuarios() {
 		System.out.println(Sistema.listarUsuarios());
 	}
 
+	/**
+	 * cria um usuario (aluno ou moderador)
+	 * @param tipo - tipo de usuario 
+	 * @throws IOException
+	 */
 	public static void criarUsuario(UsuariosEnum tipo) throws IOException {
 		List<String> dadosUsuario = new ArrayList<String>();
 
@@ -434,36 +486,34 @@ public class UserInterface {
 		Sistema.addUsuario(dadosUsuario, tipo);
 	}
 
+	/**
+	 * envia a senha por email. 
+	 */
 	public static void enviarSenhaPorEmail() {
 		String login = IO.recebeDados("LOGIN: ");
 		String email = IO.recebeDados("EMAIL: ");
 		Sistema.enviaSenhaPorEmail(login, email);
 	}
 
+	/**
+	 * submete um exercicio para ser corrigido
+	 * @param usuario - lista de dados do usuario
+	 */
 	public static void enviarSubmissao(List<String> usuario) {
 		String caminho = IO.recebeDados("CAMINHO: ");
 		int idExercicio = Integer.parseInt(IO.recebeDados("ID EXERCICIO: "));
 		Sistema.enviarSubmissao(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()), caminho, idExercicio);
 	}
 
-	public static void cadastrarExercicio(UsuariosEnum user) {
-		if (user == UsuariosEnum.PROFESSOR || user == UsuariosEnum.MONITOR) {
-			int id = Integer.parseInt(IO.recebeDados("ID EXERCICIO: "));
-			String nome = IO.recebeDados("NOME: ");
-			String enunciado = IO.recebeDados("ENUNCIADO: ");
-			Calendar data = new GregorianCalendar();
-			Calendar dataDeEntrega = Util
-					.criaCalendario(IO.recebeDados("DATA DE ENTREGA: "));
-			Sistema
-					.cadastrarExercicio(id, nome, enunciado, data,
-							dataDeEntrega);
-		}
-	}
-
-	private static void editarDados(List<String> usuario) {
+		/**
+		 * Edita os dados do usuario. 
+		 * @param usuario - lista de dados do usuario
+		 */
+		private static void editarDados(List<String> usuario) {
 
 		System.out.println("EDITAR DADOS DE "
 				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		System.out.println("CASO NAO QUEIRA ALTERAR DETERMINADO CAMPO, APENAS PRESSIONE ENTER");
 		usuario.set(DadosUsuarioEnum.NOME.ordinal(), IO.recebeDados("NOME: ",
 				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
 		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), IO.recebeDados(
@@ -475,6 +525,10 @@ public class UserInterface {
 		Sistema.editaDadosUsuario(usuario, tipoUsuario);
 	}
 
+	/**
+	 * troca a senha do usuario
+	 * @param usuario - lista de dados do usuario
+	 */
 	public static void mudarSenha(List<String> usuario) {
 
 		System.out.println("TROCAR SENHA DE "
@@ -491,9 +545,11 @@ public class UserInterface {
 
 	}
 
+	/**
+	 * corrige o exercicio submetido pelo aluno
+	 * @param usuario - lista de dados do usuario
+	 */
 	private static void corrigirSubmissao(List<String> usuario) {
-		//verificar existencia do usuario, existencia do lab(nome ou id?). setar a nota (ou atualizar) e 
-		// setar o comentario. caso passe nota e/ou comentario em branco, nao altera.
 		String loginAluno = IO.recebeDados("LOGIN DO ALUNO: ");
 		int lab = Integer.parseInt(IO.recebeDados("ID EXERCICIO: "));
 		System.out.println("NOTA: ");
@@ -507,6 +563,10 @@ public class UserInterface {
 
 	}
 	
+	/**
+	 * remove o usuario (escolhido pelo id)
+	 * @param usuario - lista de dados do usuario
+	 */
 	public static void removerUsuario(List<String> usuario) {
 		System.out.println("ID DO USUARIO A SER DELETADO: ");
 		int idUsuario = IO.recebeInteiro();
@@ -515,6 +575,11 @@ public class UserInterface {
 		else System.out.println("NAO FOI POSSIVEL REMOVER O USUARIO!");
 	}
 
+	/**
+	 * Reseta o banco de dados(apaga os dados dos usuarios, exercicios e submissoes) 
+	 * e cria o usuario professor com os dados default
+	 * @param usuario - lista de dados do usuario
+	 */
 	public static void resetarBD(List<String> usuario) {
 		System.out.println("TODOS OS DADOS SERAO APAGADOS DEFINITIVAMENTE DO BANCO DE DADOS!");
 		String confirmacao = IO.recebeDados("TEM CERTEZA QUE DESEJA RESETAR O BANCO DE DADOS? sim/nao ");
