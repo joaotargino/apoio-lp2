@@ -2,7 +2,7 @@ package interfaceUsuario;
 
 import java.util.Scanner;
 
-public class Entrada {
+public class IO {
 	
 	static final String NOVA_LINHA = System.getProperty("line.separator");
 	static Scanner scan = new Scanner(System.in);
