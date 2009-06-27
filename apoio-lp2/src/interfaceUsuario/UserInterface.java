@@ -72,7 +72,7 @@ public class UserInterface {
 	private static void menuProfessor(List<String> dadosUsuario) {
 		// TODO remover usuario ?
 		// TODO ver o erro la.
-	
+
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
 		final int VER_USUARIOS = 2;
@@ -83,7 +83,7 @@ public class UserInterface {
 		final int CRIAR_ALUNO = 7;
 		final int CRIAR_MONITOR = 8;
 		int opcao = -1;
-	
+
 		do {
 			System.out.println(IO.NOVA_LINHA + "Olá, "
 					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
@@ -104,7 +104,7 @@ public class UserInterface {
 			System.out.print("ESCOLHA O NUMERO DA OPCAO: ");
 			opcao = IO.recebeInteiro();
 			switch (opcao) {
-	
+
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
 				sc.nextLine();
@@ -121,7 +121,7 @@ public class UserInterface {
 				break;
 			case CRIAR_ALUNO:
 				try {
-	
+
 					criarUsuario(UsuariosEnum.ALUNO);
 				} catch (IOException e) {
 					System.out.println("Dados Invalidos!");
@@ -141,14 +141,14 @@ public class UserInterface {
 					System.out.println("Dados Invalidos!");
 				}
 				break;
-	
+
 			case REMOVER_EXERCICIO:
 				if (removerExercicio())
 					System.out.println("Exercicio removido com sucesso!");
 				else
 					System.out.println("id invalido!");
 				break;
-	
+
 			case ATUALIZAR_EXERCICIO:
 				try {
 					if (atualizarExercicio())
@@ -160,21 +160,21 @@ public class UserInterface {
 					System.out.println("Dados Invalidos!");
 				}
 				break;
-	
+
 			case VER_EXERCICIOS:
 				verExercicios();
 				break;
-	
+
 			default:
 				System.out.println("NUMERO INVALIDO");
 			}
-	
+
 		} while (opcao != SAIR);
-	
+
 	}
 
 	private static void menuModerador(List<String> dadosUsuario) {
-	
+
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
 		final int VER_USUARIOS = 2;
@@ -184,7 +184,7 @@ public class UserInterface {
 		final int VER_EXERCICIOS = 6;
 		final int CRIAR_ALUNO = 7;
 		int opcao = -1;
-	
+
 		do {
 			System.out.println(IO.NOVA_LINHA + "Olá, "
 					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
@@ -214,11 +214,11 @@ public class UserInterface {
 				break;
 			case VER_USUARIOS:
 				verUsuarios();
-				
+
 				break;
 			case CRIAR_ALUNO:
 				try {
-	
+
 					criarUsuario(UsuariosEnum.ALUNO);
 				} catch (IOException e) {
 					System.out.println("Dados Invalidos!");
@@ -231,14 +231,14 @@ public class UserInterface {
 					System.out.println("Dados Invalidos!");
 				}
 				break;
-	
+
 			case REMOVER_EXERCICIO:
 				if (removerExercicio())
 					System.out.println("Exercicio removido com sucesso!");
 				else
 					System.out.println("id invalido!");
 				break;
-	
+
 			case ATUALIZAR_EXERCICIO:
 				try {
 					if (atualizarExercicio())
@@ -250,20 +250,20 @@ public class UserInterface {
 					System.out.println("Dados Invalidos!");
 				}
 				break;
-	
+
 			case VER_EXERCICIOS:
 				verExercicios();
 				break;
-	
+
 			default:
 				System.out.println("NUMERO INVALIDO");
 			}
 		} while (opcao != SAIR);
-	
+
 	}
 
 	private static void menuAluno(List<String> dadosUsuario) {
-	
+
 		System.out.println(dadosUsuario.get(1));
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
@@ -272,9 +272,9 @@ public class UserInterface {
 		final int BAIXAR_EXERCICIO = 4;
 		final int SUBMETER_EXERCICIO = 5;
 		int opcao = -1;
-	
+
 		do {
-	
+
 			System.out.println(IO.NOVA_LINHA + "Olá, "
 					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
 					+ ", email: "
@@ -290,7 +290,7 @@ public class UserInterface {
 			System.out.println();
 			System.out.print("ESCOLHA O NUMERO DA OPCAO: ");
 			opcao = IO.recebeInteiro();
-	
+
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
@@ -311,12 +311,12 @@ public class UserInterface {
 				// .get(DadosUsuarioEnum.LOGIN.ordinal()), "o caminho",
 				// "id ex");
 				break;
-	
+
 			default:
 				System.out.println("NUMERO INVALIDO");
 			}
 		} while (opcao != SAIR);
-	
+
 	}
 
 	private static void listaTurmas() {
@@ -417,7 +417,7 @@ public class UserInterface {
 							dataDeEntrega);
 		}
 	}
-	
+
 	private static void editarDados(List<String> usuario) {
 
 		System.out.println("EDITAR DADOS DE "
@@ -429,14 +429,16 @@ public class UserInterface {
 						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
 		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
 				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
-	
+
 		Sistema.editaDadosUsuario(usuario, tipoUsuario);
 	}
 
-	public static void mudarSenha(List<String> usuario){
-		//login, senha antiga, nova senha , confirma senha
-		System.out.println("TROCAR SENHA DE " + usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		usuario.set(DadosUsuarioEnum.SENHA.ordinal(),  recebeDados("SENHA: "));
-				
+	public static void mudarSenha(List<String> usuario) {
+		// login, senha antiga, nova senha , confirma senha
+		System.out.println("TROCAR SENHA DE "
+				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		usuario.set(DadosUsuarioEnum.SENHA.ordinal(), recebeDados("SENHA: ",
+				usuario.get(DadosUsuarioEnum.SENHA.ordinal())));
+
 	}
 }
