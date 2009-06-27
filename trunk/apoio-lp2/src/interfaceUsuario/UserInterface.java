@@ -10,9 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import users.Usuario;
-
-import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.Submissao;
