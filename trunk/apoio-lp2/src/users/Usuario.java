@@ -9,9 +9,13 @@ import java.util.List;
 
 import controle.UsuariosEnum;
 
-/*
- * O atributo id deve ser incrementado, provavelmente, pela classe
- * Sistema, ao adcionar o usuario no BD.
+/**
+ * Classe que cria um usuario do tipo aluno
+ * @author Joao Paulo
+ * @author Jessica Priscila
+ * @author Erickson Filipe
+ * @author Arnett Rufino
+ *
  */
 public abstract class Usuario implements Serializable {
 	
@@ -111,7 +115,7 @@ public abstract class Usuario implements Serializable {
 
 	/**
 	 * 
-	 * @return
+	 * @return matricula
 	 */
 	public String getMatricula() {
 		return matricula;
@@ -214,10 +218,16 @@ public abstract class Usuario implements Serializable {
 		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + IO.NOVA_LINHA;
 	}
 	
+	/**
+	 * @return retorna o tipo do usuario
+	 */
 	public UsuariosEnum getEnum() {
 		return UsuariosEnum.INEXISTENTE;
 	}
 
+	/**
+	 * @return retorna uma lista de dados do usuario
+	 */
 	public List<String> getDadosUsuario() {
 		List<String> dados = new ArrayList<String>();
 		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(),
