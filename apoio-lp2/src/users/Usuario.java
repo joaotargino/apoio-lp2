@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import controle.BD;
@@ -224,9 +225,13 @@ public abstract class Usuario implements Serializable {
 		return dados;
 	}
 	
-	public List<String> listarUsuarios(){
-		List<String> listaUsuarios = new ArrayList<String>();
-		
+	public String listarUsuarios(){
+		Iterator<Usuario> it = BD.getUsuarios().iterator();
+		String dados = "";
+		while (it.hasNext()) {
+			dados += it.next().toString();
+		}
+		return dados;
 	}
 
 }
