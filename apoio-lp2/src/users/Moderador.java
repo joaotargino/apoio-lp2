@@ -8,6 +8,7 @@ public class Moderador extends Usuario{
 		super(nome, login, senha, matricula, email, turma);
 	}
 	
+	@Override
 	public UsuariosEnum getEnum() {
 		return UsuariosEnum.MONITOR;
 	}
