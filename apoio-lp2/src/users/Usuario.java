@@ -1,25 +1,20 @@
 package users;
 
-import graphic.Interface;
+import interfaceUsuario.IO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-import controle.BD;
-import controle.Sistema;
 import controle.UsuariosEnum;
-import disciplina.Exercicio;
 
 /*
  * O atributo id deve ser incrementado, provavelmente, pela classe
  * Sistema, ao adcionar o usuario no BD.
  */
 public abstract class Usuario implements Serializable {
-	static final String NOVA_LINHA = System.getProperty("line.separator");
+	
 	
 	private String login, nome, senha, email, matricula, turma;
 	private int id;
@@ -216,7 +211,7 @@ public abstract class Usuario implements Serializable {
 	}
 
 	public String toString() {
-		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + NOVA_LINHA;
+		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + IO.NOVA_LINHA;
 	}
 	
 	public UsuariosEnum getEnum() {
