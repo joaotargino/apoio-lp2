@@ -190,6 +190,7 @@ public class BD {
 			Usuario user = it.next();
 			if (user.equals(u)) {
 				int indice = users.indexOf(user);
+				u.setId(user.getId());
 				users.remove(user);
 				users.add(indice, u);
 				try {
@@ -423,5 +424,11 @@ public class BD {
 			}
 		}
 		return false;
+	}
+	
+	public static void reset() {
+		USUARIOSBD.delete();
+		EXERCICIOSBD.delete();
+		SUBMISSOESBD.delete();
 	}
 }

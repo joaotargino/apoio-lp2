@@ -29,7 +29,7 @@ public abstract class Usuario implements Serializable {
 	/**
 	 * Construtor padrao.
 	 */
-	public Usuario(String nome, String login, String senha, String matricula,
+	public Usuario(int id, String nome, String login, String senha, String matricula,
 			String email, String turma) throws Exception {
 		if (login == null || senha == null || nome == null)
 			throw new IllegalArgumentException(
@@ -48,12 +48,13 @@ public abstract class Usuario implements Serializable {
 		}
 		if (!verificaEmail(email)) {
 			throw new Exception(
-					"EMAIL INVALIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
+					"EMAIL INVALIDO. VERIFIQUE O ENDERECO E TENTE NOVAMENTE.");
 		}
 
 		if (nome.isEmpty()) {
 			throw new Exception("INFORME UM NOME VALIDO");
 		}
+		this.id = id;
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
@@ -215,7 +216,7 @@ public abstract class Usuario implements Serializable {
 	}
 
 	public String toString() {
-		return "Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + IO.NOVA_LINHA;
+		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + IO.NOVA_LINHA;
 	}
 	
 	/**

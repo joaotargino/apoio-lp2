@@ -12,7 +12,11 @@ import users.Moderador;
 import users.Professor;
 import users.Usuario;
 import disciplina.Exercicio;
-
+/**
+ * classe responsavel ppor gerenciar o sistema
+ * @author Arnett, Erickson, Jessica e Joao
+ * @version 0.5
+ */
 public class Sistema {
 
 	public static void editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
@@ -22,36 +26,34 @@ public class Sistema {
 
 	}
 
-	private static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
+	public static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = null;
 		if (tipo == UsuariosEnum.ALUNO) {
 			
 			try {
-				usr = new Aluno(dados.get(DadosUsuarioEnum.NOME.ordinal()), 
+				usr = new Aluno(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()), 
 						dados.get(DadosUsuarioEnum.LOGIN.ordinal()), 
 						dados.get(DadosUsuarioEnum.SENHA.ordinal()), 
 						dados.get(DadosUsuarioEnum.MATRICULA.ordinal()), 
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()), 
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				System.out.println(e);
 			}
 		} else if (tipo == UsuariosEnum.PROFESSOR) {
 			try {
-				usr = new Professor(dados.get(DadosUsuarioEnum.NOME.ordinal()),
+				usr = new Professor(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
 						dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
 						dados.get(DadosUsuarioEnum.SENHA.ordinal()),
 						dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				System.out.println(e);
 			}
 		} else {
 			try {
-				usr = new Moderador(dados.get(DadosUsuarioEnum.NOME.ordinal()),
+				usr = new Moderador(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
 						dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
 						dados.get(DadosUsuarioEnum.SENHA.ordinal()),
 						dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
@@ -200,7 +202,7 @@ public class Sistema {
 		Calendar dataAtual = new GregorianCalendar();
 		Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
 		Exercicio exercicio = new Exercicio(id, nome, enunciado, dataAtual, dataEntrega);
-		return BD.cadastraExercicio(exercicio);
+		return BD.atualizaExercicio(id, exercicio);
 		
 	}
 
@@ -236,10 +238,44 @@ public class Sistema {
 	}
 
 
-	public static boolean NotaEComentario(String loginAluno, String lab,
-			double notaAluno, String comentarioLab) {
-		// TODO Auto-generated method stub
+	public static boolean corrigirSubmissao(String loginModerador, String loginAluno,
+			int idSubmissao, double nota, String comentarioLab) {
+		Iterator<Usuario> it = BD.getModeradores().iterator();
+		while (it.hasNext()) {
+			Usuario moderador = it.next();
+			if (moderador.getLogin().equals(loginModerador)) {
+				Submissao submissao = BD.getSubmissao(idSubmissao);
+				submissao.setNota(nota);
+				submissao.setComentario(comentarioLab);
+				return true;
+			}
+		}
+		
 		return false;
+	}
+
+	public static boolean removerUsuario(String loginUsuario, int idUsuario) {
+		if (BD.getUsuario(loginUsuario) instanceof Professor) {
+			BD.removeUsuario(idUsuario);
+			return true;
+		}
+		return false;
+	}
+
+	public static void inicia() {
+		try {
+			BD.cadastraUsuario(new Professor(Util.geraId("usuario"),
+					"Raquel Vigolvino Lopes", "raquelvl", "123456", "matricula", "raquel@dsc.ufcg.edu.br", "2009.1"));
+		} catch (Exception e) {
+		}
+		
+	}
+	
+	public static void resetaBD(String loginUsuario) {
+		if (BD.getUsuario(loginUsuario) instanceof Professor) {
+			BD.reset();
+			inicia();
+		}
 	}
 
 }
