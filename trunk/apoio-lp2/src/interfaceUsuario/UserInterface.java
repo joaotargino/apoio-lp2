@@ -27,9 +27,6 @@ public class UserInterface {
 	static UsuariosEnum tipoUsuario;
 
 	public static void main(String[] args) {
-		System.out.println(BD.getUsuarios().toString());
-		System.out.println(BD.getUsuarios().get(0).getMatricula());// .getDadosUsuario());
-		Sistema.inicializa();
 		paginaInicial();
 	}
 
@@ -362,21 +359,6 @@ public class UserInterface {
 		System.out.println(Sistema.listarUsuarios());
 	}
 
-	private static void editarDados(List<String> usuario) {
-		// List<String> dados = new ArrayList<String>();
-		System.out.println("EDITAR DADOS DE "
-				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
-				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
-		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
-				"MATRICULA: ", usuario
-						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
-		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
-				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
-
-		Sistema.editaDadosUsuario(usuario, tipoUsuario);
-	}
-
 	public static String recebeDados(String msg) {
 		System.out.print(msg);
 		String dado = sc.nextLine().trim();
@@ -434,5 +416,27 @@ public class UserInterface {
 					.cadastrarExercicio(id, nome, enunciado, data,
 							dataDeEntrega);
 		}
+	}
+	
+	private static void editarDados(List<String> usuario) {
+
+		System.out.println("EDITAR DADOS DE "
+				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
+				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
+		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
+				"MATRICULA: ", usuario
+						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
+		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
+				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
+	
+		Sistema.editaDadosUsuario(usuario, tipoUsuario);
+	}
+
+	public static void mudarSenha(List<String> usuario){
+		//login, senha antiga, nova senha , confirma senha
+		System.out.println("TROCAR SENHA DE " + usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		usuario.set(DadosUsuarioEnum.SENHA.ordinal(),  recebeDados("SENHA: "));
+				
 	}
 }
