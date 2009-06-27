@@ -71,7 +71,11 @@ public class Sistema {
 	public static boolean mudaSenha(String login ,String senhaAntiga, String novaSenha, String confirmaNovaSenha) {
 		Usuario usr = BD.getUsuario(login);
 		if (usr.getSenha().equals(senhaAntiga) && novaSenha.equals(confirmaNovaSenha)) {
-			usr.setSenha(novaSenha);
+			try {
+				usr.setSenha(novaSenha);
+			} catch (Exception e) {
+				return false;
+			}
 			BD.atualizaUsuario(usr);
 			return true;
 		}
