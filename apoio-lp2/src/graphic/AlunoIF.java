@@ -19,6 +19,8 @@ public class AlunoIF extends UsuarioIF{
 		final int VER_EXERCICIO = 4;
 		final int BAIXAR_EXERCICIO = 5;
 		final int SUBMETER_EXERCICIO = 6;
+		final int VER_CORRECAO = 7;
+		final int VER_SUBMISSOES = 8;
 		int opcao = -1;
 	
 		do {
@@ -34,6 +36,8 @@ public class AlunoIF extends UsuarioIF{
 			System.out.println("4 - VER EXERCICIOS");
 			System.out.println("5 - BAIXAR EXERCICIO");
 			System.out.println("6 - SUBMETER EXERCICIO");
+			System.out.println("7 - VER CORRECAO");
+			System.out.println("8 - VER SUBMISSOES");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -64,6 +68,14 @@ public class AlunoIF extends UsuarioIF{
 				// .get(DadosUsuarioEnum.LOGIN.ordinal()), "o caminho",
 				// "id ex");
 				break;
+				
+			case VER_CORRECAO:
+				verCorrecao();
+				break;
+				
+			case VER_SUBMISSOES:
+				verSubmissoes();
+				break;
 	
 			default:
 				System.out.println("NUMERO INVALIDO");
@@ -73,7 +85,8 @@ public class AlunoIF extends UsuarioIF{
 	}
 
 	@Override
-	public void verCorrecao(int idExercicio) {
+	public void verCorrecao() {
+		int idExercicio = Integer.parseInt(IO.recebeDados("ID DO EXERCICIO: "));
 		String correcao = Sistema.getCorrecao(idExercicio, getLogin());
 		System.out.println(correcao);
 		
