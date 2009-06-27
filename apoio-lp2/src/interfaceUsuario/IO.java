@@ -2,6 +2,14 @@ package interfaceUsuario;
 
 import java.util.Scanner;
 
+/**
+ * Classe de apoio
+ * @author Joao Paulo
+ * @author Jessica Priscila
+ * @author Erickson Filipe
+ * @author Arnett Rufino
+ *
+ */
 public class IO {
 	
 	public static final String NOVA_LINHA = System.getProperty("line.separator");
