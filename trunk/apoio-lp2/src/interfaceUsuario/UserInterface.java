@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import users.Usuario;
+
 import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
@@ -107,7 +109,7 @@ public class UserInterface {
 			System.out.println("0 - SAIR");
 			System.out.println();
 			System.out.println("ESCOLHA O NUMERO DA OPCAO");
-			opcao = Entrada.recebeInteiro();
+			opcao = IO.recebeInteiro();
 			switch (opcao) {
 
 			case SAIR:
@@ -177,9 +179,8 @@ public class UserInterface {
 		List<Exercicio> exercicios = Sistema.verExercicios();
 		Iterator<Exercicio> it = exercicios.iterator();
 		while (it.hasNext()) {
-			System.out.println(it.next()+ "\n");
+			System.out.println(it.next());
 		}
-		
 	}
 
 	private static boolean atualizarExercicio() throws Exception {
@@ -229,7 +230,7 @@ public class UserInterface {
 			System.out.println("0 - SAIR");
 			System.out.println();
 			System.out.println("ESCOLHA O NUMERO DA OPCAO");
-			opcao = Entrada.recebeInteiro();
+			opcao = IO.recebeInteiro();
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
@@ -288,7 +289,7 @@ public class UserInterface {
 			System.out.println("0 - SAIR");
 			System.out.println();
 			System.out.println("ESCOLHA O NUMERO DA OPCAO");
-			opcao = Entrada.recebeInteiro();
+			opcao = IO.recebeInteiro();
 
 			switch (opcao) {
 			case SAIR:
@@ -377,18 +378,13 @@ public class UserInterface {
 		Sistema.enviarSubmissao(login, caminho, idExercicio);
 	}
 	
-	private static Calendar criaCalendario(String cal) {
-		String[] date = cal.split("/");
-		return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
-	}
-	
 	public static void cadastrarExercicio(UsuariosEnum user) {
 		if (user == UsuariosEnum.PROFESSOR || user == UsuariosEnum.MONITOR) {
 			int id = Integer.parseInt(recebeDados("ID EXERCICIO: "));
 			String nome = recebeDados("NOME: ");
 			String enunciado = recebeDados("ENUNCIADO: ");
 			Calendar data = new GregorianCalendar();
-			Calendar dataDeEntrega = criaCalendario(recebeDados("DATA DE ENTREGA: "));
+			Calendar dataDeEntrega = Util.criaCalendario(recebeDados("DATA DE ENTREGA: "));
 			Sistema.cadastrarExercicio(id, nome, enunciado, data, dataDeEntrega);
 		}
 	}

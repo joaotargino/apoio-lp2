@@ -119,7 +119,7 @@ public class Menu {
 		System.out.println("0 - SAIR");
 		System.out.println();
 		System.out.println("ESCOLHA O NÚMERO DA OPÇÃO");
-		int opcao = Entrada.recebeInteiro();
+		int opcao = IO.recebeInteiro();
 		sc.nextLine();
 		
 		switch (opcao) {
