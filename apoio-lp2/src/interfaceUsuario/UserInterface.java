@@ -18,8 +18,6 @@ import disciplina.Exercicio;
 public class UserInterface {
 
 	static Scanner sc = new Scanner(System.in);
-
-	static String logado;
 	static UsuariosEnum tipoUsuario;
 
 	public static void main(String[] args) {
@@ -436,7 +434,6 @@ public class UserInterface {
 	}
 
 	public static void mudarSenha(List<String> usuario) {
-		// login, senha antiga, nova senha , confirma senha
 		System.out.println("TROCAR SENHA DE "
 				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
 		String senhaAntiga = recebeDados("SENHA ATUAL: ");
