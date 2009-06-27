@@ -425,6 +425,9 @@ public class BD {
 		return false;
 	}
 	
+	/**
+	 * Reseta o banco de dados.
+	 */
 	public static void reset() {
 		USUARIOSBD.delete();
 		EXERCICIOSBD.delete();

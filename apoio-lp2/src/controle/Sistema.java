@@ -12,12 +12,21 @@ import users.Professor;
 import users.Usuario;
 import disciplina.Exercicio;
 /**
- * classe responsavel ppor gerenciar o sistema
- * @author Arnett, Erickson, Jessica e Joao
- * @version 0.5
+ * Classe que gerencia o sistema.
+ * @author Joao Paulo
+ * @author Jessica Priscila
+ * @author Erickson Filipe
+ * @author Arnett Rufino
+ * 
+ * @version 0.5 - 25 de junho de 2009
  */
 public class Sistema {
 
+	/**
+	 * Edita os dados do usuario
+	 * @param dados
+	 * @param tipo
+	 */
 	public static void editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = criaUsuario(dados, tipo);
 
@@ -25,6 +34,12 @@ public class Sistema {
 
 	}
 
+	/**
+	 * Cria um usuario
+	 * @param dados
+	 * @param tipo
+	 * @return o usuario criado
+	 */
 	public static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = null;
 		if (tipo == UsuariosEnum.ALUNO) {
@@ -66,10 +81,22 @@ public class Sistema {
 		return usr;
 	}
 
+	/**
+	 * Retorna os usuarios cadastrados no banco de dados
+	 * @return uma lista de usuarios
+	 */
 	public static List<Usuario> getUsuarios() {
 		return BD.getUsuarios();
 	}
 	
+	/**
+	 * Muda a senha do usuario
+	 * @param login
+	 * @param senhaAntiga
+	 * @param novaSenha
+	 * @param confirmaNovaSenha
+	 * @return true se foi possivel mudar a senha
+	 */
 	public static boolean mudaSenha(String login ,String senhaAntiga, String novaSenha, String confirmaNovaSenha) {
 		Usuario usr = BD.getUsuario(login);
 		if (usr.getSenha().equals(senhaAntiga) && novaSenha.equals(confirmaNovaSenha)) {
@@ -84,6 +111,11 @@ public class Sistema {
 		return false;
 	}
 
+	/**
+	 * Retorna os dados de um usario
+	 * @param login
+	 * @return List<String> - os dados de um usuario 
+	 */
 	public static List<String> dadosUsuario(String login) {
 		for (Usuario usuario : getUsuarios()) {
 			if (usuario.getLogin().equals(login)) {
@@ -93,20 +125,37 @@ public class Sistema {
 		return null;
 	}
 
+	/**
+	 * faz login
+	 * @return true se foi possivel se logar
+	 * @throws Exception
+	 */
 	public static boolean login() throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public static boolean logoff() throws Exception {
+	/**
+	 * faz logoff
+	 */
+	public static void logoff(){
 		// TODO Auto-generated method stub
-		return false;
 	}
 
+	/**
+	 * baixa um arquivo
+	 * @param caminho
+	 */
 	public static void mandaBaixar(String caminho) {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Envia a senha do usuario por e-mail
+	 * @param login
+	 * @param email
+	 * @return true se foi possivel enviar a senha do usuario
+	 */
 	public static boolean enviaSenhaPorEmail(String login, String email) {
 		List<Usuario> users = BD.getUsuarios();
 		Iterator<Usuario> it = users.iterator();
@@ -120,12 +169,17 @@ public class Sistema {
 		return false;
 	}
 
+	/**
+	 * Confere o login e senha do usuario
+	 * @param login
+	 * @param senha
+	 * @return um tipo enum indicando o tipo de usuario
+	 */
 	public static UsuariosEnum confereLoginSenha(String login, String senha) {
 
 		Iterator<Usuario> it = BD.getUsuarios().iterator();
 		while (it.hasNext()) {
 			Usuario usr = it.next();
-			// System.out.println(urlogin+ " " + senha);
 			if (usr.getLogin().equals(login) && usr.getSenha().equals(senha)) {				
 				return tipoUsuario(usr);
 			}
@@ -133,6 +187,11 @@ public class Sistema {
 		return UsuariosEnum.INEXISTENTE;
 	}
 
+	/**
+	 * retorna o tipo do usuario passado como parametro
+	 * @param usr
+	 * @return um tipo enum indicando o tipo de usuario
+	 */
 	public static UsuariosEnum tipoUsuario(Usuario usr) {
 		if (usr instanceof Professor) {
 			return UsuariosEnum.PROFESSOR;
@@ -143,11 +202,12 @@ public class Sistema {
 	}
 
 	/**
-	 * Soh estah enviando se estiver dentro do prazo estipulado para a entrega do exercicio
+	 * Envia a resposta de um exercicio se estiver dentro do
+	 * prazo estipulado para a entrega do exercicio
 	 * @param login
 	 * @param caminho
 	 * @param idExercicio
-	 * @return
+	 * @return true se foi possivel enviar
 	 */
 	public static boolean enviarSubmissao(String login, String caminho, int idExercicio) {
 		Submissao sub = new Submissao(idExercicio, login, new GregorianCalendar(), caminho);
@@ -162,6 +222,15 @@ public class Sistema {
 		} return false;
 	}
 	
+	/**
+	 * cadastra um exercicio
+	 * @param id
+	 * @param nome
+	 * @param enunciado
+	 * @param data
+	 * @param dataEntrega
+	 * @return true se foi possivel cadastrar o exercicio
+	 */
 	public static boolean cadastrarExercicio(int id, String nome,  String enunciado, Calendar data,
 			Calendar dataEntrega) {
 		try {
@@ -178,12 +247,23 @@ public class Sistema {
 		return false;
 	}
 
+	/**
+	 * Adciona um usuario no sistema
+	 * @param dadosUsuario
+	 * @param tipo
+	 * @throws IOException
+	 */
 	public static void addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) throws IOException {
 		Usuario usr = criaUsuario(dadosUsuario, tipo);
 		BD.cadastraUsuario(usr);
 		
 	}
 
+	/**
+	 * Cadastra um exercicio no sistema
+	 * @param dadosExercicio
+	 * @throws Exception
+	 */
 	public static void addExercicio(List<String> dadosExercicio) throws Exception {
 		Calendar dataAtual = new GregorianCalendar();
 		Exercicio exercicio = new Exercicio( Util.geraId("exercicio"), 
@@ -191,11 +271,25 @@ public class Sistema {
 		BD.cadastraExercicio(exercicio);
 	}
 
+	/**
+	 * remove um exercicio
+	 * @param id
+	 * @return true se foi possivel
+	 */
 	public static boolean removerExercicio(int id) {
 		return BD.removeExercicio(id);
 		
 	}
 
+	/**
+	 * atualiza um exercicio no sistema
+	 * @param id
+	 * @param nome
+	 * @param enunciado
+	 * @param dataDeEntrega
+	 * @return true se foi possivel atualizar
+	 * @throws Exception
+	 */
 	public static boolean atualizarExercicio(int id, String nome,
 			String enunciado, String dataDeEntrega) throws Exception {
 		Calendar dataAtual = new GregorianCalendar();
@@ -205,10 +299,18 @@ public class Sistema {
 		
 	}
 
+	/**
+	 * retorna uma lista de exercicios
+	 * @return List<Exercicio> uma lista de exercicios
+	 */
 	public static List<Exercicio> verExercicios() {
 		return BD.getExercicios();
 	}
 
+	/**
+	 * Lista os usuarios
+	 * @return um string com os usuarios
+	 */
 	public static String listarUsuarios(){
 		Iterator<Usuario> it = BD.getUsuarios().iterator();
 		String dados = "";
@@ -218,7 +320,12 @@ public class Sistema {
 		return dados;
 	}
 
-
+	/**
+	 * Retorna a correcao para determinado exercicio
+	 * @param idExercicio
+	 * @param login
+	 * @return a correcao para determinado exercicio em forma de string
+	 */
 	public static String getCorrecao(int idExercicio, String login) {
 		List<Submissao> submissoes = BD.getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
@@ -231,12 +338,24 @@ public class Sistema {
 		return "";
 	}
 	
+	/**
+	 * Lista todas as submissoes
+	 * @return List<Submissao> as submissoes
+	 */
 	public static List<Submissao> getsubmissoes() {
 		List<Submissao> submissoes = BD.getSubmissoes();
 		return submissoes;
 	}
 
-
+	/**
+	 * Corrige uma submissao de um aluno
+	 * @param loginModerador
+	 * @param loginAluno
+	 * @param idSubmissao
+	 * @param nota
+	 * @param comentarioLab
+	 * @return true se foi possivel corrigir
+	 */
 	public static boolean corrigirSubmissao(String loginModerador, String loginAluno,
 			int idSubmissao, double nota, String comentarioLab) {
 		Iterator<Usuario> it = BD.getModeradores().iterator();
@@ -252,7 +371,13 @@ public class Sistema {
 		
 		return false;
 	}
-
+	
+	/**
+	 * remove um usuario do sistema
+	 * @param loginUsuario
+	 * @param idUsuario
+	 * @return true se foi possivel
+	 */
 	public static boolean removerUsuario(String loginUsuario, int idUsuario) {
 		if (BD.getUsuario(loginUsuario) instanceof Professor) {
 			BD.removeUsuario(idUsuario);
@@ -260,7 +385,10 @@ public class Sistema {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * prepara o sistema
+	 */
 	public static void inicia() {
 		try {
 			BD.cadastraUsuario(new Professor(Util.geraId("usuario"),
@@ -270,6 +398,10 @@ public class Sistema {
 		
 	}
 	
+	/**
+	 * reseta o banco de dados
+	 * @param loginUsuario
+	 */
 	public static void resetaBD(String loginUsuario) {
 		if (BD.getUsuario(loginUsuario) instanceof Professor) {
 			BD.reset();
