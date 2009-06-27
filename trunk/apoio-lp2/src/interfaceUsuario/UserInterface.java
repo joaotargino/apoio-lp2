@@ -8,16 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import users.Usuario;
-
 import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
 import controle.Util;
 import disciplina.Exercicio;
-
-//TODO implementar trocar senha =x
 
 public class UserInterface {
 
@@ -56,20 +52,6 @@ public class UserInterface {
 		}
 	}
 
-	// public static boolean auxConfereLoginSenha(String login, String senha) {
-	// if (alunos.containsKey(login) &&
-	// alunos.get(login).get(SENHA).equals(senha) ||
-	// monitores.containsKey(login) &&
-	// monitores.get(login).get(SENHA).equals(senha)) {
-	// logado = login;
-	// return true;
-	// }
-	// return false;
-	// }
-
-	// public static String logado() {
-	// return logado;
-	// } ??????????
 
 	private static void menuProfessor(List<String> dadosUsuario) {
 		// TODO remover usuario ?
