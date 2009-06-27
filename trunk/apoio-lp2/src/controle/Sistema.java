@@ -67,7 +67,17 @@ public class Sistema {
 	}
 
 	public static List<Usuario> getUsuarios() {
-		return usuarios;
+		return BD.getUsuarios();
+	}
+	
+	public static boolean mudaSenha(String login ,String senhaAntiga, String novaSenha, String confirmaNovaSenha) {
+		Usuario usr = BD.getUsuario(login);
+		if (usr.getSenha().equals(senhaAntiga) && novaSenha.equals(confirmaNovaSenha)) {
+			usr.setSenha(novaSenha);
+			BD.atualizaUsuario(usr);
+			return true;
+		}
+		return false;
 	}
 
 	public static List<String> dadosUsuario(String login) {
@@ -128,9 +138,6 @@ public class Sistema {
 		return UsuariosEnum.ALUNO;
 	}
 
-	public static void inicializa() {
-		usuarios = BD.getUsuarios();
-	}
 	/**
 	 * Soh estah enviando se estiver dentro do prazo estipulado para a entrega do exercicio
 	 * @param login
