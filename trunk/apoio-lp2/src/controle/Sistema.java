@@ -1,6 +1,7 @@
 package controle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -216,9 +217,29 @@ public class Sistema {
 		return dados;
 	}
 
+
+	public static String getCorrecao(int idExercicio, String login) {
+		List<Submissao> submissoes = BD.getSubmissoes();
+		Iterator<Submissao> it = submissoes.iterator();
+		while(it.hasNext()) {
+			Submissao submissao = it.next();
+			if (submissao.getIdExercicio() == idExercicio) {
+				return submissao.getNota() +submissao.getComentario();
+			}
+		}
+		return "";
+	}
+	
+	public static List<Submissao> getsubmissoes() {
+		List<Submissao> submissoes = BD.getSubmissoes();
+		return submissoes;
+	}
+
+
 	public static boolean NotaEComentario(String loginAluno, String lab,
 			double notaAluno, String comentarioLab) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }
