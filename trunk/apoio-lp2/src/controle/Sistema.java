@@ -409,4 +409,45 @@ public class Sistema {
 		}
 	}
 
+	/**
+	 * remove todos os alunos do banco de dados
+	 * @param login
+	 */
+	public static void removerTodosAlunos(String login) {
+		if (BD.getUsuario(login) instanceof Professor)
+			BD.resetAlunos();
+	}
+
+	/**
+	 * remove todos os moderadores do banco de dados
+	 * @param login
+	 */
+	public static void removerTodosModeradores(String login) {
+		if (BD.getUsuario(login) instanceof Professor)
+			BD.resetModeradores();
+		
+	}
+
+	/**
+	 * remove todos os exercicios e submissoes correspondentes do banco de dados
+	 * @param login
+	 */
+	public static void removerTodosExercicios(String login) {
+		if (BD.getUsuario(login) instanceof Professor) {
+			BD.resetExercicios();
+			removerTodasSubmissoes(login);
+		}
+		
+	}
+
+	/**
+	 * remove todas as submissoes do banco de dados
+	 * @param login
+	 */
+	public static void removerTodasSubmissoes(String login) {
+		if (BD.getUsuario(login) instanceof Professor)
+			BD.resetSubmissoes();
+		
+	}
+
 }
