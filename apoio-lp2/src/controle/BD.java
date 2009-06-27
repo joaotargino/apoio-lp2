@@ -238,7 +238,7 @@ public class BD {
 	/**
 	 * Retorna o exercicio, no BD, cujo nome eh passado como parâmetro
 	 * @param nome
-	 * @return
+	 * @return o exercicio
 	 */
 	public static Exercicio getExercicio(String nome) {
 		List<Exercicio> exercicios = getExercicios();

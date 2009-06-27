@@ -81,10 +81,7 @@ public abstract class Usuario implements Serializable {
 
 	/**
 	 * Modifica a senha do usuario.
-	 * 
-	 * @param atual
 	 * @param novaSenha
-	 * @return true se a senha foi alterada e false caso contrario.
 	 * @throws Exception 
 	 */
 	public void setSenha(String novaSenha) throws Exception {

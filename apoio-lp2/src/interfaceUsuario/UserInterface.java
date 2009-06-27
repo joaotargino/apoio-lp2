@@ -1,11 +1,7 @@
 package interfaceUsuario;
 
-import graphic.IO;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +10,6 @@ import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.Submissao;
 import controle.UsuariosEnum;
-import controle.Util;
 import disciplina.Exercicio;
 
 /**
