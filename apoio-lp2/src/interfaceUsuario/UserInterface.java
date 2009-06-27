@@ -633,3 +633,5 @@ public class UserInterface {
 			Sistema.resetaBD(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
 	}
 }
+
+
