@@ -45,6 +45,25 @@ public class IO {
 		return numero;
 	}
 
+	public static String recebeDados(String msg) {
+		System.out.print(msg);
+		String dado = UserInterface.sc.nextLine().trim();
+		while (dado.isEmpty()) {
+			System.out.print(msg);
+			dado = UserInterface.sc.nextLine().trim();
+		}
+		return dado;
+	}
+
+	public static String recebeDados(String msg, String dadoAntigo) {
+		System.out.print(msg);
+		String dado = UserInterface.sc.nextLine().trim();
+		if (dado.isEmpty()) {
+			dado = dadoAntigo;
+		}
+		return dado;
+	}
+
 	
 
 
