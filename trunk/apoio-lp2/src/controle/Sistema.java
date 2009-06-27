@@ -14,8 +14,6 @@ import disciplina.Exercicio;
 
 public class Sistema {
 
-	static List<Usuario> usuarios;
-
 	public static void editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = criaUsuario(dados, tipo);
 
@@ -81,7 +79,7 @@ public class Sistema {
 	}
 
 	public static List<String> dadosUsuario(String login) {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : getUsuarios()) {
 			if (usuario.getLogin().equals(login)) {
 				return usuario.getDadosUsuario();
 			}
