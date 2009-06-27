@@ -77,17 +77,16 @@ public class UserInterface {
 	
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
-		final int VER_USUARIOS = 2;
-		final int CRIAR_EXERCICIO = 3;
-		final int REMOVER_EXERCICIO = 4;
-		final int ATUALIZAR_EXERCICIO = 5;
-		final int VER_EXERCICIOS = 6;
-		final int CRIAR_ALUNO = 7;
-		final int CRIAR_MONITOR = 8;
-		final int CADASTRAR_SUBMISSAO = 9;
-		final int VER_SUBMISSOES = 10;
+		final int TROCAR_SENHA = 2;
+		final int VER_USUARIOS = 3;
+		final int CRIAR_EXERCICIO = 4;
+		final int REMOVER_EXERCICIO = 5;
+		final int ATUALIZAR_EXERCICIO = 6;
+		final int VER_EXERCICIOS = 7;
+		final int CRIAR_ALUNO = 8;
+		final int CRIAR_MONITOR = 9;
 		int opcao = -1;
-	
+
 		do {
 			System.out.println(IO.NOVA_LINHA + "Olá, "
 					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
@@ -95,13 +94,14 @@ public class UserInterface {
 					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 			System.out.println(IO.NOVA_LINHA + "MENU PROFESSOR");
 			System.out.println("1 - EDITAR DADOS");
-			System.out.println("2 - VER USUARIOS");
-			System.out.println("3 - CRIAR EXERCICIO");
-			System.out.println("4 - REMOVER EXERCICIO");
-			System.out.println("5 - ATUALIZAR EXERCICIO");
-			System.out.println("6 - VER EXERCICIOS");
-			System.out.println("7 - CRIAR ALUNO");
-			System.out.println("8 - CRIAR MONITOR");
+			System.out.println("2 - TROCAR SENHA");
+			System.out.println("3 - VER USUARIOS");
+			System.out.println("4 - CRIAR EXERCICIO");
+			System.out.println("5 - REMOVER EXERCICIO");
+			System.out.println("6 - ATUALIZAR EXERCICIO");
+			System.out.println("7 - VER EXERCICIOS");
+			System.out.println("8 - CRIAR ALUNO");
+			System.out.println("9 - CRIAR MONITOR");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -115,6 +115,9 @@ public class UserInterface {
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
+				break;
+			case TROCAR_SENHA:
+				mudarSenha(dadosUsuario);
 				break;
 			case VER_USUARIOS:
 				verUsuarios();
@@ -181,14 +184,15 @@ public class UserInterface {
 	
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
-		final int VER_USUARIOS = 2;
-		final int CRIAR_EXERCICIO = 3;
-		final int REMOVER_EXERCICIO = 4;
-		final int ATUALIZAR_EXERCICIO = 5;
-		final int VER_EXERCICIOS = 6;
-		final int CRIAR_ALUNO = 7;
+		final int TROCAR_SENHA = 2;
+		final int VER_USUARIOS = 3;
+		final int CRIAR_EXERCICIO = 4;
+		final int REMOVER_EXERCICIO = 5;
+		final int ATUALIZAR_EXERCICIO = 6;
+		final int VER_EXERCICIOS = 7;
+		final int CRIAR_ALUNO = 8;
 		int opcao = -1;
-	
+
 		do {
 			System.out.println(IO.NOVA_LINHA + "Olá, "
 					+ dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal())
@@ -196,13 +200,13 @@ public class UserInterface {
 					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 			System.out.println(IO.NOVA_LINHA + "MENU MODERADOR");
 			System.out.println("1 - EDITAR DADOS");
-			System.out.println("2 - VER USUARIOS");
-			System.out.println("3 - CRIAR EXERCICIO");
-			System.out.println("4 - REMOVER EXERCICIO");
-			System.out.println("5 - ATUALIZAR EXERCICIO");
-			System.out.println("6 - VER EXERCICIOS");
-			System.out.println("7 - CRIAR ALUNO");
-			System.out.println("8 - CRIAR MONITOR");
+			System.out.println("2 - TROCAR SENHA");
+			System.out.println("3 - VER USUARIOS");
+			System.out.println("4 - CRIAR EXERCICIO");
+			System.out.println("5 - REMOVER EXERCICIO");
+			System.out.println("6 - ATUALIZAR EXERCICIO");
+			System.out.println("7 - VER EXERCICIOS");
+			System.out.println("8 - CRIAR ALUNO");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -215,6 +219,9 @@ public class UserInterface {
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
+				break;
+			case TROCAR_SENHA:
+				mudarSenha(dadosUsuario);
 				break;
 			case VER_USUARIOS:
 				verUsuarios();
@@ -271,10 +278,11 @@ public class UserInterface {
 		System.out.println(dadosUsuario.get(1));
 		final int SAIR = 0;
 		final int EDITAR_DADOS = 1;
-		final int VER_PLANILHA = 2;
-		final int VER_EXERCICIO = 3;
-		final int BAIXAR_EXERCICIO = 4;
-		final int SUBMETER_EXERCICIO = 5;
+		final int TROCAR_SENHA = 2;
+		final int VER_PLANILHA = 3;
+		final int VER_EXERCICIO = 4;
+		final int BAIXAR_EXERCICIO = 5;
+		final int SUBMETER_EXERCICIO = 6;
 		int opcao = -1;
 	
 		do {
@@ -285,10 +293,11 @@ public class UserInterface {
 					+ dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 			System.out.println(IO.NOVA_LINHA + "MENU ALUNO");
 			System.out.println("1 - EDITAR DADOS");
-			System.out.println("2 - VER PLANILHA DE NOTAS");
-			System.out.println("3 - VER EXERCICIOS");
-			System.out.println("4 - BAIXAR EXERCICIO");
-			System.out.println("5 - SUBMETER EXERCICIO");
+			System.out.println("2 - TROCAR SENHA");
+			System.out.println("3 - VER PLANILHA DE NOTAS");
+			System.out.println("4 - VER EXERCICIOS");
+			System.out.println("5 - BAIXAR EXERCICIO");
+			System.out.println("6 - SUBMETER EXERCICIO");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -303,9 +312,13 @@ public class UserInterface {
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
 				break;
+			case TROCAR_SENHA:
+				mudarSenha(dadosUsuario);
+				break;
 			case VER_PLANILHA:
 				break;
 			case VER_EXERCICIO:
+				verExercicios();
 				break;
 			case BAIXAR_EXERCICIO:
 				// TODO Sistema.mandaBaixar(caminho); // implementa, po!
@@ -363,20 +376,7 @@ public class UserInterface {
 		System.out.println(Sistema.listarUsuarios());
 	}
 
-	private static void editarDados(List<String> usuario) {
-		// List<String> dados = new ArrayList<String>();
-		System.out.println("EDITAR DADOS DE "
-				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
-		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
-				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
-		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
-				"MATRICULA: ", usuario
-						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
-		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
-				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
 
-		Sistema.editaDadosUsuario(usuario, tipoUsuario);
-	}
 
 	public static String recebeDados(String msg) {
 		System.out.print(msg);
@@ -436,4 +436,37 @@ public class UserInterface {
 							dataDeEntrega);
 		}
 	}
+
+
+	private static void editarDados(List<String> usuario) {
+
+		System.out.println("EDITAR DADOS DE "
+				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		usuario.set(DadosUsuarioEnum.NOME.ordinal(), recebeDados("NOME: ",
+				usuario.get(DadosUsuarioEnum.NOME.ordinal())));
+		usuario.set(DadosUsuarioEnum.MATRICULA.ordinal(), recebeDados(
+				"MATRICULA: ", usuario
+						.get(DadosUsuarioEnum.MATRICULA.ordinal())));
+		usuario.set(DadosUsuarioEnum.EMAIL.ordinal(), recebeDados("EMAIL: ",
+				usuario.get(DadosUsuarioEnum.EMAIL.ordinal())));
+
+		Sistema.editaDadosUsuario(usuario, tipoUsuario);
+	}
+
+	public static void mudarSenha(List<String> usuario) {
+		// login, senha antiga, nova senha , confirma senha
+		System.out.println("TROCAR SENHA DE "
+				+ usuario.get(DadosUsuarioEnum.NOME.ordinal()));
+		String senhaAntiga = recebeDados("SENHA ATUAL: ");
+
+		String novaSenha = recebeDados("NOVA SENHA: ");
+		String confirmaNovaSenha = recebeDados("CONFIRME A SENHA: ");
+		if (Sistema.mudaSenha(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()),
+				senhaAntiga, novaSenha, confirmaNovaSenha)) {
+			System.out.println("SENHA ALTERADA COM SUCESSO");
+		} else
+			System.out.println("A SENHA NAO PODE SER ALTERADA");
+
+	}
+
 }
