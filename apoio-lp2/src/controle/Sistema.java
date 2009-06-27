@@ -148,7 +148,7 @@ public class Sistema {
 	 * @return
 	 */
 	public static boolean enviarSubmissao(String login, String caminho, int idExercicio) {
-		Submissao sub = new Submissao(login, new GregorianCalendar(), caminho);
+		Submissao sub = new Submissao(idExercicio, login, new GregorianCalendar(), caminho);
 		Exercicio exercicio = BD.getExercicio(idExercicio);
 		if (sub.getDataDeEntrega().compareTo(exercicio.getDataEntrega()) < 0) {
 			try {
@@ -214,5 +214,11 @@ public class Sistema {
 			dados += it.next().toString();
 		}
 		return dados;
+	}
+
+	public static boolean NotaEComentario(String loginAluno, String lab,
+			double notaAluno, String comentarioLab) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

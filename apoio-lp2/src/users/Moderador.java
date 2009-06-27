@@ -11,5 +11,6 @@ public class Moderador extends Usuario{
 	public UsuariosEnum getEnum() {
 		return UsuariosEnum.MONITOR;
 	}
+	
 
 }
