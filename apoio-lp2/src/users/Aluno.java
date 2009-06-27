@@ -1,8 +1,16 @@
 package users;
 
 import controle.*;
-import disciplina.*;
 
+
+/**
+ * Classe que cria um usuario do tipo aluno
+ * @author Joao Paulo
+ * @author Jessica Priscila
+ * @author Erickson Filipe
+ * @author Arnett Rufino
+ *
+ */
 public class Aluno extends Usuario {
 
 	
