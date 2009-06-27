@@ -81,7 +81,10 @@ public class UserInterface {
 		final int CRIAR_ALUNO = 11;
 		final int CRIAR_MONITOR = 12;
 		final int REMOVER_USUARIO = 13;
-		final int RESETAR_BD = 14;
+		final int REMOVER_ALUNOS = 14;
+		final int REMOVER_SUBMISSOES = 15;
+		final int REMOVER_EXERCICIOS = 16;
+		final int RESETAR_BD = 17;
 		int opcao = -1;
 
 		do {
@@ -103,7 +106,10 @@ public class UserInterface {
 			System.out.println("11 - CRIAR ALUNO");
 			System.out.println("12 - CRIAR MONITOR");
 			System.out.println("13 - REMOVER USUARIO");
-			System.out.println("14 - RESETAR BD");
+			System.out.println("14 - REMOVER ALUNOS");
+			System.out.println("15 - REMOVER SUBMISSOES");
+			System.out.println("16 - REMOVER EXERCICIOS");
+			System.out.println("17 - RESETAR BD");
 			System.out.println();
 			System.out.println("0 - SAIR");
 			System.out.println();
@@ -182,6 +188,18 @@ public class UserInterface {
 				
 			case REMOVER_USUARIO:
 				removerUsuario(dadosUsuario);
+				break;
+				
+			case REMOVER_ALUNOS:
+				removerTodosAlunos(dadosUsuario);
+				break;
+				
+			case REMOVER_EXERCICIOS:
+				removerTodosExercicios(dadosUsuario);
+				break;
+				
+			case REMOVER_SUBMISSOES:
+				removerTodasSubmissoes(dadosUsuario);
 				break;
 				
 			case RESETAR_BD:
@@ -573,6 +591,39 @@ public class UserInterface {
 		if (Sistema.removerUsuario(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()), idUsuario))
 			System.out.println("USUARIO REMOVIDO COM SUCESSO!");
 		else System.out.println("NAO FOI POSSIVEL REMOVER O USUARIO!");
+	}
+	
+	/**
+	 * remove todos os alunos do bando de dados
+	 * @param usuario
+	 */
+	public static void removerTodosAlunos(List<String> usuario) {
+		System.out.println("TODOS OS ALUNOS SERAO APAGADOS DEFINITIVAMENTE DO BANCO DE DADOS!");
+		String confirmacao = IO.recebeDados("TEM CERTEZA QUE DESEJA REMOVE-LOS? sim/nao ");
+		if (confirmacao.equalsIgnoreCase("sim"))
+			Sistema.removerTodosAlunos(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+	}
+	
+	/**
+	 * remove todos os exercicios e submissoes correspondentes do banco de dados
+	 * @param usuario
+	 */
+	public static void removerTodosExercicios(List<String> usuario) {
+		System.out.println("TODOS OS EXERCICIOS E SUBMISSOES CORRESPONDENTES SERAO APAGADOS DEFINITIVAMENTE DO BANCO DE DADOS!");
+		String confirmacao = IO.recebeDados("TEM CERTEZA QUE DESEJA REMOVE-LOS? sim/nao ");
+		if (confirmacao.equalsIgnoreCase("sim"))
+			Sistema.removerTodosExercicios(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+	}
+	
+	/**
+	 * remove todas as submissoes do banco de dados
+	 * @param usuario
+	 */
+	public static void removerTodasSubmissoes(List<String> usuario) {
+		System.out.println("TODOS AS SUBMISSOES SERAO APAGADOS DEFINITIVAMENTE DO BANCO DE DADOS!");
+		String confirmacao = IO.recebeDados("TEM CERTEZA QUE DESEJA REMOVE-LOS? sim/nao ");
+		if (confirmacao.equalsIgnoreCase("sim"))
+			Sistema.removerTodasSubmissoes(usuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
 	}
 
 	/**

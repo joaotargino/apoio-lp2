@@ -433,4 +433,48 @@ public class BD {
 		EXERCICIOSBD.delete();
 		SUBMISSOESBD.delete();
 	}
+	
+	/**
+	 * Reseta a base de dados de exercicios.
+	 */
+	public static void resetExercicios() {
+		EXERCICIOSBD.delete();
+	}
+	
+	/**
+	 * Reseta a base de dados de submissoes.
+	 */
+	public static void resetSubmissoes() {
+		SUBMISSOESBD.delete();
+	}
+	
+	/**
+	 * remove os alunos da base de dados de usuarios
+	 */
+	public static void resetAlunos() {
+		List<Usuario> users = BD.getUsuarios();
+		users.removeAll(BD.getAlunos());
+		try {
+			Serializar.salvarObjeto(USUARIOSBD, users);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * remove os moderadores da base de dados de usuarios
+	 */
+	public static void resetModeradores() {
+		List<Usuario> users = BD.getUsuarios();
+		users.removeAll(BD.getModeradores());
+		try {
+			Serializar.salvarObjeto(USUARIOSBD, users);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
