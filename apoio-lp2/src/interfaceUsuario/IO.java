@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class IO {
 	
-	static final String NOVA_LINHA = System.getProperty("line.separator");
+	public static final String NOVA_LINHA = System.getProperty("line.separator");
 	static Scanner scan = new Scanner(System.in);
 
 	/**
