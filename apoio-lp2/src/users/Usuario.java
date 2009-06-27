@@ -225,13 +225,6 @@ public abstract class Usuario implements Serializable {
 		return dados;
 	}
 	
-	public String listarUsuarios(){
-		Iterator<Usuario> it = BD.getUsuarios().iterator();
-		String dados = "";
-		while (it.hasNext()) {
-			dados += it.next().toString();
-		}
-		return dados;
-	}
+
 
 }

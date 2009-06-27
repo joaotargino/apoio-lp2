@@ -443,27 +443,26 @@ public class BD {
 	
 	public static void main(String[] args) {
 		try {
-			Aluno al1 = new Aluno("AlunoTest", "20821282", "123456", "20821282", "alunotest@email.com", "2009.1");
-			Aluno al2 = new Aluno("Erickson2", "20821200", "123456", "20821200", "erickson@email.com", "2009.1");
 			Professor prof = new Professor("Raquel" , "raquelvl" , "123456" , "20911234", "raquel@dsc.ufcg.edu.br" , "2009.1");
+			BD.cadastraUsuario(prof);
 			
-			System.out.println("Cadastrando AL1!");
-			BD.cadastraUsuario(al1);
-			System.out.println(BD.getAlunos().toString());
-			System.out.println("Cadastrando!");
-			BD.cadastraUsuario(al2);
-			System.out.println(BD.getAlunos().toString());
-			System.out.println("Cadastrando PROF!");
-			System.out.println(BD.cadastraUsuario(prof));
-			System.out.println(BD.getUsuarios().toString());
+//			System.out.println("Cadastrando AL1!");
+//			BD.cadastraUsuario(al1);
+//			System.out.println(BD.getAlunos().toString());
+//			System.out.println("Cadastrando!");
+//			BD.cadastraUsuario(al2);
+//			System.out.println(BD.getAlunos().toString());
+//			System.out.println("Cadastrando PROF!");
+//			System.out.println(BD.cadastraUsuario(prof));
+//			System.out.println(BD.getUsuarios().toString());
 		
 			//System.out.println("Removendo!");
 			//BD.removeUsuario("20821282");
 			//System.out.println(BD.getAlunos().toString());
-			System.out.println("Atualizando!");
-			al2.setEmail("ericksonfilipe@gmail.com");
-			System.out.println("Atualizou? " + BD.atualizaUsuario(al2));
-			System.out.println(BD.getUsuarios().toString());
+//			System.out.println("Atualizando!");
+//			al2.setEmail("ericksonfilipe@gmail.com");
+//			System.out.println("Atualizou? " + BD.atualizaUsuario(al2));
+//			System.out.println(BD.getUsuarios().toString());
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 			
@@ -471,57 +470,57 @@ public class BD {
 			e.printStackTrace();
 		}
 		
-		try {
-			Exercicio ex1 = new Exercicio(1,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar());
-			Exercicio ex2 = new Exercicio(2,"name2", "enunciadoteste2", new GregorianCalendar(), new GregorianCalendar());
-			Exercicio ex3 = new Exercicio(3,"name3", "enunciadoteste3", new GregorianCalendar(), new GregorianCalendar());
-			Exercicio ex4 = new Exercicio(4,"name", "enunciadoteste4", new GregorianCalendar(), new GregorianCalendar());
-			
-			System.out.println("Cadastrando!");
-			BD.cadastraExercicio(ex1);
-			System.out.println(BD.getExercicios().toString());
-			System.out.println("Cadastrando!");
-			BD.cadastraExercicio(ex2);
-			System.out.println(BD.getExercicios().toString());
+//		try {
+//			Exercicio ex1 = new Exercicio(1,"name", "enunciadoteste", new GregorianCalendar(), new GregorianCalendar());
+//			Exercicio ex2 = new Exercicio(2,"name2", "enunciadoteste2", new GregorianCalendar(), new GregorianCalendar());
+//			Exercicio ex3 = new Exercicio(3,"name3", "enunciadoteste3", new GregorianCalendar(), new GregorianCalendar());
+//			Exercicio ex4 = new Exercicio(4,"name", "enunciadoteste4", new GregorianCalendar(), new GregorianCalendar());
+//			
+//			System.out.println("Cadastrando!");
+//			BD.cadastraExercicio(ex1);
+//			System.out.println(BD.getExercicios().toString());
+//			System.out.println("Cadastrando!");
+//			BD.cadastraExercicio(ex2);
+//			System.out.println(BD.getExercicios().toString());
+//		
+//			System.out.println("Removendo!");
+//			BD.removeExercicio(2);
+//			System.out.println(BD.getExercicios().toString());
+//			System.out.println("Atualizando!");
+//			System.out.println("Atualizou? " + BD.atualizaExercicio(1, ex3));
+//			System.out.println(BD.getExercicios().toString());
+//		} catch (IOException e) {
+//			System.out.print(e.getMessage());
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
-			System.out.println("Removendo!");
-			BD.removeExercicio(2);
-			System.out.println(BD.getExercicios().toString());
-			System.out.println("Atualizando!");
-			System.out.println("Atualizou? " + BD.atualizaExercicio(1, ex3));
-			System.out.println(BD.getExercicios().toString());
-		} catch (IOException e) {
-			System.out.print(e.getMessage());
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			Submissao sub1 = new Submissao("20821200", new GregorianCalendar(), "caminho/do/arquivo.py");
-			Submissao sub2 = new Submissao("20821202", new GregorianCalendar(), "caminho/do/arquivo2.py");
-			
-			System.out.println("Cadastrando!");
-			BD.cadastraSubmissao(sub1);
-			System.out.println(BD.getSubmissoes().toString());
-			System.out.println("Cadastrando!");
-			BD.cadastraSubmissao(sub2);
-			System.out.println(BD.getSubmissoes().toString());
-		
-			System.out.println("Removendo!");
-			BD.removeSubmissao(1);
-			System.out.println(BD.getSubmissoes().toString());
-			System.out.println("Atualizando!");
-			sub2.setComentario("SAi dai Seu Jegue!");
-			System.out.println("Atualizou? " + BD.atualizaSubmissao(sub2));
-			System.out.println(BD.getSubmissoes().toString());
-		} catch (IOException e) {
-			System.out.print(e.getMessage());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Submissao sub1 = new Submissao("20821200", new GregorianCalendar(), "caminho/do/arquivo.py");
+//			Submissao sub2 = new Submissao("20821202", new GregorianCalendar(), "caminho/do/arquivo2.py");
+//			
+//			System.out.println("Cadastrando!");
+//			BD.cadastraSubmissao(sub1);
+//			System.out.println(BD.getSubmissoes().toString());
+//			System.out.println("Cadastrando!");
+//			BD.cadastraSubmissao(sub2);
+//			System.out.println(BD.getSubmissoes().toString());
+//		
+//			System.out.println("Removendo!");
+//			BD.removeSubmissao(1);
+//			System.out.println(BD.getSubmissoes().toString());
+//			System.out.println("Atualizando!");
+//			sub2.setComentario("SAi dai Seu Jegue!");
+//			System.out.println("Atualizou? " + BD.atualizaSubmissao(sub2));
+//			System.out.println(BD.getSubmissoes().toString());
+//		} catch (IOException e) {
+//			System.out.print(e.getMessage());
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 }

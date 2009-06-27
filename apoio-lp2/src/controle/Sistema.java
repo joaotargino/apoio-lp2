@@ -36,7 +36,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.err.println(e);
+				System.out.println(e);
 			}
 		} else if (tipo == UsuariosEnum.PROFESSOR) {
 			try {
@@ -48,7 +48,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.err.println(e);
+				System.out.println(e);
 			}
 		} else {
 			try {
@@ -59,7 +59,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				System.err.println(e);
+				System.out.println(e);
 			}
 
 		}
@@ -145,7 +145,7 @@ public class Sistema {
 			try {
 				BD.cadastraSubmissao(sub);
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 			return true;
 		} return false;
@@ -160,9 +160,9 @@ public class Sistema {
 				return true;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 		return false;
 	}
@@ -172,7 +172,6 @@ public class Sistema {
 		BD.cadastraUsuario(usr);
 		
 	}
-
 
 	public static void addExercicio(List<String> dadosExercicio) throws Exception {
 		Calendar dataAtual = new GregorianCalendar();
@@ -199,4 +198,12 @@ public class Sistema {
 		return BD.getExercicios();
 	}
 
+	public static String listarUsuarios(){
+		Iterator<Usuario> it = BD.getUsuarios().iterator();
+		String dados = "";
+		while (it.hasNext()) {
+			dados += it.next().toString();
+		}
+		return dados;
+	}
 }
