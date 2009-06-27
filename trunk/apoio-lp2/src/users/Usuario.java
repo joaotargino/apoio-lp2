@@ -34,26 +34,26 @@ public abstract class Usuario implements Serializable {
 			String email, String turma) throws Exception {
 		if (login == null || senha == null || nome == null)
 			throw new IllegalArgumentException(
-					"LOGIN, NOME OU SENHA INVÁLIDOS!");
+					"LOGIN, NOME OU SENHA INVALIDOS!");
 		if (login.length() < MENOR_LOGIN) {
 			throw new Exception(
 					"LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
 		}
 		if (senha.length() < MENOR_SENHA) {
 			throw new Exception(
-					"SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+					"SENHA INVALIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
 		}
 		if (senha.length() > MAIOR_SENHA) {
 			throw new Exception(
-					"SENHA INVÁLIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
+					"SENHA INVALIDA. INFORME UMA SENHA COM SEIS OU MAIS CARACTERES.");
 		}
 		if (!verificaEmail(email)) {
 			throw new Exception(
-					"EMAIL INVÁLIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
+					"EMAIL INVALIDO. VERIFIQUE O ENDEREÇO E TENTE NOVAMENTE.");
 		}
 
 		if (nome.isEmpty()) {
-			throw new Exception("INFORME UM NOME VÁLIDO");
+			throw new Exception("INFORME UM NOME VALIDO");
 		}
 		this.login = login;
 		this.senha = senha;
@@ -86,12 +86,8 @@ public abstract class Usuario implements Serializable {
 	 * @param novaSenha
 	 * @return true se a senha foi alterada e false caso contrario.
 	 */
-	public boolean setSenha(String atual, String novaSenha) {
-		if (atual.equals(senha)) {
-			senha = novaSenha;
-			return true;
-		}
-		return false;
+	public void setSenha(String novaSenha) {
+		senha = novaSenha;
 	}
 
 	/**
