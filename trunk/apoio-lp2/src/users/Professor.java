@@ -12,8 +12,8 @@ import controle.UsuariosEnum;
  */
 
 public class Professor extends Moderador{
-	public Professor(String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
-		super(nome, login, senha, matricula, email, turma);
+	public Professor(int id, String nome, String login, String senha, String matricula, String email, String turma) throws Exception {
+		super(id, nome, login, senha, matricula, email, turma);
 	}
 
 	@Override

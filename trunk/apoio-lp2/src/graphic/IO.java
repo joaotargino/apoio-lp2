@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class IO {
 	
-	static final String NOVA_LINHA = System.getProperty("line.separator");
+	public static final String NOVA_LINHA = System.getProperty("line.separator");
 	static Scanner scan = new Scanner(System.in);
 
 	/**
 	 * cria um numero inteiro valido
 	 * @return retorna um numero inteiro valido
 	 */
-	static int recebeInteiro() {
+	public static int recebeInteiro() {
 		while (!scan.hasNextInt()) {
 			scan.next();
 			System.out.println("INFORME UM NÚMERO INTEIRO: ");
@@ -26,7 +26,7 @@ public class IO {
 	 * cria um numero double valido
 	 * @return retorna um double valido
 	 */
-	static double recebeDouble() {
+	public static double recebeDouble() {
 		while (!scan.hasNextDouble()) {
 			scan.next();
 			System.out.println("INFORME UM NÚMERO DOUBLE: ");

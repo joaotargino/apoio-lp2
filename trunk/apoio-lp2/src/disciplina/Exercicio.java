@@ -127,6 +127,6 @@ public class Exercicio implements Serializable{
 	
 	@Override
 		public String toString() {
-			return "Id: " + getId() + " | Nome: "  + getNome();
+			return "Id: " + getId() + " | Nome: "  + getNome() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0]; 
 		}	
 }
