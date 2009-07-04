@@ -21,7 +21,7 @@ import disciplina.Exercicio;
  * @version 0.5  -  Junho / 2009
  */
 public class UserInterface {
-
+//teste
 	static Scanner sc = new Scanner(System.in);
 
 	static String logado;
