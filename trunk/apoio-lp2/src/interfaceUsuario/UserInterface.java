@@ -21,7 +21,9 @@ import disciplina.Exercicio;
  * @version 0.5  -  Junho / 2009
  */
 public class UserInterface {
-//teste eclipse
+
+//teste netbeans 6.5 r147... usar essa versao que ta lendo isso!
+
 	static Scanner sc = new Scanner(System.in);
 
 	static String logado;
