@@ -33,13 +33,14 @@ public class MenuProfessor extends javax.swing.JFrame {
     public MenuProfessor(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
-        painelExibir.setVisible(false);
+        inicializaPaineis();
+        painelDeAbas.setVisible(true);
         painelExibir.setText("");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
     private void inicializaPaineis(){
-        painelDeAbas.setVisible(true);
+        painelDeAbas.setVisible(false);
         painelExibir.setVisible(false);
 
     }
@@ -77,6 +78,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         resetarAlunos = new javax.swing.JMenuItem();
         resetarSubmissões = new javax.swing.JMenuItem();
         resetarExercicios = new javax.swing.JMenuItem();
+        resetaBD = new javax.swing.JMenuItem();
         Logoff = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
@@ -132,6 +134,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuAdicionar.add(addMonitor);
 
         addExercicio.setText("Exercício");
+        addExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addExercicioActionPerformed(evt);
+            }
+        });
         menuAdicionar.add(addExercicio);
 
         menuArquivo.add(menuAdicionar);
@@ -175,6 +182,14 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuResetarBD.add(resetarExercicios);
 
+        resetaBD.setText("Resetar Tudo");
+        resetaBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetaBDActionPerformed(evt);
+            }
+        });
+        menuResetarBD.add(resetaBD);
+
         menuArquivo.add(menuResetarBD);
 
         Logoff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -206,6 +221,11 @@ public class MenuProfessor extends javax.swing.JFrame {
 
         menuEditarDados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuEditarDados.setText("Editar Dados");
+        menuEditarDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarDadosActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuEditarDados);
 
         menuAlterarSenha.setText("Alterar Senha");
@@ -311,12 +331,9 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_addMonitorActionPerformed
 
     private void addAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAlunoActionPerformed
-//        AddUser addUser = new AddUser(UsuariosEnum.ALUNO);
-//        addUser.setEnabled(true);
-        AdicionaUsuario adicionaUsuario = new AdicionaUsuario(UsuariosEnum.ALUNO);
-        painelDeAbas.setVisible(false);
-        add(adicionaUsuario);
-        adicionaUsuario.setVisible(true);
+        AddUser addUser = new AddUser(UsuariosEnum.ALUNO);
+        addUser.setVisible(true);
+
     }//GEN-LAST:event_addAlunoActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
@@ -325,13 +342,13 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void exibirAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirAlunosActionPerformed
-        painelDeAbas.setVisible(false);
+        inicializaPaineis();
         painelExibir.setText(Sistema.listaDeAlunos());
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirAlunosActionPerformed
 
     private void exibirModeradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirModeradoresActionPerformed
-        painelDeAbas.setVisible(false);
+        inicializaPaineis();
         painelExibir.setText(Sistema.listaDeModeradores());
         painelExibir.setVisible(true);
 }//GEN-LAST:event_exibirModeradoresActionPerformed
@@ -341,13 +358,14 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_resetarAlunosActionPerformed
 
     private void exibirExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirExerciciosActionPerformed
-        painelDeAbas.setVisible(false);
+        inicializaPaineis();
         painelExibir.setText(Sistema.listaDeExercicios());
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirExerciciosActionPerformed
 
     private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
         inicializaPaineis();
+        painelDeAbas.setVisible(true);
     }//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
 
     private void resetarExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarExerciciosActionPerformed
@@ -364,6 +382,20 @@ public class MenuProfessor extends javax.swing.JFrame {
         PaginaInicial telaLogin = new PaginaInicial();
         telaLogin.setVisible(true);
     }//GEN-LAST:event_LogoffActionPerformed
+
+    private void resetaBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetaBDActionPerformed
+        Sistema.resetaBD(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+    }//GEN-LAST:event_resetaBDActionPerformed
+
+    private void addExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExercicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addExercicioActionPerformed
+
+    private void menuEditarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarDadosActionPerformed
+        EditarDados edit = new EditarDados(dadosUsuario, UsuariosEnum.PROFESSOR);
+        edit.setVisible(true);
+
+    }//GEN-LAST:event_menuEditarDadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,6 +446,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem removerAluno;
     private javax.swing.JMenuItem removerExercicio;
     private javax.swing.JMenuItem removerMonitor;
+    private javax.swing.JMenuItem resetaBD;
     private javax.swing.JMenuItem resetarAlunos;
     private javax.swing.JMenuItem resetarExercicios;
     private javax.swing.JMenuItem resetarSubmissões;
