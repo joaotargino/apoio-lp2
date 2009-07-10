@@ -71,8 +71,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         addMonitor = new javax.swing.JMenuItem();
         addExercicio = new javax.swing.JMenuItem();
         menuRemover = new javax.swing.JMenu();
-        removerAluno = new javax.swing.JMenuItem();
-        removerMonitor = new javax.swing.JMenuItem();
+        removerUsuario = new javax.swing.JMenuItem();
         removerExercicio = new javax.swing.JMenuItem();
         menuResetarBD = new javax.swing.JMenu();
         resetarAlunos = new javax.swing.JMenuItem();
@@ -145,11 +144,13 @@ public class MenuProfessor extends javax.swing.JFrame {
 
         menuRemover.setText("Remover");
 
-        removerAluno.setText("Aluno");
-        menuRemover.add(removerAluno);
-
-        removerMonitor.setText("Monitor");
-        menuRemover.add(removerMonitor);
+        removerUsuario.setText("Usuário");
+        removerUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerUsuarioActionPerformed(evt);
+            }
+        });
+        menuRemover.add(removerUsuario);
 
         removerExercicio.setText("Exercício");
         menuRemover.add(removerExercicio);
@@ -397,6 +398,12 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuEditarDadosActionPerformed
 
+    private void removerUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerUsuarioActionPerformed
+        RemoveUsuario remove = new RemoveUsuario(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+ 
+        remove.setVisible(true);
+}//GEN-LAST:event_removerUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,9 +450,8 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JTabbedPane painelDeAbas;
     private javax.swing.JTextPane painelExibir;
-    private javax.swing.JMenuItem removerAluno;
     private javax.swing.JMenuItem removerExercicio;
-    private javax.swing.JMenuItem removerMonitor;
+    private javax.swing.JMenuItem removerUsuario;
     private javax.swing.JMenuItem resetaBD;
     private javax.swing.JMenuItem resetarAlunos;
     private javax.swing.JMenuItem resetarExercicios;

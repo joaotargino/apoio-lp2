@@ -45,15 +45,13 @@
                 <Property name="text" type="java.lang.String" value="Remover"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="removerAluno">
+                <MenuItem class="javax.swing.JMenuItem" name="removerUsuario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Aluno"/>
+                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
                   </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="removerMonitor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Monitor"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerUsuarioActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="removerExercicio">
                   <Properties>
