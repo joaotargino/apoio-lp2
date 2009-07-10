@@ -29,10 +29,9 @@ public class Sistema {
 	 * @param dados
 	 * @param tipo
 	 */
-	public static void editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
+	public static boolean editaDadosUsuario(List<String> dados, UsuariosEnum tipo) {
 		Usuario usr = criaUsuario(dados, tipo);
-
-		BD.atualizaUsuario(usr);
+		return BD.atualizaUsuario(usr);
 
 	}
 

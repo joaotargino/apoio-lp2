@@ -38,8 +38,8 @@ public class AddUser extends javax.swing.JFrame {
         painelAddUsuario.setVisible(true);
         erro.setForeground(Color.RED);
         sucesso.setForeground(Color.BLUE);
-        //erro.setText(ex.getMessage());
-        erro.setVisible(false);
+    //erro.setText(ex.getMessage());
+    //erro.setVisible(false);
 
 
     }
@@ -107,8 +107,6 @@ public class AddUser extends javax.swing.JFrame {
 
         labelTurma.setText("Turma:");
 
-        erro.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
         labelAddUser.setText("Preencha os campos abaixo para adicionar um ...");
 
         jButton1.setText("Limpar");
@@ -128,47 +126,46 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(173, 173, 173)
                 .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddUsuarioLayout.createSequentialGroup()
-                        .addComponent(sucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(erro, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(painelAddUsuarioLayout.createSequentialGroup()
-                            .addComponent(erro, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
-                        .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelAddUsuarioLayout.createSequentialGroup()
-                                .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(labelMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelAddUsuarioLayout.createSequentialGroup()
-                                        .addComponent(botaoSalvar)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(jButton1)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(botaoCancelar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
-                                    .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(campoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(campoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(campoTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
-                                .addGap(256, 256, 256))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddUsuarioLayout.createSequentialGroup()
-                                .addComponent(labelAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-                                .addContainerGap())))))
+                        .addGroup(painelAddUsuarioLayout.createSequentialGroup()
+                            .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(labelMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelAddUsuarioLayout.createSequentialGroup()
+                                    .addComponent(botaoSalvar)
+                                    .addGap(48, 48, 48)
+                                    .addComponent(jButton1)
+                                    .addGap(48, 48, 48)
+                                    .addComponent(botaoCancelar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
+                                .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                            .addGap(256, 256, 256))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddUsuarioLayout.createSequentialGroup()
+                            .addComponent(labelAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+                            .addContainerGap()))))
         );
         painelAddUsuarioLayout.setVerticalGroup(
             painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddUsuarioLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(erro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(labelAddUser)
@@ -228,24 +225,15 @@ public class AddUser extends javax.swing.JFrame {
 
     private void botaoSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoSalvarMouseClicked
 
-        sucesso.setText("");
-        erro.setText("");
-
-        try {
-            criarUsuario(tipo);
-        } catch (Exception e) { //pq n ta pegando essa excecao se no console ela aparece? oO
-
-            erro.setText(e.getMessage());
-
-        //TODO ...
-        //temos que ver isso
-        } finally {
-            erro.setText(Sistema.excecao);
+        if (criarUsuario(tipo)) {
             sucesso.setText(Sistema.addUserSucesso);
-            //preciso fechar a janela quando o usuario for adicionado
-            erro.setVisible(true);
-
+            erro.setText("");
+            inicializaCamposUsuario();
+        } else {
+            erro.setText(Sistema.excecao);
+            sucesso.setText("");
         }
+
 
     }//GEN-LAST:event_botaoSalvarMouseClicked
 
@@ -254,7 +242,7 @@ public class AddUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         inicializaCamposUsuario();
-    }//GEN-LAST:event_jButton1ActionPerformed
+}//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         dispose();
@@ -265,7 +253,7 @@ public class AddUser extends javax.swing.JFrame {
      * @param tipo - tipo de usuario
      * @throws IOException
      */
-    public void criarUsuario(UsuariosEnum tipo) throws Exception {
+    public boolean criarUsuario(UsuariosEnum tipo) {
         List<String> dadosUsuario = new ArrayList<String>();
 
         dadosUsuario.add(campoLogin.getText());
@@ -275,9 +263,12 @@ public class AddUser extends javax.swing.JFrame {
         dadosUsuario.add(campoEmail.getText());
         dadosUsuario.add(campoTurma.getText());
 
-
-        Sistema.addUsuario(dadosUsuario, tipo);
-
+        try {
+            return Sistema.addUsuario(dadosUsuario, tipo);
+        } catch (Exception e) {
+            erro.setText(e.getMessage());
+        }
+        return false;
     }
 
     /**
@@ -314,7 +305,7 @@ public class AddUser extends javax.swing.JFrame {
     javax.swing.JTextField campoNome;
     javax.swing.JTextField campoSenha;
     javax.swing.JTextField campoTurma;
-    javax.swing.JLabel erro;
+    private javax.swing.JLabel erro;
     private javax.swing.JButton jButton1;
     javax.swing.JLabel labelAddUser;
     javax.swing.JLabel labelEmail;
