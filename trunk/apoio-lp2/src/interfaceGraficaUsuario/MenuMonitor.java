@@ -64,7 +64,7 @@ public class MenuMonitor extends javax.swing.JFrame {
         editarExercicio = new javax.swing.JMenuItem();
         menuExibir = new javax.swing.JMenu();
         exibirAlunos = new javax.swing.JMenuItem();
-        exibirMonitores = new javax.swing.JMenuItem();
+        exibirModeradores = new javax.swing.JMenuItem();
         exibirExercicios = new javax.swing.JMenuItem();
         exibirPlanilha = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
@@ -139,8 +139,8 @@ public class MenuMonitor extends javax.swing.JFrame {
         });
         menuExibir.add(exibirAlunos);
 
-        exibirMonitores.setText("Monitores");
-        menuExibir.add(exibirMonitores);
+        exibirModeradores.setText("Moderadores");
+        menuExibir.add(exibirModeradores);
 
         exibirExercicios.setText("Exercícios");
         menuExibir.add(exibirExercicios);
@@ -213,7 +213,7 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem editarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
-    private javax.swing.JMenuItem exibirMonitores;
+    private javax.swing.JMenuItem exibirModeradores;
     private javax.swing.JMenuItem exibirPlanilha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;

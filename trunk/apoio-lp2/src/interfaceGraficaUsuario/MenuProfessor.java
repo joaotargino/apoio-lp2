@@ -79,7 +79,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         editarExercicio = new javax.swing.JMenuItem();
         menuExibir = new javax.swing.JMenu();
         exibirAlunos = new javax.swing.JMenuItem();
-        exibirMonitores = new javax.swing.JMenuItem();
+        exibirModeradores = new javax.swing.JMenuItem();
         exibirExercicios = new javax.swing.JMenuItem();
         exibirPlanilha = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
@@ -194,15 +194,20 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuExibir.add(exibirAlunos);
 
-        exibirMonitores.setText("Monitores");
-        exibirMonitores.addActionListener(new java.awt.event.ActionListener() {
+        exibirModeradores.setText("Moderadores");
+        exibirModeradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exibirMonitoresActionPerformed(evt);
+                exibirModeradoresActionPerformed(evt);
             }
         });
-        menuExibir.add(exibirMonitores);
+        menuExibir.add(exibirModeradores);
 
         exibirExercicios.setText("Exercícios");
+        exibirExercicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibirExerciciosActionPerformed(evt);
+            }
+        });
         menuExibir.add(exibirExercicios);
 
         exibirPlanilha.setText("Planilha de Notas");
@@ -275,15 +280,21 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirAlunosActionPerformed
 
-    private void exibirMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirMonitoresActionPerformed
+    private void exibirModeradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirModeradoresActionPerformed
         painelDeAbas.setVisible(false);
         painelExibir.setText(BD.listaDeModeradores());
         painelExibir.setVisible(true);
-    }//GEN-LAST:event_exibirMonitoresActionPerformed
+}//GEN-LAST:event_exibirModeradoresActionPerformed
 
     private void resetarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarAlunosActionPerformed
         BD.resetAlunos();
     }//GEN-LAST:event_resetarAlunosActionPerformed
+
+    private void exibirExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirExerciciosActionPerformed
+        painelDeAbas.setVisible(false);
+        painelExibir.setText(BD.listaDeExercicios());
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_exibirExerciciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,7 +323,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem editarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
-    private javax.swing.JMenuItem exibirMonitores;
+    private javax.swing.JMenuItem exibirModeradores;
     private javax.swing.JMenuItem exibirPlanilha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;
