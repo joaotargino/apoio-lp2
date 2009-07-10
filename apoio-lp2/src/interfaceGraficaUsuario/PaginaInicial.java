@@ -20,6 +20,7 @@ import controle.UsuariosEnum;
 public class PaginaInicial extends javax.swing.JFrame {
 
     static UsuariosEnum tipoUsuario;
+    private static PaginaInicial telaLogin = new PaginaInicial();
 
     /** Creates new form PaginaInicial */
     public PaginaInicial() {
@@ -54,18 +55,13 @@ public class PaginaInicial extends javax.swing.JFrame {
             }
         });
 
-        labelLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelLogin.setFont(new java.awt.Font("Tahoma", 0, 14));
         labelLogin.setText("Login:");
 
-        labelSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelSenha.setFont(new java.awt.Font("Tahoma", 0, 14));
         labelSenha.setText("Senha:");
 
         botaoEntrar.setText("Entrar");
-        botaoEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoEntrarMouseClicked(evt);
-            }
-        });
         botaoEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEntrarActionPerformed(evt);
@@ -118,17 +114,17 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addContainerGap(164, Short.MAX_VALUE)
                 .addComponent(logoCCC, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(labelSenha)))
+                        .addComponent(labelSenha))
+                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -142,12 +138,6 @@ public class PaginaInicial extends javax.swing.JFrame {
     private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_campoLoginActionPerformed
-
-    private void botaoEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEntrarMouseClicked
-        String login = campoLogin.getText();
-        String senha = campoSenha.getText();
-        defineUsuario(login, senha);
-    }//GEN-LAST:event_botaoEntrarMouseClicked
 
     private void botaoEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoEntrarKeyPressed
         String login = campoLogin.getText();
@@ -163,6 +153,8 @@ public class PaginaInicial extends javax.swing.JFrame {
         String login = campoLogin.getText();
         String senha = campoSenha.getText();
         defineUsuario(login, senha);
+//        telaLogin.setVisible(false);//teste pra janela sumir o0 =x
+
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     private void defineUsuario(String login, String senha) {
@@ -173,13 +165,16 @@ public class PaginaInicial extends javax.swing.JFrame {
 //                                MenuAluno menuAluno = new MenuAluno(Sistema.dadosUsuario(login));
 //                                menuAluno.setVisible(true);
             } else if (tipoUsuario == UsuariosEnum.MONITOR) {
-//                              menuModerador(Sistema.dadosUsuario(Sistema.dadosUsuario(login)));
+                MenuMonitor menuMonitor = new MenuMonitor(Sistema.dadosUsuario(login));
+                menuMonitor.setVisible(true);
             } else {
-                AdicionarUsuario ui = new AdicionarUsuario(UsuariosEnum.ALUNO);
-                ui.setVisible(true);
-                
-//                MenuProfessor menuProf = new MenuProfessor(Sistema.dadosUsuario(login));
-//                menuProf.setVisible(true);
+//                AdicionarUsuario ui = new AdicionarUsuario(UsuariosEnum.ALUNO);
+//                ui.setVisible(true);
+
+                MenuProfessor menuProf = new MenuProfessor(Sistema.dadosUsuario(login));
+                menuProf.setVisible(true);
+
+
             }
         }
     }
@@ -191,7 +186,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new PaginaInicial().setVisible(true);
+                telaLogin.setVisible(true);
                 Sistema.inicia();
             }
         });
