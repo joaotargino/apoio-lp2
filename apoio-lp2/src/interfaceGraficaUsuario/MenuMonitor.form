@@ -91,9 +91,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exibirAlunosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="exibirMonitores">
+            <MenuItem class="javax.swing.JMenuItem" name="exibirModeradores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Monitores"/>
+                <Property name="text" type="java.lang.String" value="Moderadores"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exibirExercicios">
