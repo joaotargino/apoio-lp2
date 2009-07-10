@@ -258,9 +258,9 @@ public class Sistema {
 	 * @param tipo
 	 * @throws IOException
 	 */
-	public static void addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) throws IOException {
+	public static boolean addUsuario(List<String> dadosUsuario, UsuariosEnum tipo) throws IOException {
 		Usuario usr = criaUsuario(dadosUsuario, tipo);
-		BD.cadastraUsuario(usr);
+		return BD.cadastraUsuario(usr);
 		
 	}
 
@@ -462,11 +462,7 @@ public class Sistema {
     public static String listaDeAlunos(){
         String lista = "";
         List<Usuario> alunos = BD.getAlunos();
-        Iterator<Usuario> aluno = alunos.iterator();
-        while (aluno.hasNext()){
-            lista += aluno.next().toString();
-        }
-        return lista;
+        return Util.ListToString(alunos);
     }
 
     /**
