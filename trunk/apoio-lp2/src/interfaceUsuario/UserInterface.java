@@ -22,9 +22,8 @@ import disciplina.Exercicio;
  */
 public class UserInterface {
 
-//teste netbeans 6.5 r147... usar essa versao que ta lendo isso!
 
-	static Scanner sc = new Scanner(System.in);
+//teste netbeans 6.5 r147... usar essa versao que ta lendo isso!
 
 	static String logado;
 	static UsuariosEnum tipoUsuario;
@@ -40,9 +39,10 @@ public class UserInterface {
 	private static void paginaInicial() {
 		System.out.println("BEM VINDO AO SISTEMA");
 		System.out.print("LOGIN: ");
-		String login = sc.nextLine();
+
+		String login = dados.IO.scan.nextLine();
 		System.out.print("SENHA: ");
-		String senha = sc.nextLine();
+		String senha = dados.IO.scan.nextLine();
 		tipoUsuario = Sistema.confereLoginSenha(login, senha);
 		if (tipoUsuario != UsuariosEnum.INEXISTENTE) {
 			if (tipoUsuario == UsuariosEnum.ALUNO) {
@@ -116,7 +116,7 @@ public class UserInterface {
 
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				sc.nextLine();
+				dados.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
@@ -256,7 +256,7 @@ public class UserInterface {
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				sc.nextLine();
+				dados.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
@@ -365,7 +365,7 @@ public class UserInterface {
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				sc.nextLine();
+				dados.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
