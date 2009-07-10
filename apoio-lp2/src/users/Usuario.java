@@ -212,8 +212,9 @@ public abstract class Usuario implements Serializable {
 		return false;
 	}
 
+
 	public String toString() {
-		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " - "+ getEnum()  + IO.NOVA_LINHA;
+		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " | email: "+ getEmail() + " | Turma: "+ getTurma() + IO.NOVA_LINHA;
 	}
 	
 	/**

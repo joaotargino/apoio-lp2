@@ -10,6 +10,7 @@
  */
 package interfaceGraficaUsuario;
 
+import controle.BD;
 import controle.DadosUsuarioEnum;
 import controle.UsuariosEnum;
 import java.util.List;
@@ -32,9 +33,10 @@ public class MenuProfessor extends javax.swing.JFrame {
     public MenuProfessor(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
-        painelExibirAlunos.setVisible(false);
-        painelExibirAlunos.setText("Exibindo alunos");
-        labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + "\nemail: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
+        painelExibir.setVisible(false);
+        painelExibir.setText("");
+
+        labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
     /** This method is called from within the constructor to
@@ -55,7 +57,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         abaPainelInfoProjeto = new javax.swing.JTabbedPane();
         abaPainelNotas = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        painelExibirAlunos = new javax.swing.JTextPane();
+        painelExibir = new javax.swing.JTextPane();
         menuBarProfessor = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuAdicionar = new javax.swing.JMenu();
@@ -95,8 +97,8 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelDeAbas.addTab("Informações do Projeto", abaPainelInfoProjeto);
         painelDeAbas.addTab("Notas", abaPainelNotas);
 
-        painelExibirAlunos.setBackground(new java.awt.Color(240, 240, 240));
-        jScrollPane1.setViewportView(painelExibirAlunos);
+        painelExibir.setBackground(new java.awt.Color(240, 240, 240));
+        jScrollPane1.setViewportView(painelExibir);
 
         menuArquivo.setText("Arquivo");
 
@@ -188,6 +190,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuExibir.add(exibirAlunos);
 
         exibirMonitores.setText("Monitores");
+        exibirMonitores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibirMonitoresActionPerformed(evt);
+            }
+        });
         menuExibir.add(exibirMonitores);
 
         exibirExercicios.setText("Exercícios");
@@ -214,11 +221,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
+            .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
         );
@@ -230,8 +237,8 @@ public class MenuProfessor extends javax.swing.JFrame {
                 .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(41, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(47, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -259,8 +266,15 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void exibirAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirAlunosActionPerformed
         painelDeAbas.setVisible(false);
-        painelExibirAlunos.setVisible(true);
+        painelExibir.setText(BD.listaDeAlunos());
+        painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirAlunosActionPerformed
+
+    private void exibirMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirMonitoresActionPerformed
+        painelDeAbas.setVisible(false);
+        painelExibir.setText(BD.listaDeModeradores());
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_exibirMonitoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +319,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenu menuResetarBD;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JTabbedPane painelDeAbas;
-    private javax.swing.JTextPane painelExibirAlunos;
+    private javax.swing.JTextPane painelExibir;
     private javax.swing.JMenuItem removerAluno;
     private javax.swing.JMenuItem removerExercicio;
     private javax.swing.JMenuItem removerMonitor;

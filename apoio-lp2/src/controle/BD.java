@@ -57,6 +57,36 @@ public class BD {
 		}
 		return alunos;
 	}
+
+    /**
+     *
+     * Cria uma string com a lista de Alunos
+     * @return uma string com a lista de alunos
+     */
+    public static String listaDeAlunos(){
+        String lista = "";
+        List<Usuario> alunos = getAlunos();
+        Iterator<Usuario> aluno = alunos.iterator();
+        while (aluno.hasNext()){
+            lista += aluno.next().toString();// + dados.IO.NOVA_LINHA;
+        }
+        return lista;
+    }
+
+    /**
+     *
+     * Cria uma string com a lista de Alunos
+     * @return uma string com a lista de alunos
+     */
+    public static String listaDeModeradores(){
+        String lista = "";
+        List<Usuario> moderadores = getModeradores();
+        Iterator<Usuario> moderador = moderadores.iterator();
+        while (moderador.hasNext()){
+            lista += moderador.next().toString();// + dados.IO.NOVA_LINHA;
+        }
+        return lista;
+    }
 	
 	/**
 	 * Retorna uma lista de moderadores cadastrados no banco de dados
