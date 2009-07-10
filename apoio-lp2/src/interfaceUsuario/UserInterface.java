@@ -23,7 +23,7 @@ import disciplina.Exercicio;
 public class UserInterface {
 
 
-//teste netbeans 6.5 r147... usar essa versao que ta lendo isso!
+
 
 	static String logado;
 	static UsuariosEnum tipoUsuario;
