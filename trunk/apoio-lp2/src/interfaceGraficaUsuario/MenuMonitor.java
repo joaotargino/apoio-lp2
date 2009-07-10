@@ -187,7 +187,7 @@ public class MenuMonitor extends MenuProfessor {
 }//GEN-LAST:event_menuSairMouseClicked
 
     private void addAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAlunoActionPerformed
-        AdicionarUsuario addUser = new AdicionarUsuario(UsuariosEnum.ALUNO);
+        AddUser addUser = new AddUser(UsuariosEnum.ALUNO);
         addUser.setVisible(true);
 }//GEN-LAST:event_addAlunoActionPerformed
 
