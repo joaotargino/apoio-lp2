@@ -449,5 +449,47 @@ public class Sistema {
 			BD.resetSubmissoes();
 		
 	}
+/**
+     *
+     * Cria uma string com a lista de Alunos
+     * @return uma string com a lista de alunos
+     */
+    public static String listaDeAlunos(){
+        String lista = "";
+        List<Usuario> alunos = BD.getAlunos();
+        Iterator<Usuario> aluno = alunos.iterator();
+        while (aluno.hasNext()){
+            lista += aluno.next().toString();
+        }
+        return lista;
+    }
 
+    /**
+     *
+     * Cria uma string com a lista de Moderadores (monitores e prof)
+     * @return uma string com a lista de moderadores
+     */
+    public static String listaDeModeradores(){
+        String lista = "";
+        List<Usuario> moderadores = BD.getModeradores();
+        Iterator<Usuario> moderador = moderadores.iterator();
+        while (moderador.hasNext()){
+            lista += moderador.next().toString();
+        }
+        return lista;
+    }
+    /**
+     *
+     * Cria uma string com a lista de Exercicios
+     * @return uma string com a lista de exercicios
+     */
+    public static String listaDeExercicios(){
+        String lista = "";
+        List<Exercicio> exercicios = BD.getExercicios();
+        Iterator<Exercicio> exercicio = exercicios.iterator();
+        while (exercicio.hasNext()){
+            lista += exercicio.next().toString();
+        }
+        return lista;
+    }
 }
