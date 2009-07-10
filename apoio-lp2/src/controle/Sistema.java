@@ -482,4 +482,8 @@ public class Sistema {
         List<Exercicio> exercicios = BD.getExercicios();
         return Util.ListToString(exercicios);
     }
+
+    public static Usuario getUsuario(int id) {
+    	return BD.getUsuario(id);
+    }
 }
