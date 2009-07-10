@@ -186,16 +186,16 @@ public class AdicionarUsuario extends javax.swing.JFrame {
             criarUsuario(tipo);
             System.out.println("vem aqui");
 
-        } catch (Exception ex) { //pq n ta pegando essa excecao se no console ela aparece? oO
+        } catch (IOException e) { //pq n ta pegando essa excecao se no console ela aparece? oO
             System.out.println("teste");
-            erro.setText(ex.toString());
+            erro.setText(e.toString());
 
         //TODO ...
         //temos que ver isso
         } finally {
             erro.setText("Ocorreu um erro. Verifique os dados."); //rever isso, preciso dar o erro especifico na tela
             //preciso fechar a janela quando o usuario for adicionado
-            erro.setVisible(true);
+            erro.setVisible(false);
             System.out.println("teste1");
         }
 
