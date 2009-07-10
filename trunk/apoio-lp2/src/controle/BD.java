@@ -68,7 +68,7 @@ public class BD {
         List<Usuario> alunos = getAlunos();
         Iterator<Usuario> aluno = alunos.iterator();
         while (aluno.hasNext()){
-            lista += aluno.next().toString();// + dados.IO.NOVA_LINHA;
+            lista += aluno.next().toString();
         }
         return lista;
     }
@@ -83,7 +83,7 @@ public class BD {
         List<Usuario> moderadores = getModeradores();
         Iterator<Usuario> moderador = moderadores.iterator();
         while (moderador.hasNext()){
-            lista += moderador.next().toString();// + dados.IO.NOVA_LINHA;
+            lista += moderador.next().toString();
         }
         return lista;
     }
