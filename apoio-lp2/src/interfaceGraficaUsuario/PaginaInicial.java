@@ -12,6 +12,7 @@ package interfaceGraficaUsuario;
 
 import controle.Sistema;
 import controle.UsuariosEnum;
+import java.awt.Color;
 
 /**
  *
@@ -25,6 +26,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     /** Creates new form PaginaInicial */
     public PaginaInicial() {
         initComponents();
+        dadosInvalidos.setForeground(Color.RED);
     }
 
     /** This method is called from within the constructor to
@@ -43,6 +45,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         botaoEntrar = new javax.swing.JButton();
         botaoRecuperarSenha = new javax.swing.JButton();
         logoCCC = new javax.swing.JLabel();
+        dadosInvalidos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("APOIO-LP2");
@@ -67,11 +70,6 @@ public class PaginaInicial extends javax.swing.JFrame {
                 botaoEntrarActionPerformed(evt);
             }
         });
-        botaoEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                botaoEntrarKeyPressed(evt);
-            }
-        });
 
         botaoRecuperarSenha.setText("Recuperar Senha");
         botaoRecuperarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,6 +79,8 @@ public class PaginaInicial extends javax.swing.JFrame {
         });
 
         logoCCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaceGraficaUsuario/ccc-full.jpg"))); // NOI18N
+
+        dadosInvalidos.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,9 +97,8 @@ public class PaginaInicial extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                             .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(logoCCC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE))))
+                            .addComponent(logoCCC, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dadosInvalidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(botaoEntrar))
@@ -111,9 +110,11 @@ public class PaginaInicial extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addComponent(logoCCC, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(dadosInvalidos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -139,12 +140,6 @@ public class PaginaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_campoLoginActionPerformed
 
-    private void botaoEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoEntrarKeyPressed
-        String login = campoLogin.getText();
-        String senha = campoSenha.getText();
-        defineUsuario(login, senha);
-    }//GEN-LAST:event_botaoEntrarKeyPressed
-
     private void botaoRecuperarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoRecuperarSenhaMouseClicked
@@ -153,7 +148,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         String login = campoLogin.getText();
         String senha = campoSenha.getText();
         defineUsuario(login, senha);
-//        telaLogin.setVisible(false);//teste pra janela sumir o0 =x
+
 
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
@@ -167,15 +162,19 @@ public class PaginaInicial extends javax.swing.JFrame {
             } else if (tipoUsuario == UsuariosEnum.MONITOR) {
                 MenuMonitor menuMonitor = new MenuMonitor(Sistema.dadosUsuario(login));
                 menuMonitor.setVisible(true);
+                dispose();
             } else {
 //                AdicionarUsuario ui = new AdicionarUsuario(UsuariosEnum.ALUNO);
 //                ui.setVisible(true);
 
                 MenuProfessor menuProf = new MenuProfessor(Sistema.dadosUsuario(login));
                 menuProf.setVisible(true);
+                dispose();
 
 
             }
+        } else{
+            dadosInvalidos.setText("Login e/ou Senha inválidos.");
         }
     }
 
@@ -197,6 +196,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JButton botaoRecuperarSenha;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JLabel dadosInvalidos;
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel logoCCC;

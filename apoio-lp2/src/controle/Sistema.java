@@ -21,7 +21,8 @@ import disciplina.Exercicio;
  * @version 0.5 - 25 de junho de 2009
  */
 public class Sistema {
-    public static String excecao;
+    public static String excecao = "";
+    public static String addUserSucesso = "";
 
 	/**
 	 * Edita os dados do usuario
@@ -68,12 +69,14 @@ public class Sistema {
 			}
 		} else {
 			try {
+                
 				usr = new Moderador(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
 						dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
 						dados.get(DadosUsuarioEnum.SENHA.ordinal()),
 						dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
+                addUserSucesso = "Usuário adicionado com sucesso";
 			} catch (Exception e) {
                 excecao = e.getMessage();
 				
