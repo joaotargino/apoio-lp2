@@ -141,6 +141,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuResetarBD.setText("Resetar BD");
 
         resetarAlunos.setText("Alunos");
+        resetarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetarAlunosActionPerformed(evt);
+            }
+        });
         menuResetarBD.add(resetarAlunos);
 
         resetarSubmissões.setText("Submissões");
@@ -275,6 +280,10 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelExibir.setText(BD.listaDeModeradores());
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirMonitoresActionPerformed
+
+    private void resetarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarAlunosActionPerformed
+        BD.resetAlunos();
+    }//GEN-LAST:event_resetarAlunosActionPerformed
 
     /**
      * @param args the command line arguments
