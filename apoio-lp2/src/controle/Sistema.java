@@ -21,6 +21,7 @@ import disciplina.Exercicio;
  * @version 0.5 - 25 de junho de 2009
  */
 public class Sistema {
+    public static String excecao;
 
 	/**
 	 * Edita os dados do usuario
@@ -40,7 +41,7 @@ public class Sistema {
 	 * @param tipo
 	 * @return o usuario criado
 	 */
-	public static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo) {
+	public static Usuario criaUsuario(List<String> dados, UsuariosEnum tipo){
 		Usuario usr = null;
 		if (tipo == UsuariosEnum.ALUNO) {
 			
@@ -52,7 +53,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()), 
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				System.out.println(e);
+                excecao = e.getMessage();
 			}
 		} else if (tipo == UsuariosEnum.PROFESSOR) {
 			try {
@@ -63,7 +64,7 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				System.out.println(e);
+				excecao = e.getMessage();
 			}
 		} else {
 			try {
@@ -74,7 +75,8 @@ public class Sistema {
 						dados.get(DadosUsuarioEnum.EMAIL.ordinal()),
 						dados.get(DadosUsuarioEnum.TURMA.ordinal()));
 			} catch (Exception e) {
-				System.out.println(e);
+                excecao = e.getMessage();
+				
 			}
 
 		}
