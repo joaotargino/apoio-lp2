@@ -47,17 +47,17 @@ public class IO {
 
 	public static String recebeDados(String msg) {
 		System.out.print(msg);
-		String dado = UserInterface.sc.nextLine().trim();
+		String dado = scan.nextLine().trim();
 		while (dado.isEmpty()) {
 			System.out.print(msg);
-			dado = UserInterface.sc.nextLine().trim();
+			dado = scan.nextLine().trim();
 		}
 		return dado;
 	}
 
 	public static String recebeDados(String msg, String dadoAntigo) {
 		System.out.print(msg);
-		String dado = UserInterface.sc.nextLine().trim();
+		String dado = scan.nextLine().trim();
 		if (dado.isEmpty()) {
 			dado = dadoAntigo;
 		}
