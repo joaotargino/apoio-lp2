@@ -10,8 +10,8 @@
  */
 package interfaceGraficaUsuario;
 
-import controle.BD;
 import controle.DadosUsuarioEnum;
+import controle.Sistema;
 import controle.UsuariosEnum;
 import java.util.List;
 
@@ -78,6 +78,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuAlterarSenha = new javax.swing.JMenuItem();
         editarExercicio = new javax.swing.JMenuItem();
         menuExibir = new javax.swing.JMenu();
+        exibirPaginaPrincipal = new javax.swing.JMenuItem();
         exibirAlunos = new javax.swing.JMenuItem();
         exibirModeradores = new javax.swing.JMenuItem();
         exibirExercicios = new javax.swing.JMenuItem();
@@ -92,6 +93,8 @@ public class MenuProfessor extends javax.swing.JFrame {
         labelSaudacao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         painelDeAbas.addTab("Avisos", abaPainelAvisos);
+        abaPainelAvisos.getAccessibleContext().setAccessibleName("");
+
         painelDeAbas.addTab("Plano de Aula", abaPainelPlanoDeAula);
         painelDeAbas.addTab("Critério de Avaliação", abaPainelCriterio);
         painelDeAbas.addTab("Informações do Projeto", abaPainelInfoProjeto);
@@ -149,9 +152,19 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuResetarBD.add(resetarAlunos);
 
         resetarSubmissões.setText("Submissões");
+        resetarSubmissões.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetarSubmissõesActionPerformed(evt);
+            }
+        });
         menuResetarBD.add(resetarSubmissões);
 
         resetarExercicios.setText("Exercícios");
+        resetarExercicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetarExerciciosActionPerformed(evt);
+            }
+        });
         menuResetarBD.add(resetarExercicios);
 
         menuArquivo.add(menuResetarBD);
@@ -185,6 +198,14 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuBarProfessor.add(menuEditar);
 
         menuExibir.setText("Exibir");
+
+        exibirPaginaPrincipal.setText("Página Principal");
+        exibirPaginaPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibirPaginaPrincipalActionPerformed(evt);
+            }
+        });
+        menuExibir.add(exibirPaginaPrincipal);
 
         exibirAlunos.setText("Alunos");
         exibirAlunos.addActionListener(new java.awt.event.ActionListener() {
@@ -233,22 +254,22 @@ public class MenuProfessor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(47, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(41, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -266,7 +287,9 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void addAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAlunoActionPerformed
         AdicionarUsuario addUser = new AdicionarUsuario(UsuariosEnum.ALUNO);
-        addUser.setVisible(true);
+        painelDeAbas.setVisible(false);
+        addUser.painelAddUsuario.setVisible(true);
+
     }//GEN-LAST:event_addAlunoActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
@@ -276,25 +299,38 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void exibirAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirAlunosActionPerformed
         painelDeAbas.setVisible(false);
-        painelExibir.setText(BD.listaDeAlunos());
+        painelExibir.setText(Sistema.listaDeAlunos());
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirAlunosActionPerformed
 
     private void exibirModeradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirModeradoresActionPerformed
         painelDeAbas.setVisible(false);
-        painelExibir.setText(BD.listaDeModeradores());
+        painelExibir.setText(Sistema.listaDeModeradores());
         painelExibir.setVisible(true);
 }//GEN-LAST:event_exibirModeradoresActionPerformed
 
     private void resetarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarAlunosActionPerformed
-        BD.resetAlunos();
+        Sistema.removerTodosAlunos((dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal())));
     }//GEN-LAST:event_resetarAlunosActionPerformed
 
     private void exibirExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirExerciciosActionPerformed
         painelDeAbas.setVisible(false);
-        painelExibir.setText(BD.listaDeExercicios());
+        painelExibir.setText(Sistema.listaDeExercicios());
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirExerciciosActionPerformed
+
+    private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
+        painelDeAbas.setVisible(true);
+    }//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
+
+    private void resetarExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarExerciciosActionPerformed
+        Sistema.removerTodosExercicios(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+    }//GEN-LAST:event_resetarExerciciosActionPerformed
+
+    private void resetarSubmissõesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarSubmissõesActionPerformed
+        Sistema.removerTodasSubmissoes(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
+        
+    }//GEN-LAST:event_resetarSubmissõesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,6 +360,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
+    private javax.swing.JMenuItem exibirPaginaPrincipal;
     private javax.swing.JMenuItem exibirPlanilha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;

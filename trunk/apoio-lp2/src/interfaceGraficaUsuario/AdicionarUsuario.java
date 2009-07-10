@@ -33,6 +33,7 @@ public class AdicionarUsuario extends javax.swing.JFrame {
     public AdicionarUsuario(UsuariosEnum tipo) {
         initComponents();
         this.tipo = tipo;
+        labelAddUser.setText("Preencha os campos para adicionar um usuário do tipo " + tipo);
         //erro.setText(ex.getMessage());
         erro.setVisible(false);
 
@@ -66,6 +67,7 @@ public class AdicionarUsuario extends javax.swing.JFrame {
         labelTurma = new javax.swing.JLabel();
         campoTurma = new javax.swing.JTextField();
         erro = new javax.swing.JLabel();
+        labelAddUser = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -98,6 +100,8 @@ public class AdicionarUsuario extends javax.swing.JFrame {
 
         labelTurma.setText("Turma:");
 
+        labelAddUser.setText("Preencha os campos para adicionar um usuário do tipo ");
+
         javax.swing.GroupLayout painelAddUsuarioLayout = new javax.swing.GroupLayout(painelAddUsuario);
         painelAddUsuario.setLayout(painelAddUsuarioLayout);
         painelAddUsuarioLayout.setHorizontalGroup(
@@ -105,6 +109,7 @@ public class AdicionarUsuario extends javax.swing.JFrame {
             .addGroup(painelAddUsuarioLayout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelAddUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                     .addGroup(painelAddUsuarioLayout.createSequentialGroup()
                         .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(labelMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,7 +138,9 @@ public class AdicionarUsuario extends javax.swing.JFrame {
         painelAddUsuarioLayout.setVerticalGroup(
             painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddUsuarioLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(labelAddUser)
+                .addGap(18, 18, 18)
                 .addComponent(erro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAddUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,12 +266,13 @@ public class AdicionarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel erro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labelAddUser;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelTurma;
-    private javax.swing.JPanel painelAddUsuario;
+    javax.swing.JPanel painelAddUsuario;
     // End of variables declaration//GEN-END:variables
 }
