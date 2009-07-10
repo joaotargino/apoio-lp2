@@ -459,8 +459,7 @@ public class Sistema {
      * Cria uma string com a lista de Alunos
      * @return uma string com a lista de alunos
      */
-    public static String listaDeAlunos(){
-        String lista = "";
+    public static String listaDeAlunos() {
         List<Usuario> alunos = BD.getAlunos();
         return Util.ListToString(alunos);
     }
@@ -470,27 +469,17 @@ public class Sistema {
      * Cria uma string com a lista de Moderadores (monitores e prof)
      * @return uma string com a lista de moderadores
      */
-    public static String listaDeModeradores(){
-        String lista = "";
+    public static String listaDeModeradores() {
         List<Usuario> moderadores = BD.getModeradores();
-        Iterator<Usuario> moderador = moderadores.iterator();
-        while (moderador.hasNext()){
-            lista += moderador.next().toString();
-        }
-        return lista;
+        return Util.ListToString(moderadores);
     }
     /**
      *
      * Cria uma string com a lista de Exercicios
      * @return uma string com a lista de exercicios
      */
-    public static String listaDeExercicios(){
-        String lista = "";
+    public static String listaDeExercicios() {
         List<Exercicio> exercicios = BD.getExercicios();
-        Iterator<Exercicio> exercicio = exercicios.iterator();
-        while (exercicio.hasNext()){
-            lista += exercicio.next().toString();
-        }
-        return lista;
+        return Util.ListToString(exercicios);
     }
 }
