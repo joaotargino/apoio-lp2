@@ -36,6 +36,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         inicializaPaineis();
         painelDeAbas.setVisible(true);
         painelExibir.setText("");
+        setTitle("Menu Professor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
