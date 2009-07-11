@@ -12,15 +12,29 @@ import controle.Submissao;
 
 public class Util {
 
+    public final String ABOUT = "UFCG - Ciência da Computação - Laboratório de Programação 2" 
+            + dados.IO.NOVA_LINHA + "Ferramenta de apoio à disciplina LP2" 
+            + dados.IO.NOVA_LINHA + "Desenvolvido por:"
+            + dados.IO.NOVA_LINHA + "Arnett de Oliveira Rufino (arnettor@lcc.ufcg.edu.br)"
+            + dados.IO.NOVA_LINHA + "Erickson Filipe dos Santos (ericksonfgds@lcc.ufcg.edu.br)"
+            + dados.IO.NOVA_LINHA + "Jéssica Priscila de Sousa Santos(jessicapss@lcc.ufcg.edu.br)"
+            + dados.IO.NOVA_LINHA + "João Paulo S. Targino(joaopdst@lcc.ufcg.edu.br)";
+
+    public final String HELP = "Problemas comuns:"
+            + dados.IO.NOVA_LINHA + "Erro nos dados dos usuários: tamanho do login > 4 , 4 < tamanho da senha < 18 , verificar se a matrícula já existe, "
+            + dados.IO.NOVA_LINHA + "verificar se o e-mail já existe."
+            + dados.IO.NOVA_LINHA + ""
+            + dados.IO.NOVA_LINHA + "Mais problemas em breve!";
+
     public static Calendar criaCalendario(String cal) {
-	String[] date = cal.split("/");
-	return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+        String[] date = cal.split("/");
+        return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
     }
 
     public static String ListToString(List l) {
         String string = "";
         Iterator it = l.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             string += it.next().toString();
         }
         return string;
@@ -34,22 +48,19 @@ public class Util {
                     maior = exercicio.getId();
                 }
             }
-        }
-        else if (tipo.equalsIgnoreCase("usuario")) {
+        } else if (tipo.equalsIgnoreCase("usuario")) {
             for (Usuario usuario : BD.getUsuarios()) {
                 if (usuario.getId() > maior) {
                     maior = usuario.getId();
                 }
             }
-        }
-        else if (tipo.equalsIgnoreCase("submissao")) {
+        } else if (tipo.equalsIgnoreCase("submissao")) {
             for (Submissao submissao : BD.getSubmissoes()) {
                 if (submissao.getId() > maior) {
                     maior = submissao.getId();
                 }
             }
         }
-        return maior +1;
+        return maior + 1;
     }
-
 }
