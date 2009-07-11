@@ -13,6 +13,7 @@ package interfaceGraficaUsuario;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
+import util.Util;
 import java.util.List;
 
 /**
@@ -64,7 +65,6 @@ public class MenuMonitor extends javax.swing.JFrame {
         addAluno = new javax.swing.JMenuItem();
         addExercicio = new javax.swing.JMenuItem();
         menuRemover = new javax.swing.JMenu();
-        removerUsuario = new javax.swing.JMenuItem();
         removerExercicio = new javax.swing.JMenuItem();
         Logoff = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
@@ -116,14 +116,6 @@ public class MenuMonitor extends javax.swing.JFrame {
         menuArquivo.add(menuAdicionar);
 
         menuRemover.setText("Remover");
-
-        removerUsuario.setText("Usuário");
-        removerUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerUsuarioActionPerformed(evt);
-            }
-        });
-        menuRemover.add(removerUsuario);
 
         removerExercicio.setText("Exercício");
         menuRemover.add(removerExercicio);
@@ -226,6 +218,11 @@ public class MenuMonitor extends javax.swing.JFrame {
 
         ajudaHelp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         ajudaHelp.setText("Help");
+        ajudaHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajudaHelpActionPerformed(evt);
+            }
+        });
         menuAjuda.add(ajudaHelp);
 
         ajudaSobre.setText("Sobre");
@@ -271,12 +268,6 @@ public class MenuMonitor extends javax.swing.JFrame {
     private void addExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExercicioActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_addExercicioActionPerformed
-
-    private void removerUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerUsuarioActionPerformed
-        RemoveUsuario remove = new RemoveUsuario(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
-
-        remove.setVisible(true);
-}//GEN-LAST:event_removerUsuarioActionPerformed
 
     private void LogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoffActionPerformed
         dispose();
@@ -326,9 +317,14 @@ public class MenuMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAlterarSenhaActionPerformed
 
     private void ajudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaSobreActionPerformed
-        painelExibir.setText("ABOUT US");
+        painelExibir.setText(Util.ABOUT);
         painelExibir.setVisible(true);
     }//GEN-LAST:event_ajudaSobreActionPerformed
+
+    private void ajudaHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaHelpActionPerformed
+        painelExibir.setText(Util.HELP);
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_ajudaHelpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +364,5 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JTextPane painelExibir;
     private javax.swing.JMenuItem removerExercicio;
-    private javax.swing.JMenuItem removerUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import controle.Sistema;
 import controle.UsuariosEnum;
 import java.awt.Color;
 import java.util.List;
+import util.Util;
 
 /**
  *
@@ -295,9 +296,19 @@ public class MenuProfessor extends javax.swing.JFrame {
 
         ajudaHelp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         ajudaHelp.setText("Help");
+        ajudaHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajudaHelpActionPerformed(evt);
+            }
+        });
         menuAjuda.add(ajudaHelp);
 
         ajudaSobre.setText("Sobre");
+        ajudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajudaSobreActionPerformed(evt);
+            }
+        });
         menuAjuda.add(ajudaSobre);
 
         menuBarProfessor.add(menuAjuda);
@@ -419,6 +430,16 @@ public class MenuProfessor extends javax.swing.JFrame {
         AlteraSenha alteraSenha = new AlteraSenha(dadosUsuario);
         alteraSenha.setVisible(true);
     }//GEN-LAST:event_menuAlterarSenhaActionPerformed
+
+    private void ajudaHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaHelpActionPerformed
+        painelExibir.setText(Util.HELP);
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_ajudaHelpActionPerformed
+
+    private void ajudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaSobreActionPerformed
+        painelExibir.setText(Util.ABOUT);
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_ajudaSobreActionPerformed
 
     /**
      * @param args the command line arguments

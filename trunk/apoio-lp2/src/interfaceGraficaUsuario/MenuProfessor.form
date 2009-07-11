@@ -223,11 +223,17 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Help"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ajudaHelpActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ajudaSobre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ajudaSobreActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
