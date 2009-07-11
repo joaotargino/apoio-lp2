@@ -69,7 +69,7 @@ public class EditarDados extends javax.swing.JFrame {
         erro = new javax.swing.JLabel();
         labelEdit = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 350));
 
         labelMatricula.setText("Matricula:");
@@ -99,7 +99,7 @@ public class EditarDados extends javax.swing.JFrame {
             }
         });
 
-        sucesso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        sucesso.setFont(new java.awt.Font("Tahoma", 0, 12));
 
         labelEdit.setText("Preencha os campos abaixo para editar os seus dados");
 
