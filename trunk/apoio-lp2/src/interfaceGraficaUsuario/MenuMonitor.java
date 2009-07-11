@@ -89,6 +89,8 @@ public class MenuMonitor extends javax.swing.JFrame {
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setBorder(null);
+        painelExibir.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelExibir);
 
         menuArquivo.setText("Arquivo");
@@ -227,6 +229,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         menuAjuda.add(ajudaHelp);
 
         ajudaSobre.setText("Sobre");
+        ajudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajudaSobreActionPerformed(evt);
+            }
+        });
         menuAjuda.add(ajudaSobre);
 
         menuBarMonitor.add(menuAjuda);
@@ -317,6 +324,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         AlteraSenha alteraSenha = new AlteraSenha(dadosUsuario);
         alteraSenha.setVisible(true);
     }//GEN-LAST:event_menuAlterarSenhaActionPerformed
+
+    private void ajudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaSobreActionPerformed
+        painelExibir.setText("ABOUT US");
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_ajudaSobreActionPerformed
 
     /**
      * @param args the command line arguments

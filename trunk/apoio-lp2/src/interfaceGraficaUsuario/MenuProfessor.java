@@ -113,6 +113,7 @@ public class MenuProfessor extends javax.swing.JFrame {
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setBorder(null);
+        painelExibir.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         painelExibir.setMargin(new java.awt.Insets(0, 0, 0, 0));
         painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelExibir);
