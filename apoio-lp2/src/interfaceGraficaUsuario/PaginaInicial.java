@@ -157,8 +157,9 @@ public class PaginaInicial extends javax.swing.JFrame {
         tipoUsuario = Sistema.confereLoginSenha(login, senha);
         if (tipoUsuario != UsuariosEnum.INEXISTENTE) {
             if (tipoUsuario == UsuariosEnum.ALUNO) {
-//                                MenuAluno menuAluno = new MenuAluno(Sistema.dadosUsuario(login));
-//                                menuAluno.setVisible(true);
+                MenuAluno menuAluno = new MenuAluno(Sistema.dadosUsuario(login));
+                menuAluno.setVisible(true);
+                dispose();
             } else if (tipoUsuario == UsuariosEnum.MONITOR) {
                 MenuMonitor menuMonitor = new MenuMonitor(Sistema.dadosUsuario(login));
                 menuMonitor.setVisible(true);

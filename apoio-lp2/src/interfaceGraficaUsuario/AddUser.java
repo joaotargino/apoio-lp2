@@ -74,7 +74,7 @@ public class AddUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         sucesso = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 520));
 
         painelAddUsuario.setMinimumSize(new java.awt.Dimension(550, 520));
@@ -118,7 +118,7 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
-        sucesso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        sucesso.setFont(new java.awt.Font("Tahoma", 0, 12));
 
         javax.swing.GroupLayout painelAddUsuarioLayout = new javax.swing.GroupLayout(painelAddUsuario);
         painelAddUsuario.setLayout(painelAddUsuarioLayout);
@@ -307,7 +307,7 @@ public class AddUser extends javax.swing.JFrame {
     javax.swing.JTextField campoNome;
     javax.swing.JTextField campoSenha;
     javax.swing.JTextField campoTurma;
-    private javax.swing.JLabel erro;
+    javax.swing.JLabel erro;
     private javax.swing.JButton jButton1;
     javax.swing.JLabel labelAddUser;
     javax.swing.JLabel labelEmail;

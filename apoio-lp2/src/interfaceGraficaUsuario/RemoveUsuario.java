@@ -65,7 +65,7 @@ public class RemoveUsuario extends javax.swing.JFrame {
         labelRemovido = new javax.swing.JLabel();
         labelNaoRemovido = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 350));
 
         labelMatricula.setText("Matricula:");
