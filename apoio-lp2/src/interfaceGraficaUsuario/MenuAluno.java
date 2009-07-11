@@ -13,6 +13,7 @@ package interfaceGraficaUsuario;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
+import java.awt.Color;
 import java.util.List;
 
 /**
@@ -35,6 +36,8 @@ public class MenuAluno extends javax.swing.JFrame {
         inicializaPaineis();
 //        painelDeAbas.setVisible(true);
         painelExibir.setText("");
+        painelExibir.setEnabled(false);
+        painelExibir.setForeground(Color.BLACK);
         setTitle("Menu Aluno");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 
@@ -61,6 +64,9 @@ public class MenuAluno extends javax.swing.JFrame {
         labelSaudacao = new javax.swing.JLabel();
         menuBarAluno = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
+        menuExercicios = new javax.swing.JMenu();
+        enviarExercicio = new javax.swing.JMenuItem();
+        baixarExercicio = new javax.swing.JMenuItem();
         Logoff = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
@@ -81,11 +87,24 @@ public class MenuAluno extends javax.swing.JFrame {
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setBorder(null);
+        painelExibir.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        painelExibir.setEnabled(false);
+        painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelExibir);
 
         labelSaudacao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         menuArquivo.setText("Arquivo");
+
+        menuExercicios.setText("Exercícios");
+
+        enviarExercicio.setText("Enviar");
+        menuExercicios.add(enviarExercicio);
+
+        baixarExercicio.setText("Baixar");
+        menuExercicios.add(baixarExercicio);
+
+        menuArquivo.add(menuExercicios);
 
         Logoff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         Logoff.setText("Logoff");
@@ -198,12 +217,12 @@ public class MenuAluno extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 527, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,6 +286,8 @@ public class MenuAluno extends javax.swing.JFrame {
     private javax.swing.JMenuItem Logoff;
     private javax.swing.JMenuItem ajudaHelp;
     private javax.swing.JMenuItem ajudaSobre;
+    private javax.swing.JMenuItem baixarExercicio;
+    private javax.swing.JMenuItem enviarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
@@ -280,6 +301,7 @@ public class MenuAluno extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBarAluno;
     private javax.swing.JMenu menuEditar;
     private javax.swing.JMenuItem menuEditarDados;
+    private javax.swing.JMenu menuExercicios;
     private javax.swing.JMenu menuExibir;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JTextPane painelExibir;

@@ -32,6 +32,7 @@ public class MenuMonitor extends javax.swing.JFrame {
     public MenuMonitor(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
+        painelExibir.setEnabled(false);
         inicializaPaineis();
 //        painelDeAbas.setVisible(true);
         painelExibir.setText("");
