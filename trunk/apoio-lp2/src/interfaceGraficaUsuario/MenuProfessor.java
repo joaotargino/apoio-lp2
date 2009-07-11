@@ -235,6 +235,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuEditar.add(menuEditarDados);
 
         menuAlterarSenha.setText("Alterar Senha");
+        menuAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarSenhaActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuAlterarSenha);
 
         editarExercicio.setText("Editar Exercício");
@@ -408,6 +413,11 @@ public class MenuProfessor extends javax.swing.JFrame {
 
         remove.setVisible(true);
 }//GEN-LAST:event_removerUsuarioActionPerformed
+
+    private void menuAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarSenhaActionPerformed
+        AlteraSenha alteraSenha = new AlteraSenha(dadosUsuario);
+        alteraSenha.setVisible(true);
+    }//GEN-LAST:event_menuAlterarSenhaActionPerformed
 
     /**
      * @param args the command line arguments

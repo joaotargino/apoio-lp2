@@ -32,26 +32,31 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelSenha" min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="labelLogin" min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="campoLogin" alignment="0" pref="211" max="32767" attributes="1"/>
-                          <Component id="campoSenha" alignment="0" pref="211" max="32767" attributes="1"/>
-                          <Component id="logoCCC" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dadosInvalidos" alignment="1" max="32767" attributes="1"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
                       <Component id="botaoEntrar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
                       <Component id="botaoRecuperarSenha" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="labelSenha" min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="labelLogin" min="-2" pref="51" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="campoLogin" alignment="0" pref="211" max="32767" attributes="1"/>
+                                  <Component id="campoSenha" alignment="0" pref="211" max="32767" attributes="1"/>
+                                  <Component id="logoCCC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dadosInvalidos" alignment="1" max="32767" attributes="1"/>
+                              </Group>
+                          </Group>
+                          <Component id="labelRecSenha" alignment="0" pref="268" max="32767" attributes="1"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="255" max="32767" attributes="0"/>
@@ -85,16 +90,15 @@
               <Component id="botaoEntrar" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botaoRecuperarSenha" min="-2" pref="23" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="labelRecSenha" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="campoLogin">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoLoginActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="campoSenha">
     </Component>
@@ -120,6 +124,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEntrarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="botaoEntrarKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoRecuperarSenha">
@@ -128,6 +133,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botaoRecuperarSenhaMouseClicked"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="botaoRecuperarSenhaKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="logoCCC">
@@ -142,6 +148,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelRecSenha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A senha foi enviada para o seu email cadastrado"/>
       </Properties>
     </Component>
   </SubComponents>

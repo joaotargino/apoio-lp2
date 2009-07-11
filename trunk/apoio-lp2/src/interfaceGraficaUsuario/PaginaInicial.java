@@ -13,6 +13,7 @@ package interfaceGraficaUsuario;
 import controle.Sistema;
 import controle.UsuariosEnum;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -27,6 +28,8 @@ public class PaginaInicial extends javax.swing.JFrame {
     public PaginaInicial() {
         initComponents();
         dadosInvalidos.setForeground(Color.RED);
+        labelRecSenha.setVisible(false);
+        labelRecSenha.setForeground(Color.RED);
     }
 
     /** This method is called from within the constructor to
@@ -46,17 +49,12 @@ public class PaginaInicial extends javax.swing.JFrame {
         botaoRecuperarSenha = new javax.swing.JButton();
         logoCCC = new javax.swing.JLabel();
         dadosInvalidos = new javax.swing.JLabel();
+        labelRecSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("APOIO-LP2");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
-
-        campoLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLoginActionPerformed(evt);
-            }
-        });
 
         labelLogin.setFont(new java.awt.Font("Tahoma", 0, 14));
         labelLogin.setText("Login:");
@@ -70,6 +68,11 @@ public class PaginaInicial extends javax.swing.JFrame {
                 botaoEntrarActionPerformed(evt);
             }
         });
+        botaoEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                botaoEntrarKeyTyped(evt);
+            }
+        });
 
         botaoRecuperarSenha.setText("Recuperar Senha");
         botaoRecuperarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,10 +80,17 @@ public class PaginaInicial extends javax.swing.JFrame {
                 botaoRecuperarSenhaMouseClicked(evt);
             }
         });
+        botaoRecuperarSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                botaoRecuperarSenhaKeyTyped(evt);
+            }
+        });
 
         logoCCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaceGraficaUsuario/ccc-full.jpg"))); // NOI18N
 
         dadosInvalidos.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelRecSenha.setText("A senha foi enviada para o seu email cadastrado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,22 +99,25 @@ public class PaginaInicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(logoCCC, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dadosInvalidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(botaoEntrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(340, 340, 340)
-                        .addComponent(botaoRecuperarSenha)))
+                        .addComponent(botaoRecuperarSenha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                                    .addComponent(logoCCC, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dadosInvalidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(labelRecSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))))
                 .addContainerGap(255, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,18 +143,16 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoRecuperarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addGap(33, 33, 33)
+                .addComponent(labelRecSenha)
+                .addGap(64, 64, 64))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_campoLoginActionPerformed
-
     private void botaoRecuperarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaMouseClicked
-        // TODO add your handling code here:
+        labelRecSenha.setVisible(true);
     }//GEN-LAST:event_botaoRecuperarSenhaMouseClicked
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
@@ -151,6 +162,16 @@ public class PaginaInicial extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_botaoEntrarActionPerformed
+
+    private void botaoEntrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoEntrarKeyTyped
+        String login = campoLogin.getText();
+        String senha = campoSenha.getText();
+        defineUsuario(login, senha);
+    }//GEN-LAST:event_botaoEntrarKeyTyped
+
+    private void botaoRecuperarSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaKeyTyped
+        labelRecSenha.setVisible(true);
+    }//GEN-LAST:event_botaoRecuperarSenhaKeyTyped
 
     private void defineUsuario(String login, String senha) {
 
@@ -174,7 +195,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
 
             }
-        } else{
+        } else {
             dadosInvalidos.setText("Login e/ou Senha inválidos.");
         }
     }
@@ -199,6 +220,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JLabel dadosInvalidos;
     private javax.swing.JLabel labelLogin;
+    private javax.swing.JLabel labelRecSenha;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel logoCCC;
     // End of variables declaration//GEN-END:variables
