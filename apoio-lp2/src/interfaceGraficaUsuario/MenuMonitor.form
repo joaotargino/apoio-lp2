@@ -37,14 +37,6 @@
                 <Property name="text" type="java.lang.String" value="Remover"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="removerUsuario">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerUsuarioActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="removerExercicio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Exerc&#xed;cio"/>
@@ -176,6 +168,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Help"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ajudaHelpActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ajudaSobre">
               <Properties>
