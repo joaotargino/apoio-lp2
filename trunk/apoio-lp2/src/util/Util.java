@@ -12,7 +12,7 @@ import controle.Submissao;
 
 public class Util {
 
-    public final String ABOUT = "UFCG - Ciência da Computação - Laboratório de Programação 2" 
+    public static final String ABOUT = "UFCG - Ciência da Computação - Laboratório de Programação 2"
             + dados.IO.NOVA_LINHA + "Ferramenta de apoio à disciplina LP2" 
             + dados.IO.NOVA_LINHA + "Desenvolvido por:"
             + dados.IO.NOVA_LINHA + "Arnett de Oliveira Rufino (arnettor@lcc.ufcg.edu.br)"
@@ -20,7 +20,7 @@ public class Util {
             + dados.IO.NOVA_LINHA + "Jéssica Priscila de Sousa Santos(jessicapss@lcc.ufcg.edu.br)"
             + dados.IO.NOVA_LINHA + "João Paulo S. Targino(joaopdst@lcc.ufcg.edu.br)";
 
-    public final String HELP = "Problemas comuns:"
+    public static final String HELP = "Problemas comuns:"
             + dados.IO.NOVA_LINHA + "Erro nos dados dos usuários: tamanho do login > 4 , 4 < tamanho da senha < 18 , verificar se a matrícula já existe, "
             + dados.IO.NOVA_LINHA + "verificar se o e-mail já existe."
             + dados.IO.NOVA_LINHA + ""
