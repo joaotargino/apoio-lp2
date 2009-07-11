@@ -13,6 +13,7 @@ package interfaceGraficaUsuario;
 import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
+import java.awt.Color;
 import java.util.List;
 
 /**
@@ -27,20 +28,22 @@ public class MenuProfessor extends javax.swing.JFrame {
     /** Creates new form MenuProfessor */
     public MenuProfessor() {
         initComponents();
-        
+
     }
 
     public MenuProfessor(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
         inicializaPaineis();
+        painelExibir.setEnabled(false);
+        painelExibir.setForeground(Color.BLACK);
         painelDeAbas.setVisible(true);
         painelExibir.setText("");
         setTitle("Menu Professor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
-    private void inicializaPaineis(){
+    private void inicializaPaineis() {
         painelDeAbas.setVisible(false);
         painelExibir.setVisible(false);
 
@@ -111,6 +114,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setBorder(null);
         painelExibir.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelExibir);
 
         menuArquivo.setText("Arquivo");
@@ -401,7 +405,7 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void removerUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerUsuarioActionPerformed
         RemoveUsuario remove = new RemoveUsuario(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
- 
+
         remove.setVisible(true);
 }//GEN-LAST:event_removerUsuarioActionPerformed
 
