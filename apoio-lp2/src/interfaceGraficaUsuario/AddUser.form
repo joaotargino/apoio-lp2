@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 600]"/>
+      <Dimension value="[550, 520]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -25,7 +25,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="820" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -37,11 +37,11 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="622" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="543" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="painelAddUsuario" max="32767" attributes="0"/>
+                  <Component id="painelAddUsuario" pref="521" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -52,7 +52,10 @@
     <Container class="javax.swing.JPanel" name="painelAddUsuario">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[800, 600]"/>
+          <Dimension value="[550, 520]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[550, 350]"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -64,49 +67,50 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="173" pref="173" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="erro" min="-2" pref="395" max="-2" attributes="1"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="sucesso" min="-2" pref="395" max="-2" attributes="1"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="labelMatricula" alignment="1" max="32767" attributes="1"/>
-                                  <Component id="labelTurma" alignment="1" max="32767" attributes="1"/>
-                                  <Component id="labelEmail" alignment="1" max="32767" attributes="1"/>
-                                  <Component id="labelNome" alignment="1" max="32767" attributes="1"/>
-                                  <Component id="labelSenha" alignment="1" max="32767" attributes="1"/>
-                                  <Component id="labelLogin" alignment="1" max="32767" attributes="1"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                      <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="labelMatricula" alignment="1" max="32767" attributes="1"/>
+                                          <Component id="labelTurma" alignment="1" max="32767" attributes="1"/>
+                                          <Component id="labelEmail" alignment="1" max="32767" attributes="1"/>
+                                          <Component id="labelNome" alignment="1" max="32767" attributes="1"/>
+                                          <Component id="labelSenha" alignment="1" max="32767" attributes="1"/>
+                                      </Group>
+                                      <Component id="labelLogin" min="-2" max="-2" attributes="1"/>
                                   </Group>
-                                  <Component id="campoLogin" pref="320" max="32767" attributes="0"/>
-                                  <Component id="campoSenha" alignment="0" pref="320" max="32767" attributes="0"/>
-                                  <Component id="campoMatricula" alignment="0" pref="320" max="32767" attributes="0"/>
-                                  <Component id="campoNome" alignment="0" pref="320" max="32767" attributes="0"/>
-                                  <Component id="campoEmail" alignment="0" pref="320" max="32767" attributes="0"/>
-                                  <Component id="campoTurma" alignment="0" pref="320" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                          <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="campoLogin" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoSenha" alignment="0" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoMatricula" alignment="0" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoNome" alignment="0" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoEmail" alignment="0" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoTurma" alignment="0" pref="320" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
+                              <Component id="labelAddUser" alignment="0" min="-2" pref="462" max="-2" attributes="1"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="labelAddUser" pref="617" max="32767" attributes="1"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="sucesso" alignment="0" max="32767" attributes="1"/>
+                              <Component id="erro" alignment="0" pref="435" max="32767" attributes="1"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -114,8 +118,8 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="117" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="erro" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="sucesso" min="-2" pref="22" max="-2" attributes="0"/>
@@ -123,8 +127,8 @@
                   <Component id="labelAddUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -157,7 +161,7 @@
                       <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace pref="82" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
