@@ -143,6 +143,11 @@ public class MenuAluno extends javax.swing.JFrame {
         menuEditar.add(menuEditarDados);
 
         menuAlterarSenha.setText("Alterar Senha");
+        menuAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarSenhaActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuAlterarSenha);
 
         menuBarAluno.add(menuEditar);
@@ -269,6 +274,11 @@ public class MenuAluno extends javax.swing.JFrame {
         painelExibir.setText(Sistema.listaDeExercicios());
         painelExibir.setVisible(true);
 }//GEN-LAST:event_exibirExerciciosActionPerformed
+
+    private void menuAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarSenhaActionPerformed
+        AlteraSenha alteraSenha = new AlteraSenha(dadosUsuario);
+        alteraSenha.setVisible(true);
+    }//GEN-LAST:event_menuAlterarSenhaActionPerformed
 
     /**
      * @param args the command line arguments
