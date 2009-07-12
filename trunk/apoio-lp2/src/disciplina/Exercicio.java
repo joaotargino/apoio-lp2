@@ -2,6 +2,7 @@ package disciplina;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Classe que cria exercicios
@@ -17,23 +18,25 @@ public class Exercicio implements Serializable{
 	private Calendar data;
 	private Calendar dataEntrega;
 	private String nome;
-	private String enunciado;
+	private String descricao;
 	private int id;
+    private List<String> questoes;
 	
 	private Exercicio() {}
 
-	public Exercicio(int id, String nome,  String enunciado, Calendar data,
-			Calendar dataEntrega ) throws Exception {
-		if (nome == null || enunciado == null || data == null || dataEntrega == null) {
-			throw new IllegalArgumentException();
+	public Exercicio(int id, String nome,  String descricao, Calendar data,
+			Calendar dataEntrega, List<String> questoes ) throws Exception {
+		if (nome == null || descricao == null || data == null || dataEntrega == null) {
+			throw new IllegalArgumentException("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS");
 		}
 		if (dataEntrega.compareTo(data) < 0) {
-			throw new Exception();
+			throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIAÇÃO");
 		}
+        this.questoes = questoes;
 		this.data = data;
 		this.dataEntrega = dataEntrega;
 		this.nome = nome;
-		this.enunciado = enunciado;
+		this.descricao = descricao;
 		this.id = id;
 	}
 
@@ -89,15 +92,15 @@ public class Exercicio implements Serializable{
 	 * @return descricao do exercicio
 	 */
 	public String getEnunciado() {
-		return enunciado;
+		return descricao;
 	}
 
 	/**
 	 * seta a descricao do exercicio
-	 * @param enunciado
+	 * @param descricao
 	 */
 	public void setEnunciado(String enunciado) {
-		this.enunciado = enunciado;
+		this.descricao = enunciado;
 	}
 
 	/**
