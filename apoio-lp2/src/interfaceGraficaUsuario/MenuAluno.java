@@ -313,7 +313,8 @@ public class MenuAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_enviarExercicioActionPerformed
 
     private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed
-        // TODO add your handling code here:
+        BaixarExercicio baixarEx = new BaixarExercicio();
+        baixarEx.setVisible(true);
     }//GEN-LAST:event_baixarExercicioActionPerformed
 
     /**

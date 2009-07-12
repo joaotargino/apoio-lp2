@@ -8,10 +8,10 @@
  *
  * Created on 12/07/2009, 08:50:18
  */
-
 package interfaceGraficaUsuario;
 
 import controle.Sistema;
+import java.awt.Color;
 import users.Usuario;
 
 /**
@@ -23,6 +23,9 @@ public class BaixarExercicio extends javax.swing.JFrame {
     /** Creates new form BaixarExercicio */
     public BaixarExercicio() {
         initComponents();
+        labelNotFound.setForeground(Color.RED);
+        labelNotFound.setVisible(false);
+        campoID.setText("0");
     }
 
     /** This method is called from within the constructor to
@@ -43,9 +46,10 @@ public class BaixarExercicio extends javax.swing.JFrame {
         labelIDExercicio = new javax.swing.JLabel();
         campoIDExercicio = new javax.swing.JTextField();
         botaoProcurarIDExercicio = new javax.swing.JButton();
+        botaoCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(400, 600));
 
         labelID.setText("Informe o ID do usuário: ");
 
@@ -67,6 +71,13 @@ public class BaixarExercicio extends javax.swing.JFrame {
         botaoProcurarIDExercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoProcurarIDExercicioActionPerformed(evt);
+            }
+        });
+
+        botaoCancelar.setText("Cancelar");
+        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCancelarActionPerformed(evt);
             }
         });
 
@@ -95,8 +106,10 @@ public class BaixarExercicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botaoProcurarIDExercicio)
-                        .addContainerGap(364, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoCancelar)
+                            .addComponent(botaoProcurarIDExercicio))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,12 +123,14 @@ public class BaixarExercicio extends javax.swing.JFrame {
                     .addComponent(botaoProcurarID))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelIDExercicio)
                     .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoProcurarIDExercicio))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botaoCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +153,10 @@ public class BaixarExercicio extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_botaoProcurarIDExercicioActionPerformed
 
+    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_botaoCancelarActionPerformed
+
     /**
      * retorna o usuario
      * @param id identificaçao do usuario
@@ -146,11 +165,13 @@ public class BaixarExercicio extends javax.swing.JFrame {
     private Usuario procuraUsuario(int id) {
         return Sistema.getUsuario(id);
     }
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new BaixarExercicio().setVisible(true);
             }
@@ -158,6 +179,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoProcurarID;
     private javax.swing.JButton botaoProcurarIDExercicio;
     private javax.swing.JTextField campoID;
@@ -168,5 +190,4 @@ public class BaixarExercicio extends javax.swing.JFrame {
     private javax.swing.JLabel labelNotFound;
     private javax.swing.JTextPane painelExibir;
     // End of variables declaration//GEN-END:variables
-
 }

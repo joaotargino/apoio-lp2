@@ -74,10 +74,8 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuAdicionar = new javax.swing.JMenu();
         addAluno = new javax.swing.JMenuItem();
         addMonitor = new javax.swing.JMenuItem();
-        addExercicio = new javax.swing.JMenuItem();
         menuRemover = new javax.swing.JMenu();
         removerUsuario = new javax.swing.JMenuItem();
-        removerExercicio = new javax.swing.JMenuItem();
         menuResetarBD = new javax.swing.JMenu();
         resetarAlunos = new javax.swing.JMenuItem();
         resetarSubmissões = new javax.swing.JMenuItem();
@@ -88,13 +86,17 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuEditar = new javax.swing.JMenu();
         menuEditarDados = new javax.swing.JMenuItem();
         menuAlterarSenha = new javax.swing.JMenuItem();
-        editarExercicio = new javax.swing.JMenuItem();
         menuExibir = new javax.swing.JMenu();
         exibirPaginaPrincipal = new javax.swing.JMenuItem();
         exibirAlunos = new javax.swing.JMenuItem();
         exibirModeradores = new javax.swing.JMenuItem();
-        exibirExercicios = new javax.swing.JMenuItem();
         exibirPlanilha = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        exibirExercicios = new javax.swing.JMenuItem();
+        addExercicio = new javax.swing.JMenuItem();
+        removerExercicio = new javax.swing.JMenuItem();
+        editarExercicio = new javax.swing.JMenuItem();
+        baixarExercicio = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         ajudaHelp = new javax.swing.JMenuItem();
         ajudaSobre = new javax.swing.JMenuItem();
@@ -139,14 +141,6 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuAdicionar.add(addMonitor);
 
-        addExercicio.setText("Exercício");
-        addExercicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addExercicioActionPerformed(evt);
-            }
-        });
-        menuAdicionar.add(addExercicio);
-
         menuArquivo.add(menuAdicionar);
 
         menuRemover.setText("Remover");
@@ -158,9 +152,6 @@ public class MenuProfessor extends javax.swing.JFrame {
             }
         });
         menuRemover.add(removerUsuario);
-
-        removerExercicio.setText("Exercício");
-        menuRemover.add(removerExercicio);
 
         menuArquivo.add(menuRemover);
 
@@ -244,9 +235,6 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuEditar.add(menuAlterarSenha);
 
-        editarExercicio.setText("Editar Exercício");
-        menuEditar.add(editarExercicio);
-
         menuBarProfessor.add(menuEditar);
 
         menuExibir.setText("Exibir");
@@ -278,19 +266,50 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuExibir.add(exibirModeradores);
 
+        exibirPlanilha.setText("Planilha de Notas");
+        menuExibir.add(exibirPlanilha);
+
+        menuBarProfessor.add(menuExibir);
+
+        jMenu1.setText("Exercício");
+
         exibirExercicios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        exibirExercicios.setText("Exercícios");
+        exibirExercicios.setText("Exibir Todos");
         exibirExercicios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exibirExerciciosActionPerformed(evt);
             }
         });
-        menuExibir.add(exibirExercicios);
+        jMenu1.add(exibirExercicios);
 
-        exibirPlanilha.setText("Planilha de Notas");
-        menuExibir.add(exibirPlanilha);
+        addExercicio.setText("Adicionar");
+        addExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addExercicioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(addExercicio);
 
-        menuBarProfessor.add(menuExibir);
+        removerExercicio.setText("Remover");
+        jMenu1.add(removerExercicio);
+
+        editarExercicio.setText("Editar Exercício");
+        editarExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarExercicioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(editarExercicio);
+
+        baixarExercicio.setText("Baixar");
+        baixarExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                baixarExercicioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(baixarExercicio);
+
+        menuBarProfessor.add(jMenu1);
 
         menuAjuda.setText("Ajuda");
 
@@ -332,11 +351,11 @@ public class MenuProfessor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(48, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(47, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -441,6 +460,15 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelExibir.setVisible(true);
     }//GEN-LAST:event_ajudaSobreActionPerformed
 
+    private void editarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarExercicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarExercicioActionPerformed
+
+    private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed
+        BaixarExercicio baixarEx = new BaixarExercicio();
+        baixarEx.setVisible(true);
+    }//GEN-LAST:event_baixarExercicioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -466,12 +494,14 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem addMonitor;
     private javax.swing.JMenuItem ajudaHelp;
     private javax.swing.JMenuItem ajudaSobre;
+    private javax.swing.JMenuItem baixarExercicio;
     private javax.swing.JMenuItem editarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
     private javax.swing.JMenuItem exibirPaginaPrincipal;
     private javax.swing.JMenuItem exibirPlanilha;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;
     private javax.swing.JMenu menuAdicionar;
