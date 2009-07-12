@@ -475,6 +475,23 @@ public class Sistema {
     }
 
     /**
+     * cria uma string com a lista de exercicios
+     * @return uma string com a lista de exercicios
+     */
+    public static String listaDeExerciciosDoAluno(String login) {
+        String listaSubmissoes = "";
+        List<Submissao> submissoes = Sistema.getsubmissoes();
+        Iterator<Submissao> it = submissoes.iterator();
+        while (it.hasNext()) {
+            Submissao sub = it.next();
+            if (sub.getLogin().equals(login)) {
+                listaSubmissoes += "ID: " + sub.getId() + "| Exercicio: " + sub.getIdExercicio() + dados.IO.NOVA_LINHA;
+            }
+        }
+        return listaSubmissoes;
+    }
+
+    /**
      * procura um usuario pelo id
      * @param id
      * @return retorna o usuario do id informado
