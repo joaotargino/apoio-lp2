@@ -28,35 +28,31 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                              <Component id="labelNotFound" pref="162" max="32767" attributes="1"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="campoID" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="botaoProcurarID" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="289" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="371" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                      <Component id="labelNotFound" pref="179" max="32767" attributes="1"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="labelID" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="campoID" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="botaoProcurarID" min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="labelIDExercicio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="campoIDExercicio" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="campoIDExercicio" min="-2" pref="59" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botaoCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="botaoProcurarIDExercicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="botaoBaixarExercicio" max="32767" attributes="1"/>
+                          <Component id="botaoCancelar" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="306" max="-2" attributes="1"/>
               </Group>
+              <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,11 +73,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelIDExercicio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="campoIDExercicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoProcurarIDExercicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoBaixarExercicio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,7 +90,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelNotFound">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio n&#xe3;o encontrado"/>
+        <Property name="text" type="java.lang.String" value="Exerc&#xed;cio n&#xe3;o encontrado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="campoID">
@@ -130,12 +126,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="campoIDExercicio">
     </Component>
-    <Component class="javax.swing.JButton" name="botaoProcurarIDExercicio">
+    <Component class="javax.swing.JButton" name="botaoBaixarExercicio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Procurar"/>
+        <Property name="text" type="java.lang.String" value="Baixar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoProcurarIDExercicioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoBaixarExercicioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoCancelar">

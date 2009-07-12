@@ -45,7 +45,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
         painelExibir = new javax.swing.JTextPane();
         labelIDExercicio = new javax.swing.JLabel();
         campoIDExercicio = new javax.swing.JTextField();
-        botaoProcurarIDExercicio = new javax.swing.JButton();
+        botaoBaixarExercicio = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,7 +53,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
 
         labelID.setText("Informe o ID do usuário: ");
 
-        labelNotFound.setText("Usuário não encontrado");
+        labelNotFound.setText("Exercício não encontrado");
 
         botaoProcurarID.setText("Procurar");
         botaoProcurarID.addActionListener(new java.awt.event.ActionListener() {
@@ -67,10 +67,10 @@ public class BaixarExercicio extends javax.swing.JFrame {
 
         labelIDExercicio.setText("Informe o ID do Exercício: ");
 
-        botaoProcurarIDExercicio.setText("Procurar");
-        botaoProcurarIDExercicio.addActionListener(new java.awt.event.ActionListener() {
+        botaoBaixarExercicio.setText("Baixar");
+        botaoBaixarExercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoProcurarIDExercicioActionPerformed(evt);
+                botaoBaixarExercicioActionPerformed(evt);
             }
         });
 
@@ -89,27 +89,25 @@ public class BaixarExercicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(labelNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botaoProcurarID))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
-                        .addGap(371, 371, 371))
+                        .addGap(127, 127, 127)
+                        .addComponent(labelNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoProcurarID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelIDExercicio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoCancelar)
-                            .addComponent(botaoProcurarIDExercicio))
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botaoBaixarExercicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,10 +125,10 @@ public class BaixarExercicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelIDExercicio)
                     .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoProcurarIDExercicio))
-                .addGap(18, 18, 18)
+                    .addComponent(botaoBaixarExercicio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,9 +147,9 @@ public class BaixarExercicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoProcurarIDActionPerformed
 
-    private void botaoProcurarIDExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoProcurarIDExercicioActionPerformed
+    private void botaoBaixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBaixarExercicioActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_botaoProcurarIDExercicioActionPerformed
+}//GEN-LAST:event_botaoBaixarExercicioActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         dispose();
@@ -179,9 +177,9 @@ public class BaixarExercicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoBaixarExercicio;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoProcurarID;
-    private javax.swing.JButton botaoProcurarIDExercicio;
     private javax.swing.JTextField campoID;
     private javax.swing.JTextField campoIDExercicio;
     private javax.swing.JScrollPane jScrollPane1;
