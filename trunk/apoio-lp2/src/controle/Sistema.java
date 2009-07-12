@@ -253,18 +253,6 @@ public class Sistema {
     }
 
     /**
-     * Cadastra um exercicio no sistema
-     * @param dadosExercicio
-     * @throws Exception
-     */
-    public static void addExercicio(List<String> dadosExercicio) throws Exception {
-        Calendar dataAtual = new GregorianCalendar();
-        Exercicio exercicio = new Exercicio(Util.geraId("exercicio"),
-                dadosExercicio.get(0), dadosExercicio.get(1), dataAtual, Util.criaCalendario(dadosExercicio.get(2)), dadosExercicio.get(4));
-        BD.cadastraExercicio(exercicio);//quem eh quem nesses gets ? ¬¬¬¬¬
-    }
-
-    /**
      * remove um exercicio
      * @param id
      * @return true se foi possivel
