@@ -25,6 +25,7 @@ public class Sistema {
 
     public static String excecao = "";
     public static String addUserSucesso = "";
+    public static String addExercicioSucesso = "";
 
     /**
      * Edita os dados do usuario
@@ -223,17 +224,18 @@ public class Sistema {
      * @return true se foi possivel cadastrar o exercicio
      */
     public static boolean cadastrarExercicio(int id, String nome, String enunciado, Calendar data,
-            Calendar dataEntrega) {
+            Calendar dataEntrega, List<String> questoes) {
         try {
-            Exercicio ex = new Exercicio(id, nome, enunciado, data, dataEntrega);
+            Exercicio ex = new Exercicio(id, nome, enunciado, data, dataEntrega, questoes);
             if (!BD.getExercicios().contains(ex)) {
                 BD.cadastraExercicio(ex);
+                addExercicioSucesso = "Exercício adicionado com sucesso";
                 return true;
             }
         } catch (IOException e) {
-            System.out.println(e);
+            excecao = e.getMessage();
         } catch (Exception e) {
-            System.out.println(e);
+            excecao = e.getMessage();
         }
         return false;
     }
@@ -258,8 +260,8 @@ public class Sistema {
     public static void addExercicio(List<String> dadosExercicio) throws Exception {
         Calendar dataAtual = new GregorianCalendar();
         Exercicio exercicio = new Exercicio(Util.geraId("exercicio"),
-                dadosExercicio.get(0), dadosExercicio.get(1), dataAtual, Util.criaCalendario(dadosExercicio.get(2)));
-        BD.cadastraExercicio(exercicio);
+                dadosExercicio.get(0), dadosExercicio.get(1), dataAtual, Util.criaCalendario(dadosExercicio.get(2)), dadosExercicio.get(4));
+        BD.cadastraExercicio(exercicio);//quem eh quem nesses gets ? ¬¬¬¬¬
     }
 
     /**
@@ -282,10 +284,10 @@ public class Sistema {
      * @throws Exception
      */
     public static boolean atualizarExercicio(int id, String nome,
-            String enunciado, String dataDeEntrega) throws Exception {
+            String enunciado, String dataDeEntrega, List<String> questoes) throws Exception {
         Calendar dataAtual = new GregorianCalendar();
         Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
-        Exercicio exercicio = new Exercicio(id, nome, enunciado, dataAtual, dataEntrega);
+        Exercicio exercicio = new Exercicio(id, nome, enunciado, dataAtual, dataEntrega, questoes);
         return BD.atualizaExercicio(id, exercicio);
 
     }
