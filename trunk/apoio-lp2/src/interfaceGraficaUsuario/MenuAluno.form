@@ -18,11 +18,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Enviar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enviarExercicioActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="baixarExercicio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Baixar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="baixarExercicioActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -187,8 +193,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="695" max="32767" attributes="0"/>
-          <EmptySpace min="0" pref="695" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelSaudacao" pref="675" max="32767" attributes="0"/>
@@ -199,7 +203,6 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="527" max="32767" attributes="0"/>
           <EmptySpace min="0" pref="527" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <Component id="labelSaudacao" min="-2" pref="49" max="-2" attributes="0"/>

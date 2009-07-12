@@ -100,9 +100,19 @@ public class MenuAluno extends javax.swing.JFrame {
         menuExercicios.setText("Exercícios");
 
         enviarExercicio.setText("Enviar");
+        enviarExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enviarExercicioActionPerformed(evt);
+            }
+        });
         menuExercicios.add(enviarExercicio);
 
         baixarExercicio.setText("Baixar");
+        baixarExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                baixarExercicioActionPerformed(evt);
+            }
+        });
         menuExercicios.add(baixarExercicio);
 
         menuArquivo.add(menuExercicios);
@@ -223,8 +233,6 @@ public class MenuAluno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
-            .addGap(0, 695, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
@@ -233,7 +241,6 @@ public class MenuAluno extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
             .addGap(0, 527, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,6 +307,14 @@ public class MenuAluno extends javax.swing.JFrame {
         painelExibir.setText(Util.ABOUT);
         painelExibir.setVisible(true);
     }//GEN-LAST:event_ajudaSobreActionPerformed
+
+    private void enviarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarExercicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enviarExercicioActionPerformed
+
+    private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_baixarExercicioActionPerformed
 
     /**
      * @param args the command line arguments
