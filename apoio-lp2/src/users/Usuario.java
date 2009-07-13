@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import controle.BD;
 import controle.UsuariosEnum;
@@ -32,9 +34,11 @@ public class Usuario implements Serializable {
 	 */
 	public Usuario(String nome, String login, String senha, String matricula,
 			String email, String turma) throws Exception {
-		if (login == null || senha == null || nome == null || matricula == null)
+		if (login == null || senha == null || nome == null || matricula == null || 
+				isOnlySpace(login) || isOnlySpace(senha) || isOnlySpace(nome) || isOnlySpace(matricula))
 			throw new IllegalArgumentException(
 					"NOME, MATRICULA, LOGIN OU SENHA  INVALIDOS!");
+		
 		if (login.length() < MENOR_LOGIN) {
 			throw new Exception(
 					"LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
@@ -109,7 +113,8 @@ public class Usuario implements Serializable {
 	 *            the nome to set
 	 */
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (!isOnlySpace(nome))
+			this.nome = nome;
 	}
 
 	/**
@@ -125,7 +130,7 @@ public class Usuario implements Serializable {
 	 * @param matricula
 	 */
 	public void setMatricula(String matricula) {
-		if (!matricula.isEmpty() || matricula != null)
+		if (!isOnlySpace(matricula) || matricula != null)
 			this.matricula = matricula;
 	}
 
@@ -182,6 +187,28 @@ public class Usuario implements Serializable {
 		this.turma = turma;
 	}
 
+	
+	/**
+	 * Verifica se a string só tem espaço
+	 * 
+	 * @param string
+	 *            - a string a ser verificada se só tem espaços
+	 * @return true se só tem espaços, false caso contrário.
+	 */
+	private boolean isOnlySpace(String string) {
+		int space = 0;
+		for (int letter = 0; letter < string.length(); letter++) {
+			if (Character.isSpaceChar(string.charAt(letter))) {
+				space++;
+			}
+		}
+
+		if (space == string.length()) {
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Verifica se a estrutura do e-mail eh valida.
 	 * 
@@ -189,13 +216,12 @@ public class Usuario implements Serializable {
 	 * @return true caso o e-mail seja valido e false caso contrario.
 	 */
 	private boolean verificaEmail(String email) {
-		if (email.contains("@") && email != null) {
-			if (email.split("@")[0].length() > 0) {
-				String dominio = email.split("@")[1];
-				if (dominio.contains("."))
-					return true;
-			}
-			return false;
+		if (email == null) return false;
+		String expression = "^[\\w\\-]+(\\.[\\w\\-]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+		Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+		Matcher pesquisa = pattern.matcher(email);
+		if (pesquisa.matches()) {
+			return true;
 		}
 		return false;
 	}
