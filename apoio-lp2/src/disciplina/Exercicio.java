@@ -25,7 +25,7 @@ public class Exercicio implements Serializable{
 	
 	private Exercicio() {}
 
-	public Exercicio(int id, String nome,  String descricao, Calendar data,
+	public Exercicio(String nome,  String descricao, Calendar data,
 			Calendar dataEntrega, List<String> questoes ) throws Exception {
 		if (nome == null || descricao == null || data == null || dataEntrega == null) {
 			throw new IllegalArgumentException("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS");
@@ -38,7 +38,7 @@ public class Exercicio implements Serializable{
 		this.dataEntrega = dataEntrega;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.id = id;
+		this.id = util.Util.geraId("exercicio");
 	}
 
 	/**
