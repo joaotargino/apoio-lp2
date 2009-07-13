@@ -11,11 +11,12 @@
 package interfaceGraficaUsuario;
 
 import controle.Sistema;
-import controle.Util;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import util.Util;
 
 /**
  *
@@ -207,7 +208,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        if (Sistema.cadastrarExercicio(Util.geraId("exercicio"), campoNome.getText(), campoDescricao.getText(), data, Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
+        if (Sistema.cadastrarExercicio(campoNome.getText(), campoDescricao.getText(), data, Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
             labelMensagem.setText(Sistema.addExercicioSucesso);
             labelMensagem.setForeground(Color.BLUE);
             labelMensagem.setVisible(true);
