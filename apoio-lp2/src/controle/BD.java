@@ -314,16 +314,13 @@ public class BD {
 		while(exIt.hasNext()) {
 			Exercicio exAtual = exIt.next();
 			if (exAtual.getId() == id) {
-				int indice = exercicios.indexOf(exAtual);
-				exercicios.remove(exAtual);
-                try {
-                    exercicio.setId(id);
-                    System.out.println("Coisa coisada de BD!");
-                } catch (Exception ex) {
-                    System.out.println("...");
-                            
-                }
-				exercicios.add(indice, exercicio);
+				try {
+					exercicios.get(exercicios.indexOf(exAtual)).setNome(exercicio.getNome());
+					exercicios.get(exercicios.indexOf(exAtual)).setDescricao(exercicio.getDescricao());
+					exercicios.get(exercicios.indexOf(exAtual)).setDataEntrega(exercicio.getDataEntrega());
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
 				try {
 					Serializar.salvarObjeto(EXERCICIOSBD, exercicios);
 					return true;
