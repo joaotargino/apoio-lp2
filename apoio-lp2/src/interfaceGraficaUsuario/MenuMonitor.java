@@ -334,11 +334,13 @@ public class MenuMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAlterarSenhaActionPerformed
 
     private void ajudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaSobreActionPerformed
+        inicializaPaineis();
         painelExibir.setText(Util.ABOUT);
         painelExibir.setVisible(true);
     }//GEN-LAST:event_ajudaSobreActionPerformed
 
     private void ajudaHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaHelpActionPerformed
+        inicializaPaineis();
         painelExibir.setText(Util.HELP);
         painelExibir.setVisible(true);
     }//GEN-LAST:event_ajudaHelpActionPerformed
@@ -349,7 +351,8 @@ public class MenuMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_baixarExercicioActionPerformed
 
     private void editarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarExercicioActionPerformed
-        // TODO add your handling code here:
+        EditarExercicio editarEx = new EditarExercicio();
+        editarEx.setVisible(true);
     }//GEN-LAST:event_editarExercicioActionPerformed
 
     private void removerExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerExercicioActionPerformed

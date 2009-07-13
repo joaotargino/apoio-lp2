@@ -30,11 +30,11 @@ public class AdicionarExercicio extends javax.swing.JFrame {
     /** Creates new form AdicionarExercicio */
     public AdicionarExercicio() {
         initComponents();
+        setTitle("Adicionar Exercício");
         questoes = new ArrayList();
-        System.out.println(questoes);
         painelDataAtual.setText(data.getTime().toLocaleString().split(" ")[0]);
         painelDataAtual.setEnabled(false);
-        painelDataAtual.setForeground(Color.BLACK); //continua
+        painelDataAtual.setForeground(Color.BLACK);
         labelMensagem.setVisible(false);
 
     }

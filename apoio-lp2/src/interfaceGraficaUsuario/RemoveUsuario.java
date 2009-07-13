@@ -30,7 +30,7 @@ public class RemoveUsuario extends javax.swing.JFrame {
     /** Creates new form RemoveUsuario */
     public RemoveUsuario(String login) {
         initComponents();
-        
+        setTitle("Remover Usuário");
         this.loginProfessor = login;
         labelNotFound.setForeground(Color.RED);
         labelNotFound.setVisible(false);
