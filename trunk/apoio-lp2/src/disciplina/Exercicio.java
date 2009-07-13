@@ -3,8 +3,11 @@ package disciplina;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
+
+import util.Util;
 
 /**
  * Classe que cria exercicios
@@ -22,21 +25,24 @@ public class Exercicio implements Serializable {
     private String nome;
     private String descricao;
     private int id;
+
     private List<String> questoes = new ArrayList();
 
     private Exercicio() {
     }
 
-    public Exercicio(String nome, String descricao, Calendar data,
-            Calendar dataEntrega, List<String> questoes) throws Exception {
-        if (nome == null || descricao == null || data == null || dataEntrega == null) {
+    public Exercicio(String nome, String descricao, Calendar dataEntrega,
+            List<String> questoes) throws Exception {
+        if (nome == null || descricao == null || dataEntrega == null) {
             throw new IllegalArgumentException("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS");
         }
+
+        this.questoes = questoes;
+        this.data = new GregorianCalendar();
+        
         if (dataEntrega.compareTo(data) < 0) {
             throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIAÃ‡ÃƒO");
         }
-        this.questoes = questoes;
-        this.data = data;
         this.dataEntrega = dataEntrega;
         this.nome = nome;
         this.descricao = descricao;
@@ -68,10 +74,13 @@ public class Exercicio implements Serializable {
     }
 
     /**
-     * seta a data para a entrega do exercicio
+     * muda a data para a entrega do exercicio
      * @param dataEntrega
+     * @throws Exception 
      */
-    public void setDataEntrega(Calendar dataEntrega) {
+    public void setDataEntrega(Calendar dataEntrega) throws Exception {
+    	if (dataEntrega.compareTo(data) < 0) 
+    		throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIACÃO DO EXERCÍCIO!");
         this.dataEntrega = dataEntrega;
     }
 
@@ -84,10 +93,17 @@ public class Exercicio implements Serializable {
     }
 
     /**
-     * seta o nome do exercicio
+     * muda o nome do exercicio
      * @param nome
+     * @throws Exception 
      */
-    public void setNome(String nome) {
+    public void setNome(String nome) throws Exception {
+    	if (isOnlySpace(nome)) 
+    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+    	
+    	if (nome == null) {
+    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER NULO!");
+    	}
         this.nome = nome;
     }
 
@@ -101,8 +117,14 @@ public class Exercicio implements Serializable {
     /**
      * seta a descricao do exercicio
      * @param descricao
+     * @throws Exception 
      */
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao) throws Exception {
+    	if (isOnlySpace(descricao)) 
+    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+    	if (descricao == null) {
+    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER NULA!");
+    	}
         this.descricao = descricao;
     }
 
@@ -116,8 +138,11 @@ public class Exercicio implements Serializable {
     /**
      * atribui um id ao exercicio
      * @param id
+     * @throws Exception 
      */
-    public void setId(int id) {
+    public void setId(int id) throws Exception {
+    	if (Util.temId(id, "exercicio"))
+    		throw new Exception("JÁ EXISTE UM EXERCICIO COM ESSE ID!");
         this.id = id;
     }
 
@@ -134,6 +159,27 @@ public class Exercicio implements Serializable {
         }
         return stringQuestoes;
     }
+    
+	/**
+	 * Verifica se a string só tem espaço
+	 * 
+	 * @param string
+	 *            - a string a ser verificada se só tem espaços
+	 * @return true se só tem espaços, false caso contrário.
+	 */
+	private boolean isOnlySpace(String string) {
+		int space = 0;
+		for (int letter = 0; letter < string.length(); letter++) {
+			if (Character.isSpaceChar(string.charAt(letter))) {
+				space++;
+			}
+		}
+
+		if (space == string.length()) {
+			return true;
+		}
+		return false;
+	}
 
     @Override
     public boolean equals(Object arg0) {
@@ -146,7 +192,8 @@ public class Exercicio implements Serializable {
         return false;
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public String toString() {
         return "Id: " + getId() + " | Nome: " + getNome() + " | DescriÃ§Ã£o: " + getDescricao() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0] + dados.IO.NOVA_LINHA;
     }
