@@ -2,6 +2,7 @@ package disciplina;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -91,7 +92,7 @@ public class Exercicio implements Serializable{
 	/**
 	 * @return descricao do exercicio
 	 */
-	public String getEnunciado() {
+	public String getDescricao() {
 		return descricao;
 	}
 
@@ -99,8 +100,8 @@ public class Exercicio implements Serializable{
 	 * seta a descricao do exercicio
 	 * @param descricao
 	 */
-	public void setEnunciado(String enunciado) {
-		this.descricao = enunciado;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	/**
@@ -117,6 +118,15 @@ public class Exercicio implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+
+    public String exibirQuestoes(){
+        String stringQuestoes = "";
+        Iterator questao = questoes.iterator();
+        while(questao.hasNext()){
+            stringQuestoes += questao.next().toString() + dados.IO.NOVA_LINHA;
+        }
+        return stringQuestoes;
+    }
 	
 	@Override
 	public boolean equals(Object arg0) {
@@ -130,6 +140,6 @@ public class Exercicio implements Serializable{
 	
 	@Override
 		public String toString() {
-			return "Id: " + getId() + " | Nome: "  + getNome() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0]; 
+			return "Id: " + getId() + " | Nome: "  + getNome() + " | Descrição: " + getDescricao() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0] + dados.IO.NOVA_LINHA;
 		}	
 }
