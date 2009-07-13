@@ -2,13 +2,25 @@ package testes;
 
 import static org.junit.Assert.*;
 
-import org.hibernate.annotations.Entity;
+import org.junit.Before;
 import org.junit.Test;
 
 import users.Usuario;
 
 public class UsuarioTest {
 	static Usuario user;
+	
+	@Before
+	public void setUp() {
+		try {
+			user = new Usuario("Erickson", "ericksonfgds",
+					"senhadeerickson", "20821200",
+					"eicksonfgds@lcc.ufcg.edu.br", "2009.1");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	public void construtorNuloTest() {
@@ -43,9 +55,17 @@ public class UsuarioTest {
 		}
 	}
 	
-	
 	public void emailTest() {
-		
+		assertFalse(user.setEmail(""));
+		assertFalse(user.setEmail("@"));
+		assertFalse(user.setEmail("a@email"));
+		assertFalse(user.setEmail("a@email."));
+		assertFalse(user.setEmail("."));
+		assertTrue(user.setEmail("erickson@email.com"));
+		assertTrue(user.setEmail("erickson@email.com.br"));
+		assertTrue(user.setEmail("ericksonfilipe@gmail.com.br"));
 	}
+	
+	
 
 }
