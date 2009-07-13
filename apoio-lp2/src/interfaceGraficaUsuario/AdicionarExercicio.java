@@ -77,6 +77,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
 
         jLabel1.setText("Data atual:");
 
+        painelDataAtual.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         painelDataAtual.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelDataAtual);
 

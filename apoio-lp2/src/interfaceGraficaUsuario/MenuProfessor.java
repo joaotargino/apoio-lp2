@@ -25,6 +25,7 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private List<String> dadosUsuario;
     private static MenuProfessor janelaMonitor = new MenuProfessor();
+    
 
     /** Creates new form MenuProfessor */
     public MenuProfessor() {
@@ -35,17 +36,18 @@ public class MenuProfessor extends javax.swing.JFrame {
     public MenuProfessor(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
-        inicializaPaineis();
         painelExibir.setEnabled(false);
         painelExibir.setForeground(Color.BLACK);
-        painelDeAbas.setVisible(true);
+        QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes();
+        painelDeInformacoes = quadroInfo.getPainel();
+        painelDeInformacoes.setVisible(true);
         painelExibir.setText("");
         setTitle("Menu Professor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
     private void inicializaPaineis() {
-        painelDeAbas.setVisible(false);
+        painelDeInformacoes.setVisible(false);
         painelExibir.setVisible(false);
 
     }
@@ -61,14 +63,9 @@ public class MenuProfessor extends javax.swing.JFrame {
     private void initComponents() {
 
         labelSaudacao = new javax.swing.JLabel();
-        painelDeAbas = new javax.swing.JTabbedPane();
-        abaPainelAvisos = new javax.swing.JTabbedPane();
-        abaPainelPlanoDeAula = new javax.swing.JTabbedPane();
-        abaPainelCriterio = new javax.swing.JTabbedPane();
-        abaPainelInfoProjeto = new javax.swing.JTabbedPane();
-        abaPainelNotas = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         painelExibir = new javax.swing.JTextPane();
+        painelDeInformacoes = new javax.swing.JTabbedPane();
         menuBarProfessor = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuAdicionar = new javax.swing.JMenu();
@@ -105,14 +102,6 @@ public class MenuProfessor extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         labelSaudacao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
-        painelDeAbas.addTab("Avisos", abaPainelAvisos);
-        abaPainelAvisos.getAccessibleContext().setAccessibleName("");
-
-        painelDeAbas.addTab("Plano de Aula", abaPainelPlanoDeAula);
-        painelDeAbas.addTab("Critério de Avaliação", abaPainelCriterio);
-        painelDeAbas.addTab("Informações do Projeto", abaPainelInfoProjeto);
-        painelDeAbas.addTab("Notas", abaPainelNotas);
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setBorder(null);
@@ -347,7 +336,7 @@ public class MenuProfessor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
         );
@@ -356,7 +345,7 @@ public class MenuProfessor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(painelDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(47, Short.MAX_VALUE)
@@ -410,8 +399,10 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_exibirExerciciosActionPerformed
 
     private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
-        inicializaPaineis();
-        painelDeAbas.setVisible(true);
+          QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes();
+          quadroInfo.setVisible(true);
+//        inicializaPaineis();
+//        painelDeInformacoes.setVisible(true);
     }//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
 
     private void resetarExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarExerciciosActionPerformed
@@ -497,11 +488,6 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Logoff;
-    private javax.swing.JTabbedPane abaPainelAvisos;
-    private javax.swing.JTabbedPane abaPainelCriterio;
-    private javax.swing.JTabbedPane abaPainelInfoProjeto;
-    private javax.swing.JTabbedPane abaPainelNotas;
-    private javax.swing.JTabbedPane abaPainelPlanoDeAula;
     private javax.swing.JMenuItem addAluno;
     private javax.swing.JMenuItem addExercicio;
     private javax.swing.JMenuItem addMonitor;
@@ -528,7 +514,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenu menuRemover;
     private javax.swing.JMenu menuResetarBD;
     private javax.swing.JMenuItem menuSair;
-    private javax.swing.JTabbedPane painelDeAbas;
+    private javax.swing.JTabbedPane painelDeInformacoes;
     private javax.swing.JTextPane painelExibir;
     private javax.swing.JMenuItem removerExercicio;
     private javax.swing.JMenuItem removerUsuario;
