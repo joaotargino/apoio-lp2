@@ -500,4 +500,12 @@ public class Sistema {
     public static String exibirQuestoes(Exercicio exercicio) {
         return exercicio.exibirQuestoes();
     }
+
+    public static void salvaQuadroDeInformacoes(List<String> quadroDeInformacoes){
+        BD.gravaInformacoesPainel(quadroDeInformacoes);
+    }
+
+    public static List<String> getQuadroDeInformacoes(){
+        return BD.quadroDeInformacoes();
+    }
 }
