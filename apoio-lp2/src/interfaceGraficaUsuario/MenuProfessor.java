@@ -38,16 +38,13 @@ public class MenuProfessor extends javax.swing.JFrame {
         initComponents();
         painelExibir.setEnabled(false);
         painelExibir.setForeground(Color.BLACK);
-        QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes();
-        painelDeInformacoes = quadroInfo.getPainel();
-        painelDeInformacoes.setVisible(true);
+
         painelExibir.setText("");
         setTitle("Menu Professor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
 
     private void inicializaPaineis() {
-        painelDeInformacoes.setVisible(false);
         painelExibir.setVisible(false);
 
     }
@@ -65,7 +62,6 @@ public class MenuProfessor extends javax.swing.JFrame {
         labelSaudacao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         painelExibir = new javax.swing.JTextPane();
-        painelDeInformacoes = new javax.swing.JTabbedPane();
         menuBarProfessor = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuAdicionar = new javax.swing.JMenu();
@@ -336,7 +332,6 @@ public class MenuProfessor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
         );
@@ -344,8 +339,7 @@ public class MenuProfessor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelSaudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(47, Short.MAX_VALUE)
@@ -401,8 +395,6 @@ public class MenuProfessor extends javax.swing.JFrame {
     private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
           QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes();
           quadroInfo.setVisible(true);
-//        inicializaPaineis();
-//        painelDeInformacoes.setVisible(true);
     }//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
 
     private void resetarExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarExerciciosActionPerformed
@@ -514,7 +506,6 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenu menuRemover;
     private javax.swing.JMenu menuResetarBD;
     private javax.swing.JMenuItem menuSair;
-    private javax.swing.JTabbedPane painelDeInformacoes;
     private javax.swing.JTextPane painelExibir;
     private javax.swing.JMenuItem removerExercicio;
     private javax.swing.JMenuItem removerUsuario;
