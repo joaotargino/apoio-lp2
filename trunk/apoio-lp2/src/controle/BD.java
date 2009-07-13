@@ -28,6 +28,7 @@ public class BD {
 	private static final File SUBMISSOESBD = new File("./src/dados/submissoesBD.txt");
 	//arquivo com o BD dos exercicios
 	private static final File EXERCICIOSBD = new File("./src/dados/exerciciosBD.txt");
+	private static final File PAINELBD = new File("./src/dados/PainelBD.txt");
 
 	/**
 	 * Retorna uma lista de usuarios cadastrados no banco de dados
@@ -317,6 +318,7 @@ public class BD {
 				exercicios.remove(exAtual);
                 try {
                     exercicio.setId(id);
+                    System.out.println("Coisa coisada de BD!");
                 } catch (Exception ex) {
                     System.out.println("...");
                             
@@ -435,6 +437,24 @@ public class BD {
 		}
 		return false;
 	}
+	
+    @SuppressWarnings("unchecked")
+	public static List<String > quadroDeInformacoes() {
+    	try {
+			List informacoes = (List) Serializar.recuperarObjeto(PAINELBD);
+			return informacoes;
+		} catch (Exception e) {
+		}
+		return new ArrayList<String>();
+    }
+    
+    public static void gravaInformacoesPainel(List<String> lista) {
+    	try {
+    		PAINELBD.delete();
+			Serializar.salvarObjeto(PAINELBD, lista);
+		} catch (Exception e) {
+		}	
+    }
 	
 	/**
 	 * Reseta o banco de dados.
