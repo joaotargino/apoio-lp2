@@ -288,9 +288,8 @@ public class MenuAluno extends javax.swing.JFrame {
 }//GEN-LAST:event_exibirModeradoresActionPerformed
 
     private void exibirExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirExerciciosActionPerformed
-        inicializaPaineis();
-        painelExibir.setText(Sistema.listaDeExercicios());
-        painelExibir.setVisible(true);
+        ExibirExercicio showEx = new ExibirExercicio();
+        showEx.setVisible(true);
 }//GEN-LAST:event_exibirExerciciosActionPerformed
 
     private void menuAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarSenhaActionPerformed
