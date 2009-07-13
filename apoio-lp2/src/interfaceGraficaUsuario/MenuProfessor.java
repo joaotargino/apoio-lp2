@@ -291,6 +291,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         jMenu1.add(addExercicio);
 
         removerExercicio.setText("Remover");
+        removerExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerExercicioActionPerformed(evt);
+            }
+        });
         jMenu1.add(removerExercicio);
 
         editarExercicio.setText("Editar Exercício");
@@ -471,6 +476,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         BaixarExercicio baixarEx = new BaixarExercicio();
         baixarEx.setVisible(true);
     }//GEN-LAST:event_baixarExercicioActionPerformed
+
+    private void removerExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerExercicioActionPerformed
+        RemoveExercicio removeEx = new RemoveExercicio();
+        removeEx.setVisible(true);
+    }//GEN-LAST:event_removerExercicioActionPerformed
 
     /**
      * @param args the command line arguments
