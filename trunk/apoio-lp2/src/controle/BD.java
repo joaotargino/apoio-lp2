@@ -437,12 +437,21 @@ public class BD {
 	
     @SuppressWarnings("unchecked")
 	public static List<String > quadroDeInformacoes() {
+        List informacoes = new ArrayList();
     	try {
-			List informacoes = (List) Serializar.recuperarObjeto(PAINELBD);
+			informacoes = (List) Serializar.recuperarObjeto(PAINELBD);
 			return informacoes;
 		} catch (Exception e) {
 		}
-		return new ArrayList<String>();
+        String avisos = "cois";
+        String plano = "ss";
+        String info = "s";
+        String criterios = "";
+        informacoes.add(avisos);
+        informacoes.add(plano);
+        informacoes.add(info);
+        informacoes.add(criterios);
+		return informacoes;
     }
     
     public static void gravaInformacoesPainel(List<String> lista) {
