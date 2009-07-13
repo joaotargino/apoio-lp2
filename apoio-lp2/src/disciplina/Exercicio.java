@@ -21,7 +21,7 @@ public class Exercicio implements Serializable{
 	private String nome;
 	private String descricao;
 	private int id;
-    private List<String> questoes;
+    private static List<String> questoes;
 	
 	private Exercicio() {}
 
@@ -119,7 +119,7 @@ public class Exercicio implements Serializable{
 		this.id = id;
 	}
 
-    public String exibirQuestoes(){
+    public static String exibirQuestoes(){
         String stringQuestoes = "";
         Iterator questao = questoes.iterator();
         while(questao.hasNext()){
