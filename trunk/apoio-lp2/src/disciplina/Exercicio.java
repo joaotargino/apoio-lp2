@@ -25,7 +25,6 @@ public class Exercicio implements Serializable {
     private String nome;
     private String descricao;
     private int id;
-
     private List<String> questoes = new ArrayList();
 
     private Exercicio() {
@@ -39,7 +38,7 @@ public class Exercicio implements Serializable {
 
         this.questoes = questoes;
         this.data = new GregorianCalendar();
-        
+
         if (dataEntrega.compareTo(data) < 0) {
             throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIAÇÃO");
         }
@@ -79,8 +78,9 @@ public class Exercicio implements Serializable {
      * @throws Exception 
      */
     public void setDataEntrega(Calendar dataEntrega) throws Exception {
-    	if (dataEntrega.compareTo(data) < 0) 
-    		throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIACÃO DO EXERC�CIO!");
+        if (dataEntrega.compareTo(data) < 0) {
+            throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIACÃO DO EXERC�CIO!");
+        }
         this.dataEntrega = dataEntrega;
     }
 
@@ -98,12 +98,13 @@ public class Exercicio implements Serializable {
      * @throws Exception 
      */
     public void setNome(String nome) throws Exception {
-    	if (isOnlySpace(nome)) 
-    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
-    	
-    	if (nome == null) {
-    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER NULO!");
-    	}
+        if (isOnlySpace(nome)) {
+            throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+        }
+
+        if (nome == null) {
+            throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER NULO!");
+        }
         this.nome = nome;
     }
 
@@ -120,11 +121,12 @@ public class Exercicio implements Serializable {
      * @throws Exception 
      */
     public void setDescricao(String descricao) throws Exception {
-    	if (isOnlySpace(descricao)) 
-    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
-    	if (descricao == null) {
-    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER NULA!");
-    	}
+        if (isOnlySpace(descricao)) {
+            throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+        }
+        if (descricao == null) {
+            throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER NULA!");
+        }
         this.descricao = descricao;
     }
 
@@ -141,12 +143,13 @@ public class Exercicio implements Serializable {
      * @throws Exception 
      */
     public void setId(int id) throws Exception {
-    	if (Util.temId(id, "exercicio"))
-    		throw new Exception("J� EXISTE UM EXERCICIO COM ESSE ID!");
+        if (Util.temId(id, "exercicio")) {
+            throw new Exception("J� EXISTE UM EXERCICIO COM ESSE ID!");
+        }
         this.id = id;
     }
 
-    public List<String> getQuestoes(){
+    public List<String> getQuestoes() {
         return questoes;
     }
 
@@ -159,27 +162,27 @@ public class Exercicio implements Serializable {
         }
         return stringQuestoes;
     }
-    
-	/**
-	 * Verifica se a string s� tem espa�o
-	 * 
-	 * @param string
-	 *            - a string a ser verificada se s� tem espa�os
-	 * @return true se s� tem espa�os, false caso contr�rio.
-	 */
-	private boolean isOnlySpace(String string) {
-		int space = 0;
-		for (int letter = 0; letter < string.length(); letter++) {
-			if (Character.isSpaceChar(string.charAt(letter))) {
-				space++;
-			}
-		}
 
-		if (space == string.length()) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Verifica se a string s� tem espa�o
+     *
+     * @param string
+     *            - a string a ser verificada se s� tem espa�os
+     * @return true se s� tem espa�os, false caso contr�rio.
+     */
+    private boolean isOnlySpace(String string) {
+        int space = 0;
+        for (int letter = 0; letter < string.length(); letter++) {
+            if (Character.isSpaceChar(string.charAt(letter))) {
+                space++;
+            }
+        }
+
+        if (space == string.length()) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean equals(Object arg0) {
@@ -193,8 +196,12 @@ public class Exercicio implements Serializable {
     }
 
     @SuppressWarnings("deprecation")
-	@Override
+    @Override
     public String toString() {
         return "Id: " + getId() + " | Nome: " + getNome() + " | Descrição: " + getDescricao() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0] + util.IO.NOVA_LINHA;
+    }
+
+    public void setQuestoes(List<String> questoes) {
+        this.questoes = questoes;
     }
 }
