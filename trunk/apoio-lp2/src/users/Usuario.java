@@ -90,6 +90,12 @@ public class Usuario implements Serializable {
 	 * @throws Exception 
 	 */
 	public void setSenha(String novaSenha) throws Exception {
+		if (novaSenha == null) {
+			throw new Exception();
+		}
+		if (isOnlySpace(novaSenha)) {
+			throw new Exception("SENHA INVALIDA. ESPACOS NÃO SÃO VÁLIDOS COMO SENHA.");
+		}
 		if (novaSenha.length() < MENOR_SENHA) {
 			throw new Exception(
 					"SENHA INVALIDA. INFORME UMA SENHA ENTRE SEIS E DEZOITO CARACTERES.");
