@@ -291,7 +291,6 @@
               <Component id="labelSaudacao" pref="686" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="painelDeInformacoes" alignment="0" pref="706" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Component id="jScrollPane1" alignment="1" pref="706" max="32767" attributes="0"/>
           </Group>
@@ -301,8 +300,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="labelSaudacao" min="-2" pref="37" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="painelDeInformacoes" pref="500" max="32767" attributes="0"/>
+              <EmptySpace pref="511" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
@@ -346,10 +344,6 @@
           </Properties>
         </Component>
       </SubComponents>
-    </Container>
-    <Container class="javax.swing.JTabbedPane" name="painelDeInformacoes">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>
   </SubComponents>
 </Form>

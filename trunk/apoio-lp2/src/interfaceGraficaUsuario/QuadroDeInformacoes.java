@@ -10,7 +10,8 @@
  */
 package interfaceGraficaUsuario;
 
-import controle.UsuariosEnum;
+import controle.Sistema;
+import java.util.List;
 
 /**
  *
@@ -18,34 +19,64 @@ import controle.UsuariosEnum;
  */
 public class QuadroDeInformacoes extends javax.swing.JFrame {
 
-    private static String avisos = "";
-    private static String plano = "";
-    private static String info = "";
-    private static String criterios = "";
+    private String[] listaQuadro  = {"","","",""};
+    private String avisos;
+    private String plano;
+    private String info;
+    private String criterios;
+    private final int AVISOS = 0;
+    private final int PLANO = 1;
+    private final int INFO = 2;
+    private final int CRITERIOS = 3;
 
     /** Creates new form QuadroDeInformacoes */
     public QuadroDeInformacoes() {
-        initComponents();        
+        initComponents();
+        inicializa();
+        setVisible(true);
+        campoAvisos.setVisible(true);
+        campoPlano.setVisible(true);
+        campoInfo.setVisible(true);
+        campoCriterios.setVisible(true);
         campoAvisos.setText(avisos);
         campoPlano.setText(plano);
         campoInfo.setText(info);
         campoCriterios.setText(criterios);
+    }
+    public  void inicializa(){
+        String[] quadroDeInformacoes = Sistema.getQuadroDeInformacoes();
+        avisos = quadroDeInformacoes[AVISOS];
+        plano = quadroDeInformacoes[PLANO];
+        info = quadroDeInformacoes[INFO];
+        criterios = quadroDeInformacoes[CRITERIOS];
     }
 
     public javax.swing.JTabbedPane getPainel() {
-
-        campoAvisos.setText(avisos);
-        campoPlano.setText(plano);
-        campoInfo.setText(info);
-        campoCriterios.setText(criterios);
         return painelDeInformacoes;
     }
 
+    public String[] criaLista(){
+        avisos = campoAvisos.getText();
+        plano = campoPlano.getText();
+        info = campoInfo.getText();
+        criterios = campoCriterios.getText();
+
+        listaQuadro[AVISOS] = avisos;
+        listaQuadro[PLANO] = plano;
+        listaQuadro[INFO] = info;
+        listaQuadro[CRITERIOS] = criterios;
+        
+        
+
+        System.out.println(listaQuadro);
+        
+        return listaQuadro;
+    }
     public void salvarTextos() {
-        avisos += campoAvisos.getText();
-        plano += campoPlano.getText();
-        info += campoInfo.getText();
-        criterios += campoCriterios.getText();
+        //criaLista();
+        Sistema.salvaQuadroDeInformacoes(criaLista());
+
+
     }
 
     /** This method is called from within the constructor to
