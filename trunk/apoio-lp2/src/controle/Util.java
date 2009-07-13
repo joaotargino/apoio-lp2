@@ -8,10 +8,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Util {
-
+    final static int DIA = 0;
+    final static int MES = 1;
+    final static int ANO = 2;
     public static Calendar criaCalendario(String cal) {
 	String[] date = cal.split("/");
-	return new GregorianCalendar(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+
+	return new GregorianCalendar(Integer.parseInt(date[ANO]), Integer.parseInt(date[MES])-1, Integer.parseInt(date[DIA]));
     }
 
     public static String ListToString(List l) {

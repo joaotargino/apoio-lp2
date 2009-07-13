@@ -232,7 +232,7 @@ public class Sistema {
                 addExercicioSucesso = "Exercício adicionado com sucesso";
                 return true;
             }
-        } catch (IOException e) {
+        } catch (IllegalArgumentException e) {
             excecao = e.getMessage();
         } catch (Exception e) {
             excecao = e.getMessage();
