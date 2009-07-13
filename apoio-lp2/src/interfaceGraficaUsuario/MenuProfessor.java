@@ -400,9 +400,8 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_resetarAlunosActionPerformed
 
     private void exibirExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirExerciciosActionPerformed
-        inicializaPaineis();
-        painelExibir.setText(Sistema.listaDeExercicios());
-        painelExibir.setVisible(true);
+        ExibirExercicio showEx = new ExibirExercicio();
+        showEx.setVisible(true);
     }//GEN-LAST:event_exibirExerciciosActionPerformed
 
     private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed

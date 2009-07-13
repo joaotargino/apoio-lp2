@@ -491,4 +491,18 @@ public class Sistema {
     public static Usuario getUsuario(int id) {
         return BD.getUsuario(id);
     }
+
+    /**
+     *  procura um exercicio pelo id
+     * @param id
+     * @return retorna o exercicio do id informado
+     */
+    public static Exercicio getExercicio(int id){
+        return BD.getExercicio(id);
+    }
+
+
+    public static String exibirQuestoes(Exercicio exercicio){
+        return exercicio.exibirQuestoes();
+    }
 }
