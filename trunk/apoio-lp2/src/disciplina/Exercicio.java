@@ -22,7 +22,7 @@ public class Exercicio implements Serializable {
     private String nome;
     private String descricao;
     private int id;
-    private static List<String> questoes = new ArrayList();
+    private List<String> questoes = new ArrayList();
 
     private Exercicio() {
     }
@@ -121,11 +121,11 @@ public class Exercicio implements Serializable {
         this.id = id;
     }
 
-    public static List<String> getQuestoes(){
+    public List<String> getQuestoes(){
         return questoes;
     }
 
-    public static String exibirQuestoes() {
+    public String exibirQuestoes() {
 
         String stringQuestoes = "";
         Iterator questao = getQuestoes().iterator();
