@@ -25,11 +25,12 @@ import util.Util;
 public class AdicionarExercicio extends javax.swing.JFrame {
 
     private static GregorianCalendar data = new GregorianCalendar();
-    private static List<String> questoes = new ArrayList();
+    private static List<String> questoes;
 
     /** Creates new form AdicionarExercicio */
     public AdicionarExercicio() {
         initComponents();
+        questoes = new ArrayList();
         painelDataAtual.setText(data.getTime().toLocaleString().split(" ")[0]);
         painelDataAtual.setEnabled(false);
         painelDataAtual.setForeground(Color.BLACK); //continua
@@ -208,10 +209,12 @@ public class AdicionarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+
         if (Sistema.cadastrarExercicio(campoNome.getText(), campoDescricao.getText(), data, Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
             labelMensagem.setText(Sistema.addExercicioSucesso);
             labelMensagem.setForeground(Color.BLUE);
             labelMensagem.setVisible(true);
+            inicializaCampos();
         } else {
             labelMensagem.setText("ERRO. " + Sistema.excecao);
             labelMensagem.setForeground(Color.RED);
@@ -228,6 +231,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
         campoDescricao.setText("");
         campoDataDeEntrega.setText("");
         textoQuestao.setText("");
+
     }
 
     /**
