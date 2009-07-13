@@ -430,7 +430,8 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_resetaBDActionPerformed
 
     private void addExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExercicioActionPerformed
-        // TODO add your handling code here:
+        AdicionarExercicio addEx = new AdicionarExercicio();
+        addEx.setVisible(true);
     }//GEN-LAST:event_addExercicioActionPerformed
 
     private void menuEditarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarDadosActionPerformed
