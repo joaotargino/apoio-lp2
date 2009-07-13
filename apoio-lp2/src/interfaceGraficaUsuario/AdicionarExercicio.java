@@ -31,6 +31,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
     public AdicionarExercicio() {
         initComponents();
         questoes = new ArrayList();
+        System.out.println(questoes);
         painelDataAtual.setText(data.getTime().toLocaleString().split(" ")[0]);
         painelDataAtual.setEnabled(false);
         painelDataAtual.setForeground(Color.BLACK); //continua
@@ -206,6 +207,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
 
     private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
         inicializaCampos();
+        
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
@@ -231,6 +233,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
         campoDescricao.setText("");
         campoDataDeEntrega.setText("");
         textoQuestao.setText("");
+        questoes.clear();
 
     }
 
