@@ -79,6 +79,56 @@ public class UsuarioTest {
 		new Usuario("nomeUsuario", "loginn", "senh", "matriculausuario", "email@email.com", "turma");
 	}
 	
+	@Test(expected=Exception.class)
+	public void mudaSenhaVazio() throws Exception {
+		user.setSenha("");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaSenhaSoEspacos() throws Exception {
+		user.setSenha("         ");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaSenhaPoucosCaracteres() throws Exception {
+		user.setSenha("1234");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaSenhaNulo() throws Exception {
+		user.setSenha(null);
+	}
+	
+	@Test
+	public void mudaSenhaNormal() throws Exception {
+		user.setSenha("novaSenha");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaNomeSoEspacos() throws Exception {
+		user.setNome("        ");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaNomeNulo() throws Exception {
+		user.setNome(null);
+	}
+	
+	@Test
+	public void mudaNomeNormal() throws Exception {
+		user.setNome("Severino");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaMatriculaSoEspacos() throws Exception {
+		user.setMatricula("        ");
+	}
+	
+	@Test(expected=Exception.class)
+	public void mudaMatriculaNula() throws Exception {
+		user.setMatricula(null);
+	}
+	
 	
 
 }
