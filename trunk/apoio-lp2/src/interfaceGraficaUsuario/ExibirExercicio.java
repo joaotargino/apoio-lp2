@@ -22,6 +22,7 @@ public class ExibirExercicio extends javax.swing.JFrame {
     /** Creates new form ExibirExercicio */
     public ExibirExercicio() {
         initComponents();
+        setTitle("Exibir Exercício");
         campoID.setText("0");
         painelExibir.setText(Sistema.listaDeExercicios());
         painelExibir.setEnabled(false);
