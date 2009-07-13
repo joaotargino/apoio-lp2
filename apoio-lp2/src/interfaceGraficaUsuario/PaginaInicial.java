@@ -80,6 +80,11 @@ public class PaginaInicial extends javax.swing.JFrame {
                 botaoRecuperarSenhaMouseClicked(evt);
             }
         });
+        botaoRecuperarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRecuperarSenhaActionPerformed(evt);
+            }
+        });
         botaoRecuperarSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 botaoRecuperarSenhaKeyTyped(evt);
@@ -172,6 +177,10 @@ public class PaginaInicial extends javax.swing.JFrame {
     private void botaoRecuperarSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaKeyTyped
         labelRecSenha.setVisible(true);
     }//GEN-LAST:event_botaoRecuperarSenhaKeyTyped
+
+    private void botaoRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaActionPerformed
+        Sistema.enviaSenhaPorEmail(campoLogin.getText());
+    }//GEN-LAST:event_botaoRecuperarSenhaActionPerformed
 
     private void defineUsuario(String login, String senha) {
 
