@@ -8,6 +8,11 @@ public class SendMail {
 	
 	public static void main(String[] args) {
 
+		enviaEmail(); 
+
+	}
+
+	static void enviaEmail() {
 		SimpleEmail email = new SimpleEmail();
 
 		try {
@@ -25,8 +30,7 @@ public class SendMail {
 
 		System.out.println(e.getMessage());
 
-		} 
-
+		}
 	}
 
-}}
+}
