@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
+
 import users.Aluno;
 import users.Moderador;
 import users.Professor;
@@ -507,5 +509,15 @@ public class Sistema {
 
     public static List<String> getQuadroDeInformacoes(){
         return BD.quadroDeInformacoes();
+    }
+    
+    public static boolean enviaSenhaPorEmail(int id) {
+    	Usuario usr = getUsuario(id);
+    	try {
+			SendMail.enviaEmail(usr.getNome(),usr.getEmail(), usr.getSenha());
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
     }
 }
