@@ -24,6 +24,7 @@ public class ExercicioTest {
 	public void setUp() {
 		data = new GregorianCalendar(2010, 9, 15);
 		questoes = new ArrayList<String>();
+		BD.resetExercicios();
 		try {
 			ex = new Exercicio("nome", "descricao", data, questoes);
 			BD.cadastraExercicio(ex);
@@ -57,26 +58,7 @@ public class ExercicioTest {
 		} catch (Exception e) {
 		}
 	}
-	
-	@Test(expected=Exception.class)
-	public void setIdTest() throws Exception {
-		assertEquals("Se o bd de exercicio estiver com algum" +
-				" exercicio cadastrado que não foi nessa classe" +
-				" de teste, esse teste falharah!", ex.getId(), 1);
-		ex.setId(1);
-	}
-	
-	@Test
-	public void setIdTest2() {
-		try {
-			ex.setId(2);
-		} catch (Exception e) {
-			fail("Se o bd de exercicio estiver com algum" +
-				" exercicio cadastrado que não foi nessa classe" +
-				" de teste, esse teste falharah!");
-		}
-	}
-	
+
 	@Test
 	public void setNomeSoEspacoTest() {
 		try {
