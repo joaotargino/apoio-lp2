@@ -8,7 +8,7 @@ import org.junit.Test;
 import users.Usuario;
 
 public class UsuarioTest {
-	static Usuario user;
+	Usuario user;
 	
 	@Before
 	public void setUp() {
