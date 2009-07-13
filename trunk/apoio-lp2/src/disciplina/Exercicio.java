@@ -155,7 +155,7 @@ public class Exercicio implements Serializable {
         String stringQuestoes = "";
         Iterator questao = getQuestoes().iterator();
         while (questao.hasNext()) {
-            stringQuestoes += questao.next().toString() + dados.IO.NOVA_LINHA;
+            stringQuestoes += questao.next().toString() + util.IO.NOVA_LINHA;
         }
         return stringQuestoes;
     }
@@ -195,6 +195,6 @@ public class Exercicio implements Serializable {
     @SuppressWarnings("deprecation")
 	@Override
     public String toString() {
-        return "Id: " + getId() + " | Nome: " + getNome() + " | Descrição: " + getDescricao() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0] + dados.IO.NOVA_LINHA;
+        return "Id: " + getId() + " | Nome: " + getNome() + " | Descrição: " + getDescricao() + " | Data Entrega: " + getDataEntrega().getTime().toLocaleString().split(" ")[0] + util.IO.NOVA_LINHA;
     }
 }

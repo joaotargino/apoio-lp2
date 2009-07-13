@@ -40,9 +40,9 @@ public class UserInterface {
 		System.out.println("BEM VINDO AO SISTEMA");
 		System.out.print("LOGIN: ");
 
-		String login = dados.IO.scan.nextLine();
+		String login = util.IO.scan.nextLine();
 		System.out.print("SENHA: ");
-		String senha = dados.IO.scan.nextLine();
+		String senha = util.IO.scan.nextLine();
 		tipoUsuario = Sistema.confereLoginSenha(login, senha);
 		if (tipoUsuario != UsuariosEnum.INEXISTENTE) {
 			if (tipoUsuario == UsuariosEnum.ALUNO) {
@@ -116,7 +116,7 @@ public class UserInterface {
 
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				dados.IO.scan.nextLine();
+				util.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
@@ -256,7 +256,7 @@ public class UserInterface {
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				dados.IO.scan.nextLine();
+				util.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
@@ -365,7 +365,7 @@ public class UserInterface {
 			switch (opcao) {
 			case SAIR:
 				System.out.print("PRESSIONE ENTER PARA ENCERRAR");
-				dados.IO.scan.nextLine();
+				util.IO.scan.nextLine();
 				break;
 			case EDITAR_DADOS:
 				editarDados(dadosUsuario);
