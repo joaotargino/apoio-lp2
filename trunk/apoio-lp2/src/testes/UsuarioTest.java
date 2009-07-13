@@ -17,8 +17,7 @@ public class UsuarioTest {
 					"senhadeerickson", "20821200",
 					"eicksonfgds@lcc.ufcg.edu.br", "2009.1");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			fail("Usuario deveria ter sido criado!");
 		}
 	}
 
@@ -128,7 +127,5 @@ public class UsuarioTest {
 	public void mudaMatriculaNula() throws Exception {
 		user.setMatricula(null);
 	}
-	
-	
 
 }
