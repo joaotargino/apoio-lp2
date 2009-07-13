@@ -15,9 +15,9 @@ public class Aluno extends Usuario {
 
 	
 
-	public Aluno(int id, String nome, String login, String senha, String matricula,
+	public Aluno(String nome, String login, String senha, String matricula,
 			String email, String turma) throws Exception {
-		super(id, nome, login, senha, matricula, email, turma);
+		super(nome, login, senha, matricula, email, turma);
 	}
 	
 	@Override

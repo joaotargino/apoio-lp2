@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import controle.BD;
 import controle.UsuariosEnum;
 
 /**
@@ -17,7 +18,7 @@ import controle.UsuariosEnum;
  * @author Arnett Rufino
  *
  */
-public abstract class Usuario implements Serializable {
+public class Usuario implements Serializable {
 	
 	
 	private String login, nome, senha, email, matricula, turma;
@@ -29,11 +30,11 @@ public abstract class Usuario implements Serializable {
 	/**
 	 * Construtor padrao.
 	 */
-	public Usuario(int id, String nome, String login, String senha, String matricula,
+	public Usuario(String nome, String login, String senha, String matricula,
 			String email, String turma) throws Exception {
-		if (login == null || senha == null || nome == null)
+		if (login == null || senha == null || nome == null || matricula == null)
 			throw new IllegalArgumentException(
-					"LOGIN, NOME OU SENHA INVALIDOS!");
+					"NOME, MATRICULA, LOGIN OU SENHA  INVALIDOS!");
 		if (login.length() < MENOR_LOGIN) {
 			throw new Exception(
 					"LOGIN MUITO CURTO! INFORME UM LOGIN COM MAIS DE 4 CARACTERES.");
@@ -54,7 +55,7 @@ public abstract class Usuario implements Serializable {
 		if (nome.isEmpty()) {
 			throw new Exception("INFORME UM NOME VALIDO");
 		}
-		this.id = id;
+		this.id = util.Util.geraId("usuario");
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
@@ -124,7 +125,8 @@ public abstract class Usuario implements Serializable {
 	 * @param matricula
 	 */
 	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+		if (!matricula.isEmpty() || matricula != null)
+			this.matricula = matricula;
 	}
 
 	/**
