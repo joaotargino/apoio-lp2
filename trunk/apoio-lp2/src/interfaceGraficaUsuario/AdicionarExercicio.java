@@ -212,7 +212,7 @@ public class AdicionarExercicio extends javax.swing.JFrame {
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
 
-        if (Sistema.cadastrarExercicio(campoNome.getText(), campoDescricao.getText(), data, Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
+        if (Sistema.cadastrarExercicio(campoNome.getText(), campoDescricao.getText(), Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
             labelMensagem.setText(Sistema.addExercicioSucesso);
             labelMensagem.setForeground(Color.BLUE);
             labelMensagem.setVisible(true);

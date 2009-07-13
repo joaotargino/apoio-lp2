@@ -80,7 +80,7 @@ public class Exercicio implements Serializable {
      */
     public void setDataEntrega(Calendar dataEntrega) throws Exception {
     	if (dataEntrega.compareTo(data) < 0) 
-    		throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIACÃO DO EXERCÍCIO!");
+    		throw new Exception("A DATA DE ENTREGA PRECISA SER MAIOR QUE A DATA DE CRIACÃƒO DO EXERCï¿½CIO!");
         this.dataEntrega = dataEntrega;
     }
 
@@ -99,10 +99,10 @@ public class Exercicio implements Serializable {
      */
     public void setNome(String nome) throws Exception {
     	if (isOnlySpace(nome)) 
-    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+    		throw new Exception("O NOME DO EXERCÃCIO NÃƒO PODE SER APENAS ESPAÃ‡OS!");
     	
     	if (nome == null) {
-    		throw new Exception("O NOME DO EXERCÍCIO NÃO PODE SER NULO!");
+    		throw new Exception("O NOME DO EXERCÃCIO NÃƒO PODE SER NULO!");
     	}
         this.nome = nome;
     }
@@ -121,9 +121,9 @@ public class Exercicio implements Serializable {
      */
     public void setDescricao(String descricao) throws Exception {
     	if (isOnlySpace(descricao)) 
-    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER APENAS ESPAÇOS!");
+    		throw new Exception("A DESCRIÃ‡ÃƒO DO EXERCÃCIO NÃƒO PODE SER APENAS ESPAÃ‡OS!");
     	if (descricao == null) {
-    		throw new Exception("A DESCRIÇÃO DO EXERCÍCIO NÃO PODE SER NULA!");
+    		throw new Exception("A DESCRIÃ‡ÃƒO DO EXERCÃCIO NÃƒO PODE SER NULA!");
     	}
         this.descricao = descricao;
     }
@@ -142,7 +142,7 @@ public class Exercicio implements Serializable {
      */
     public void setId(int id) throws Exception {
     	if (Util.temId(id, "exercicio"))
-    		throw new Exception("JÁ EXISTE UM EXERCICIO COM ESSE ID!");
+    		throw new Exception("Jï¿½ EXISTE UM EXERCICIO COM ESSE ID!");
         this.id = id;
     }
 
@@ -161,11 +161,11 @@ public class Exercicio implements Serializable {
     }
     
 	/**
-	 * Verifica se a string só tem espaço
+	 * Verifica se a string sï¿½ tem espaï¿½o
 	 * 
 	 * @param string
-	 *            - a string a ser verificada se só tem espaços
-	 * @return true se só tem espaços, false caso contrário.
+	 *            - a string a ser verificada se sï¿½ tem espaï¿½os
+	 * @return true se sï¿½ tem espaï¿½os, false caso contrï¿½rio.
 	 */
 	private boolean isOnlySpace(String string) {
 		int space = 0;

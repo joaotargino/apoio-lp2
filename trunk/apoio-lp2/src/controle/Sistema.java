@@ -218,7 +218,7 @@ public class Sistema {
     /**
      * cadastra um exercicio
      * @param nome
-     * @param enunciado
+     * @param descricao
      * @param dataEntrega
      * @param id
      * @return true se foi possivel cadastrar o exercicio
@@ -266,16 +266,14 @@ public class Sistema {
      * atualiza um exercicio no sistema
      * @param id
      * @param nome
-     * @param enunciado
+     * @param descricao
      * @param dataDeEntrega
      * @return true se foi possivel atualizar
      * @throws Exception
      */
     public static boolean atualizarExercicio(int id, String nome,
-            String enunciado, String dataDeEntrega, List<String> questoes) throws Exception {
-        Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
-        Exercicio exercicio = new Exercicio(nome, enunciado, dataEntrega, questoes);
-        exercicio.setId(id);
+            String descricao, Calendar dataDeEntrega, List<String> questoes) throws Exception {
+        Exercicio exercicio = new Exercicio(nome, descricao, dataDeEntrega, questoes);
         return BD.atualizaExercicio(id, exercicio);
 
     }
@@ -373,7 +371,7 @@ public class Sistema {
     public static void inicia() {
         try {
             BD.cadastraUsuario(new Professor("Raquel Vigolvino Lopes",
-            		"raquelvl", "123456", "matricula", "raquel@dsc.ufcg.edu.br", "2009.1"));
+                    "raquelvl", "123456", "matricula", "raquel@dsc.ufcg.edu.br", "2009.1"));
         } catch (Exception e) {
         }
 
@@ -495,12 +493,11 @@ public class Sistema {
      * @param id
      * @return retorna o exercicio do id informado
      */
-    public static Exercicio getExercicio(int id){
+    public static Exercicio getExercicio(int id) {
         return BD.getExercicio(id);
     }
 
-
-    public static String exibirQuestoes(Exercicio exercicio){
+    public static String exibirQuestoes(Exercicio exercicio) {
         return exercicio.exibirQuestoes();
     }
 }

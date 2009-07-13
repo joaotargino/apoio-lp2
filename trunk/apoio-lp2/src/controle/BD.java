@@ -10,6 +10,8 @@ import java.util.List;
 
 import disciplina.Exercicio;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import users.*;
 
 
@@ -313,10 +315,12 @@ public class BD {
 			if (exAtual.getId() == id) {
 				int indice = exercicios.indexOf(exAtual);
 				exercicios.remove(exAtual);
-				try {
-					exercicio.setId(id);
-				} catch (Exception e1) {
-				}
+                try {
+                    exercicio.setId(id);
+                } catch (Exception ex) {
+                    System.out.println("...");
+                            
+                }
 				exercicios.add(indice, exercicio);
 				try {
 					Serializar.salvarObjeto(EXERCICIOSBD, exercicios);
