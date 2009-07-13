@@ -503,11 +503,11 @@ public class Sistema {
         return exercicio.exibirQuestoes();
     }
 
-    public static void salvaQuadroDeInformacoes(List<String> quadroDeInformacoes){
+    public static void salvaQuadroDeInformacoes(String[] quadroDeInformacoes){
         BD.gravaInformacoesPainel(quadroDeInformacoes);
     }
 
-    public static List<String> getQuadroDeInformacoes(){
+    public static String[] getQuadroDeInformacoes(){
         return BD.quadroDeInformacoes();
     }
     
