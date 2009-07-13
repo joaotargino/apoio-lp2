@@ -143,24 +143,6 @@ public class Sistema {
         // TODO Auto-generated method stub
     }
 
-    /**
-     * Envia a senha do usuario por e-mail
-     * @param login
-     * @param email
-     * @return true se foi possivel enviar a senha do usuario
-     */
-//    public static boolean enviaSenhaPorEmail(String login, String email) {
-//        List<Usuario> users = BD.getUsuarios();
-//        Iterator<Usuario> it = users.iterator();
-//        while (it.hasNext()) {
-//            Usuario user = it.next();
-//            if (user.getLogin().equals(login) && user.getEmail().equals(email)) {
-//                // TODO enviar por email a senha do usuario
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     /**
      * Confere o login e senha do usuario
@@ -510,6 +492,11 @@ public class Sistema {
         return BD.quadroDeInformacoes();
     }
     
+    /**
+     * Envia a senha do usuario por e-mail
+     * @param login
+     * @return true se foi possivel enviar a senha do usuario
+     */ 
     public static boolean enviaSenhaPorEmail(String login) {
     	Usuario usr = BD.getUsuario(login);
     	try {
