@@ -217,17 +217,16 @@ public class Sistema {
 
     /**
      * cadastra um exercicio
-     * @param id
      * @param nome
      * @param enunciado
-     * @param data
      * @param dataEntrega
+     * @param id
      * @return true se foi possivel cadastrar o exercicio
      */
-    public static boolean cadastrarExercicio(String nome, String enunciado, Calendar data,
-            Calendar dataEntrega, List<String> questoes) {
+    public static boolean cadastrarExercicio(String nome, String enunciado, Calendar dataEntrega,
+            List<String> questoes) {
         try {
-            Exercicio ex = new Exercicio(nome, enunciado, data, dataEntrega, questoes);
+            Exercicio ex = new Exercicio(nome, enunciado, dataEntrega, questoes);
             if (!BD.getExercicios().contains(ex)) {
                 BD.cadastraExercicio(ex);
                 addExercicioSucesso = "Exercício adicionado com sucesso";
@@ -274,9 +273,8 @@ public class Sistema {
      */
     public static boolean atualizarExercicio(int id, String nome,
             String enunciado, String dataDeEntrega, List<String> questoes) throws Exception {
-        Calendar dataAtual = new GregorianCalendar();
         Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
-        Exercicio exercicio = new Exercicio(nome, enunciado, dataAtual, dataEntrega, questoes);
+        Exercicio exercicio = new Exercicio(nome, enunciado, dataEntrega, questoes);
         exercicio.setId(id);
         return BD.atualizaExercicio(id, exercicio);
 
