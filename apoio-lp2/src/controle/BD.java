@@ -313,7 +313,10 @@ public class BD {
 			if (exAtual.getId() == id) {
 				int indice = exercicios.indexOf(exAtual);
 				exercicios.remove(exAtual);
-				exercicio.setId(id);
+				try {
+					exercicio.setId(id);
+				} catch (Exception e1) {
+				}
 				exercicios.add(indice, exercicio);
 				try {
 					Serializar.salvarObjeto(EXERCICIOSBD, exercicios);
