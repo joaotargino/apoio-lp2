@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.mail.EmailException;
 
 import users.Aluno;
 import users.Moderador;
@@ -150,18 +149,18 @@ public class Sistema {
      * @param email
      * @return true se foi possivel enviar a senha do usuario
      */
-    public static boolean enviaSenhaPorEmail(String login, String email) {
-        List<Usuario> users = BD.getUsuarios();
-        Iterator<Usuario> it = users.iterator();
-        while (it.hasNext()) {
-            Usuario user = it.next();
-            if (user.getLogin().equals(login) && user.getEmail().equals(email)) {
-                // TODO enviar por email a senha do usuario
-                return true;
-            }
-        }
-        return false;
-    }
+//    public static boolean enviaSenhaPorEmail(String login, String email) {
+//        List<Usuario> users = BD.getUsuarios();
+//        Iterator<Usuario> it = users.iterator();
+//        while (it.hasNext()) {
+//            Usuario user = it.next();
+//            if (user.getLogin().equals(login) && user.getEmail().equals(email)) {
+//                // TODO enviar por email a senha do usuario
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     /**
      * Confere o login e senha do usuario
@@ -514,7 +513,7 @@ public class Sistema {
     public static boolean enviaSenhaPorEmail(String login) {
     	Usuario usr = BD.getUsuario(login);
     	try {
-			SendMail.enviaEmail(usr.getNome(),usr.getEmail(), usr.getSenha());
+			Util.enviaEmail(usr.getEmail(), usr.getNome(), usr.getSenha());
 			return true;
 		} catch (Exception e) {
 			return false;
