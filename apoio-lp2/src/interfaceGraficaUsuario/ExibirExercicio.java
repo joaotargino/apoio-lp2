@@ -114,7 +114,8 @@ public class ExibirExercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExibirActionPerformed
-        Exercicio exercicio = procuraExercicio(Integer.parseInt(campoID.getText()));  
+        Exercicio exercicio = procuraExercicio(Integer.parseInt(campoID.getText()));
+        System.out.println(exercicio.toString());
         painelExibir.setText(Sistema.exibirQuestoes(exercicio));
     }//GEN-LAST:event_botaoExibirActionPerformed
 
@@ -127,7 +128,6 @@ public class ExibirExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSairActionPerformed
 
     private Exercicio procuraExercicio(int id) {
-        System.out.print(Sistema.getExercicio(id).questoes);
         return Sistema.getExercicio(id);
     }
     /**

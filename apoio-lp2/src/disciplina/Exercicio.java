@@ -1,6 +1,7 @@
 package disciplina;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Exercicio implements Serializable {
     private String nome;
     private String descricao;
     private int id;
-    public static List<String> questoes;
+    private static List<String> questoes = new ArrayList();
 
     private Exercicio() {
     }
@@ -120,10 +121,14 @@ public class Exercicio implements Serializable {
         this.id = id;
     }
 
+    public static List<String> getQuestoes(){
+        return questoes;
+    }
+
     public static String exibirQuestoes() {
 
         String stringQuestoes = "";
-        Iterator questao = questoes.iterator();
+        Iterator questao = getQuestoes().iterator();
         while (questao.hasNext()) {
             stringQuestoes += questao.next().toString() + dados.IO.NOVA_LINHA;
         }
