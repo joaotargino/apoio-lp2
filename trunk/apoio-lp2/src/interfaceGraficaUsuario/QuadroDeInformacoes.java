@@ -101,9 +101,12 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
         botaoSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
 
         campoAvisos.setColumns(20);
         campoAvisos.setRows(5);
+        campoAvisos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoAvisos.setSelectionColor(new java.awt.Color(0, 0, 0));
         painelAvisos.setViewportView(campoAvisos);
 
         painelDeInformacoes.addTab("Avisos", painelAvisos);
@@ -144,19 +147,19 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelDeInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botaoSalvar)
                         .addGap(26, 26, 26)
-                        .addComponent(botaoSair)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(botaoSair))
+                    .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
                     .addComponent(botaoSair)))

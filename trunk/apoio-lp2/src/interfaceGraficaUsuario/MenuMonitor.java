@@ -69,7 +69,7 @@ public class MenuMonitor extends javax.swing.JFrame {
         menuEditarDados = new javax.swing.JMenuItem();
         menuAlterarSenha = new javax.swing.JMenuItem();
         menuExibir = new javax.swing.JMenu();
-        exibirPaginaPrincipal = new javax.swing.JMenuItem();
+        exibirQuadroInfo = new javax.swing.JMenuItem();
         exibirAlunos = new javax.swing.JMenuItem();
         exibirModeradores = new javax.swing.JMenuItem();
         exibirPlanilha = new javax.swing.JMenuItem();
@@ -156,14 +156,14 @@ public class MenuMonitor extends javax.swing.JFrame {
 
         menuExibir.setText("Exibir");
 
-        exibirPaginaPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        exibirPaginaPrincipal.setText("Página Principal");
-        exibirPaginaPrincipal.addActionListener(new java.awt.event.ActionListener() {
+        exibirQuadroInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        exibirQuadroInfo.setText("Página Principal");
+        exibirQuadroInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exibirPaginaPrincipalActionPerformed(evt);
             }
         });
-        menuExibir.add(exibirPaginaPrincipal);
+        menuExibir.add(exibirQuadroInfo);
 
         exibirAlunos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         exibirAlunos.setText("Alunos");
@@ -382,7 +382,7 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
-    private javax.swing.JMenuItem exibirPaginaPrincipal;
+    private javax.swing.JMenuItem exibirQuadroInfo;
     private javax.swing.JMenuItem exibirPlanilha;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
