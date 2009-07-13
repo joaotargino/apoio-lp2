@@ -224,10 +224,10 @@ public class Sistema {
      * @param id
      * @return true se foi possivel cadastrar o exercicio
      */
-    public static boolean cadastrarExercicio(String nome, String enunciado, Calendar dataEntrega,
+    public static boolean cadastrarExercicio(String nome, String descricao, Calendar dataEntrega,
             List<String> questoes) {
         try {
-            Exercicio ex = new Exercicio(nome, enunciado, dataEntrega, questoes);
+            Exercicio ex = new Exercicio(nome, descricao, dataEntrega, questoes);
             if (!BD.getExercicios().contains(ex)) {
                 BD.cadastraExercicio(ex);
                 addExercicioSucesso = "Exercício adicionado com sucesso";
