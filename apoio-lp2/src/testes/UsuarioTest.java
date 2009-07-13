@@ -74,6 +74,11 @@ public class UsuarioTest {
 		new Usuario("nomeUsuario", "logi", "senhausuario", "matriculausuario", "email@email.com", "turma");
 	}
 	
+	@Test(expected=Exception.class)
+	public void senhaPequenaTest() throws Exception {
+		new Usuario("nomeUsuario", "loginn", "senh", "matriculausuario", "email@email.com", "turma");
+	}
+	
 	
 
 }
