@@ -511,8 +511,8 @@ public class Sistema {
         return BD.quadroDeInformacoes();
     }
     
-    public static boolean enviaSenhaPorEmail(int id) {
-    	Usuario usr = getUsuario(id);
+    public static boolean enviaSenhaPorEmail(String login) {
+    	Usuario usr = BD.getUsuario(login);
     	try {
 			SendMail.enviaEmail(usr.getNome(),usr.getEmail(), usr.getSenha());
 			return true;
