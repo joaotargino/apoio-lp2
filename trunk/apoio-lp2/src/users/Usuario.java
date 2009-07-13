@@ -91,7 +91,7 @@ public class Usuario implements Serializable {
 	 */
 	public void setSenha(String novaSenha) throws Exception {
 		if (novaSenha == null) {
-			throw new Exception();
+			throw new Exception("SENHA NULA.");
 		}
 		if (isOnlySpace(novaSenha)) {
 			throw new Exception("SENHA INVALIDA. ESPACOS NÃO SÃO VÁLIDOS COMO SENHA.");
@@ -117,10 +117,16 @@ public class Usuario implements Serializable {
 	/**
 	 * @param nome
 	 *            the nome to set
+	 * @throws Exception 
 	 */
-	public void setNome(String nome) {
-		if (!isOnlySpace(nome))
-			this.nome = nome;
+	public void setNome(String nome) throws Exception {
+		if (isOnlySpace(nome))
+			throw new Exception("NOME INVÁLIDO. O NOME NÃO PODE SER APENAS ESPAÇOS.");
+		if (nome == null) {
+			throw new Exception("NOME NULO.");
+		}
+		this.nome = nome;
+		
 	}
 
 	/**
@@ -134,10 +140,15 @@ public class Usuario implements Serializable {
 	/**
 	 * 
 	 * @param matricula
+	 * @throws Exception 
 	 */
-	public void setMatricula(String matricula) {
-		if (!isOnlySpace(matricula) || matricula != null)
-			this.matricula = matricula;
+	public void setMatricula(String matricula) throws Exception {
+		if (isOnlySpace(matricula))
+			throw new Exception("MATRICULA INVÁLIDA. A MATRICULA NÃO PODE SER APENAS ESPAÇOS.");
+		if (matricula == null) {
+			throw new Exception("MATRICULA NULA.");
+		}
+		this.matricula = matricula;
 	}
 
 	/**
