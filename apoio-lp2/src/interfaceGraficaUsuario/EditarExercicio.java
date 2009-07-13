@@ -265,7 +265,7 @@ public class EditarExercicio extends javax.swing.JFrame {
         campoNome.setText(exercicio.getNome());
         campoDescricao.setText(exercicio.getDescricao());
         campoDataDeEntrega.setText(exercicio.getDataEntrega().getTime().toLocaleString().split(" ")[0]);
-        textoQuestao.setText("Pressione próxima questão para visualizar as questões deste exercício" + dados.IO.NOVA_LINHA + "Clique em adicionar para armazenar a questão, se seguir para a próxima questão sem adicionar, ela será perdida." + dados.IO.NOVA_LINHA + "Pressione Nova Questão apenas para adicionar uma questão depois da última.");
+        textoQuestao.setText("Pressione próxima questão para visualizar as questões deste exercício" + util.IO.NOVA_LINHA + "Clique em adicionar para armazenar a questão, se seguir para a próxima questão sem adicionar, ela será perdida." + util.IO.NOVA_LINHA + "Pressione Nova Questão apenas para adicionar uma questão depois da última.");
 }//GEN-LAST:event_botaoExibirActionPerformed
 
     private void botaoProxQuestaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoProxQuestaoActionPerformed
