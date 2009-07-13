@@ -7,6 +7,9 @@ import disciplina.Exercicio;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 import controle.BD;
 import controle.Submissao;
 
@@ -77,4 +80,23 @@ public class Util {
     	}
     	return true;
     }
+    
+	public static void enviaEmail(String emailUsr, String nome, String senha)
+	throws EmailException {
+
+		SimpleEmail email = new SimpleEmail();
+
+		email.setDebug(true);
+		email.setHostName("smtp.gmail.com");
+		email.setAuthentication("suporte.lp2", "apoio-lp2");
+		email.setSSL(true);
+		email.addTo(emailUsr); 
+		email.setFrom("suporte.lp2@gmail.com"); 
+		email.setSubject("Recuperacao de Senha");
+		email
+		.setMsg("Ola, " + nome + ", \n\n\nSua senha eh: "
+				+ senha+". \n\n\nAtenciosamente,\n\nEquipe de Suporte");
+		System.out.println(emailUsr);
+		email.send();
+	}
 }
