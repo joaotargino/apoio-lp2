@@ -8,8 +8,14 @@
  *
  * Created on 12/07/2009, 19:06:30
  */
-
 package interfaceGraficaUsuario;
+
+import controle.Sistema;
+import controle.Util;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  *
@@ -17,9 +23,17 @@ package interfaceGraficaUsuario;
  */
 public class AdicionarExercicio extends javax.swing.JFrame {
 
+    private static GregorianCalendar data = new GregorianCalendar();
+    private static List<String> questoes = new ArrayList();
+
     /** Creates new form AdicionarExercicio */
     public AdicionarExercicio() {
         initComponents();
+        painelDataAtual.setText(data.getTime().toLocaleString().split(" ")[0]);
+        painelDataAtual.setEnabled(false);
+        painelDataAtual.setForeground(Color.BLACK); //continua
+        labelMensagem.setVisible(false);
+
     }
 
     /** This method is called from within the constructor to
@@ -34,18 +48,20 @@ public class AdicionarExercicio extends javax.swing.JFrame {
         labelNome = new javax.swing.JLabel();
         labelDescricao = new javax.swing.JLabel();
         labelDataDeEntrega = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        campoNome = new javax.swing.JTextField();
+        campoDescricao = new javax.swing.JTextField();
+        campoDataDeEntrega = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jTextField4 = new javax.swing.JTextField();
+        painelDataAtual = new javax.swing.JTextPane();
         labelQuestões = new javax.swing.JLabel();
         botaoAdicionar = new javax.swing.JButton();
         botaoLimpar = new javax.swing.JButton();
         botaoSalvar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
+        labelMensagem = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textoQuestao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -56,15 +72,10 @@ public class AdicionarExercicio extends javax.swing.JFrame {
 
         labelDataDeEntrega.setText("Data de entrega:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Data atual:");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        painelDataAtual.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(painelDataAtual);
 
         labelQuestões.setText("Questões:");
 
@@ -96,6 +107,12 @@ public class AdicionarExercicio extends javax.swing.JFrame {
             }
         });
 
+        labelMensagem.setText("Mensagem");
+
+        textoQuestao.setColumns(20);
+        textoQuestao.setRows(5);
+        jScrollPane2.setViewportView(textoQuestao);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,47 +136,50 @@ public class AdicionarExercicio extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoDataDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(labelNome)
-                            .addGap(90, 90, 90)
-                            .addComponent(jTextField1))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(labelDescricao)
                             .addGap(71, 71, 71)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(119, 119, 119))
+                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(labelNome)
+                            .addGap(90, 90, 90)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                                .addComponent(campoNome)))))
+                .addGap(240, 240, 240))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(labelMensagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNome)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDescricao)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelDataDeEntrega)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoDataDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelQuestões)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
@@ -169,39 +189,52 @@ public class AdicionarExercicio extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(botaoSalvar)
                         .addGap(22, 22, 22)
-                        .addComponent(botaoSair)
-                        .addGap(32, 32, 32)))
-                .addGap(46, 46, 46))
+                        .addComponent(botaoSair))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                .addGap(78, 78, 78))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void botaoAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarActionPerformed
-        // TODO add your handling code here:
+        questoes.add(textoQuestao.getText());
+        textoQuestao.setText("");
     }//GEN-LAST:event_botaoAdicionarActionPerformed
 
     private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
-        // TODO add your handling code here:
+        inicializaCampos();
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // TODO add your handling code here:
+        if (Sistema.cadastrarExercicio(Util.geraId("exercicio"), campoNome.getText(), campoDescricao.getText(), data, Util.criaCalendario(campoDataDeEntrega.getText()), questoes)) {
+            labelMensagem.setText(Sistema.addExercicioSucesso);
+            labelMensagem.setForeground(Color.BLUE);
+            labelMensagem.setVisible(true);
+        } else {
+            labelMensagem.setText("ERRO. " + Sistema.excecao);
+            labelMensagem.setForeground(Color.RED);
+            labelMensagem.setVisible(true);
+        }
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_botaoSairActionPerformed
 
+    private void inicializaCampos() {
+        campoNome.setText("");
+        campoDescricao.setText("");
+        campoDataDeEntrega.setText("");
+        textoQuestao.setText("");
+    }
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new AdicionarExercicio().setVisible(true);
             }
@@ -213,17 +246,18 @@ public class AdicionarExercicio extends javax.swing.JFrame {
     private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSair;
     private javax.swing.JButton botaoSalvar;
+    private javax.swing.JTextField campoDataDeEntrega;
+    private javax.swing.JTextField campoDescricao;
+    private javax.swing.JTextField campoNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelDataDeEntrega;
     private javax.swing.JLabel labelDescricao;
+    private javax.swing.JLabel labelMensagem;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelQuestões;
+    private javax.swing.JTextPane painelDataAtual;
+    private javax.swing.JTextArea textoQuestao;
     // End of variables declaration//GEN-END:variables
-
 }

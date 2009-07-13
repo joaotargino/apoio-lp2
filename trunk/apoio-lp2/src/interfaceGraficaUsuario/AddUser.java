@@ -95,9 +95,6 @@ public class AddUser extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botaoSalvarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botaoSalvarMouseExited(evt);
-            }
         });
 
         botaoCancelar.setText("Cancelar");
@@ -238,9 +235,6 @@ public class AddUser extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_botaoSalvarMouseClicked
-
-    private void botaoSalvarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoSalvarMouseExited
-    }//GEN-LAST:event_botaoSalvarMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         inicializaCamposUsuario();
