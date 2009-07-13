@@ -443,9 +443,9 @@ public class BD {
 			return informacoes;
 		} catch (Exception e) {
 		}
-        String avisos = "cois";
-        String plano = "ss";
-        String info = "s";
+        String avisos = "";
+        String plano = "";
+        String info = "";
         String criterios = "";
         informacoes.add(avisos);
         informacoes.add(plano);
