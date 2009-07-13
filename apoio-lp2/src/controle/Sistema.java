@@ -10,6 +10,7 @@ import users.Aluno;
 import users.Moderador;
 import users.Professor;
 import users.Usuario;
+import util.Util;
 import disciplina.Exercicio;
 
 /**
@@ -49,7 +50,7 @@ public class Sistema {
         if (tipo == UsuariosEnum.ALUNO) {
 
             try {
-                usr = new Aluno(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
+                usr = new Aluno(dados.get(DadosUsuarioEnum.NOME.ordinal()),
                         dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
                         dados.get(DadosUsuarioEnum.SENHA.ordinal()),
                         dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
@@ -61,7 +62,7 @@ public class Sistema {
             }
         } else if (tipo == UsuariosEnum.PROFESSOR) {
             try {
-                usr = new Professor(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
+                usr = new Professor(dados.get(DadosUsuarioEnum.NOME.ordinal()),
                         dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
                         dados.get(DadosUsuarioEnum.SENHA.ordinal()),
                         dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
@@ -73,7 +74,7 @@ public class Sistema {
             }
         } else {
             try {
-                usr = new Moderador(Util.geraId("usuario"), dados.get(DadosUsuarioEnum.NOME.ordinal()),
+                usr = new Moderador(dados.get(DadosUsuarioEnum.NOME.ordinal()),
                         dados.get(DadosUsuarioEnum.LOGIN.ordinal()),
                         dados.get(DadosUsuarioEnum.SENHA.ordinal()),
                         dados.get(DadosUsuarioEnum.MATRICULA.ordinal()),
@@ -223,10 +224,10 @@ public class Sistema {
      * @param dataEntrega
      * @return true se foi possivel cadastrar o exercicio
      */
-    public static boolean cadastrarExercicio(int id, String nome, String enunciado, Calendar data,
+    public static boolean cadastrarExercicio(String nome, String enunciado, Calendar data,
             Calendar dataEntrega, List<String> questoes) {
         try {
-            Exercicio ex = new Exercicio(id, nome, enunciado, data, dataEntrega, questoes);
+            Exercicio ex = new Exercicio(nome, enunciado, data, dataEntrega, questoes);
             if (!BD.getExercicios().contains(ex)) {
                 BD.cadastraExercicio(ex);
                 addExercicioSucesso = "Exercício adicionado com sucesso";
@@ -275,7 +276,8 @@ public class Sistema {
             String enunciado, String dataDeEntrega, List<String> questoes) throws Exception {
         Calendar dataAtual = new GregorianCalendar();
         Calendar dataEntrega = Util.criaCalendario(dataDeEntrega);
-        Exercicio exercicio = new Exercicio(id, nome, enunciado, dataAtual, dataEntrega, questoes);
+        Exercicio exercicio = new Exercicio(nome, enunciado, dataAtual, dataEntrega, questoes);
+        exercicio.setId(id);
         return BD.atualizaExercicio(id, exercicio);
 
     }
@@ -372,8 +374,8 @@ public class Sistema {
      */
     public static void inicia() {
         try {
-            BD.cadastraUsuario(new Professor(Util.geraId("usuario"),
-                    "Raquel Vigolvino Lopes", "raquelvl", "123456", "matricula", "raquel@dsc.ufcg.edu.br", "2009.1"));
+            BD.cadastraUsuario(new Professor("Raquel Vigolvino Lopes",
+            		"raquelvl", "123456", "matricula", "raquel@dsc.ufcg.edu.br", "2009.1"));
         } catch (Exception e) {
         }
 
