@@ -55,8 +55,11 @@ public class UsuarioTest {
 		}
 	}
 	
+	@Test
 	public void emailTest() {
 		assertFalse(user.setEmail(""));
+		assertFalse(user.setEmail("        @    .    "));
+		assertFalse(user.setEmail(null));
 		assertFalse(user.setEmail("@"));
 		assertFalse(user.setEmail("a@email"));
 		assertFalse(user.setEmail("a@email."));
@@ -64,6 +67,11 @@ public class UsuarioTest {
 		assertTrue(user.setEmail("erickson@email.com"));
 		assertTrue(user.setEmail("erickson@email.com.br"));
 		assertTrue(user.setEmail("ericksonfilipe@gmail.com.br"));
+	}
+	
+	@Test(expected=Exception.class)
+	public void loginPequenoTest() throws Exception {
+		new Usuario("nomeUsuario", "logi", "senhausuario", "matriculausuario", "email@email.com", "turma");
 	}
 	
 	
