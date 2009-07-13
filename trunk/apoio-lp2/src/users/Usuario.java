@@ -78,6 +78,7 @@ public class Usuario implements Serializable {
 	}
 
 	/**
+	 * retorna a senha
 	 * @return the senha
 	 */
 	public String getSenha() {
@@ -108,6 +109,7 @@ public class Usuario implements Serializable {
 	}
 
 	/**
+	 * retorna o nome
 	 * @return the nome
 	 */
 	public String getNome() {
@@ -115,8 +117,9 @@ public class Usuario implements Serializable {
 	}
 
 	/**
+	 * modifica o nome do usuario
 	 * @param nome
-	 *            the nome to set
+	 *            o nome a ser mudado
 	 * @throws Exception 
 	 */
 	public void setNome(String nome) throws Exception {
@@ -130,7 +133,7 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * 
+	 * retorna a matricula do usuario
 	 * @return matricula
 	 */
 	public String getMatricula() {
@@ -138,7 +141,7 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * 
+	 * modifica a matricula do usuario
 	 * @param matricula
 	 * @throws Exception 
 	 */
@@ -168,8 +171,9 @@ public class Usuario implements Serializable {
 	}
 
 	/**
+	 * modifica o id do usuario
 	 * @param id
-	 *            the id to set
+	 *            novo id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -198,7 +202,7 @@ public class Usuario implements Serializable {
 
 	/**
 	 * @param turma
-	 *            the turma to set
+	 *            nova turma
 	 */
 	public void setTurma(String turma) {
 		this.turma = turma;
@@ -243,26 +247,8 @@ public class Usuario implements Serializable {
 		return false;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Usuario) {
-			Usuario usr = (Usuario) obj;
-			if (usr.getLogin().equals(getLogin())
-					|| usr.getMatricula().equals(getMatricula())
-					|| usr.getEmail().equals(getEmail())) {
-				
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-	public String toString() {
-		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " | email: "+ getEmail() + " | Turma: "+ getTurma() + IO.NOVA_LINHA;
-	}
-	
 	/**
+	 * retorna o tipo e usuario
 	 * @return retorna o tipo do usuario
 	 */
 	public UsuariosEnum getEnum() {
@@ -277,6 +263,24 @@ public class Usuario implements Serializable {
 		Collections.addAll(dados, getLogin(), getSenha(), getMatricula(),
 				getNome(), getEmail(), getTurma());
 		return dados;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Usuario) {
+			Usuario usr = (Usuario) obj;
+			if (usr.getLogin().equals(getLogin())
+					|| usr.getMatricula().equals(getMatricula())
+					|| usr.getEmail().equals(getEmail())) {
+				
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String toString() {
+		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " | email: "+ getEmail() + " | Turma: "+ getTurma() + IO.NOVA_LINHA;
 	}
 	
 
