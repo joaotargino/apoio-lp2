@@ -14,7 +14,9 @@ import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
 import java.awt.Color;
+import java.io.File;
 import java.util.List;
+import javax.swing.JFileChooser;
 import util.Util;
 
 /**
@@ -34,9 +36,9 @@ public class MenuAluno extends javax.swing.JFrame {
     public MenuAluno(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
-        inicializaPaineis();
-//        painelDeAbas.setVisible(true);
-        painelExibir.setText("");
+        painelExibir.setEnabled(false);
+        painelExibir.setText(Util.ABOUT);
+        painelExibir.setVisible(true);
         painelExibir.setEnabled(false);
         painelExibir.setForeground(Color.BLACK);
         setTitle("Menu Aluno");
@@ -310,7 +312,8 @@ public class MenuAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ajudaSobreActionPerformed
 
     private void enviarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarExercicioActionPerformed
-        // TODO add your handling code here:
+        SubmeterExercicio seleciona = new SubmeterExercicio(dadosUsuario);
+        seleciona.setVisible(true);
     }//GEN-LAST:event_enviarExercicioActionPerformed
 
     private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed

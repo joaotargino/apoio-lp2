@@ -38,8 +38,8 @@ public class MenuProfessor extends javax.swing.JFrame {
         initComponents();
         painelExibir.setEnabled(false);
         painelExibir.setForeground(Color.BLACK);
-
-        painelExibir.setText("");
+        painelExibir.setText(Util.ABOUT);
+        painelExibir.setVisible(true);
         setTitle("Menu Professor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }

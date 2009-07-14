@@ -34,9 +34,8 @@ public class MenuMonitor extends javax.swing.JFrame {
         this.dadosUsuario = dadosUsuario;
         initComponents();
         painelExibir.setEnabled(false);
-        inicializaPaineis();
-//        painelDeAbas.setVisible(true);
-        painelExibir.setText("");
+        painelExibir.setText(Util.ABOUT);
+        painelExibir.setVisible(true);
         setTitle("Menu Monitor");
         labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
     }
