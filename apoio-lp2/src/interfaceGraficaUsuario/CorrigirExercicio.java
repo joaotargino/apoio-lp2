@@ -11,8 +11,6 @@
 
 package interfaceGraficaUsuario;
 
-import com.mysql.jdbc.Util;
-import controle.BD;
 import controle.Sistema;
 import controle.Submissao;
 import java.awt.Color;
@@ -27,6 +25,7 @@ public class CorrigirExercicio extends javax.swing.JFrame {
     /** Creates new form CorrigirExercicio */
     public CorrigirExercicio() {
         initComponents();
+        setTitle("Corrigir Exercicio");
         mensagem.setVisible(false);
         labelNotFound.setVisible(false);
         labelNotFound.setForeground(Color.red);
