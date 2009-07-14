@@ -77,6 +77,7 @@ public class MenuAluno extends javax.swing.JFrame {
         exibirModeradores = new javax.swing.JMenuItem();
         exibirExercicios = new javax.swing.JMenuItem();
         exibirPlanilha = new javax.swing.JMenuItem();
+        correcoes = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         ajudaHelp = new javax.swing.JMenuItem();
         ajudaSobre = new javax.swing.JMenuItem();
@@ -207,6 +208,14 @@ public class MenuAluno extends javax.swing.JFrame {
         });
         menuExibir.add(exibirPlanilha);
 
+        correcoes.setText("Correcoes");
+        correcoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correcoesActionPerformed(evt);
+            }
+        });
+        menuExibir.add(correcoes);
+
         menuBarAluno.add(menuExibir);
 
         menuAjuda.setText("Ajuda");
@@ -326,6 +335,11 @@ public class MenuAluno extends javax.swing.JFrame {
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirPlanilhaActionPerformed
 
+    private void correcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correcoesActionPerformed
+        ExibirCorrecao exibeCorrecao = new ExibirCorrecao(dadosUsuario);
+        exibeCorrecao.setVisible(true);
+    }//GEN-LAST:event_correcoesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,6 +357,7 @@ public class MenuAluno extends javax.swing.JFrame {
     private javax.swing.JMenuItem ajudaHelp;
     private javax.swing.JMenuItem ajudaSobre;
     private javax.swing.JMenuItem baixarExercicio;
+    private javax.swing.JMenuItem correcoes;
     private javax.swing.JMenuItem enviarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;

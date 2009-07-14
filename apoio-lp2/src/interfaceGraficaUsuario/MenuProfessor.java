@@ -90,6 +90,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         removerExercicio = new javax.swing.JMenuItem();
         editarExercicio = new javax.swing.JMenuItem();
         baixarExercicio = new javax.swing.JMenuItem();
+        corrigirExercicio = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         ajudaHelp = new javax.swing.JMenuItem();
         ajudaSobre = new javax.swing.JMenuItem();
@@ -304,6 +305,14 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         jMenu1.add(baixarExercicio);
 
+        corrigirExercicio.setText("Corrigir");
+        corrigirExercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                corrigirExercicioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(corrigirExercicio);
+
         menuBarProfessor.add(jMenu1);
 
         menuAjuda.setText("Ajuda");
@@ -475,6 +484,11 @@ public class MenuProfessor extends javax.swing.JFrame {
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirPlanilhaActionPerformed
 
+    private void corrigirExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corrigirExercicioActionPerformed
+        CorrigirExercicio corrigir = new CorrigirExercicio();
+        corrigir.setVisible(true);
+    }//GEN-LAST:event_corrigirExercicioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -496,6 +510,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem ajudaHelp;
     private javax.swing.JMenuItem ajudaSobre;
     private javax.swing.JMenuItem baixarExercicio;
+    private javax.swing.JMenuItem corrigirExercicio;
     private javax.swing.JMenuItem editarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;

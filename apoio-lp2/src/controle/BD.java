@@ -410,12 +410,12 @@ public class BD {
 	 * @param sub
 	 * @return true se foi possivel atualizar
 	 */
-	public static boolean atualizaSubmissao(Submissao sub) {
+	public static boolean atualizaSubmissao(int id, Submissao sub) {
 		List<Submissao> submissoes = getSubmissoes();
 		Iterator<Submissao> it = submissoes.iterator();
 		while(it.hasNext()) {
 			Submissao atual = it.next();
-			if (atual.equals(sub)) {
+			if (atual.getId() == id) {
 				submissoes.get(submissoes.indexOf(atual)).setCaminho(sub.getCaminho());
                                 submissoes.get(submissoes.indexOf(atual)).setComentario(sub.getComentario());
                                 submissoes.get(submissoes.indexOf(atual)).setNota(sub.getNota());

@@ -128,6 +128,6 @@ public class Submissao implements Serializable{
 
     @Override
     public String toString() {
-        return "id: " + id + " caminho: " + caminho;
+        return "Id: " + id + " | Caminho: " + caminho + " | Data Submissao: " + getDataDeEntrega().getTime().toLocaleString().split(" ")[0] + util.IO.NOVA_LINHA;
     }
 }
