@@ -61,6 +61,7 @@ public class ExibirCorrecao extends javax.swing.JFrame {
         labelIDExercicio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(900, 450));
 
         labelCorrecao.setText("Comentários e correções do exercício:");
 
@@ -88,6 +89,7 @@ public class ExibirCorrecao extends javax.swing.JFrame {
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
         painelExibir.setEditable(false);
+        painelExibir.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         painelExibir.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         painelExibir.setMaximumSize(new java.awt.Dimension(200, 100));
         painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
@@ -106,7 +108,7 @@ public class ExibirCorrecao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(609, 609, 609))
+                        .addGap(636, 636, 636))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1)
@@ -119,12 +121,12 @@ public class ExibirCorrecao extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelCorrecao)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(88, 88, 88))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(234, 234, 234)
                 .addComponent(botaoVoltar)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
