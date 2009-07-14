@@ -26,7 +26,6 @@ public class PaginaInicial extends javax.swing.JFrame {
     /** Creates new form PaginaInicial */
     public PaginaInicial() {
         initComponents();
-        barraDeProgresso.setVisible(false);
         dadosInvalidos.setForeground(Color.RED);
         labelRecSenha.setVisible(false);
         labelRecSenha.setForeground(Color.RED);
@@ -50,7 +49,6 @@ public class PaginaInicial extends javax.swing.JFrame {
         logoCCC = new javax.swing.JLabel();
         dadosInvalidos = new javax.swing.JLabel();
         labelRecSenha = new javax.swing.JLabel();
-        barraDeProgresso = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("APOIO-LP2");
@@ -125,10 +123,6 @@ public class PaginaInicial extends javax.swing.JFrame {
                                     .addComponent(dadosInvalidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(labelRecSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))))
                 .addContainerGap(255, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
-                .addComponent(barraDeProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(312, 312, 312))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +147,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoRecuperarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(barraDeProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(56, 56, 56)
                 .addComponent(labelRecSenha)
                 .addGap(41, 41, 41))
         );
@@ -164,10 +156,8 @@ public class PaginaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoRecuperarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaMouseClicked
-
-        barraDeProgresso.setVisible(true);
         labelRecSenha.setVisible(true);
-        barraDeProgresso.setVisible(false);
+        
     }//GEN-LAST:event_botaoRecuperarSenhaMouseClicked
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
@@ -185,10 +175,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoEntrarKeyTyped
 
     private void botaoRecuperarSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaKeyTyped
-
-        barraDeProgresso.setVisible(true);
         labelRecSenha.setVisible(true);
-        barraDeProgresso.setVisible(false);
     }//GEN-LAST:event_botaoRecuperarSenhaKeyTyped
 
     private void botaoRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecuperarSenhaActionPerformed
@@ -210,9 +197,6 @@ public class PaginaInicial extends javax.swing.JFrame {
                 menuMonitor.setVisible(true);
                 dispose();
             } else {
-//                AdicionarUsuario ui = new AdicionarUsuario(UsuariosEnum.ALUNO);
-//                ui.setVisible(true);
-
                 MenuProfessor menuProf = new MenuProfessor(Sistema.dadosUsuario(login));
                 menuProf.setVisible(true);
                 dispose();
@@ -238,7 +222,6 @@ public class PaginaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar barraDeProgresso;
     private javax.swing.JButton botaoEntrar;
     private javax.swing.JButton botaoRecuperarSenha;
     private javax.swing.JTextField campoLogin;
