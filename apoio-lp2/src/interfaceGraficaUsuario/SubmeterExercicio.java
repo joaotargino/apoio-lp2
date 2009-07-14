@@ -11,8 +11,7 @@
 
 package interfaceGraficaUsuario;
 
-import controle.DadosUsuarioEnum;
-import controle.Sistema;
+import controle.*;
 import disciplina.Exercicio;
 import java.awt.Color;
 import java.io.File;
@@ -30,11 +29,6 @@ public class SubmeterExercicio extends javax.swing.JFrame {
     /** Creates new form SubmeterExercicio */
     public SubmeterExercicio() {
         initComponents();
-        labelMensagem.setVisible(false);
-        setTitle("Submeter Exercicio");
-        exibicaoExercicios.setVisible(true);
-        exibicaoExercicios.setText(Sistema.listaDeExercicios());
-        exibicaoExercicios.setEnabled(false);
     }
 
      public SubmeterExercicio(List<String> dadosUsuario) {
@@ -66,6 +60,7 @@ public class SubmeterExercicio extends javax.swing.JFrame {
         caminhoArquivo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         labelMensagem = new javax.swing.JLabel();
+        pesquisarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +88,8 @@ public class SubmeterExercicio extends javax.swing.JFrame {
 
         exibicaoExercicios.setColumns(20);
         exibicaoExercicios.setRows(5);
+        exibicaoExercicios.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        exibicaoExercicios.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(exibicaoExercicios);
 
         sair.setText("Sair");
@@ -113,6 +110,13 @@ public class SubmeterExercicio extends javax.swing.JFrame {
 
         labelMensagem.setText("mensagem");
 
+        pesquisarTodos.setText("Exibir Todos");
+        pesquisarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarTodosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,9 +131,10 @@ public class SubmeterExercicio extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(caminhoArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(abrir))
@@ -139,7 +144,8 @@ public class SubmeterExercicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addComponent(submeter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sair)))
+                        .addComponent(sair))
+                    .addComponent(pesquisarTodos, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -155,8 +161,10 @@ public class SubmeterExercicio extends javax.swing.JFrame {
                     .addComponent(abrir)
                     .addComponent(pesquisar)
                     .addComponent(caminhoArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pesquisarTodos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sair)
@@ -200,9 +208,18 @@ public class SubmeterExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_submeterActionPerformed
 
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
-        Exercicio exercicio = Sistema.getExercicio(Integer.parseInt(idExercicio.getText()));
-        exibicaoExercicios.setText(Sistema.exibirQuestoes(exercicio));
+        Exercicio exercicio = null;
+        try {
+        exercicio = Sistema.getExercicio(Integer.parseInt(idExercicio.getText()));
+        } catch(NumberFormatException e) {
+        }
+        if (exercicio != null)
+            exibicaoExercicios.setText(Sistema.exibirQuestoes(exercicio));
     }//GEN-LAST:event_pesquisarActionPerformed
+
+    private void pesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarTodosActionPerformed
+        exibicaoExercicios.setText(Sistema.listaDeExercicios());
+    }//GEN-LAST:event_pesquisarTodosActionPerformed
 
     /**
     * @param args the command line arguments
@@ -225,6 +242,7 @@ public class SubmeterExercicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMensagem;
     private javax.swing.JButton pesquisar;
+    private javax.swing.JButton pesquisarTodos;
     private javax.swing.JButton sair;
     private javax.swing.JButton submeter;
     // End of variables declaration//GEN-END:variables
