@@ -13,6 +13,8 @@ import users.Professor;
 import users.Usuario;
 import util.Util;
 import disciplina.Exercicio;
+import java.util.ArrayList;
+import util.IO;
 
 /**
  * Classe que gerencia o sistema.
@@ -142,6 +144,7 @@ public class Sistema {
     public static void mandaBaixar(String caminho) {
         // TODO Auto-generated method stub
     }
+    
 
 
     /**
@@ -269,6 +272,15 @@ public class Sistema {
         return BD.getExercicios();
     }
 
+    public static List<String> getNomeExercicios() {
+        Iterator<Exercicio> it = verExercicios().iterator();
+        List<String> nomes = new ArrayList();
+        while (it.hasNext()) {
+            nomes.add(it.next().getNome());
+        }
+        return nomes;
+    }
+
     /**
      * Lista os usuarios
      * @return um string com os usuarios
@@ -304,7 +316,7 @@ public class Sistema {
      * Lista todas as submissoes
      * @return List<Submissao> as submissoes
      */
-    public static List<Submissao> getsubmissoes() {
+    public static List<Submissao> getSubmissoes() {
         List<Submissao> submissoes = BD.getSubmissoes();
         return submissoes;
     }
@@ -451,7 +463,7 @@ public class Sistema {
      */
     public static String listaDeExerciciosDoAluno(String login) {
         String listaSubmissoes = "";
-        List<Submissao> submissoes = Sistema.getsubmissoes();
+        List<Submissao> submissoes = Sistema.getSubmissoes();
         Iterator<Submissao> it = submissoes.iterator();
         while (it.hasNext()) {
             Submissao sub = it.next();
@@ -500,10 +512,22 @@ public class Sistema {
     public static boolean enviaSenhaPorEmail(String login) {
     	Usuario usr = BD.getUsuario(login);
     	try {
-			Util.enviaEmail(usr.getEmail(), usr.getNome(), usr.getSenha());
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+            Util.enviaEmail(usr.getEmail(), usr.getNome(), usr.getSenha());
+            return true;
+	} catch (Exception e) {
+		return false;
+	}
     }
+
+    public static String getSubmissoesAluno(String login) {
+        String submissoes = "";
+        for (Submissao sub: getSubmissoes()) {
+            if (sub.getLogin().equals(login)) {
+                submissoes += sub + IO.NOVA_LINHA;
+            }
+        }
+
+        return submissoes;
+    }
+
 }
