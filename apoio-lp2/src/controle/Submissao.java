@@ -21,7 +21,7 @@ public class Submissao implements Serializable{
 	
 	public Submissao(int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho ) {
 		this.idExercicio = idExercicio;
-                this.id = Util.geraId("submissao");
+                this.id = util.Util.geraId("submissao");
 		this.login = login;
 		this.dataDeEntrega = dataDeEntrega;
 		this.caminho = caminho;

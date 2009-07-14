@@ -11,12 +11,11 @@
 package interfaceGraficaUsuario;
 
 import controle.Sistema;
-import controle.Util;
+import util.Util;
 import disciplina.Exercicio;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.List;
 
 /**
