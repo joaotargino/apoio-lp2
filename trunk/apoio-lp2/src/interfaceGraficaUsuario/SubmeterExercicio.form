@@ -33,9 +33,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pesquisar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="caminhoArquivo" pref="154" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="abrir" min="-2" max="-2" attributes="0"/>
@@ -50,6 +51,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="sair" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="pesquisarTodos" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -70,8 +72,10 @@
                   <Component id="pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="caminhoArquivo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="pesquisarTodos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="sair" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,6 +125,12 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -152,6 +162,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="mensagem"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="pesquisarTodos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exibir Todos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisarTodosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
