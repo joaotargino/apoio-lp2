@@ -23,6 +23,7 @@ public class RemoveExercicio extends javax.swing.JFrame {
     /** Creates new form RemoveExercicio */
     public RemoveExercicio() {
         initComponents();
+        labelMensagem.setVisible(false);
         setTitle("Remover Exercício");
         campoID.setText("0");
         painelExibir.setText(Sistema.listaDeExercicios());

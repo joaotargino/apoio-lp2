@@ -156,10 +156,10 @@ public class MenuMonitor extends javax.swing.JFrame {
         menuExibir.setText("Exibir");
 
         exibirQuadroInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        exibirQuadroInfo.setText("Página Principal");
+        exibirQuadroInfo.setText("Quadro de Informacoes");
         exibirQuadroInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exibirPaginaPrincipalActionPerformed(evt);
+                exibirQuadroInfoActionPerformed(evt);
             }
         });
         menuExibir.add(exibirQuadroInfo);
@@ -305,10 +305,10 @@ public class MenuMonitor extends javax.swing.JFrame {
         edit.setVisible(true);
 }//GEN-LAST:event_menuEditarDadosActionPerformed
 
-    private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
-        inicializaPaineis();
-    //        painelDeAbas.setVisible(true);
-}//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
+    private void exibirQuadroInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirQuadroInfoActionPerformed
+        QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes(UsuariosEnum.MONITOR);
+          quadroInfo.setVisible(true);
+}//GEN-LAST:event_exibirQuadroInfoActionPerformed
 
     private void exibirAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirAlunosActionPerformed
         inicializaPaineis();
@@ -345,7 +345,7 @@ public class MenuMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_ajudaHelpActionPerformed
 
     private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed
-        BaixarExercicio baixarEx = new BaixarExercicio();
+        BaixarExercicio baixarEx = new BaixarExercicio(dadosUsuario, UsuariosEnum.MONITOR);
         baixarEx.setVisible(true);
     }//GEN-LAST:event_baixarExercicioActionPerformed
 
@@ -355,7 +355,8 @@ public class MenuMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_editarExercicioActionPerformed
 
     private void removerExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerExercicioActionPerformed
-        // TODO add your handling code here:
+        RemoveExercicio removeEx = new RemoveExercicio();
+        removeEx.setVisible(true);
     }//GEN-LAST:event_removerExercicioActionPerformed
 
     /**
@@ -381,8 +382,8 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
-    private javax.swing.JMenuItem exibirQuadroInfo;
     private javax.swing.JMenuItem exibirPlanilha;
+    private javax.swing.JMenuItem exibirQuadroInfo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;

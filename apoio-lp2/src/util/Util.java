@@ -60,27 +60,6 @@ public class Util {
         return maior + 1;
     }
     
-    public static boolean temId(int id ,String tipo) {
-    	if (tipo.equalsIgnoreCase("exercicio")) {
-    		if (BD.getExercicio(id) == null)
-    			return false;
-    		return true;
-    	}
-    	
-    	else if (tipo.equalsIgnoreCase("usuario")) {
-    		if (BD.getUsuario(id) == null)
-    			return false;
-    		return true;
-    	}
-    	
-    	else if (tipo.equalsIgnoreCase("submissao")) {
-    		if (BD.getSubmissao(id) == null)
-    			return false;
-    		return true;
-    	}
-    	return true;
-    }
-    
 	public static void enviaEmail(String emailUsr, String nome, String senha)
 	throws EmailException {
 

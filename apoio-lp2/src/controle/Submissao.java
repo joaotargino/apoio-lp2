@@ -19,8 +19,9 @@ public class Submissao implements Serializable{
 
 	private Submissao() {}
 	
-	public Submissao( int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho ) {
+	public Submissao(int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho ) {
 		this.idExercicio = idExercicio;
+                this.id = Util.geraId("submissao");
 		this.login = login;
 		this.dataDeEntrega = dataDeEntrega;
 		this.caminho = caminho;
@@ -124,5 +125,9 @@ public class Submissao implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+    @Override
+    public String toString() {
+        return "id: " + id + " caminho: " + caminho;
+    }
 }
