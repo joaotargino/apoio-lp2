@@ -1,7 +1,5 @@
 package users;
 
-import interfaceUsuario.IO;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -93,7 +91,7 @@ public class Usuario implements Serializable {
 			throw new Exception("SENHA NULA.");
 		}
 		if (isOnlySpace(novaSenha)) {
-			throw new Exception("SENHA INVALIDA. ESPACOS NÃO SÃO VÁLIDOS COMO SENHA.");
+			throw new Exception("SENHA INVALIDA. ESPACOS Nï¿½O Sï¿½O Vï¿½LIDOS COMO SENHA.");
 		}
 		if (novaSenha.length() < MENOR_SENHA) {
 			throw new Exception(
@@ -122,7 +120,7 @@ public class Usuario implements Serializable {
 	 */
 	public void setNome(String nome) throws Exception {
 		if (isOnlySpace(nome))
-			throw new Exception("NOME INVÁLIDO. O NOME NÃO PODE SER APENAS ESPAÇOS.");
+			throw new Exception("NOME INVï¿½LIDO. O NOME Nï¿½O PODE SER APENAS ESPAï¿½OS.");
 		if (nome == null) {
 			throw new Exception("NOME NULO.");
 		}
@@ -145,7 +143,7 @@ public class Usuario implements Serializable {
 	 */
 	public void setMatricula(String matricula) throws Exception {
 		if (isOnlySpace(matricula))
-			throw new Exception("MATRICULA INVÁLIDA. A MATRICULA NÃO PODE SER APENAS ESPAÇOS.");
+			throw new Exception("MATRICULA INVï¿½LIDA. A MATRICULA Nï¿½O PODE SER APENAS ESPAï¿½OS.");
 		if (matricula == null) {
 			throw new Exception("MATRICULA NULA.");
 		}
@@ -208,11 +206,11 @@ public class Usuario implements Serializable {
 
 	
 	/**
-	 * Verifica se a string só tem espaço
+	 * Verifica se a string sï¿½ tem espaï¿½o
 	 * 
 	 * @param string
-	 *            - a string a ser verificada se só tem espaços
-	 * @return true se só tem espaços, false caso contrário.
+	 *            - a string a ser verificada se sï¿½ tem espaï¿½os
+	 * @return true se sï¿½ tem espaï¿½os, false caso contrï¿½rio.
 	 */
 	private boolean isOnlySpace(String string) {
 		int space = 0;
@@ -278,7 +276,7 @@ public class Usuario implements Serializable {
 	}
 	
 	public String toString() {
-		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " | email: "+ getEmail() + " | Turma: "+ getTurma() + IO.NOVA_LINHA;
+		return "ID: " + getId() + " | Login: " + getLogin() + " | Nome: " + getNome() + " | email: "+ getEmail() + " | Turma: "+ getTurma() + util.IO.NOVA_LINHA;
 	}
 	
 
