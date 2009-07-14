@@ -9,9 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import disciplina.Exercicio;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import users.*;
 
 
@@ -419,9 +416,9 @@ public class BD {
 		while(it.hasNext()) {
 			Submissao atual = it.next();
 			if (atual.equals(sub)) {
-				int indice = submissoes.indexOf(atual);
-				submissoes.remove(atual);
-				submissoes.add(indice, sub);
+				submissoes.get(submissoes.indexOf(atual)).setCaminho(sub.getCaminho());
+                                submissoes.get(submissoes.indexOf(atual)).setComentario(sub.getComentario());
+                                submissoes.get(submissoes.indexOf(atual)).setNota(sub.getNota());
 				try {
 					Serializar.salvarObjeto(SUBMISSOESBD, submissoes);
 					return true;
