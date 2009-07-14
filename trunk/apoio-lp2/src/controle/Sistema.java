@@ -468,7 +468,7 @@ public class Sistema {
         while (it.hasNext()) {
             Submissao sub = it.next();
             if (sub.getLogin().equals(login)) {
-                listaSubmissoes += "ID: " + sub.getId() + "| Exercicio: " + sub.getIdExercicio() + util.IO.NOVA_LINHA;
+                listaSubmissoes += sub;
             }
         }
         return listaSubmissoes;

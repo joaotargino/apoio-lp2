@@ -31,6 +31,7 @@ public class ExibirCorrecao extends javax.swing.JFrame {
 
     public ExibirCorrecao(List<String> dadosUsuario) {
         initComponents();
+        setTitle("Exibir Correcao");
         this.dadosUsuario = dadosUsuario;
         labelNotFound.setForeground(Color.red);
         labelNotFound.setVisible(false);
