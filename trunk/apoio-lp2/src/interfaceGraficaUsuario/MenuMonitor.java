@@ -41,7 +41,6 @@ public class MenuMonitor extends javax.swing.JFrame {
     }
 
     private void inicializaPaineis() {
-//        painelDeAbas.setVisible(false);
         painelExibir.setVisible(false);
 
     }
@@ -183,6 +182,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         menuExibir.add(exibirModeradores);
 
         exibirPlanilha.setText("Planilha de Notas");
+        exibirPlanilha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibirPlanilhaActionPerformed(evt);
+            }
+        });
         menuExibir.add(exibirPlanilha);
 
         menuBarMonitor.add(menuExibir);
@@ -358,6 +362,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         RemoveExercicio removeEx = new RemoveExercicio();
         removeEx.setVisible(true);
     }//GEN-LAST:event_removerExercicioActionPerformed
+
+    private void exibirPlanilhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPlanilhaActionPerformed
+        painelExibir.setText("Consulte a planilha de notas no google docs!");
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_exibirPlanilhaActionPerformed
 
     /**
      * @param args the command line arguments

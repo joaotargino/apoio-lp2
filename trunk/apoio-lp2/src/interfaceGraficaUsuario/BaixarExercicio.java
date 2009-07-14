@@ -31,6 +31,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
 
     public BaixarExercicio(List<String> dadosUsuario, UsuariosEnum tipo) {
         initComponents();
+        setTitle("Baixar exercicio");
         labelNotFound.setForeground(Color.RED);
         painelExibir.setEnabled(false);
         labelNotFound.setVisible(false);

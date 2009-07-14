@@ -12,7 +12,7 @@ package interfaceGraficaUsuario;
 
 import controle.Sistema;
 import controle.UsuariosEnum;
-import java.util.List;
+
 
 /**
  *
@@ -34,6 +34,7 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
     /** Creates new form QuadroDeInformacoes */
     public QuadroDeInformacoes() {
         initComponents();
+        setTitle("Quadro de Informacoes");
         inicializa();
         setVisible(true);
         campoAvisos.setVisible(true);

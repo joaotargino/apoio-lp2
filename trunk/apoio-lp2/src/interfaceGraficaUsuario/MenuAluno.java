@@ -14,9 +14,7 @@ import controle.DadosUsuarioEnum;
 import controle.Sistema;
 import controle.UsuariosEnum;
 import java.awt.Color;
-import java.io.File;
 import java.util.List;
-import javax.swing.JFileChooser;
 import util.Util;
 
 /**
@@ -47,9 +45,7 @@ public class MenuAluno extends javax.swing.JFrame {
     }
 
     private void inicializaPaineis() {
-//        painelDeAbas.setVisible(false);
         painelExibir.setVisible(false);
-//        labelSaudacao.setText("Olá, " + dadosUsuario.get(DadosUsuarioEnum.NOME.ordinal()) + ". email: " + dadosUsuario.get(DadosUsuarioEnum.EMAIL.ordinal()));
 
     }
 
@@ -204,6 +200,11 @@ public class MenuAluno extends javax.swing.JFrame {
         menuExibir.add(exibirExercicios);
 
         exibirPlanilha.setText("Planilha de Notas");
+        exibirPlanilha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibirPlanilhaActionPerformed(evt);
+            }
+        });
         menuExibir.add(exibirPlanilha);
 
         menuBarAluno.add(menuExibir);
@@ -319,6 +320,11 @@ public class MenuAluno extends javax.swing.JFrame {
         BaixarExercicio baixarEx = new BaixarExercicio(dadosUsuario, UsuariosEnum.ALUNO);
         baixarEx.setVisible(true);
     }//GEN-LAST:event_baixarExercicioActionPerformed
+
+    private void exibirPlanilhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPlanilhaActionPerformed
+        painelExibir.setText("Consulte a planilha de notas no google docs!");
+        painelExibir.setVisible(true);
+    }//GEN-LAST:event_exibirPlanilhaActionPerformed
 
     /**
      * @param args the command line arguments

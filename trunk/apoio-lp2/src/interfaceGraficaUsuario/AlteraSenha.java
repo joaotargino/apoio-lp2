@@ -34,6 +34,7 @@ public class AlteraSenha extends javax.swing.JFrame {
     public AlteraSenha(List<String> dadosUsuario) {
         this.dadosUsuario = dadosUsuario;
         initComponents();
+        setTitle("Alterar Senha");
         labelErro.setForeground(Color.RED);
         labelSucesso.setForeground(Color.BLUE);
         labelErro.setVisible(false);
