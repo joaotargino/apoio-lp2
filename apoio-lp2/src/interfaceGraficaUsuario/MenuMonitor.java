@@ -77,6 +77,7 @@ public class MenuMonitor extends javax.swing.JFrame {
         removerExercicio = new javax.swing.JMenuItem();
         editarExercicio = new javax.swing.JMenuItem();
         baixarExercicio = new javax.swing.JMenuItem();
+        corrigir = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         ajudaHelp = new javax.swing.JMenuItem();
         ajudaSobre = new javax.swing.JMenuItem();
@@ -234,6 +235,14 @@ public class MenuMonitor extends javax.swing.JFrame {
         });
         jMenu1.add(baixarExercicio);
 
+        corrigir.setText("Corrigir");
+        corrigir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                corrigirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(corrigir);
+
         menuBarMonitor.add(jMenu1);
 
         menuAjuda.setText("Ajuda");
@@ -368,6 +377,11 @@ public class MenuMonitor extends javax.swing.JFrame {
         painelExibir.setVisible(true);
     }//GEN-LAST:event_exibirPlanilhaActionPerformed
 
+    private void corrigirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corrigirActionPerformed
+        CorrigirExercicio corrigir = new CorrigirExercicio();
+        corrigir.setVisible(true);
+    }//GEN-LAST:event_corrigirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +401,7 @@ public class MenuMonitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem ajudaHelp;
     private javax.swing.JMenuItem ajudaSobre;
     private javax.swing.JMenuItem baixarExercicio;
+    private javax.swing.JMenuItem corrigir;
     private javax.swing.JMenuItem editarExercicio;
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
