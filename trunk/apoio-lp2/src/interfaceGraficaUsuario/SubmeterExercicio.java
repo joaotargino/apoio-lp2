@@ -62,7 +62,7 @@ public class SubmeterExercicio extends javax.swing.JFrame {
         labelMensagem = new javax.swing.JLabel();
         pesquisarTodos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         idExercicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

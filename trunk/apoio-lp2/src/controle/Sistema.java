@@ -530,4 +530,12 @@ public class Sistema {
         return submissoes;
     }
 
+    public static Submissao getSubmissao(int i) {
+        return BD.getSubmissao(i);
+    }
+
+    public static void atualizaSubmissao(int id, Submissao sub) {
+        BD.atualizaSubmissao(id, sub);
+    }
+
 }
