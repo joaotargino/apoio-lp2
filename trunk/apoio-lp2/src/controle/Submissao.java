@@ -10,124 +10,125 @@ import java.util.GregorianCalendar;
  * @author erickson
  *
  */
-public class Submissao implements Serializable{
+public class Submissao implements Serializable {
 
-	private GregorianCalendar dataDeEntrega;
-	private String caminho, login, comentario;
-	private Double nota;
-	private int id, idExercicio;
+    private GregorianCalendar dataDeEntrega;
+    private String caminho, login, comentario;
+    private Double nota;
+    private int id, idExercicio;
 
-	private Submissao() {}
-	
-	public Submissao(int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho ) {
-		this.idExercicio = idExercicio;
-                this.id = util.Util.geraId("submissao");
-		this.login = login;
-		this.dataDeEntrega = dataDeEntrega;
-		this.caminho = caminho;
-		
-	}
-	
-	/**
-	 * @return the idExercicio
-	 */
-	public int getIdExercicio() {
-		return idExercicio;
-	}
+    private Submissao() {
+    }
 
-	/**
-	 * @param idExercicio the idExercicio to set
-	 */
-	public void setIdExercicio(int idExercicio) {
-		this.idExercicio = idExercicio;
-	}
+    public Submissao(int idExercicio, String login, GregorianCalendar dataDeEntrega, String caminho) {
+        this.idExercicio = idExercicio;
+        this.id = util.Util.geraId("submissao");
+        this.login = login;
+        this.dataDeEntrega = dataDeEntrega;
+        this.caminho = caminho;
 
-	/**
-	 * @return the dataDeEntrega
-	 */
-	public GregorianCalendar getDataDeEntrega() {
-		return dataDeEntrega;
-	}
+    }
 
-	/**
-	 * @param dataDeEntrega the dataDeEntrega to set
-	 */
-	public void setDataDeEntrega(GregorianCalendar dataDeEntrega) {
-		this.dataDeEntrega = dataDeEntrega;
-	}
+    /**
+     * @return the idExercicio
+     */
+    public int getIdExercicio() {
+        return idExercicio;
+    }
 
-	/**
-	 * @return the caminho
-	 */
-	public String getCaminho() {
-		return caminho;
-	}
+    /**
+     * @param idExercicio the idExercicio to set
+     */
+    public void setIdExercicio(int idExercicio) {
+        this.idExercicio = idExercicio;
+    }
 
-	/**
-	 * @param caminho the caminho to set
-	 */
-	public void setCaminho(String caminho) {
-		this.caminho = caminho;
-	}
+    /**
+     * @return the dataDeEntrega
+     */
+    public GregorianCalendar getDataDeEntrega() {
+        return dataDeEntrega;
+    }
 
-	/**
-	 * @return the login
-	 */
-	public String getLogin() {
-		return login;
-	}
+    /**
+     * @param dataDeEntrega the dataDeEntrega to set
+     */
+    public void setDataDeEntrega(GregorianCalendar dataDeEntrega) {
+        this.dataDeEntrega = dataDeEntrega;
+    }
 
-	/**
-	 * @param login the login to set
-	 */
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    /**
+     * @return the caminho
+     */
+    public String getCaminho() {
+        return caminho;
+    }
 
-	/**
-	 * @return the comentario
-	 */
-	public String getComentario() {
-		return comentario;
-	}
+    /**
+     * @param caminho the caminho to set
+     */
+    public void setCaminho(String caminho) {
+        this.caminho = caminho;
+    }
 
-	/**
-	 * @param comentario the comentario to set
-	 */
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
+    /**
+     * @return the login
+     */
+    public String getLogin() {
+        return login;
+    }
 
-	/**
-	 * @return the nota
-	 */
-	public Double getNota() {
-		return nota;
-	}
+    /**
+     * @param login the login to set
+     */
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	/**
-	 * @param nota the nota to set
-	 */
-	public void setNota(Double nota) {
-		this.nota = nota;
-	}
-	
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
+    /**
+     * @return the comentario
+     */
+    public String getComentario() {
+        return comentario;
+    }
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+    /**
+     * @param comentario the comentario to set
+     */
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    /**
+     * @return the nota
+     */
+    public Double getNota() {
+        return nota;
+    }
+
+    /**
+     * @param nota the nota to set
+     */
+    public void setNota(Double nota) {
+        this.nota = nota;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
-        return "Id: " + id + " | Caminho: " + caminho + " | Data Submissao: " + getDataDeEntrega().getTime().toLocaleString().split(" ")[0] + util.IO.NOVA_LINHA;
+        return "Id: " + id + " | Data Submissao: " + getDataDeEntrega().getTime().toLocaleString().split(" ")[0] + util.IO.NOVA_LINHA + "Caminho: " + caminho + util.IO.NOVA_LINHA + util.IO.NOVA_LINHA;
     }
 }
