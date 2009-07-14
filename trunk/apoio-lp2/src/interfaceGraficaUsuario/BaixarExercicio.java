@@ -10,8 +10,12 @@
  */
 package interfaceGraficaUsuario;
 
+import controle.BD;
+import controle.DadosUsuarioEnum;
 import controle.Sistema;
+import controle.UsuariosEnum;
 import java.awt.Color;
+import java.util.List;
 import users.Usuario;
 
 /**
@@ -23,9 +27,25 @@ public class BaixarExercicio extends javax.swing.JFrame {
     /** Creates new form BaixarExercicio */
     public BaixarExercicio() {
         initComponents();
+    }
+
+    public BaixarExercicio(List<String> dadosUsuario, UsuariosEnum tipo) {
+        initComponents();
         labelNotFound.setForeground(Color.RED);
+        painelExibir.setEnabled(false);
         labelNotFound.setVisible(false);
-        campoID.setText("0");
+        labelDownload.setVisible(false);
+        if (tipo == UsuariosEnum.ALUNO) {
+            campoID.setVisible(false);
+            painelExibir.setText(Sistema.getSubmissoesAluno(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal())));
+            botaoProcurarID.setVisible(false);
+            labelID.setVisible(false);
+        } else {
+            campoID.setVisible(true);
+            campoID.setText("0");
+            labelID.setVisible(true);
+            botaoProcurarID.setVisible(true);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -47,6 +67,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
         campoIDExercicio = new javax.swing.JTextField();
         botaoBaixarExercicio = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
+        labelDownload = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 600));
@@ -63,6 +84,8 @@ public class BaixarExercicio extends javax.swing.JFrame {
         });
 
         painelExibir.setBackground(new java.awt.Color(240, 240, 240));
+        painelExibir.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        painelExibir.setSelectionColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(painelExibir);
 
         labelIDExercicio.setText("Informe o ID do Exercício: ");
@@ -81,33 +104,36 @@ public class BaixarExercicio extends javax.swing.JFrame {
             }
         });
 
+        labelDownload.setText("DL");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelDownload, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addComponent(labelNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(labelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoProcurarID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(labelIDExercicio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botaoBaixarExercicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botaoCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +147,9 @@ public class BaixarExercicio extends javax.swing.JFrame {
                     .addComponent(botaoProcurarID))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDownload)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelIDExercicio)
                     .addComponent(campoIDExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +176,8 @@ public class BaixarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoProcurarIDActionPerformed
 
     private void botaoBaixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBaixarExercicioActionPerformed
-        // TODO add your handling code here:
+        labelDownload.setText("Download completo: " + BD.getSubmissao(Integer.parseInt(campoIDExercicio.getText())).getCaminho());
+        labelDownload.setVisible(true);
 }//GEN-LAST:event_botaoBaixarExercicioActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
@@ -183,6 +212,7 @@ public class BaixarExercicio extends javax.swing.JFrame {
     private javax.swing.JTextField campoID;
     private javax.swing.JTextField campoIDExercicio;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDownload;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelIDExercicio;
     private javax.swing.JLabel labelNotFound;

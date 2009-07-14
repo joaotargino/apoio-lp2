@@ -71,7 +71,7 @@ public class MenuProfessor extends javax.swing.JFrame {
         removerUsuario = new javax.swing.JMenuItem();
         menuResetarBD = new javax.swing.JMenu();
         resetarAlunos = new javax.swing.JMenuItem();
-        resetarSubmissoes = new javax.swing.JMenuItem();
+        resetarSubmissões = new javax.swing.JMenuItem();
         resetarExercicios = new javax.swing.JMenuItem();
         resetaBD = new javax.swing.JMenuItem();
         Logoff = new javax.swing.JMenuItem();
@@ -150,13 +150,13 @@ public class MenuProfessor extends javax.swing.JFrame {
         });
         menuResetarBD.add(resetarAlunos);
 
-        resetarSubmissoes.setText("Submissões");
-        resetarSubmissoes.addActionListener(new java.awt.event.ActionListener() {
+        resetarSubmissões.setText("Submissões");
+        resetarSubmissões.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetarSubmissõesActionPerformed(evt);
             }
         });
-        menuResetarBD.add(resetarSubmissoes);
+        menuResetarBD.add(resetarSubmissões);
 
         resetarExercicios.setText("Exercícios");
         resetarExercicios.addActionListener(new java.awt.event.ActionListener() {
@@ -225,10 +225,10 @@ public class MenuProfessor extends javax.swing.JFrame {
         menuExibir.setText("Exibir");
 
         exibirQuadroInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        exibirQuadroInfo.setText("Página Principal");
+        exibirQuadroInfo.setText("Quadro de Informacoes");
         exibirQuadroInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exibirPaginaPrincipalActionPerformed(evt);
+                exibirQuadroInfoActionPerformed(evt);
             }
         });
         menuExibir.add(exibirQuadroInfo);
@@ -392,10 +392,10 @@ public class MenuProfessor extends javax.swing.JFrame {
         showEx.setVisible(true);
     }//GEN-LAST:event_exibirExerciciosActionPerformed
 
-    private void exibirPaginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirPaginaPrincipalActionPerformed
-          QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes();
+    private void exibirQuadroInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirQuadroInfoActionPerformed
+          QuadroDeInformacoes quadroInfo = new QuadroDeInformacoes(UsuariosEnum.PROFESSOR);
           quadroInfo.setVisible(true);
-    }//GEN-LAST:event_exibirPaginaPrincipalActionPerformed
+    }//GEN-LAST:event_exibirQuadroInfoActionPerformed
 
     private void resetarExerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetarExerciciosActionPerformed
         Sistema.removerTodosExercicios(dadosUsuario.get(DadosUsuarioEnum.LOGIN.ordinal()));
@@ -456,7 +456,7 @@ public class MenuProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_editarExercicioActionPerformed
 
     private void baixarExercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarExercicioActionPerformed
-        BaixarExercicio baixarEx = new BaixarExercicio();
+        BaixarExercicio baixarEx = new BaixarExercicio(dadosUsuario, UsuariosEnum.PROFESSOR);
         baixarEx.setVisible(true);
     }//GEN-LAST:event_baixarExercicioActionPerformed
 
@@ -490,8 +490,8 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem exibirAlunos;
     private javax.swing.JMenuItem exibirExercicios;
     private javax.swing.JMenuItem exibirModeradores;
-    private javax.swing.JMenuItem exibirQuadroInfo;
     private javax.swing.JMenuItem exibirPlanilha;
+    private javax.swing.JMenuItem exibirQuadroInfo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaudacao;
@@ -512,6 +512,6 @@ public class MenuProfessor extends javax.swing.JFrame {
     private javax.swing.JMenuItem resetaBD;
     private javax.swing.JMenuItem resetarAlunos;
     private javax.swing.JMenuItem resetarExercicios;
-    private javax.swing.JMenuItem resetarSubmissoes;
+    private javax.swing.JMenuItem resetarSubmissões;
     // End of variables declaration//GEN-END:variables
 }

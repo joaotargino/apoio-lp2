@@ -11,6 +11,7 @@
 package interfaceGraficaUsuario;
 
 import controle.Sistema;
+import controle.UsuariosEnum;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
     private final int PLANO = 1;
     private final int INFO = 2;
     private final int CRITERIOS = 3;
+    private UsuariosEnum tipo;
 
     /** Creates new form QuadroDeInformacoes */
     public QuadroDeInformacoes() {
@@ -42,6 +44,33 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
         campoPlano.setText(plano);
         campoInfo.setText(info);
         campoCriterios.setText(criterios);
+    }
+
+    public QuadroDeInformacoes(UsuariosEnum tipo) {
+        initComponents();
+        inicializa();
+        setVisible(true);
+        this.tipo = tipo;
+        campoAvisos.setVisible(true);
+        campoPlano.setVisible(true);
+        campoInfo.setVisible(true);
+        campoCriterios.setVisible(true);
+        campoAvisos.setText(avisos);
+        campoPlano.setText(plano);
+        campoInfo.setText(info);
+        campoCriterios.setText(criterios);
+        if (tipo == UsuariosEnum.ALUNO){
+            campoAvisos.setEnabled(false);
+            campoPlano.setEnabled(false);
+            campoInfo.setEnabled(false);
+            campoCriterios.setEnabled(false);
+            botaoSalvar.setVisible(false);
+        }else{
+            campoAvisos.setEnabled(true);
+            campoPlano.setEnabled(true);
+            campoInfo.setEnabled(true);
+            campoCriterios.setEnabled(true);
+        }
     }
     public  void inicializa(){
         String[] quadroDeInformacoes = Sistema.getQuadroDeInformacoes();
@@ -103,6 +132,8 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        painelDeInformacoes.setMinimumSize(new java.awt.Dimension(800, 600));
+
         campoAvisos.setColumns(20);
         campoAvisos.setRows(5);
         campoAvisos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -113,16 +144,22 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
 
         campoPlano.setColumns(20);
         campoPlano.setRows(5);
+        campoPlano.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoPlano.setSelectionColor(new java.awt.Color(0, 0, 0));
         painelPlano.setViewportView(campoPlano);
 
         painelDeInformacoes.addTab("Plano de Aula", painelPlano);
 
+        campoCriterios.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoCriterios.setSelectionColor(new java.awt.Color(0, 0, 0));
         painelCriterios.setViewportView(campoCriterios);
 
         painelDeInformacoes.addTab("Critérios de Avaliação", painelCriterios);
 
         campoInfo.setColumns(20);
         campoInfo.setRows(5);
+        campoInfo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoInfo.setSelectionColor(new java.awt.Color(0, 0, 0));
         painelInfo.setViewportView(campoInfo);
 
         painelDeInformacoes.addTab("Informações do Projeto", painelInfo);
@@ -147,22 +184,23 @@ public class QuadroDeInformacoes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelDeInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 680, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botaoSalvar)
-                        .addGap(26, 26, 26)
-                        .addComponent(botaoSair))
-                    .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(botaoSair)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(painelDeInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoSalvar)
-                    .addComponent(botaoSair)))
+                    .addComponent(botaoSair)
+                    .addComponent(botaoSalvar))
+                .addContainerGap())
         );
 
         pack();

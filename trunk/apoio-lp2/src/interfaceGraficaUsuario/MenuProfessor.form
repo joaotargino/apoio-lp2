@@ -142,15 +142,15 @@
             <Property name="text" type="java.lang.String" value="Exibir"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="exibirPaginaPrincipal">
+            <MenuItem class="javax.swing.JMenuItem" name="exibirQuadroInfo">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+P"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="P&#xe1;gina Principal"/>
+                <Property name="text" type="java.lang.String" value="Quadro de Informacoes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exibirPaginaPrincipalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exibirQuadroInfoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exibirAlunos">
