@@ -137,18 +137,6 @@ public class Exercicio implements Serializable {
         return id;
     }
 
-    /**
-     * atribui um id ao exercicio
-     * @param id
-     * @throws Exception 
-     */
-    public void setId(int id) throws Exception {
-        if (Util.temId(id, "exercicio")) {
-            throw new Exception("J� EXISTE UM EXERCICIO COM ESSE ID!");
-        }
-        this.id = id;
-    }
-
     public List<String> getQuestoes() {
         return questoes;
     }
